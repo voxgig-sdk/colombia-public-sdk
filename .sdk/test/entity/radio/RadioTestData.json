@@ -1,0 +1,37 @@
+{
+  "existing": {
+    "radio": {
+      "RADIO00": {
+        "band": "s32",
+        "frequency": "s33",
+        "id": "RADIO00",
+        "name": "s35",
+        "url": "s36"
+      },
+      "RADIO01": {
+        "band": "s64",
+        "frequency": "s65",
+        "id": "RADIO01",
+        "name": "s67",
+        "url": "s68"
+      },
+      "RADIO02": {
+        "band": "s96",
+        "frequency": "s97",
+        "id": "RADIO02",
+        "name": "s99",
+        "url": "s9a"
+      }
+    }
+  },
+  "new": {
+    "radio": {
+      "radio_ref01": {
+        "band": "sc8",
+        "frequency": "sc9",
+        "name": "scb",
+        "url": "scc"
+      }
+    }
+  }
+}

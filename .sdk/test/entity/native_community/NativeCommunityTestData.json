@@ -1,0 +1,37 @@
+{
+  "existing": {
+    "native_community": {
+      "NATIVE_COMMUNITY00": {
+        "department_id": "DEPARTMENT01",
+        "description": "s33",
+        "id": "NATIVE_COMMUNITY00",
+        "name": "s35",
+        "population": "s36"
+      },
+      "NATIVE_COMMUNITY01": {
+        "department_id": "DEPARTMENT01",
+        "description": "s65",
+        "id": "NATIVE_COMMUNITY01",
+        "name": "s67",
+        "population": "s68"
+      },
+      "NATIVE_COMMUNITY02": {
+        "department_id": "DEPARTMENT01",
+        "description": "s97",
+        "id": "NATIVE_COMMUNITY02",
+        "name": "s99",
+        "population": "s9a"
+      }
+    }
+  },
+  "new": {
+    "native_community": {
+      "native_community_ref01": {
+        "department_id": "DEPARTMENT01",
+        "description": "sc9",
+        "name": "scb",
+        "population": "scc"
+      }
+    }
+  }
+}

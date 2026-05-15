@@ -1,0 +1,49 @@
+{
+  "existing": {
+    "department": {
+      "DEPARTMENT00": {
+        "city_capital": "s50",
+        "description": "s51",
+        "id": "DEPARTMENT00",
+        "municipality": "s53",
+        "name": "s54",
+        "population": "s55",
+        "region_id": "REGION01",
+        "surface": 87
+      },
+      "DEPARTMENT01": {
+        "city_capital": "sa0",
+        "description": "sa1",
+        "id": "DEPARTMENT01",
+        "municipality": "sa3",
+        "name": "sa4",
+        "population": "sa5",
+        "region_id": "REGION01",
+        "surface": 167
+      },
+      "DEPARTMENT02": {
+        "city_capital": "sf0",
+        "description": "sf1",
+        "id": "DEPARTMENT02",
+        "municipality": "sf3",
+        "name": "sf4",
+        "population": "sf5",
+        "region_id": "REGION01",
+        "surface": 247
+      }
+    }
+  },
+  "new": {
+    "department": {
+      "department_ref01": {
+        "city_capital": "s140",
+        "description": "s141",
+        "municipality": "s143",
+        "name": "s144",
+        "population": "s145",
+        "region_id": "REGION01",
+        "surface": 327
+      }
+    }
+  }
+}

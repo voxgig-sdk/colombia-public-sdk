@@ -1,0 +1,37 @@
+{
+  "existing": {
+    "map": {
+      "MAP00": {
+        "department_id": "DEPARTMENT01",
+        "description": "s33",
+        "id": "MAP00",
+        "name": "s35",
+        "url_image": []
+      },
+      "MAP01": {
+        "department_id": "DEPARTMENT01",
+        "description": "s65",
+        "id": "MAP01",
+        "name": "s67",
+        "url_image": []
+      },
+      "MAP02": {
+        "department_id": "DEPARTMENT01",
+        "description": "s97",
+        "id": "MAP02",
+        "name": "s99",
+        "url_image": []
+      }
+    }
+  },
+  "new": {
+    "map": {
+      "map_ref01": {
+        "department_id": "DEPARTMENT01",
+        "description": "sc9",
+        "name": "scb",
+        "url_image": []
+      }
+    }
+  }
+}

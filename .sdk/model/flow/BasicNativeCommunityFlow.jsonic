@@ -1,0 +1,44 @@
+# BasicNativeCommunityFlow
+
+main: kit: flow: BasicNativeCommunityFlow:
+{
+  entity: "native_community",
+  kind: "basic",
+  name: "BasicNativeCommunityFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "native_community_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "native_community_ref01",
+        srcdatavar: "native_community_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "native_community01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-native_community_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicNativeCommunityFlow"
+}

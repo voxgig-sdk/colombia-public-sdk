@@ -1,0 +1,44 @@
+# BasicDepartmentFlow
+
+main: kit: flow: BasicDepartmentFlow:
+{
+  entity: "department",
+  kind: "basic",
+  name: "BasicDepartmentFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "department_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "department_ref01",
+        srcdatavar: "department_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "department01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-department_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDepartmentFlow"
+}

@@ -1,0 +1,44 @@
+# BasicTouristicAttractionFlow
+
+main: kit: flow: BasicTouristicAttractionFlow:
+{
+  entity: "touristic_attraction",
+  kind: "basic",
+  name: "BasicTouristicAttractionFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "touristic_attraction_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "touristic_attraction_ref01",
+        srcdatavar: "touristic_attraction_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "touristic_attraction01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-touristic_attraction_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicTouristicAttractionFlow"
+}

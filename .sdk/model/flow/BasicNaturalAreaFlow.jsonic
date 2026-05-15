@@ -1,0 +1,44 @@
+# BasicNaturalAreaFlow
+
+main: kit: flow: BasicNaturalAreaFlow:
+{
+  entity: "natural_area",
+  kind: "basic",
+  name: "BasicNaturalAreaFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "natural_area_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "natural_area_ref01",
+        srcdatavar: "natural_area_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "natural_area01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-natural_area_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicNaturalAreaFlow"
+}

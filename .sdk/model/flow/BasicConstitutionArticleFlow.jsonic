@@ -1,0 +1,44 @@
+# BasicConstitutionArticleFlow
+
+main: kit: flow: BasicConstitutionArticleFlow:
+{
+  entity: "constitution_article",
+  kind: "basic",
+  name: "BasicConstitutionArticleFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "constitution_article_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "constitution_article_ref01",
+        srcdatavar: "constitution_article_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "constitution_article01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-constitution_article_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicConstitutionArticleFlow"
+}

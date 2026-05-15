@@ -1,0 +1,45 @@
+{
+  "existing": {
+    "president": {
+      "PRESIDENT00": {
+        "description": "s46",
+        "end_period_date": "s47",
+        "id": "PRESIDENT00",
+        "image": "s49",
+        "name": "s4a",
+        "political_party": "s4b",
+        "start_period_date": "s4c"
+      },
+      "PRESIDENT01": {
+        "description": "s8c",
+        "end_period_date": "s8d",
+        "id": "PRESIDENT01",
+        "image": "s8f",
+        "name": "s90",
+        "political_party": "s91",
+        "start_period_date": "s92"
+      },
+      "PRESIDENT02": {
+        "description": "sd2",
+        "end_period_date": "sd3",
+        "id": "PRESIDENT02",
+        "image": "sd5",
+        "name": "sd6",
+        "political_party": "sd7",
+        "start_period_date": "sd8"
+      }
+    }
+  },
+  "new": {
+    "president": {
+      "president_ref01": {
+        "description": "s118",
+        "end_period_date": "s119",
+        "image": "s11b",
+        "name": "s11c",
+        "political_party": "s11d",
+        "start_period_date": "s11e"
+      }
+    }
+  }
+}

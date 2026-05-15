@@ -1,0 +1,1417 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Colombia Public API",
+    "description": "API-Colombia is a public RESTful API that provides access to a wide range of data about Colombia, including information on departments, regions, and tourist attractions. Users can explore public information without the need for authentication, making it easy to discover diverse aspects of the country.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "API-Colombia",
+      "url": "https://api-colombia.com/"
+    },
+    "license": {
+      "name": "Open Source",
+      "url": "https://api-colombia.com/"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api-colombia.com/api/v1",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/Country/Colombia": {
+      "get": {
+        "summary": "Get general information about Colombia",
+        "description": "Access complete data about Colombia, including capital, surface area, population, languages, and more.",
+        "operationId": "getColombiaInfo",
+        "tags": [
+          "Country"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with Colombia information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Country"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Country information not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/Department": {
+      "get": {
+        "summary": "Get all departments",
+        "description": "Complete directory of departments, revealing Colombia's unique geography.",
+        "operationId": "getDepartments",
+        "tags": [
+          "Department"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with list of departments",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Department"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/Department/{id}": {
+      "get": {
+        "summary": "Get department by ID",
+        "description": "Retrieve detailed information about a specific department.",
+        "operationId": "getDepartmentById",
+        "tags": [
+          "Department"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Department ID",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with department information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Department"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Department not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/Region": {
+      "get": {
+        "summary": "Get all regions",
+        "description": "Explore the regions of Colombia, each with its charm and particularities, ready to be discovered.",
+        "operationId": "getRegions",
+        "tags": [
+          "Region"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with list of regions",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Region"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/Region/{id}": {
+      "get": {
+        "summary": "Get region by ID",
+        "description": "Retrieve detailed information about a specific region.",
+        "operationId": "getRegionById",
+        "tags": [
+          "Region"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Region ID",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with region information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Region"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Region not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/TouristicAttraction": {
+      "get": {
+        "summary": "Get all touristic attractions",
+        "description": "Wonderful tourist attractions that Colombia has to offer, from museums to natural parks.",
+        "operationId": "getTouristicAttractions",
+        "tags": [
+          "Tourism"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with list of touristic attractions",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TouristicAttraction"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/TouristicAttraction/{id}": {
+      "get": {
+        "summary": "Get touristic attraction by ID",
+        "description": "Retrieve detailed information about a specific touristic attraction.",
+        "operationId": "getTouristicAttractionById",
+        "tags": [
+          "Tourism"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Touristic attraction ID",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with touristic attraction information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TouristicAttraction"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Touristic attraction not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/President": {
+      "get": {
+        "summary": "Get all presidents",
+        "description": "Retrieve information about Colombia's presidents.",
+        "operationId": "getPresidents",
+        "tags": [
+          "Government"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with list of presidents",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/President"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/President/{id}": {
+      "get": {
+        "summary": "Get president by ID",
+        "description": "Retrieve detailed information about a specific president.",
+        "operationId": "getPresidentById",
+        "tags": [
+          "Government"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "President ID",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with president information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/President"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "President not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/NaturalArea": {
+      "get": {
+        "summary": "Get all natural areas",
+        "description": "Retrieve information about natural areas in Colombia.",
+        "operationId": "getNaturalAreas",
+        "tags": [
+          "Nature"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with list of natural areas",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/NaturalArea"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/NaturalArea/{id}": {
+      "get": {
+        "summary": "Get natural area by ID",
+        "description": "Retrieve detailed information about a specific natural area.",
+        "operationId": "getNaturalAreaById",
+        "tags": [
+          "Nature"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Natural area ID",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with natural area information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NaturalArea"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Natural area not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/CategoryNaturalArea": {
+      "get": {
+        "summary": "Get all natural area categories",
+        "description": "Retrieve categories for natural areas.",
+        "operationId": "getCategoryNaturalAreas",
+        "tags": [
+          "Nature"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with list of natural area categories",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CategoryNaturalArea"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/Map": {
+      "get": {
+        "summary": "Get maps",
+        "description": "Retrieve map information for Colombia.",
+        "operationId": "getMaps",
+        "tags": [
+          "Geography"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with map information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Map"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/InvasiveSpecie": {
+      "get": {
+        "summary": "Get all invasive species",
+        "description": "Retrieve information about invasive species in Colombia.",
+        "operationId": "getInvasiveSpecies",
+        "tags": [
+          "Environment"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with list of invasive species",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/InvasiveSpecie"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/InvasiveSpecie/{id}": {
+      "get": {
+        "summary": "Get invasive species by ID",
+        "description": "Retrieve detailed information about a specific invasive species.",
+        "operationId": "getInvasiveSpecieById",
+        "tags": [
+          "Environment"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Invasive species ID",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with invasive species information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvasiveSpecie"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Invasive species not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/NativeCommunity": {
+      "get": {
+        "summary": "Get all native communities",
+        "description": "Retrieve information about native communities in Colombia.",
+        "operationId": "getNativeCommunities",
+        "tags": [
+          "Culture"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with list of native communities",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/NativeCommunity"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/NativeCommunity/{id}": {
+      "get": {
+        "summary": "Get native community by ID",
+        "description": "Retrieve detailed information about a specific native community.",
+        "operationId": "getNativeCommunityById",
+        "tags": [
+          "Culture"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Native community ID",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with native community information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NativeCommunity"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Native community not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/Airport": {
+      "get": {
+        "summary": "Get all airports",
+        "description": "Retrieve information about airports in Colombia.",
+        "operationId": "getAirports",
+        "tags": [
+          "Infrastructure"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with list of airports",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Airport"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/Airport/{id}": {
+      "get": {
+        "summary": "Get airport by ID",
+        "description": "Retrieve detailed information about a specific airport.",
+        "operationId": "getAirportById",
+        "tags": [
+          "Infrastructure"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Airport ID",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with airport information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Airport"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Airport not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/Radio": {
+      "get": {
+        "summary": "Get all radio stations",
+        "description": "Retrieve information about radio stations in Colombia.",
+        "operationId": "getRadioStations",
+        "tags": [
+          "Media"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with list of radio stations",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Radio"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/Radio/{id}": {
+      "get": {
+        "summary": "Get radio station by ID",
+        "description": "Retrieve detailed information about a specific radio station.",
+        "operationId": "getRadioById",
+        "tags": [
+          "Media"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Radio station ID",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with radio station information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Radio"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Radio station not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/Holiday": {
+      "get": {
+        "summary": "Get all holidays",
+        "description": "Retrieve information about holidays in Colombia.",
+        "operationId": "getHolidays",
+        "tags": [
+          "Culture"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with list of holidays",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Holiday"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/Holiday/{id}": {
+      "get": {
+        "summary": "Get holiday by ID",
+        "description": "Retrieve detailed information about a specific holiday.",
+        "operationId": "getHolidayById",
+        "tags": [
+          "Culture"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Holiday ID",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with holiday information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Holiday"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Holiday not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/TypicalDish": {
+      "get": {
+        "summary": "Get all typical dishes",
+        "description": "Retrieve information about typical Colombian dishes.",
+        "operationId": "getTypicalDishes",
+        "tags": [
+          "Culture"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with list of typical dishes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TypicalDish"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/TypicalDish/{id}": {
+      "get": {
+        "summary": "Get typical dish by ID",
+        "description": "Retrieve detailed information about a specific typical dish.",
+        "operationId": "getTypicalDishById",
+        "tags": [
+          "Culture"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Typical dish ID",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with typical dish information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TypicalDish"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Typical dish not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/ConstitutionArticle": {
+      "get": {
+        "summary": "Get all constitution articles",
+        "description": "Retrieve articles from the Colombian constitution.",
+        "operationId": "getConstitutionArticles",
+        "tags": [
+          "Government"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with list of constitution articles",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ConstitutionArticle"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/ConstitutionArticle/{id}": {
+      "get": {
+        "summary": "Get constitution article by ID",
+        "description": "Retrieve a specific article from the Colombian constitution.",
+        "operationId": "getConstitutionArticleById",
+        "tags": [
+          "Government"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Constitution article ID",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with constitution article information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConstitutionArticle"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Constitution article not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Country": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Country ID"
+          },
+          "name": {
+            "type": "string",
+            "description": "Country name"
+          },
+          "capital": {
+            "type": "string",
+            "description": "Capital city"
+          },
+          "surface": {
+            "type": "number",
+            "description": "Surface area in square kilometers"
+          },
+          "population": {
+            "type": "integer",
+            "description": "Total population"
+          },
+          "languages": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Official languages"
+          },
+          "currency": {
+            "type": "string",
+            "description": "Currency"
+          },
+          "flag": {
+            "type": "string",
+            "description": "URL to flag image"
+          }
+        }
+      },
+      "Department": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Department ID"
+          },
+          "name": {
+            "type": "string",
+            "description": "Department name"
+          },
+          "description": {
+            "type": "string",
+            "description": "Department description"
+          },
+          "cityCapital": {
+            "type": "string",
+            "description": "Capital city of the department"
+          },
+          "municipalities": {
+            "type": "integer",
+            "description": "Number of municipalities"
+          },
+          "surface": {
+            "type": "number",
+            "description": "Surface area"
+          },
+          "population": {
+            "type": "integer",
+            "description": "Population"
+          },
+          "regionId": {
+            "type": "integer",
+            "description": "Region ID"
+          }
+        }
+      },
+      "Region": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Region ID"
+          },
+          "name": {
+            "type": "string",
+            "description": "Region name"
+          },
+          "description": {
+            "type": "string",
+            "description": "Region description"
+          },
+          "departments": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of departments in the region"
+          }
+        }
+      },
+      "TouristicAttraction": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Touristic attraction ID"
+          },
+          "name": {
+            "type": "string",
+            "description": "Attraction name"
+          },
+          "description": {
+            "type": "string",
+            "description": "Attraction description"
+          },
+          "city": {
+            "type": "string",
+            "description": "City where the attraction is located"
+          },
+          "latitude": {
+            "type": "number",
+            "description": "Latitude coordinate"
+          },
+          "longitude": {
+            "type": "number",
+            "description": "Longitude coordinate"
+          },
+          "images": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of image URLs"
+          }
+        }
+      },
+      "President": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "President ID"
+          },
+          "name": {
+            "type": "string",
+            "description": "President name"
+          },
+          "description": {
+            "type": "string",
+            "description": "Biography and description"
+          },
+          "startPeriodDate": {
+            "type": "string",
+            "format": "date",
+            "description": "Start date of presidency"
+          },
+          "endPeriodDate": {
+            "type": "string",
+            "format": "date",
+            "description": "End date of presidency"
+          },
+          "politicalParty": {
+            "type": "string",
+            "description": "Political party"
+          },
+          "image": {
+            "type": "string",
+            "description": "URL to president image"
+          }
+        }
+      },
+      "NaturalArea": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Natural area ID"
+          },
+          "name": {
+            "type": "string",
+            "description": "Natural area name"
+          },
+          "description": {
+            "type": "string",
+            "description": "Natural area description"
+          },
+          "departmentId": {
+            "type": "integer",
+            "description": "Department ID"
+          },
+          "categoryNaturalAreaId": {
+            "type": "integer",
+            "description": "Category ID"
+          },
+          "areaGroupId": {
+            "type": "integer",
+            "description": "Area group ID"
+          },
+          "landArea": {
+            "type": "number",
+            "description": "Land area in hectares"
+          },
+          "maritimeArea": {
+            "type": "number",
+            "description": "Maritime area in hectares"
+          }
+        }
+      },
+      "CategoryNaturalArea": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Category ID"
+          },
+          "name": {
+            "type": "string",
+            "description": "Category name"
+          },
+          "description": {
+            "type": "string",
+            "description": "Category description"
+          }
+        }
+      },
+      "Map": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Map ID"
+          },
+          "name": {
+            "type": "string",
+            "description": "Map name"
+          },
+          "description": {
+            "type": "string",
+            "description": "Map description"
+          },
+          "departmentId": {
+            "type": "integer",
+            "description": "Department ID"
+          },
+          "urlImages": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "URLs to map images"
+          }
+        }
+      },
+      "InvasiveSpecie": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Invasive species ID"
+          },
+          "name": {
+            "type": "string",
+            "description": "Species name"
+          },
+          "scientificName": {
+            "type": "string",
+            "description": "Scientific name"
+          },
+          "impact": {
+            "type": "string",
+            "description": "Environmental impact"
+          },
+          "manage": {
+            "type": "string",
+            "description": "Management strategies"
+          },
+          "urlImage": {
+            "type": "string",
+            "description": "URL to species image"
+          }
+        }
+      },
+      "NativeCommunity": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Native community ID"
+          },
+          "name": {
+            "type": "string",
+            "description": "Community name"
+          },
+          "description": {
+            "type": "string",
+            "description": "Community description"
+          },
+          "departmentId": {
+            "type": "integer",
+            "description": "Department ID"
+          },
+          "population": {
+            "type": "integer",
+            "description": "Population"
+          }
+        }
+      },
+      "Airport": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Airport ID"
+          },
+          "name": {
+            "type": "string",
+            "description": "Airport name"
+          },
+          "code": {
+            "type": "string",
+            "description": "IATA code"
+          },
+          "type": {
+            "type": "string",
+            "description": "Airport type"
+          },
+          "departmentId": {
+            "type": "integer",
+            "description": "Department ID"
+          },
+          "cityId": {
+            "type": "integer",
+            "description": "City ID"
+          },
+          "latitude": {
+            "type": "number",
+            "description": "Latitude coordinate"
+          },
+          "longitude": {
+            "type": "number",
+            "description": "Longitude coordinate"
+          }
+        }
+      },
+      "Radio": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Radio station ID"
+          },
+          "name": {
+            "type": "string",
+            "description": "Radio station name"
+          },
+          "url": {
+            "type": "string",
+            "description": "Station URL"
+          },
+          "frequency": {
+            "type": "string",
+            "description": "Broadcasting frequency"
+          },
+          "band": {
+            "type": "string",
+            "description": "Broadcasting band (AM/FM)"
+          }
+        }
+      },
+      "Holiday": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Holiday ID"
+          },
+          "name": {
+            "type": "string",
+            "description": "Holiday name"
+          },
+          "description": {
+            "type": "string",
+            "description": "Holiday description"
+          },
+          "date": {
+            "type": "string",
+            "format": "date",
+            "description": "Holiday date"
+          },
+          "type": {
+            "type": "string",
+            "description": "Holiday type (religious, civic, etc.)"
+          }
+        }
+      },
+      "TypicalDish": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Typical dish ID"
+          },
+          "name": {
+            "type": "string",
+            "description": "Dish name"
+          },
+          "description": {
+            "type": "string",
+            "description": "Dish description"
+          },
+          "ingredients": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of ingredients"
+          },
+          "departmentId": {
+            "type": "integer",
+            "description": "Department ID"
+          },
+          "urlImage": {
+            "type": "string",
+            "description": "URL to dish image"
+          }
+        }
+      },
+      "ConstitutionArticle": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Article ID"
+          },
+          "articleNumber": {
+            "type": "integer",
+            "description": "Article number"
+          },
+          "title": {
+            "type": "string",
+            "description": "Article title"
+          },
+          "description": {
+            "type": "string",
+            "description": "Article content"
+          },
+          "chapter": {
+            "type": "string",
+            "description": "Constitution chapter"
+          }
+        }
+      }
+    },
+    "securitySchemes": {}
+  },
+  "security": [],
+  "tags": [
+    {
+      "name": "Country",
+      "description": "General information about Colombia"
+    },
+    {
+      "name": "Department",
+      "description": "Operations related to Colombian departments"
+    },
+    {
+      "name": "Region",
+      "description": "Operations related to Colombian regions"
+    },
+    {
+      "name": "Tourism",
+      "description": "Tourist attractions and related information"
+    },
+    {
+      "name": "Government",
+      "description": "Government-related information including presidents and constitution"
+    },
+    {
+      "name": "Nature",
+      "description": "Natural areas and environmental information"
+    },
+    {
+      "name": "Environment",
+      "description": "Environmental data including invasive species"
+    },
+    {
+      "name": "Culture",
+      "description": "Cultural information including holidays, native communities, and typical dishes"
+    },
+    {
+      "name": "Infrastructure",
+      "description": "Infrastructure information including airports"
+    },
+    {
+      "name": "Media",
+      "description": "Media-related information including radio stations"
+    },
+    {
+      "name": "Geography",
+      "description": "Geographic information and maps"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "existing": {
+    "touristic_attraction": {
+      "TOURISTIC_ATTRACTION00": {
+        "city": "s46",
+        "description": "s47",
+        "id": "TOURISTIC_ATTRACTION00",
+        "image": [],
+        "latitude": 74,
+        "longitude": 75,
+        "name": "s4c"
+      },
+      "TOURISTIC_ATTRACTION01": {
+        "city": "s8c",
+        "description": "s8d",
+        "id": "TOURISTIC_ATTRACTION01",
+        "image": [],
+        "latitude": 144,
+        "longitude": 145,
+        "name": "s92"
+      },
+      "TOURISTIC_ATTRACTION02": {
+        "city": "sd2",
+        "description": "sd3",
+        "id": "TOURISTIC_ATTRACTION02",
+        "image": [],
+        "latitude": 214,
+        "longitude": 215,
+        "name": "sd8"
+      }
+    }
+  },
+  "new": {
+    "touristic_attraction": {
+      "touristic_attraction_ref01": {
+        "city": "s118",
+        "description": "s119",
+        "image": [],
+        "latitude": 284,
+        "longitude": 285,
+        "name": "s11e"
+      }
+    }
+  }
+}

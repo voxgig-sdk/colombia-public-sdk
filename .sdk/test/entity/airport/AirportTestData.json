@@ -1,0 +1,49 @@
+{
+  "existing": {
+    "airport": {
+      "AIRPORT00": {
+        "city_id": "CITY01",
+        "code": "s51",
+        "department_id": "DEPARTMENT01",
+        "id": "AIRPORT00",
+        "latitude": 84,
+        "longitude": 85,
+        "name": "s56",
+        "type": "s57"
+      },
+      "AIRPORT01": {
+        "city_id": "CITY01",
+        "code": "sa1",
+        "department_id": "DEPARTMENT01",
+        "id": "AIRPORT01",
+        "latitude": 164,
+        "longitude": 165,
+        "name": "sa6",
+        "type": "sa7"
+      },
+      "AIRPORT02": {
+        "city_id": "CITY01",
+        "code": "sf1",
+        "department_id": "DEPARTMENT01",
+        "id": "AIRPORT02",
+        "latitude": 244,
+        "longitude": 245,
+        "name": "sf6",
+        "type": "sf7"
+      }
+    }
+  },
+  "new": {
+    "airport": {
+      "airport_ref01": {
+        "city_id": "CITY01",
+        "code": "s141",
+        "department_id": "DEPARTMENT01",
+        "latitude": 324,
+        "longitude": 325,
+        "name": "s146",
+        "type": "s147"
+      }
+    }
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "existing": {
+    "country": {
+      "COUNTRY00": {
+        "capital": "s50",
+        "currency": "s51",
+        "flag": "s52",
+        "id": "COUNTRY00",
+        "language": [],
+        "name": "s55",
+        "population": "s56",
+        "surface": 87
+      },
+      "COUNTRY01": {
+        "capital": "sa0",
+        "currency": "sa1",
+        "flag": "sa2",
+        "id": "COUNTRY01",
+        "language": [],
+        "name": "sa5",
+        "population": "sa6",
+        "surface": 167
+      },
+      "COUNTRY02": {
+        "capital": "sf0",
+        "currency": "sf1",
+        "flag": "sf2",
+        "id": "COUNTRY02",
+        "language": [],
+        "name": "sf5",
+        "population": "sf6",
+        "surface": 247
+      }
+    }
+  },
+  "new": {
+    "country": {
+      "country_ref01": {
+        "capital": "s140",
+        "currency": "s141",
+        "flag": "s142",
+        "language": [],
+        "name": "s145",
+        "population": "s146",
+        "surface": 327
+      }
+    }
+  }
+}

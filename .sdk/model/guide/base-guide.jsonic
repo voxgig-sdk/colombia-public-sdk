@@ -1,0 +1,135 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 15
+  metrics: count: path: 27
+  metrics: count: method: 27
+
+  entity: airport: {
+    path: "/Airport": {
+      op: list: method: *GET
+    }
+    path: "/Airport/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: category_natural_area: {
+    path: "/CategoryNaturalArea": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: constitution_article: {
+    path: "/ConstitutionArticle": {
+      op: list: method: *GET
+    }
+    path: "/ConstitutionArticle/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: country: {
+    path: "/Country/Colombia": {
+      action: "colombia": {}
+      op: list: method: *GET
+    }
+  }
+
+  entity: department: {
+    path: "/Department": {
+      op: list: method: *GET
+    }
+    path: "/Department/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: holiday: {
+    path: "/Holiday": {
+      op: list: method: *GET
+    }
+    path: "/Holiday/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: invasive_specie: {
+    path: "/InvasiveSpecie": {
+      op: list: method: *GET
+    }
+    path: "/InvasiveSpecie/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: map: {
+    path: "/Map": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: native_community: {
+    path: "/NativeCommunity": {
+      op: list: method: *GET
+    }
+    path: "/NativeCommunity/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: natural_area: {
+    path: "/NaturalArea": {
+      op: list: method: *GET
+    }
+    path: "/NaturalArea/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: president: {
+    path: "/President": {
+      op: list: method: *GET
+    }
+    path: "/President/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: radio: {
+    path: "/Radio": {
+      op: list: method: *GET
+    }
+    path: "/Radio/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: region: {
+    path: "/Region": {
+      op: list: method: *GET
+    }
+    path: "/Region/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: touristic_attraction: {
+    path: "/TouristicAttraction": {
+      op: list: method: *GET
+    }
+    path: "/TouristicAttraction/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: typical_dish: {
+    path: "/TypicalDish": {
+      op: list: method: *GET
+    }
+    path: "/TypicalDish/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+}

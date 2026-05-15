@@ -1,0 +1,17 @@
+# Entity Models
+
+@"airport.jsonic"
+@"category_natural_area.jsonic"
+@"constitution_article.jsonic"
+@"country.jsonic"
+@"department.jsonic"
+@"holiday.jsonic"
+@"invasive_specie.jsonic"
+@"map.jsonic"
+@"native_community.jsonic"
+@"natural_area.jsonic"
+@"president.jsonic"
+@"radio.jsonic"
+@"region.jsonic"
+@"touristic_attraction.jsonic"
+@"typical_dish.jsonic"

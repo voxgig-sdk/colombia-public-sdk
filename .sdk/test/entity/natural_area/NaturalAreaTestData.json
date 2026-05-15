@@ -1,0 +1,49 @@
+{
+  "existing": {
+    "natural_area": {
+      "NATURAL_AREA00": {
+        "area_group_id": "AREA_GROUP01",
+        "category_natural_area_id": "CATEGORY_NATURAL_AREA01",
+        "department_id": "DEPARTMENT01",
+        "description": "s53",
+        "id": "NATURAL_AREA00",
+        "land_area": 85,
+        "maritime_area": 86,
+        "name": "s57"
+      },
+      "NATURAL_AREA01": {
+        "area_group_id": "AREA_GROUP01",
+        "category_natural_area_id": "CATEGORY_NATURAL_AREA01",
+        "department_id": "DEPARTMENT01",
+        "description": "sa3",
+        "id": "NATURAL_AREA01",
+        "land_area": 165,
+        "maritime_area": 166,
+        "name": "sa7"
+      },
+      "NATURAL_AREA02": {
+        "area_group_id": "AREA_GROUP01",
+        "category_natural_area_id": "CATEGORY_NATURAL_AREA01",
+        "department_id": "DEPARTMENT01",
+        "description": "sf3",
+        "id": "NATURAL_AREA02",
+        "land_area": 245,
+        "maritime_area": 246,
+        "name": "sf7"
+      }
+    }
+  },
+  "new": {
+    "natural_area": {
+      "natural_area_ref01": {
+        "area_group_id": "AREA_GROUP01",
+        "category_natural_area_id": "CATEGORY_NATURAL_AREA01",
+        "department_id": "DEPARTMENT01",
+        "description": "s143",
+        "land_area": 325,
+        "maritime_area": 326,
+        "name": "s147"
+      }
+    }
+  }
+}

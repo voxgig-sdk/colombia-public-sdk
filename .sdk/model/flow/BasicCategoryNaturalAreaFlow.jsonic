@@ -1,0 +1,22 @@
+# BasicCategoryNaturalAreaFlow
+
+main: kit: flow: BasicCategoryNaturalAreaFlow:
+{
+  entity: "category_natural_area",
+  kind: "basic",
+  name: "BasicCategoryNaturalAreaFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "category_natural_area_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicCategoryNaturalAreaFlow"
+}

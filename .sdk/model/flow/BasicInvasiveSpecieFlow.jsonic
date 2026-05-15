@@ -1,0 +1,44 @@
+# BasicInvasiveSpecieFlow
+
+main: kit: flow: BasicInvasiveSpecieFlow:
+{
+  entity: "invasive_specie",
+  kind: "basic",
+  name: "BasicInvasiveSpecieFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "invasive_specie_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "invasive_specie_ref01",
+        srcdatavar: "invasive_specie_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "invasive_specie01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-invasive_specie_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicInvasiveSpecieFlow"
+}

@@ -1,0 +1,29 @@
+{
+  "existing": {
+    "category_natural_area": {
+      "CATEGORY_NATURAL_AREA00": {
+        "description": "s1e",
+        "id": "CATEGORY_NATURAL_AREA00",
+        "name": "s20"
+      },
+      "CATEGORY_NATURAL_AREA01": {
+        "description": "s3c",
+        "id": "CATEGORY_NATURAL_AREA01",
+        "name": "s3e"
+      },
+      "CATEGORY_NATURAL_AREA02": {
+        "description": "s5a",
+        "id": "CATEGORY_NATURAL_AREA02",
+        "name": "s5c"
+      }
+    }
+  },
+  "new": {
+    "category_natural_area": {
+      "category_natural_area_ref01": {
+        "description": "s78",
+        "name": "s7a"
+      }
+    }
+  }
+}

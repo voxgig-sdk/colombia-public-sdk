@@ -1,0 +1,37 @@
+{
+  "existing": {
+    "constitution_article": {
+      "CONSTITUTION_ARTICLE00": {
+        "article_number": "s32",
+        "chapter": "s33",
+        "description": "s34",
+        "id": "CONSTITUTION_ARTICLE00",
+        "title": "s36"
+      },
+      "CONSTITUTION_ARTICLE01": {
+        "article_number": "s64",
+        "chapter": "s65",
+        "description": "s66",
+        "id": "CONSTITUTION_ARTICLE01",
+        "title": "s68"
+      },
+      "CONSTITUTION_ARTICLE02": {
+        "article_number": "s96",
+        "chapter": "s97",
+        "description": "s98",
+        "id": "CONSTITUTION_ARTICLE02",
+        "title": "s9a"
+      }
+    }
+  },
+  "new": {
+    "constitution_article": {
+      "constitution_article_ref01": {
+        "article_number": "sc8",
+        "chapter": "sc9",
+        "description": "sca",
+        "title": "scc"
+      }
+    }
+  }
+}
