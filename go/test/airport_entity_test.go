@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/colombia-public-sdk"
-	"github.com/voxgig-sdk/colombia-public-sdk/core"
+	sdk "github.com/voxgig-sdk/colombia-public-sdk/go"
+	"github.com/voxgig-sdk/colombia-public-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/colombia-public-sdk/go/utility/struct"
 )
 
 func TestAirportEntity(t *testing.T) {

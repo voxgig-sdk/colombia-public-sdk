@@ -1,10 +1,10 @@
 package voxgigcolombiapublicsdk
 
 import (
-	"github.com/voxgig-sdk/colombia-public-sdk/core"
-	"github.com/voxgig-sdk/colombia-public-sdk/entity"
-	"github.com/voxgig-sdk/colombia-public-sdk/feature"
-	_ "github.com/voxgig-sdk/colombia-public-sdk/utility"
+	"github.com/voxgig-sdk/colombia-public-sdk/go/core"
+	"github.com/voxgig-sdk/colombia-public-sdk/go/entity"
+	"github.com/voxgig-sdk/colombia-public-sdk/go/feature"
+	_ "github.com/voxgig-sdk/colombia-public-sdk/go/utility"
 )
 
 // Type aliases preserve external API.
