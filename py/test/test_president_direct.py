@@ -109,14 +109,12 @@ def _president_direct_setup(mockres):
     env = runner.env_override({
         "COLOMBIAPUBLIC_TEST_PRESIDENT_ENTID": {},
         "COLOMBIAPUBLIC_TEST_LIVE": "FALSE",
-        "COLOMBIAPUBLIC_APIKEY": "NONE",
     })
 
     live = env.get("COLOMBIAPUBLIC_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
-            "apikey": env.get("COLOMBIAPUBLIC_APIKEY"),
         }
         client = ColombiaPublicSDK(merged_opts)
         return {

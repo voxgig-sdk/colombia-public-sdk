@@ -96,7 +96,6 @@ function region_basic_setup($extra)
         "COLOMBIAPUBLIC_TEST_REGION_ENTID" => $idmap,
         "COLOMBIAPUBLIC_TEST_LIVE" => "FALSE",
         "COLOMBIAPUBLIC_TEST_EXPLAIN" => "FALSE",
-        "COLOMBIAPUBLIC_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -108,7 +107,6 @@ function region_basic_setup($extra)
     if ($env["COLOMBIAPUBLIC_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["COLOMBIAPUBLIC_APIKEY"],
             ],
             $extra ?? [],
         ]);

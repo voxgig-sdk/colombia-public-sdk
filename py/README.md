@@ -23,12 +23,9 @@ loading a specific record.
 ### 1. Create a client
 
 ```python
-import os
 from colombiapublic_sdk import ColombiaPublicSDK
 
-client = ColombiaPublicSDK({
-    "apikey": os.environ.get("COLOMBIA-PUBLIC_APIKEY"),
-})
+client = ColombiaPublicSDK({})
 ```
 
 ### 2. List airports
@@ -130,7 +127,6 @@ Create a `.env.local` file at the project root:
 
 ```
 COLOMBIA-PUBLIC_TEST_LIVE=TRUE
-COLOMBIA-PUBLIC_APIKEY=<your-key>
 ```
 
 Then run:
@@ -154,7 +150,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `str` | API key for authentication. |
 | `base` | `str` | Base URL of the API server. |
 | `prefix` | `str` | URL path prefix prepended to all requests. |
 | `suffix` | `str` | URL path suffix appended to all requests. |

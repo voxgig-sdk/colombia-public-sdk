@@ -15,9 +15,6 @@ module ColombiaPublicConfig
       },
       "options" => {
         "base" => "https://api-colombia.com/api/v1",
-        "auth" => {
-          "prefix" => "Bearer",
-        },
         "headers" => {
           "content-type" => "application/json",
         },
