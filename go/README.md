@@ -1,6 +1,11 @@
 # ColombiaPublic Golang SDK
 
-The Golang SDK for the ColombiaPublic API. Provides an entity-oriented interface using standard Go conventions — no generics required, data flows as `map[string]any`.
+
+
+The Golang SDK for the ColombiaPublic API — an entity-oriented client using standard Go conventions. No generics required; data flows as `map[string]any`.
+
+> Other languages, the CLI, and MCP server live alongside this one — see
+> the [top-level README](../README.md).
 
 
 ## Install
@@ -28,13 +33,16 @@ package main
 
 import (
     "fmt"
+    "os"
 
     sdk "github.com/voxgig-sdk/colombia-public-sdk/go"
     "github.com/voxgig-sdk/colombia-public-sdk/go/core"
 )
 
 func main() {
-    client := sdk.NewColombiaPublicSDK(map[string]any{})
+    client := sdk.NewColombiaPublicSDK(map[string]any{
+        "apikey": os.Getenv("COLOMBIA-PUBLIC_APIKEY"),
+    })
 ```
 
 ### 2. List airports
@@ -116,7 +124,7 @@ fmt.Println(fetchdef["headers"])
 Create a mock client for unit testing — no server required:
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 
 result, err := client.Planet(nil).Load(
     map[string]any{"id": "test01"}, nil,
@@ -154,6 +162,7 @@ Create a `.env.local` file at the project root:
 
 ```
 COLOMBIA-PUBLIC_TEST_LIVE=TRUE
+COLOMBIA-PUBLIC_APIKEY=<your-key>
 ```
 
 Then run:
@@ -175,6 +184,7 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
+| `"apikey"` | `string` | API key for authentication. |
 | `"base"` | `string` | Base URL of the API server. |
 | `"prefix"` | `string` | URL path prefix prepended to all requests. |
 | `"suffix"` | `string` | URL path suffix appended to all requests. |

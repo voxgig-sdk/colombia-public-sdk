@@ -93,12 +93,14 @@ func category_natural_areaDirectSetup(mockres any) *category_natural_areaDirectS
 	env := envOverride(map[string]any{
 		"COLOMBIAPUBLIC_TEST_CATEGORY_NATURAL_AREA_ENTID": map[string]any{},
 		"COLOMBIAPUBLIC_TEST_LIVE":    "FALSE",
+		"COLOMBIAPUBLIC_APIKEY":       "NONE",
 	})
 
 	live := env["COLOMBIAPUBLIC_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
+			"apikey": env["COLOMBIAPUBLIC_APIKEY"],
 		}
 		client := sdk.NewColombiaPublicSDK(mergedOpts)
 

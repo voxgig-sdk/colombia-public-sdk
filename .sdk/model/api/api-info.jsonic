@@ -21,40 +21,7 @@ main: {
       ]
       title: "Colombia Public API"
       version: "1.0.0"
-      tagline: "Public RESTful data about Colombia — geography, government, culture, nature, and tourism"
-      homepage: "https://api-colombia.com"
-      docs_url: "https://docs.api-colombia.com/"
-      license_short: "Open-source project (see GitHub repository)"
-      license_md: `- API-Colombia is an open-source community project; source is hosted at https://github.com/Mteheran/api-colombia.
-- Public access without API keys or authentication.
-- No formal terms of use or rate-limit policy are published; consult the repository for licence details before redistribution.`
-      about_md: `[API-Colombia](https://api-colombia.com) is a public, open-source REST API maintained by Miguel Teheran and contributors since 2022. It exposes curated reference data about Colombia — its territory, institutions, culture, and natural heritage — at the base URL \`https://api-colombia.com/api/v1/\`.
-
-What you get from the API:
-- Geographic and administrative data: country, departments, regions, airports.
-- Government and civic information: presidents, constitution articles, public holidays.
-- Culture and travel: touristic attractions, typical dishes, radio stations.
-- Natural heritage: natural areas (with category classifications), invasive species, native communities, and maps.
-
-The service is open to the public with no authentication required and reports serving in the order of millions of requests per month. Human-readable docs are at [docs.api-colombia.com](https://docs.api-colombia.com/) and a Swagger UI is available at [api-colombia.com/swagger/index.html](https://api-colombia.com/swagger/index.html). No official rate limits are documented; CORS behaviour and uptime vary, so treat the service as best-effort.`
-      entity_desc: {
-        airport: "Airports in Colombia, served from `/api/v1/Airport`."
-        category_natural_area: "Classification categories used to group natural areas, served from `/api/v1/CategoryNaturalArea`."
-        constitution_article: "Articles of the Colombian Constitution, served from `/api/v1/ConstitutionArticle`."
-        country: "Country-level information about Colombia, served from `/api/v1/Country`."
-        department: "Colombia's administrative departments, served from `/api/v1/Department`."
-        holiday: "Colombian public holidays, served from `/api/v1/Holiday`."
-        invasive_specie: "Invasive species recorded in Colombia, served from `/api/v1/InvasiveSpecie`."
-        map: "Map resources related to Colombian geography, served from `/api/v1/Map`."
-        native_community: "Indigenous and native communities of Colombia, served from `/api/v1/NativeCommunity`."
-        natural_area: "Protected natural areas and parks, served from `/api/v1/NaturalArea`."
-        president: "Past and present presidents of Colombia, served from `/api/v1/President`."
-        radio: "Colombian radio stations, served from `/api/v1/Radio`."
-        region: "Geographic regions of Colombia (groupings of departments), served from `/api/v1/Region`."
-        touristic_attraction: "Touristic attractions across Colombia, served from `/api/v1/TouristicAttraction`."
-        typical_dish: "Typical Colombian dishes and regional cuisine, served from `/api/v1/TypicalDish`."
-      }
-      auth: false
     }
   }
 }
+

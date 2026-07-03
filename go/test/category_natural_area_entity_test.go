@@ -119,6 +119,7 @@ func category_natural_areaBasicSetup(extra map[string]any) *entityTestSetup {
 		"COLOMBIAPUBLIC_TEST_CATEGORY_NATURAL_AREA_ENTID": idmap,
 		"COLOMBIAPUBLIC_TEST_LIVE":      "FALSE",
 		"COLOMBIAPUBLIC_TEST_EXPLAIN":   "FALSE",
+		"COLOMBIAPUBLIC_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["COLOMBIAPUBLIC_TEST_CATEGORY_NATURAL_AREA_ENTID"])
@@ -129,6 +130,7 @@ func category_natural_areaBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["COLOMBIAPUBLIC_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
+				"apikey": env["COLOMBIAPUBLIC_APIKEY"],
 			},
 			extra,
 		})

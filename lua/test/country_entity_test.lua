@@ -92,6 +92,7 @@ function country_basic_setup(extra)
     ["COLOMBIAPUBLIC_TEST_COUNTRY_ENTID"] = idmap,
     ["COLOMBIAPUBLIC_TEST_LIVE"] = "FALSE",
     ["COLOMBIAPUBLIC_TEST_EXPLAIN"] = "FALSE",
+    ["COLOMBIAPUBLIC_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -103,6 +104,7 @@ function country_basic_setup(extra)
   if env["COLOMBIAPUBLIC_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
+        apikey = env["COLOMBIAPUBLIC_APIKEY"],
       },
       extra or {},
     })

@@ -123,12 +123,14 @@ function department_direct_setup($mockres)
     $env = Runner::env_override([
         "COLOMBIAPUBLIC_TEST_DEPARTMENT_ENTID" => [],
         "COLOMBIAPUBLIC_TEST_LIVE" => "FALSE",
+        "COLOMBIAPUBLIC_APIKEY" => "NONE",
     ]);
 
     $live = $env["COLOMBIAPUBLIC_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [
+            "apikey" => $env["COLOMBIAPUBLIC_APIKEY"],
         ];
         $client = new ColombiaPublicSDK($merged_opts);
         return [

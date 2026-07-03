@@ -61,12 +61,14 @@ def _category_natural_area_direct_setup(mockres):
     env = runner.env_override({
         "COLOMBIAPUBLIC_TEST_CATEGORY_NATURAL_AREA_ENTID": {},
         "COLOMBIAPUBLIC_TEST_LIVE": "FALSE",
+        "COLOMBIAPUBLIC_APIKEY": "NONE",
     })
 
     live = env.get("COLOMBIAPUBLIC_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
+            "apikey": env.get("COLOMBIAPUBLIC_APIKEY"),
         }
         client = ColombiaPublicSDK(merged_opts)
         return {

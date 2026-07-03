@@ -109,12 +109,14 @@ def _touristic_attraction_direct_setup(mockres):
     env = runner.env_override({
         "COLOMBIAPUBLIC_TEST_TOURISTIC_ATTRACTION_ENTID": {},
         "COLOMBIAPUBLIC_TEST_LIVE": "FALSE",
+        "COLOMBIAPUBLIC_APIKEY": "NONE",
     })
 
     live = env.get("COLOMBIAPUBLIC_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
+            "apikey": env.get("COLOMBIAPUBLIC_APIKEY"),
         }
         client = ColombiaPublicSDK(merged_opts)
         return {

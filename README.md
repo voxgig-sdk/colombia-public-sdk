@@ -1,20 +1,8 @@
 # ColombiaPublic SDK
 
-Public RESTful data about Colombia — geography, government, culture, nature, and tourism
+Colombia Public API client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About Colombia Public API
-
-[API-Colombia](https://api-colombia.com) is a public, open-source REST API maintained by Miguel Teheran and contributors since 2022. It exposes curated reference data about Colombia — its territory, institutions, culture, and natural heritage — at the base URL `https://api-colombia.com/api/v1/`.
-
-What you get from the API:
-- Geographic and administrative data: country, departments, regions, airports.
-- Government and civic information: presidents, constitution articles, public holidays.
-- Culture and travel: touristic attractions, typical dishes, radio stations.
-- Natural heritage: natural areas (with category classifications), invasive species, native communities, and maps.
-
-The service is open to the public with no authentication required and reports serving in the order of millions of requests per month. Human-readable docs are at [docs.api-colombia.com](https://docs.api-colombia.com/) and a Swagger UI is available at [api-colombia.com/swagger/index.html](https://api-colombia.com/swagger/index.html). No official rate limits are documented; CORS behaviour and uptime vary, so treat the service as best-effort.
 
 ## Try it
 
@@ -48,29 +36,31 @@ gem install colombia-public-sdk
 luarocks install colombia-public-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { ColombiaPublicSDK } from 'colombia-public'
 
-const client = new ColombiaPublicSDK({})
+const client = new ColombiaPublicSDK({
+  apikey: process.env.COLOMBIA-PUBLIC_APIKEY,
+})
 
 // List all airports
 const airports = await client.Airport().list()
+console.log(airports.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -100,21 +90,21 @@ The API exposes 15 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Airport** | Airports in Colombia, served from `/api/v1/Airport`. | `/Airport` |
-| **CategoryNaturalArea** | Classification categories used to group natural areas, served from `/api/v1/CategoryNaturalArea`. | `/CategoryNaturalArea` |
-| **ConstitutionArticle** | Articles of the Colombian Constitution, served from `/api/v1/ConstitutionArticle`. | `/ConstitutionArticle` |
-| **Country** | Country-level information about Colombia, served from `/api/v1/Country`. | `/Country/Colombia` |
-| **Department** | Colombia's administrative departments, served from `/api/v1/Department`. | `/Department` |
-| **Holiday** | Colombian public holidays, served from `/api/v1/Holiday`. | `/Holiday` |
-| **InvasiveSpecie** | Invasive species recorded in Colombia, served from `/api/v1/InvasiveSpecie`. | `/InvasiveSpecie` |
-| **Map** | Map resources related to Colombian geography, served from `/api/v1/Map`. | `/Map` |
-| **NativeCommunity** | Indigenous and native communities of Colombia, served from `/api/v1/NativeCommunity`. | `/NativeCommunity` |
-| **NaturalArea** | Protected natural areas and parks, served from `/api/v1/NaturalArea`. | `/NaturalArea` |
-| **President** | Past and present presidents of Colombia, served from `/api/v1/President`. | `/President` |
-| **Radio** | Colombian radio stations, served from `/api/v1/Radio`. | `/Radio` |
-| **Region** | Geographic regions of Colombia (groupings of departments), served from `/api/v1/Region`. | `/Region` |
-| **TouristicAttraction** | Touristic attractions across Colombia, served from `/api/v1/TouristicAttraction`. | `/TouristicAttraction` |
-| **TypicalDish** | Typical Colombian dishes and regional cuisine, served from `/api/v1/TypicalDish`. | `/TypicalDish` |
+| **Airport** |  | `/Airport` |
+| **CategoryNaturalArea** |  | `/CategoryNaturalArea` |
+| **ConstitutionArticle** |  | `/ConstitutionArticle` |
+| **Country** |  | `/Country/Colombia` |
+| **Department** |  | `/Department` |
+| **Holiday** |  | `/Holiday` |
+| **InvasiveSpecie** |  | `/InvasiveSpecie` |
+| **Map** |  | `/Map` |
+| **NativeCommunity** |  | `/NativeCommunity` |
+| **NaturalArea** |  | `/NaturalArea` |
+| **President** |  | `/President` |
+| **Radio** |  | `/Radio` |
+| **Region** |  | `/Region` |
+| **TouristicAttraction** |  | `/TouristicAttraction` |
+| **TypicalDish** |  | `/TypicalDish` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -124,17 +114,20 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from colombiapublic_sdk import ColombiaPublicSDK
 
-client = ColombiaPublicSDK({})
+client = ColombiaPublicSDK({
+    "apikey": os.environ.get("COLOMBIA-PUBLIC_APIKEY"),
+})
 
 # List all airports
-airports, err = client.Airport(None).list(None, None)
+airports, err = client.Airport().list()
+print(airports)
 
 # Load a specific airport
-airport, err = client.Airport(None).load(
-    {"id": "example_id"}, None
-)
+airport, err = client.Airport().load({"id": "example_id"})
+print(airport)
 ```
 
 ### PHP
@@ -143,15 +136,17 @@ airport, err = client.Airport(None).load(
 <?php
 require_once 'colombiapublic_sdk.php';
 
-$client = new ColombiaPublicSDK([]);
+$client = new ColombiaPublicSDK([
+    "apikey" => getenv("COLOMBIA-PUBLIC_APIKEY"),
+]);
 
 // List all airports
-[$airports, $err] = $client->Airport(null)->list(null, null);
+[$airports, $err] = $client->Airport()->list();
+print_r($airports);
 
 // Load a specific airport
-[$airport, $err] = $client->Airport(null)->load(
-    ["id" => "example_id"], null
-);
+[$airport, $err] = $client->Airport()->load(["id" => "example_id"]);
+print_r($airport);
 ```
 
 ### Golang
@@ -159,10 +154,13 @@ $client = new ColombiaPublicSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/colombia-public-sdk/go"
 
-client := sdk.NewColombiaPublicSDK(map[string]any{})
+client := sdk.NewColombiaPublicSDK(map[string]any{
+    "apikey": os.Getenv("COLOMBIA-PUBLIC_APIKEY"),
+})
 
 // List all airports
 airports, err := client.Airport(nil).List(nil, nil)
+fmt.Println(airports)
 ```
 
 ### Ruby
@@ -170,15 +168,17 @@ airports, err := client.Airport(nil).List(nil, nil)
 ```ruby
 require_relative "ColombiaPublic_sdk"
 
-client = ColombiaPublicSDK.new({})
+client = ColombiaPublicSDK.new({
+  "apikey" => ENV["COLOMBIA-PUBLIC_APIKEY"],
+})
 
 # List all airports
-airports, err = client.Airport(nil).list(nil, nil)
+airports, err = client.Airport().list
+puts airports
 
 # Load a specific airport
-airport, err = client.Airport(nil).load(
-  { "id" => "example_id" }, nil
-)
+airport, err = client.Airport().load({ "id" => "example_id" })
+puts airport
 ```
 
 ### Lua
@@ -186,15 +186,17 @@ airport, err = client.Airport(nil).load(
 ```lua
 local sdk = require("colombia-public_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("COLOMBIA-PUBLIC_APIKEY"),
+})
 
 -- List all airports
-local airports, err = client:Airport(nil):list(nil, nil)
+local airports, err = client:Airport():list()
+print(airports)
 
 -- Load a specific airport
-local airport, err = client:Airport(nil):load(
-  { id = "example_id" }, nil
-)
+local airport, err = client:Airport():load({ id = "example_id" })
+print(airport)
 ```
 
 ## Unit testing in offline mode
@@ -213,25 +215,21 @@ const result = await client.Airport().load({ id: 'test01' })
 ### Python
 
 ```python
-client = ColombiaPublicSDK.test(None, None)
-result, err = client.Airport(None).load(
-    {"id": "test01"}, None
-)
+client = ColombiaPublicSDK.test()
+result, err = client.Airport().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = ColombiaPublicSDK::test(null, null);
-[$result, $err] = $client->Airport(null)->load(
-    ["id" => "test01"], null
-);
+$client = ColombiaPublicSDK::test();
+[$result, $err] = $client->Airport()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Airport(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -240,19 +238,15 @@ result, err := client.Airport(nil).Load(
 ### Ruby
 
 ```ruby
-client = ColombiaPublicSDK.test(nil, nil)
-result, err = client.Airport(nil).load(
-  { "id" => "test01" }, nil
-)
+client = ColombiaPublicSDK.test
+result, err = client.Airport().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Airport(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Airport():load({ id = "test01" })
 ```
 
 ## How it works
@@ -356,15 +350,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the Colombia Public API
-
-- Upstream: [https://api-colombia.com](https://api-colombia.com)
-- API docs: [https://docs.api-colombia.com/](https://docs.api-colombia.com/)
-
-- API-Colombia is an open-source community project; source is hosted at https://github.com/Mteheran/api-colombia.
-- Public access without API keys or authentication.
-- No formal terms of use or rate-limit policy are published; consult the repository for licence details before redistribution.
 
 ---
 

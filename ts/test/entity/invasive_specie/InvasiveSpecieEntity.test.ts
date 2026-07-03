@@ -120,6 +120,7 @@ function basicSetup(extra?: any) {
     'COLOMBIA_PUBLIC_TEST_INVASIVE_SPECIE_ENTID': idmap,
     'COLOMBIA_PUBLIC_TEST_LIVE': 'FALSE',
     'COLOMBIA_PUBLIC_TEST_EXPLAIN': 'FALSE',
+    'COLOMBIA_PUBLIC_APIKEY': 'NONE',
   })
 
   idmap = env['COLOMBIA_PUBLIC_TEST_INVASIVE_SPECIE_ENTID']
@@ -129,6 +130,7 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new ColombiaPublicSDK(merge([
       {
+        apikey: env.COLOMBIA_PUBLIC_APIKEY,
       },
       extra
     ]))
