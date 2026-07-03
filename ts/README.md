@@ -10,7 +10,7 @@ The TypeScript SDK for the ColombiaPublic API — a type-safe, entity-oriented c
 
 ## Install
 ```bash
-npm install colombia-public
+npm install @voxgig-sdk/colombia-public
 ```
 ## Tutorial: your first API call
 

@@ -10,7 +10,7 @@ The PHP SDK for the ColombiaPublic API — an entity-oriented client using PHP c
 
 ## Install
 ```bash
-composer require voxgig/colombia-public-sdk
+composer require voxgig-sdk/colombia-public
 ```
 
 

@@ -10,7 +10,7 @@ The Python SDK for the ColombiaPublic API — an entity-oriented client followin
 
 ## Install
 ```bash
-pip install colombia-public-sdk
+pip install voxgig-sdk-colombia-public
 ```
 
 Or install from source:

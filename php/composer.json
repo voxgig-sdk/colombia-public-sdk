@@ -1,8 +1,17 @@
 {
   "name": "voxgig-sdk/colombia-public",
-  "description": "ColombiaPublic SDK for PHP",
+  "description": "Unofficial generated PHP SDK for the Colombia Public public API. Not affiliated with or endorsed by the upstream API provider.",
   "type": "library",
+  "keywords": ["voxgig", "sdk", "generated-sdk", "openapi", "api-client", "colombia-public"],
+  "homepage": "https://github.com/voxgig-sdk/colombia-public-sdk",
   "license": "MIT",
+  "authors": [
+    { "name": "Voxgig", "homepage": "https://voxgig.com" }
+  ],
+  "support": {
+    "issues": "https://github.com/voxgig-sdk/colombia-public-sdk/issues",
+    "source": "https://github.com/voxgig-sdk/colombia-public-sdk"
+  },
   "minimum-stability": "stable",
   "require": {
     "php": ">=8.2"

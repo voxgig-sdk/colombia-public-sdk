@@ -10,7 +10,7 @@ The Lua SDK for the ColombiaPublic API — an entity-oriented client using Lua c
 
 ## Install
 ```bash
-luarocks install colombia-public-sdk
+luarocks install voxgig-sdk-colombia-public
 ```
 
 If the module is not yet published, add the source directory to

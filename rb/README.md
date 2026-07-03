@@ -10,13 +10,13 @@ The Ruby SDK for the ColombiaPublic API — an entity-oriented client using idio
 
 ## Install
 ```bash
-gem install colombia-public-sdk
+gem install voxgig-sdk-colombia-public
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "colombia-public-sdk"
+gem "voxgig-sdk-colombia-public"
 ```
 
 Then run:

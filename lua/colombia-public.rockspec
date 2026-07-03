@@ -8,12 +8,14 @@ source = {
   dir = "colombia-public-sdk/lua"
 }
 description = {
-  summary = "ColombiaPublic SDK for Lua",
-  license = "MIT"
+  summary = "Unofficial generated Lua SDK for the Colombia Public public API. Not affiliated with or endorsed by the upstream API provider.",
+  homepage = "https://github.com/voxgig-sdk/colombia-public-sdk",
+  issues_url = "https://github.com/voxgig-sdk/colombia-public-sdk/issues",
+  license = "MIT",
+  labels = { "voxgig", "sdk", "generated-sdk", "openapi", "api-client", "colombia-public" }
 }
 dependencies = {
   "lua >= 5.3",
-  "dkjson >= 2.5",
   "dkjson >= 2.5",
 }
 build = {
