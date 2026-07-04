@@ -4,369 +4,331 @@
 # params (op.<name>.points[].args.params[]). Field/param types come from the
 # canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 # @voxgig/apidef VALID_CANON). Do not edit by hand.
+#
+# These are TypedDicts, not dataclasses: the SDK ops return/accept plain dicts
+# at runtime, and a TypedDict IS a dict shape, so the types match the runtime.
+# Optional (req:false) keys are modelled as TypedDict key-optionality
+# (total=False), split into a required base + total=False subclass when a type
+# has both required and optional keys.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Optional, Any
+from typing import TypedDict, Any
 
 
-@dataclass
-class Airport:
-    city_id: Optional[int] = None
-    code: Optional[str] = None
-    department_id: Optional[int] = None
-    id: Optional[int] = None
-    latitude: Optional[float] = None
-    longitude: Optional[float] = None
-    name: Optional[str] = None
-    type: Optional[str] = None
+class Airport(TypedDict, total=False):
+    city_id: int
+    code: str
+    department_id: int
+    id: int
+    latitude: float
+    longitude: float
+    name: str
+    type: str
 
 
-@dataclass
-class AirportLoadMatch:
+class AirportLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class AirportListMatch:
-    city_id: Optional[int] = None
-    code: Optional[str] = None
-    department_id: Optional[int] = None
-    id: Optional[int] = None
-    latitude: Optional[float] = None
-    longitude: Optional[float] = None
-    name: Optional[str] = None
-    type: Optional[str] = None
+class AirportListMatch(TypedDict, total=False):
+    city_id: int
+    code: str
+    department_id: int
+    id: int
+    latitude: float
+    longitude: float
+    name: str
+    type: str
 
 
-@dataclass
-class CategoryNaturalArea:
-    description: Optional[str] = None
-    id: Optional[int] = None
-    name: Optional[str] = None
+class CategoryNaturalArea(TypedDict, total=False):
+    description: str
+    id: int
+    name: str
 
 
-@dataclass
-class CategoryNaturalAreaListMatch:
-    description: Optional[str] = None
-    id: Optional[int] = None
-    name: Optional[str] = None
+class CategoryNaturalAreaListMatch(TypedDict, total=False):
+    description: str
+    id: int
+    name: str
 
 
-@dataclass
-class ConstitutionArticle:
-    article_number: Optional[int] = None
-    chapter: Optional[str] = None
-    description: Optional[str] = None
-    id: Optional[int] = None
-    title: Optional[str] = None
+class ConstitutionArticle(TypedDict, total=False):
+    article_number: int
+    chapter: str
+    description: str
+    id: int
+    title: str
 
 
-@dataclass
-class ConstitutionArticleLoadMatch:
+class ConstitutionArticleLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class ConstitutionArticleListMatch:
-    article_number: Optional[int] = None
-    chapter: Optional[str] = None
-    description: Optional[str] = None
-    id: Optional[int] = None
-    title: Optional[str] = None
+class ConstitutionArticleListMatch(TypedDict, total=False):
+    article_number: int
+    chapter: str
+    description: str
+    id: int
+    title: str
 
 
-@dataclass
-class Country:
-    capital: Optional[str] = None
-    currency: Optional[str] = None
-    flag: Optional[str] = None
-    id: Optional[int] = None
-    language: Optional[list] = None
-    name: Optional[str] = None
-    population: Optional[int] = None
-    surface: Optional[float] = None
+class Country(TypedDict, total=False):
+    capital: str
+    currency: str
+    flag: str
+    id: int
+    language: list
+    name: str
+    population: int
+    surface: float
 
 
-@dataclass
-class CountryListMatch:
-    capital: Optional[str] = None
-    currency: Optional[str] = None
-    flag: Optional[str] = None
-    id: Optional[int] = None
-    language: Optional[list] = None
-    name: Optional[str] = None
-    population: Optional[int] = None
-    surface: Optional[float] = None
+class CountryListMatch(TypedDict, total=False):
+    capital: str
+    currency: str
+    flag: str
+    id: int
+    language: list
+    name: str
+    population: int
+    surface: float
 
 
-@dataclass
-class Department:
-    city_capital: Optional[str] = None
-    description: Optional[str] = None
-    id: Optional[int] = None
-    municipality: Optional[int] = None
-    name: Optional[str] = None
-    population: Optional[int] = None
-    region_id: Optional[int] = None
-    surface: Optional[float] = None
+class Department(TypedDict, total=False):
+    city_capital: str
+    description: str
+    id: int
+    municipality: int
+    name: str
+    population: int
+    region_id: int
+    surface: float
 
 
-@dataclass
-class DepartmentLoadMatch:
+class DepartmentLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class DepartmentListMatch:
-    city_capital: Optional[str] = None
-    description: Optional[str] = None
-    id: Optional[int] = None
-    municipality: Optional[int] = None
-    name: Optional[str] = None
-    population: Optional[int] = None
-    region_id: Optional[int] = None
-    surface: Optional[float] = None
+class DepartmentListMatch(TypedDict, total=False):
+    city_capital: str
+    description: str
+    id: int
+    municipality: int
+    name: str
+    population: int
+    region_id: int
+    surface: float
 
 
-@dataclass
-class Holiday:
-    date: Optional[str] = None
-    description: Optional[str] = None
-    id: Optional[int] = None
-    name: Optional[str] = None
-    type: Optional[str] = None
+class Holiday(TypedDict, total=False):
+    date: str
+    description: str
+    id: int
+    name: str
+    type: str
 
 
-@dataclass
-class HolidayLoadMatch:
+class HolidayLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class HolidayListMatch:
-    date: Optional[str] = None
-    description: Optional[str] = None
-    id: Optional[int] = None
-    name: Optional[str] = None
-    type: Optional[str] = None
+class HolidayListMatch(TypedDict, total=False):
+    date: str
+    description: str
+    id: int
+    name: str
+    type: str
 
 
-@dataclass
-class InvasiveSpecie:
-    id: Optional[int] = None
-    impact: Optional[str] = None
-    manage: Optional[str] = None
-    name: Optional[str] = None
-    scientific_name: Optional[str] = None
-    url_image: Optional[str] = None
+class InvasiveSpecie(TypedDict, total=False):
+    id: int
+    impact: str
+    manage: str
+    name: str
+    scientific_name: str
+    url_image: str
 
 
-@dataclass
-class InvasiveSpecieLoadMatch:
+class InvasiveSpecieLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class InvasiveSpecieListMatch:
-    id: Optional[int] = None
-    impact: Optional[str] = None
-    manage: Optional[str] = None
-    name: Optional[str] = None
-    scientific_name: Optional[str] = None
-    url_image: Optional[str] = None
+class InvasiveSpecieListMatch(TypedDict, total=False):
+    id: int
+    impact: str
+    manage: str
+    name: str
+    scientific_name: str
+    url_image: str
 
 
-@dataclass
-class Map:
-    department_id: Optional[int] = None
-    description: Optional[str] = None
-    id: Optional[int] = None
-    name: Optional[str] = None
-    url_image: Optional[list] = None
+class Map(TypedDict, total=False):
+    department_id: int
+    description: str
+    id: int
+    name: str
+    url_image: list
 
 
-@dataclass
-class MapListMatch:
-    department_id: Optional[int] = None
-    description: Optional[str] = None
-    id: Optional[int] = None
-    name: Optional[str] = None
-    url_image: Optional[list] = None
+class MapListMatch(TypedDict, total=False):
+    department_id: int
+    description: str
+    id: int
+    name: str
+    url_image: list
 
 
-@dataclass
-class NativeCommunity:
-    department_id: Optional[int] = None
-    description: Optional[str] = None
-    id: Optional[int] = None
-    name: Optional[str] = None
-    population: Optional[int] = None
+class NativeCommunity(TypedDict, total=False):
+    department_id: int
+    description: str
+    id: int
+    name: str
+    population: int
 
 
-@dataclass
-class NativeCommunityLoadMatch:
+class NativeCommunityLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class NativeCommunityListMatch:
-    department_id: Optional[int] = None
-    description: Optional[str] = None
-    id: Optional[int] = None
-    name: Optional[str] = None
-    population: Optional[int] = None
+class NativeCommunityListMatch(TypedDict, total=False):
+    department_id: int
+    description: str
+    id: int
+    name: str
+    population: int
 
 
-@dataclass
-class NaturalArea:
-    area_group_id: Optional[int] = None
-    category_natural_area_id: Optional[int] = None
-    department_id: Optional[int] = None
-    description: Optional[str] = None
-    id: Optional[int] = None
-    land_area: Optional[float] = None
-    maritime_area: Optional[float] = None
-    name: Optional[str] = None
+class NaturalArea(TypedDict, total=False):
+    area_group_id: int
+    category_natural_area_id: int
+    department_id: int
+    description: str
+    id: int
+    land_area: float
+    maritime_area: float
+    name: str
 
 
-@dataclass
-class NaturalAreaLoadMatch:
+class NaturalAreaLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class NaturalAreaListMatch:
-    area_group_id: Optional[int] = None
-    category_natural_area_id: Optional[int] = None
-    department_id: Optional[int] = None
-    description: Optional[str] = None
-    id: Optional[int] = None
-    land_area: Optional[float] = None
-    maritime_area: Optional[float] = None
-    name: Optional[str] = None
+class NaturalAreaListMatch(TypedDict, total=False):
+    area_group_id: int
+    category_natural_area_id: int
+    department_id: int
+    description: str
+    id: int
+    land_area: float
+    maritime_area: float
+    name: str
 
 
-@dataclass
-class President:
-    description: Optional[str] = None
-    end_period_date: Optional[str] = None
-    id: Optional[int] = None
-    image: Optional[str] = None
-    name: Optional[str] = None
-    political_party: Optional[str] = None
-    start_period_date: Optional[str] = None
+class President(TypedDict, total=False):
+    description: str
+    end_period_date: str
+    id: int
+    image: str
+    name: str
+    political_party: str
+    start_period_date: str
 
 
-@dataclass
-class PresidentLoadMatch:
+class PresidentLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class PresidentListMatch:
-    description: Optional[str] = None
-    end_period_date: Optional[str] = None
-    id: Optional[int] = None
-    image: Optional[str] = None
-    name: Optional[str] = None
-    political_party: Optional[str] = None
-    start_period_date: Optional[str] = None
+class PresidentListMatch(TypedDict, total=False):
+    description: str
+    end_period_date: str
+    id: int
+    image: str
+    name: str
+    political_party: str
+    start_period_date: str
 
 
-@dataclass
-class Radio:
-    band: Optional[str] = None
-    frequency: Optional[str] = None
-    id: Optional[int] = None
-    name: Optional[str] = None
-    url: Optional[str] = None
+class Radio(TypedDict, total=False):
+    band: str
+    frequency: str
+    id: int
+    name: str
+    url: str
 
 
-@dataclass
-class RadioLoadMatch:
+class RadioLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class RadioListMatch:
-    band: Optional[str] = None
-    frequency: Optional[str] = None
-    id: Optional[int] = None
-    name: Optional[str] = None
-    url: Optional[str] = None
+class RadioListMatch(TypedDict, total=False):
+    band: str
+    frequency: str
+    id: int
+    name: str
+    url: str
 
 
-@dataclass
-class Region:
-    department: Optional[list] = None
-    description: Optional[str] = None
-    id: Optional[int] = None
-    name: Optional[str] = None
+class Region(TypedDict, total=False):
+    department: list
+    description: str
+    id: int
+    name: str
 
 
-@dataclass
-class RegionLoadMatch:
+class RegionLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class RegionListMatch:
-    department: Optional[list] = None
-    description: Optional[str] = None
-    id: Optional[int] = None
-    name: Optional[str] = None
+class RegionListMatch(TypedDict, total=False):
+    department: list
+    description: str
+    id: int
+    name: str
 
 
-@dataclass
-class TouristicAttraction:
-    city: Optional[str] = None
-    description: Optional[str] = None
-    id: Optional[int] = None
-    image: Optional[list] = None
-    latitude: Optional[float] = None
-    longitude: Optional[float] = None
-    name: Optional[str] = None
+class TouristicAttraction(TypedDict, total=False):
+    city: str
+    description: str
+    id: int
+    image: list
+    latitude: float
+    longitude: float
+    name: str
 
 
-@dataclass
-class TouristicAttractionLoadMatch:
+class TouristicAttractionLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class TouristicAttractionListMatch:
-    city: Optional[str] = None
-    description: Optional[str] = None
-    id: Optional[int] = None
-    image: Optional[list] = None
-    latitude: Optional[float] = None
-    longitude: Optional[float] = None
-    name: Optional[str] = None
+class TouristicAttractionListMatch(TypedDict, total=False):
+    city: str
+    description: str
+    id: int
+    image: list
+    latitude: float
+    longitude: float
+    name: str
 
 
-@dataclass
-class TypicalDish:
-    department_id: Optional[int] = None
-    description: Optional[str] = None
-    id: Optional[int] = None
-    ingredient: Optional[list] = None
-    name: Optional[str] = None
-    url_image: Optional[str] = None
+class TypicalDish(TypedDict, total=False):
+    department_id: int
+    description: str
+    id: int
+    ingredient: list
+    name: str
+    url_image: str
 
 
-@dataclass
-class TypicalDishLoadMatch:
+class TypicalDishLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class TypicalDishListMatch:
-    department_id: Optional[int] = None
-    description: Optional[str] = None
-    id: Optional[int] = None
-    ingredient: Optional[list] = None
-    name: Optional[str] = None
-    url_image: Optional[str] = None
-
+class TypicalDishListMatch(TypedDict, total=False):
+    department_id: int
+    description: str
+    id: int
+    ingredient: list
+    name: str
+    url_image: str

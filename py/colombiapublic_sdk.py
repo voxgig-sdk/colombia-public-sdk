@@ -220,249 +220,99 @@ class ColombiaPublicSDK:
         }
 
 
-    @property
-    def airport(self):
-        """Idiomatic facade: client.airport.list() / client.airport.load({"id": ...})."""
-        from entity.airport_entity import AirportEntity
-        cached = getattr(self, "_airport", None)
-        if cached is None:
-            cached = AirportEntity(self, None)
-            self._airport = cached
-        return cached
-
-    def Airport(self, data=None):
-        # Deprecated: use client.airport instead.
+    def Airport(self, data=None) -> "AirportEntity":
+        """Entity factory: client.Airport().list({}) / client.Airport().load({"id": ...})."""
         from entity.airport_entity import AirportEntity
         return AirportEntity(self, data)
 
 
-    @property
-    def category_natural_area(self):
-        """Idiomatic facade: client.category_natural_area.list() / client.category_natural_area.load({"id": ...})."""
-        from entity.category_natural_area_entity import CategoryNaturalAreaEntity
-        cached = getattr(self, "_category_natural_area", None)
-        if cached is None:
-            cached = CategoryNaturalAreaEntity(self, None)
-            self._category_natural_area = cached
-        return cached
-
-    def CategoryNaturalArea(self, data=None):
-        # Deprecated: use client.category_natural_area instead.
+    def CategoryNaturalArea(self, data=None) -> "CategoryNaturalAreaEntity":
+        """Entity factory: client.CategoryNaturalArea().list({}) / client.CategoryNaturalArea().load({"id": ...})."""
         from entity.category_natural_area_entity import CategoryNaturalAreaEntity
         return CategoryNaturalAreaEntity(self, data)
 
 
-    @property
-    def constitution_article(self):
-        """Idiomatic facade: client.constitution_article.list() / client.constitution_article.load({"id": ...})."""
-        from entity.constitution_article_entity import ConstitutionArticleEntity
-        cached = getattr(self, "_constitution_article", None)
-        if cached is None:
-            cached = ConstitutionArticleEntity(self, None)
-            self._constitution_article = cached
-        return cached
-
-    def ConstitutionArticle(self, data=None):
-        # Deprecated: use client.constitution_article instead.
+    def ConstitutionArticle(self, data=None) -> "ConstitutionArticleEntity":
+        """Entity factory: client.ConstitutionArticle().list({}) / client.ConstitutionArticle().load({"id": ...})."""
         from entity.constitution_article_entity import ConstitutionArticleEntity
         return ConstitutionArticleEntity(self, data)
 
 
-    @property
-    def country(self):
-        """Idiomatic facade: client.country.list() / client.country.load({"id": ...})."""
-        from entity.country_entity import CountryEntity
-        cached = getattr(self, "_country", None)
-        if cached is None:
-            cached = CountryEntity(self, None)
-            self._country = cached
-        return cached
-
-    def Country(self, data=None):
-        # Deprecated: use client.country instead.
+    def Country(self, data=None) -> "CountryEntity":
+        """Entity factory: client.Country().list({}) / client.Country().load({"id": ...})."""
         from entity.country_entity import CountryEntity
         return CountryEntity(self, data)
 
 
-    @property
-    def department(self):
-        """Idiomatic facade: client.department.list() / client.department.load({"id": ...})."""
-        from entity.department_entity import DepartmentEntity
-        cached = getattr(self, "_department", None)
-        if cached is None:
-            cached = DepartmentEntity(self, None)
-            self._department = cached
-        return cached
-
-    def Department(self, data=None):
-        # Deprecated: use client.department instead.
+    def Department(self, data=None) -> "DepartmentEntity":
+        """Entity factory: client.Department().list({}) / client.Department().load({"id": ...})."""
         from entity.department_entity import DepartmentEntity
         return DepartmentEntity(self, data)
 
 
-    @property
-    def holiday(self):
-        """Idiomatic facade: client.holiday.list() / client.holiday.load({"id": ...})."""
-        from entity.holiday_entity import HolidayEntity
-        cached = getattr(self, "_holiday", None)
-        if cached is None:
-            cached = HolidayEntity(self, None)
-            self._holiday = cached
-        return cached
-
-    def Holiday(self, data=None):
-        # Deprecated: use client.holiday instead.
+    def Holiday(self, data=None) -> "HolidayEntity":
+        """Entity factory: client.Holiday().list({}) / client.Holiday().load({"id": ...})."""
         from entity.holiday_entity import HolidayEntity
         return HolidayEntity(self, data)
 
 
-    @property
-    def invasive_specie(self):
-        """Idiomatic facade: client.invasive_specie.list() / client.invasive_specie.load({"id": ...})."""
-        from entity.invasive_specie_entity import InvasiveSpecieEntity
-        cached = getattr(self, "_invasive_specie", None)
-        if cached is None:
-            cached = InvasiveSpecieEntity(self, None)
-            self._invasive_specie = cached
-        return cached
-
-    def InvasiveSpecie(self, data=None):
-        # Deprecated: use client.invasive_specie instead.
+    def InvasiveSpecie(self, data=None) -> "InvasiveSpecieEntity":
+        """Entity factory: client.InvasiveSpecie().list({}) / client.InvasiveSpecie().load({"id": ...})."""
         from entity.invasive_specie_entity import InvasiveSpecieEntity
         return InvasiveSpecieEntity(self, data)
 
 
-    @property
-    def map(self):
-        """Idiomatic facade: client.map.list() / client.map.load({"id": ...})."""
-        from entity.map_entity import MapEntity
-        cached = getattr(self, "_map", None)
-        if cached is None:
-            cached = MapEntity(self, None)
-            self._map = cached
-        return cached
-
-    def Map(self, data=None):
-        # Deprecated: use client.map instead.
+    def Map(self, data=None) -> "MapEntity":
+        """Entity factory: client.Map().list({}) / client.Map().load({"id": ...})."""
         from entity.map_entity import MapEntity
         return MapEntity(self, data)
 
 
-    @property
-    def native_community(self):
-        """Idiomatic facade: client.native_community.list() / client.native_community.load({"id": ...})."""
-        from entity.native_community_entity import NativeCommunityEntity
-        cached = getattr(self, "_native_community", None)
-        if cached is None:
-            cached = NativeCommunityEntity(self, None)
-            self._native_community = cached
-        return cached
-
-    def NativeCommunity(self, data=None):
-        # Deprecated: use client.native_community instead.
+    def NativeCommunity(self, data=None) -> "NativeCommunityEntity":
+        """Entity factory: client.NativeCommunity().list({}) / client.NativeCommunity().load({"id": ...})."""
         from entity.native_community_entity import NativeCommunityEntity
         return NativeCommunityEntity(self, data)
 
 
-    @property
-    def natural_area(self):
-        """Idiomatic facade: client.natural_area.list() / client.natural_area.load({"id": ...})."""
-        from entity.natural_area_entity import NaturalAreaEntity
-        cached = getattr(self, "_natural_area", None)
-        if cached is None:
-            cached = NaturalAreaEntity(self, None)
-            self._natural_area = cached
-        return cached
-
-    def NaturalArea(self, data=None):
-        # Deprecated: use client.natural_area instead.
+    def NaturalArea(self, data=None) -> "NaturalAreaEntity":
+        """Entity factory: client.NaturalArea().list({}) / client.NaturalArea().load({"id": ...})."""
         from entity.natural_area_entity import NaturalAreaEntity
         return NaturalAreaEntity(self, data)
 
 
-    @property
-    def president(self):
-        """Idiomatic facade: client.president.list() / client.president.load({"id": ...})."""
-        from entity.president_entity import PresidentEntity
-        cached = getattr(self, "_president", None)
-        if cached is None:
-            cached = PresidentEntity(self, None)
-            self._president = cached
-        return cached
-
-    def President(self, data=None):
-        # Deprecated: use client.president instead.
+    def President(self, data=None) -> "PresidentEntity":
+        """Entity factory: client.President().list({}) / client.President().load({"id": ...})."""
         from entity.president_entity import PresidentEntity
         return PresidentEntity(self, data)
 
 
-    @property
-    def radio(self):
-        """Idiomatic facade: client.radio.list() / client.radio.load({"id": ...})."""
-        from entity.radio_entity import RadioEntity
-        cached = getattr(self, "_radio", None)
-        if cached is None:
-            cached = RadioEntity(self, None)
-            self._radio = cached
-        return cached
-
-    def Radio(self, data=None):
-        # Deprecated: use client.radio instead.
+    def Radio(self, data=None) -> "RadioEntity":
+        """Entity factory: client.Radio().list({}) / client.Radio().load({"id": ...})."""
         from entity.radio_entity import RadioEntity
         return RadioEntity(self, data)
 
 
-    @property
-    def region(self):
-        """Idiomatic facade: client.region.list() / client.region.load({"id": ...})."""
-        from entity.region_entity import RegionEntity
-        cached = getattr(self, "_region", None)
-        if cached is None:
-            cached = RegionEntity(self, None)
-            self._region = cached
-        return cached
-
-    def Region(self, data=None):
-        # Deprecated: use client.region instead.
+    def Region(self, data=None) -> "RegionEntity":
+        """Entity factory: client.Region().list({}) / client.Region().load({"id": ...})."""
         from entity.region_entity import RegionEntity
         return RegionEntity(self, data)
 
 
-    @property
-    def touristic_attraction(self):
-        """Idiomatic facade: client.touristic_attraction.list() / client.touristic_attraction.load({"id": ...})."""
-        from entity.touristic_attraction_entity import TouristicAttractionEntity
-        cached = getattr(self, "_touristic_attraction", None)
-        if cached is None:
-            cached = TouristicAttractionEntity(self, None)
-            self._touristic_attraction = cached
-        return cached
-
-    def TouristicAttraction(self, data=None):
-        # Deprecated: use client.touristic_attraction instead.
+    def TouristicAttraction(self, data=None) -> "TouristicAttractionEntity":
+        """Entity factory: client.TouristicAttraction().list({}) / client.TouristicAttraction().load({"id": ...})."""
         from entity.touristic_attraction_entity import TouristicAttractionEntity
         return TouristicAttractionEntity(self, data)
 
 
-    @property
-    def typical_dish(self):
-        """Idiomatic facade: client.typical_dish.list() / client.typical_dish.load({"id": ...})."""
-        from entity.typical_dish_entity import TypicalDishEntity
-        cached = getattr(self, "_typical_dish", None)
-        if cached is None:
-            cached = TypicalDishEntity(self, None)
-            self._typical_dish = cached
-        return cached
-
-    def TypicalDish(self, data=None):
-        # Deprecated: use client.typical_dish instead.
+    def TypicalDish(self, data=None) -> "TypicalDishEntity":
+        """Entity factory: client.TypicalDish().list({}) / client.TypicalDish().load({"id": ...})."""
         from entity.typical_dish_entity import TypicalDishEntity
         return TypicalDishEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "ColombiaPublicSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -482,3 +332,23 @@ class ColombiaPublicSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.airport_entity import AirportEntity
+    from entity.category_natural_area_entity import CategoryNaturalAreaEntity
+    from entity.constitution_article_entity import ConstitutionArticleEntity
+    from entity.country_entity import CountryEntity
+    from entity.department_entity import DepartmentEntity
+    from entity.holiday_entity import HolidayEntity
+    from entity.invasive_specie_entity import InvasiveSpecieEntity
+    from entity.map_entity import MapEntity
+    from entity.native_community_entity import NativeCommunityEntity
+    from entity.natural_area_entity import NaturalAreaEntity
+    from entity.president_entity import PresidentEntity
+    from entity.radio_entity import RadioEntity
+    from entity.region_entity import RegionEntity
+    from entity.touristic_attraction_entity import TouristicAttractionEntity
+    from entity.typical_dish_entity import TypicalDishEntity

@@ -233,10 +233,10 @@ class ColombiaPublicSDK
 
     private $_airport = null;
 
-    // Idiomatic facade: $client->airport()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Airport() (PHP method
-    // names are case-insensitive).
-    public function airport($data = null)
+    // Canonical facade: $client->Airport()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->airport()
+    // resolves here too.
+    public function Airport($data = null)
     {
         require_once __DIR__ . '/entity/airport_entity.php';
         if ($data === null) {
@@ -251,10 +251,10 @@ class ColombiaPublicSDK
 
     private $_category_natural_area = null;
 
-    // Idiomatic facade: $client->category_natural_area()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias CategoryNaturalArea() (PHP method
-    // names are case-insensitive).
-    public function category_natural_area($data = null)
+    // Canonical facade: $client->CategoryNaturalArea()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->category_natural_area()
+    // resolves here too.
+    public function CategoryNaturalArea($data = null)
     {
         require_once __DIR__ . '/entity/category_natural_area_entity.php';
         if ($data === null) {
@@ -269,10 +269,10 @@ class ColombiaPublicSDK
 
     private $_constitution_article = null;
 
-    // Idiomatic facade: $client->constitution_article()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias ConstitutionArticle() (PHP method
-    // names are case-insensitive).
-    public function constitution_article($data = null)
+    // Canonical facade: $client->ConstitutionArticle()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->constitution_article()
+    // resolves here too.
+    public function ConstitutionArticle($data = null)
     {
         require_once __DIR__ . '/entity/constitution_article_entity.php';
         if ($data === null) {
@@ -287,10 +287,10 @@ class ColombiaPublicSDK
 
     private $_country = null;
 
-    // Idiomatic facade: $client->country()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Country() (PHP method
-    // names are case-insensitive).
-    public function country($data = null)
+    // Canonical facade: $client->Country()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->country()
+    // resolves here too.
+    public function Country($data = null)
     {
         require_once __DIR__ . '/entity/country_entity.php';
         if ($data === null) {
@@ -305,10 +305,10 @@ class ColombiaPublicSDK
 
     private $_department = null;
 
-    // Idiomatic facade: $client->department()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Department() (PHP method
-    // names are case-insensitive).
-    public function department($data = null)
+    // Canonical facade: $client->Department()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->department()
+    // resolves here too.
+    public function Department($data = null)
     {
         require_once __DIR__ . '/entity/department_entity.php';
         if ($data === null) {
@@ -323,10 +323,10 @@ class ColombiaPublicSDK
 
     private $_holiday = null;
 
-    // Idiomatic facade: $client->holiday()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Holiday() (PHP method
-    // names are case-insensitive).
-    public function holiday($data = null)
+    // Canonical facade: $client->Holiday()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->holiday()
+    // resolves here too.
+    public function Holiday($data = null)
     {
         require_once __DIR__ . '/entity/holiday_entity.php';
         if ($data === null) {
@@ -341,10 +341,10 @@ class ColombiaPublicSDK
 
     private $_invasive_specie = null;
 
-    // Idiomatic facade: $client->invasive_specie()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias InvasiveSpecie() (PHP method
-    // names are case-insensitive).
-    public function invasive_specie($data = null)
+    // Canonical facade: $client->InvasiveSpecie()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->invasive_specie()
+    // resolves here too.
+    public function InvasiveSpecie($data = null)
     {
         require_once __DIR__ . '/entity/invasive_specie_entity.php';
         if ($data === null) {
@@ -359,10 +359,10 @@ class ColombiaPublicSDK
 
     private $_map = null;
 
-    // Idiomatic facade: $client->map()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Map() (PHP method
-    // names are case-insensitive).
-    public function map($data = null)
+    // Canonical facade: $client->Map()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->map()
+    // resolves here too.
+    public function Map($data = null)
     {
         require_once __DIR__ . '/entity/map_entity.php';
         if ($data === null) {
@@ -377,10 +377,10 @@ class ColombiaPublicSDK
 
     private $_native_community = null;
 
-    // Idiomatic facade: $client->native_community()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias NativeCommunity() (PHP method
-    // names are case-insensitive).
-    public function native_community($data = null)
+    // Canonical facade: $client->NativeCommunity()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->native_community()
+    // resolves here too.
+    public function NativeCommunity($data = null)
     {
         require_once __DIR__ . '/entity/native_community_entity.php';
         if ($data === null) {
@@ -395,10 +395,10 @@ class ColombiaPublicSDK
 
     private $_natural_area = null;
 
-    // Idiomatic facade: $client->natural_area()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias NaturalArea() (PHP method
-    // names are case-insensitive).
-    public function natural_area($data = null)
+    // Canonical facade: $client->NaturalArea()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->natural_area()
+    // resolves here too.
+    public function NaturalArea($data = null)
     {
         require_once __DIR__ . '/entity/natural_area_entity.php';
         if ($data === null) {
@@ -413,10 +413,10 @@ class ColombiaPublicSDK
 
     private $_president = null;
 
-    // Idiomatic facade: $client->president()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias President() (PHP method
-    // names are case-insensitive).
-    public function president($data = null)
+    // Canonical facade: $client->President()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->president()
+    // resolves here too.
+    public function President($data = null)
     {
         require_once __DIR__ . '/entity/president_entity.php';
         if ($data === null) {
@@ -431,10 +431,10 @@ class ColombiaPublicSDK
 
     private $_radio = null;
 
-    // Idiomatic facade: $client->radio()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Radio() (PHP method
-    // names are case-insensitive).
-    public function radio($data = null)
+    // Canonical facade: $client->Radio()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->radio()
+    // resolves here too.
+    public function Radio($data = null)
     {
         require_once __DIR__ . '/entity/radio_entity.php';
         if ($data === null) {
@@ -449,10 +449,10 @@ class ColombiaPublicSDK
 
     private $_region = null;
 
-    // Idiomatic facade: $client->region()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Region() (PHP method
-    // names are case-insensitive).
-    public function region($data = null)
+    // Canonical facade: $client->Region()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->region()
+    // resolves here too.
+    public function Region($data = null)
     {
         require_once __DIR__ . '/entity/region_entity.php';
         if ($data === null) {
@@ -467,10 +467,10 @@ class ColombiaPublicSDK
 
     private $_touristic_attraction = null;
 
-    // Idiomatic facade: $client->touristic_attraction()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias TouristicAttraction() (PHP method
-    // names are case-insensitive).
-    public function touristic_attraction($data = null)
+    // Canonical facade: $client->TouristicAttraction()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->touristic_attraction()
+    // resolves here too.
+    public function TouristicAttraction($data = null)
     {
         require_once __DIR__ . '/entity/touristic_attraction_entity.php';
         if ($data === null) {
@@ -485,10 +485,10 @@ class ColombiaPublicSDK
 
     private $_typical_dish = null;
 
-    // Idiomatic facade: $client->typical_dish()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias TypicalDish() (PHP method
-    // names are case-insensitive).
-    public function typical_dish($data = null)
+    // Canonical facade: $client->TypicalDish()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->typical_dish()
+    // resolves here too.
+    public function TypicalDish($data = null)
     {
         require_once __DIR__ . '/entity/typical_dish_entity.php';
         if ($data === null) {

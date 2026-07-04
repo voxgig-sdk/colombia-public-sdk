@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:airport():list() / client:airport():load({ id = ... })
-function ColombiaPublicSDK:airport(data)
+-- Idiomatic facade: client:Airport():list() / client:Airport():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ColombiaPublicSDK:Airport(data)
   local EntityMod = require("entity.airport_entity")
   if data == nil then
     if self._airport == nil then
@@ -256,15 +257,10 @@ function ColombiaPublicSDK:airport(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:airport() instead.
-function ColombiaPublicSDK:Airport(data)
-  local EntityMod = require("entity.airport_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:category_natural_area():list() / client:category_natural_area():load({ id = ... })
-function ColombiaPublicSDK:category_natural_area(data)
+-- Idiomatic facade: client:CategoryNaturalArea():list() / client:CategoryNaturalArea():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ColombiaPublicSDK:CategoryNaturalArea(data)
   local EntityMod = require("entity.category_natural_area_entity")
   if data == nil then
     if self._category_natural_area == nil then
@@ -275,15 +271,10 @@ function ColombiaPublicSDK:category_natural_area(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:category_natural_area() instead.
-function ColombiaPublicSDK:CategoryNaturalArea(data)
-  local EntityMod = require("entity.category_natural_area_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:constitution_article():list() / client:constitution_article():load({ id = ... })
-function ColombiaPublicSDK:constitution_article(data)
+-- Idiomatic facade: client:ConstitutionArticle():list() / client:ConstitutionArticle():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ColombiaPublicSDK:ConstitutionArticle(data)
   local EntityMod = require("entity.constitution_article_entity")
   if data == nil then
     if self._constitution_article == nil then
@@ -294,15 +285,10 @@ function ColombiaPublicSDK:constitution_article(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:constitution_article() instead.
-function ColombiaPublicSDK:ConstitutionArticle(data)
-  local EntityMod = require("entity.constitution_article_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:country():list() / client:country():load({ id = ... })
-function ColombiaPublicSDK:country(data)
+-- Idiomatic facade: client:Country():list() / client:Country():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ColombiaPublicSDK:Country(data)
   local EntityMod = require("entity.country_entity")
   if data == nil then
     if self._country == nil then
@@ -313,15 +299,10 @@ function ColombiaPublicSDK:country(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:country() instead.
-function ColombiaPublicSDK:Country(data)
-  local EntityMod = require("entity.country_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:department():list() / client:department():load({ id = ... })
-function ColombiaPublicSDK:department(data)
+-- Idiomatic facade: client:Department():list() / client:Department():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ColombiaPublicSDK:Department(data)
   local EntityMod = require("entity.department_entity")
   if data == nil then
     if self._department == nil then
@@ -332,15 +313,10 @@ function ColombiaPublicSDK:department(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:department() instead.
-function ColombiaPublicSDK:Department(data)
-  local EntityMod = require("entity.department_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:holiday():list() / client:holiday():load({ id = ... })
-function ColombiaPublicSDK:holiday(data)
+-- Idiomatic facade: client:Holiday():list() / client:Holiday():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ColombiaPublicSDK:Holiday(data)
   local EntityMod = require("entity.holiday_entity")
   if data == nil then
     if self._holiday == nil then
@@ -351,15 +327,10 @@ function ColombiaPublicSDK:holiday(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:holiday() instead.
-function ColombiaPublicSDK:Holiday(data)
-  local EntityMod = require("entity.holiday_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:invasive_specie():list() / client:invasive_specie():load({ id = ... })
-function ColombiaPublicSDK:invasive_specie(data)
+-- Idiomatic facade: client:InvasiveSpecie():list() / client:InvasiveSpecie():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ColombiaPublicSDK:InvasiveSpecie(data)
   local EntityMod = require("entity.invasive_specie_entity")
   if data == nil then
     if self._invasive_specie == nil then
@@ -370,15 +341,10 @@ function ColombiaPublicSDK:invasive_specie(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:invasive_specie() instead.
-function ColombiaPublicSDK:InvasiveSpecie(data)
-  local EntityMod = require("entity.invasive_specie_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:map():list() / client:map():load({ id = ... })
-function ColombiaPublicSDK:map(data)
+-- Idiomatic facade: client:Map():list() / client:Map():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ColombiaPublicSDK:Map(data)
   local EntityMod = require("entity.map_entity")
   if data == nil then
     if self._map == nil then
@@ -389,15 +355,10 @@ function ColombiaPublicSDK:map(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:map() instead.
-function ColombiaPublicSDK:Map(data)
-  local EntityMod = require("entity.map_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:native_community():list() / client:native_community():load({ id = ... })
-function ColombiaPublicSDK:native_community(data)
+-- Idiomatic facade: client:NativeCommunity():list() / client:NativeCommunity():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ColombiaPublicSDK:NativeCommunity(data)
   local EntityMod = require("entity.native_community_entity")
   if data == nil then
     if self._native_community == nil then
@@ -408,15 +369,10 @@ function ColombiaPublicSDK:native_community(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:native_community() instead.
-function ColombiaPublicSDK:NativeCommunity(data)
-  local EntityMod = require("entity.native_community_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:natural_area():list() / client:natural_area():load({ id = ... })
-function ColombiaPublicSDK:natural_area(data)
+-- Idiomatic facade: client:NaturalArea():list() / client:NaturalArea():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ColombiaPublicSDK:NaturalArea(data)
   local EntityMod = require("entity.natural_area_entity")
   if data == nil then
     if self._natural_area == nil then
@@ -427,15 +383,10 @@ function ColombiaPublicSDK:natural_area(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:natural_area() instead.
-function ColombiaPublicSDK:NaturalArea(data)
-  local EntityMod = require("entity.natural_area_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:president():list() / client:president():load({ id = ... })
-function ColombiaPublicSDK:president(data)
+-- Idiomatic facade: client:President():list() / client:President():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ColombiaPublicSDK:President(data)
   local EntityMod = require("entity.president_entity")
   if data == nil then
     if self._president == nil then
@@ -446,15 +397,10 @@ function ColombiaPublicSDK:president(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:president() instead.
-function ColombiaPublicSDK:President(data)
-  local EntityMod = require("entity.president_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:radio():list() / client:radio():load({ id = ... })
-function ColombiaPublicSDK:radio(data)
+-- Idiomatic facade: client:Radio():list() / client:Radio():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ColombiaPublicSDK:Radio(data)
   local EntityMod = require("entity.radio_entity")
   if data == nil then
     if self._radio == nil then
@@ -465,15 +411,10 @@ function ColombiaPublicSDK:radio(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:radio() instead.
-function ColombiaPublicSDK:Radio(data)
-  local EntityMod = require("entity.radio_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:region():list() / client:region():load({ id = ... })
-function ColombiaPublicSDK:region(data)
+-- Idiomatic facade: client:Region():list() / client:Region():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ColombiaPublicSDK:Region(data)
   local EntityMod = require("entity.region_entity")
   if data == nil then
     if self._region == nil then
@@ -484,15 +425,10 @@ function ColombiaPublicSDK:region(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:region() instead.
-function ColombiaPublicSDK:Region(data)
-  local EntityMod = require("entity.region_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:touristic_attraction():list() / client:touristic_attraction():load({ id = ... })
-function ColombiaPublicSDK:touristic_attraction(data)
+-- Idiomatic facade: client:TouristicAttraction():list() / client:TouristicAttraction():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ColombiaPublicSDK:TouristicAttraction(data)
   local EntityMod = require("entity.touristic_attraction_entity")
   if data == nil then
     if self._touristic_attraction == nil then
@@ -503,15 +439,10 @@ function ColombiaPublicSDK:touristic_attraction(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:touristic_attraction() instead.
-function ColombiaPublicSDK:TouristicAttraction(data)
-  local EntityMod = require("entity.touristic_attraction_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:typical_dish():list() / client:typical_dish():load({ id = ... })
-function ColombiaPublicSDK:typical_dish(data)
+-- Idiomatic facade: client:TypicalDish():list() / client:TypicalDish():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ColombiaPublicSDK:TypicalDish(data)
   local EntityMod = require("entity.typical_dish_entity")
   if data == nil then
     if self._typical_dish == nil then
@@ -519,12 +450,6 @@ function ColombiaPublicSDK:typical_dish(data)
     end
     return self._typical_dish
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:typical_dish() instead.
-function ColombiaPublicSDK:TypicalDish(data)
-  local EntityMod = require("entity.typical_dish_entity")
   return EntityMod.new(self, data)
 end
 

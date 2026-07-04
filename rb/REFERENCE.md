@@ -142,7 +142,7 @@ same parameters as `direct()`. Raises on error.
 ## AirportEntity
 
 ```ruby
-airport = client.airport
+airport = client.Airport
 ```
 
 ### Fields
@@ -165,7 +165,7 @@ airport = client.airport
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.airport.list(nil)
+results = client.Airport.list(nil)
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -173,7 +173,7 @@ results = client.airport.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.airport.load({ "id" => "airport_id" })
+result = client.Airport.load({ "id" => "airport_id" })
 ```
 
 ### Common Methods
@@ -209,7 +209,7 @@ Return the entity name.
 ## CategoryNaturalAreaEntity
 
 ```ruby
-category_natural_area = client.category_natural_area
+category_natural_area = client.CategoryNaturalArea
 ```
 
 ### Fields
@@ -227,7 +227,7 @@ category_natural_area = client.category_natural_area
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.category_natural_area.list(nil)
+results = client.CategoryNaturalArea.list(nil)
 ```
 
 ### Common Methods
@@ -263,7 +263,7 @@ Return the entity name.
 ## ConstitutionArticleEntity
 
 ```ruby
-constitution_article = client.constitution_article
+constitution_article = client.ConstitutionArticle
 ```
 
 ### Fields
@@ -283,7 +283,7 @@ constitution_article = client.constitution_article
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.constitution_article.list(nil)
+results = client.ConstitutionArticle.list(nil)
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -291,7 +291,7 @@ results = client.constitution_article.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.constitution_article.load({ "id" => "constitution_article_id" })
+result = client.ConstitutionArticle.load({ "id" => "constitution_article_id" })
 ```
 
 ### Common Methods
@@ -327,7 +327,7 @@ Return the entity name.
 ## CountryEntity
 
 ```ruby
-country = client.country
+country = client.Country
 ```
 
 ### Fields
@@ -350,7 +350,7 @@ country = client.country
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.country.list(nil)
+results = client.Country.list(nil)
 ```
 
 ### Common Methods
@@ -386,7 +386,7 @@ Return the entity name.
 ## DepartmentEntity
 
 ```ruby
-department = client.department
+department = client.Department
 ```
 
 ### Fields
@@ -409,7 +409,7 @@ department = client.department
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.department.list(nil)
+results = client.Department.list(nil)
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -417,7 +417,7 @@ results = client.department.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.department.load({ "id" => "department_id" })
+result = client.Department.load({ "id" => "department_id" })
 ```
 
 ### Common Methods
@@ -453,7 +453,7 @@ Return the entity name.
 ## HolidayEntity
 
 ```ruby
-holiday = client.holiday
+holiday = client.Holiday
 ```
 
 ### Fields
@@ -473,7 +473,7 @@ holiday = client.holiday
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.holiday.list(nil)
+results = client.Holiday.list(nil)
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -481,7 +481,7 @@ results = client.holiday.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.holiday.load({ "id" => "holiday_id" })
+result = client.Holiday.load({ "id" => "holiday_id" })
 ```
 
 ### Common Methods
@@ -517,7 +517,7 @@ Return the entity name.
 ## InvasiveSpecieEntity
 
 ```ruby
-invasive_specie = client.invasive_specie
+invasive_specie = client.InvasiveSpecie
 ```
 
 ### Fields
@@ -538,7 +538,7 @@ invasive_specie = client.invasive_specie
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.invasive_specie.list(nil)
+results = client.InvasiveSpecie.list(nil)
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -546,7 +546,7 @@ results = client.invasive_specie.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.invasive_specie.load({ "id" => "invasive_specie_id" })
+result = client.InvasiveSpecie.load({ "id" => "invasive_specie_id" })
 ```
 
 ### Common Methods
@@ -582,7 +582,7 @@ Return the entity name.
 ## MapEntity
 
 ```ruby
-map = client.map
+map = client.Map
 ```
 
 ### Fields
@@ -602,7 +602,7 @@ map = client.map
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.map.list(nil)
+results = client.Map.list(nil)
 ```
 
 ### Common Methods
@@ -638,7 +638,7 @@ Return the entity name.
 ## NativeCommunityEntity
 
 ```ruby
-native_community = client.native_community
+native_community = client.NativeCommunity
 ```
 
 ### Fields
@@ -658,7 +658,7 @@ native_community = client.native_community
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.native_community.list(nil)
+results = client.NativeCommunity.list(nil)
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -666,7 +666,7 @@ results = client.native_community.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.native_community.load({ "id" => "native_community_id" })
+result = client.NativeCommunity.load({ "id" => "native_community_id" })
 ```
 
 ### Common Methods
@@ -702,7 +702,7 @@ Return the entity name.
 ## NaturalAreaEntity
 
 ```ruby
-natural_area = client.natural_area
+natural_area = client.NaturalArea
 ```
 
 ### Fields
@@ -725,7 +725,7 @@ natural_area = client.natural_area
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.natural_area.list(nil)
+results = client.NaturalArea.list(nil)
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -733,7 +733,7 @@ results = client.natural_area.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.natural_area.load({ "id" => "natural_area_id" })
+result = client.NaturalArea.load({ "id" => "natural_area_id" })
 ```
 
 ### Common Methods
@@ -769,7 +769,7 @@ Return the entity name.
 ## PresidentEntity
 
 ```ruby
-president = client.president
+president = client.President
 ```
 
 ### Fields
@@ -791,7 +791,7 @@ president = client.president
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.president.list(nil)
+results = client.President.list(nil)
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -799,7 +799,7 @@ results = client.president.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.president.load({ "id" => "president_id" })
+result = client.President.load({ "id" => "president_id" })
 ```
 
 ### Common Methods
@@ -835,7 +835,7 @@ Return the entity name.
 ## RadioEntity
 
 ```ruby
-radio = client.radio
+radio = client.Radio
 ```
 
 ### Fields
@@ -855,7 +855,7 @@ radio = client.radio
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.radio.list(nil)
+results = client.Radio.list(nil)
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -863,7 +863,7 @@ results = client.radio.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.radio.load({ "id" => "radio_id" })
+result = client.Radio.load({ "id" => "radio_id" })
 ```
 
 ### Common Methods
@@ -899,7 +899,7 @@ Return the entity name.
 ## RegionEntity
 
 ```ruby
-region = client.region
+region = client.Region
 ```
 
 ### Fields
@@ -918,7 +918,7 @@ region = client.region
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.region.list(nil)
+results = client.Region.list(nil)
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -926,7 +926,7 @@ results = client.region.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.region.load({ "id" => "region_id" })
+result = client.Region.load({ "id" => "region_id" })
 ```
 
 ### Common Methods
@@ -962,7 +962,7 @@ Return the entity name.
 ## TouristicAttractionEntity
 
 ```ruby
-touristic_attraction = client.touristic_attraction
+touristic_attraction = client.TouristicAttraction
 ```
 
 ### Fields
@@ -984,7 +984,7 @@ touristic_attraction = client.touristic_attraction
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.touristic_attraction.list(nil)
+results = client.TouristicAttraction.list(nil)
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -992,7 +992,7 @@ results = client.touristic_attraction.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.touristic_attraction.load({ "id" => "touristic_attraction_id" })
+result = client.TouristicAttraction.load({ "id" => "touristic_attraction_id" })
 ```
 
 ### Common Methods
@@ -1028,7 +1028,7 @@ Return the entity name.
 ## TypicalDishEntity
 
 ```ruby
-typical_dish = client.typical_dish
+typical_dish = client.TypicalDish
 ```
 
 ### Fields
@@ -1049,7 +1049,7 @@ typical_dish = client.typical_dish
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.typical_dish.list(nil)
+results = client.TypicalDish.list(nil)
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -1057,7 +1057,7 @@ results = client.typical_dish.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.typical_dish.load({ "id" => "typical_dish_id" })
+result = client.TypicalDish.load({ "id" => "typical_dish_id" })
 ```
 
 ### Common Methods

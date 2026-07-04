@@ -28,16 +28,14 @@ require_relative "ColombiaPublic_sdk"
 client = ColombiaPublicSDK.new
 ```
 
-### 2. List airports
+### 2. List airport records
 
 ```ruby
 begin
-  result = client.airport.list
-  if result.is_a?(Array)
-    result.each do |item|
-      d = item.data_get
-      puts "#{d["id"]} #{d["name"]}"
-    end
+  # list returns an Array of Airport records — iterate directly.
+  airports = client.Airport.list
+  airports.each do |item|
+    puts "#{item["id"]} #{item["name"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -48,8 +46,9 @@ end
 
 ```ruby
 begin
-  result = client.airport.load({ "id" => "example_id" })
-  puts result
+  # load returns the bare Airport record (raises on error).
+  airport = client.Airport.load({ "id" => "example_id" })
+  puts airport
 rescue => err
   warn "load failed: #{err}"
 end
@@ -96,13 +95,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = ColombiaPublicSDK.test
+client = ColombiaPublicSDK.test({
+  "entity" => { "airport" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.airport.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+airport = client.Airport.load({ "id" => "test01" })
+puts airport
 ```
 
 ### Use a custom fetch function
@@ -178,13 +181,13 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> Hash` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> Hash` | Build and send an HTTP request. Returns a result hash (`result["ok"]`); does not raise. |
-| `Airport` | `(data) -> AirportEntity` | Create a Airport entity instance. |
+| `Airport` | `(data) -> AirportEntity` | Create an Airport entity instance. |
 | `CategoryNaturalArea` | `(data) -> CategoryNaturalAreaEntity` | Create a CategoryNaturalArea entity instance. |
 | `ConstitutionArticle` | `(data) -> ConstitutionArticleEntity` | Create a ConstitutionArticle entity instance. |
 | `Country` | `(data) -> CountryEntity` | Create a Country entity instance. |
 | `Department` | `(data) -> DepartmentEntity` | Create a Department entity instance. |
 | `Holiday` | `(data) -> HolidayEntity` | Create a Holiday entity instance. |
-| `InvasiveSpecie` | `(data) -> InvasiveSpecieEntity` | Create a InvasiveSpecie entity instance. |
+| `InvasiveSpecie` | `(data) -> InvasiveSpecieEntity` | Create an InvasiveSpecie entity instance. |
 | `Map` | `(data) -> MapEntity` | Create a Map entity instance. |
 | `NativeCommunity` | `(data) -> NativeCommunityEntity` | Create a NativeCommunity entity instance. |
 | `NaturalArea` | `(data) -> NaturalAreaEntity` | Create a NaturalArea entity instance. |
@@ -463,7 +466,7 @@ API path: `/TypicalDish`
 
 ### Airport
 
-Create an instance: `const airport = client.airport`
+Create an instance: `airport = client.Airport`
 
 #### Operations
 
@@ -487,20 +490,22 @@ Create an instance: `const airport = client.airport`
 
 #### Example: Load
 
-```ts
-const airport = await client.airport.load({ id: 'airport_id' })
+```ruby
+# load returns the bare Airport record (raises on error).
+airport = client.Airport.load({ "id" => "airport_id" })
 ```
 
 #### Example: List
 
-```ts
-const airports = await client.airport.list()
+```ruby
+# list returns an Array of Airport records (raises on error).
+airports = client.Airport.list
 ```
 
 
 ### CategoryNaturalArea
 
-Create an instance: `const category_natural_area = client.category_natural_area`
+Create an instance: `category_natural_area = client.CategoryNaturalArea`
 
 #### Operations
 
@@ -518,14 +523,15 @@ Create an instance: `const category_natural_area = client.category_natural_area`
 
 #### Example: List
 
-```ts
-const category_natural_areas = await client.category_natural_area.list()
+```ruby
+# list returns an Array of CategoryNaturalArea records (raises on error).
+category_natural_areas = client.CategoryNaturalArea.list
 ```
 
 
 ### ConstitutionArticle
 
-Create an instance: `const constitution_article = client.constitution_article`
+Create an instance: `constitution_article = client.ConstitutionArticle`
 
 #### Operations
 
@@ -546,20 +552,22 @@ Create an instance: `const constitution_article = client.constitution_article`
 
 #### Example: Load
 
-```ts
-const constitution_article = await client.constitution_article.load({ id: 'constitution_article_id' })
+```ruby
+# load returns the bare ConstitutionArticle record (raises on error).
+constitution_article = client.ConstitutionArticle.load({ "id" => "constitution_article_id" })
 ```
 
 #### Example: List
 
-```ts
-const constitution_articles = await client.constitution_article.list()
+```ruby
+# list returns an Array of ConstitutionArticle records (raises on error).
+constitution_articles = client.ConstitutionArticle.list
 ```
 
 
 ### Country
 
-Create an instance: `const country = client.country`
+Create an instance: `country = client.Country`
 
 #### Operations
 
@@ -582,14 +590,15 @@ Create an instance: `const country = client.country`
 
 #### Example: List
 
-```ts
-const countrys = await client.country.list()
+```ruby
+# list returns an Array of Country records (raises on error).
+countrys = client.Country.list
 ```
 
 
 ### Department
 
-Create an instance: `const department = client.department`
+Create an instance: `department = client.Department`
 
 #### Operations
 
@@ -613,20 +622,22 @@ Create an instance: `const department = client.department`
 
 #### Example: Load
 
-```ts
-const department = await client.department.load({ id: 'department_id' })
+```ruby
+# load returns the bare Department record (raises on error).
+department = client.Department.load({ "id" => "department_id" })
 ```
 
 #### Example: List
 
-```ts
-const departments = await client.department.list()
+```ruby
+# list returns an Array of Department records (raises on error).
+departments = client.Department.list
 ```
 
 
 ### Holiday
 
-Create an instance: `const holiday = client.holiday`
+Create an instance: `holiday = client.Holiday`
 
 #### Operations
 
@@ -647,20 +658,22 @@ Create an instance: `const holiday = client.holiday`
 
 #### Example: Load
 
-```ts
-const holiday = await client.holiday.load({ id: 'holiday_id' })
+```ruby
+# load returns the bare Holiday record (raises on error).
+holiday = client.Holiday.load({ "id" => "holiday_id" })
 ```
 
 #### Example: List
 
-```ts
-const holidays = await client.holiday.list()
+```ruby
+# list returns an Array of Holiday records (raises on error).
+holidays = client.Holiday.list
 ```
 
 
 ### InvasiveSpecie
 
-Create an instance: `const invasive_specie = client.invasive_specie`
+Create an instance: `invasive_specie = client.InvasiveSpecie`
 
 #### Operations
 
@@ -682,20 +695,22 @@ Create an instance: `const invasive_specie = client.invasive_specie`
 
 #### Example: Load
 
-```ts
-const invasive_specie = await client.invasive_specie.load({ id: 'invasive_specie_id' })
+```ruby
+# load returns the bare InvasiveSpecie record (raises on error).
+invasive_specie = client.InvasiveSpecie.load({ "id" => "invasive_specie_id" })
 ```
 
 #### Example: List
 
-```ts
-const invasive_species = await client.invasive_specie.list()
+```ruby
+# list returns an Array of InvasiveSpecie records (raises on error).
+invasive_species = client.InvasiveSpecie.list
 ```
 
 
 ### Map
 
-Create an instance: `const map = client.map`
+Create an instance: `map = client.Map`
 
 #### Operations
 
@@ -715,14 +730,15 @@ Create an instance: `const map = client.map`
 
 #### Example: List
 
-```ts
-const maps = await client.map.list()
+```ruby
+# list returns an Array of Map records (raises on error).
+maps = client.Map.list
 ```
 
 
 ### NativeCommunity
 
-Create an instance: `const native_community = client.native_community`
+Create an instance: `native_community = client.NativeCommunity`
 
 #### Operations
 
@@ -743,20 +759,22 @@ Create an instance: `const native_community = client.native_community`
 
 #### Example: Load
 
-```ts
-const native_community = await client.native_community.load({ id: 'native_community_id' })
+```ruby
+# load returns the bare NativeCommunity record (raises on error).
+native_community = client.NativeCommunity.load({ "id" => "native_community_id" })
 ```
 
 #### Example: List
 
-```ts
-const native_communitys = await client.native_community.list()
+```ruby
+# list returns an Array of NativeCommunity records (raises on error).
+native_communitys = client.NativeCommunity.list
 ```
 
 
 ### NaturalArea
 
-Create an instance: `const natural_area = client.natural_area`
+Create an instance: `natural_area = client.NaturalArea`
 
 #### Operations
 
@@ -780,20 +798,22 @@ Create an instance: `const natural_area = client.natural_area`
 
 #### Example: Load
 
-```ts
-const natural_area = await client.natural_area.load({ id: 'natural_area_id' })
+```ruby
+# load returns the bare NaturalArea record (raises on error).
+natural_area = client.NaturalArea.load({ "id" => "natural_area_id" })
 ```
 
 #### Example: List
 
-```ts
-const natural_areas = await client.natural_area.list()
+```ruby
+# list returns an Array of NaturalArea records (raises on error).
+natural_areas = client.NaturalArea.list
 ```
 
 
 ### President
 
-Create an instance: `const president = client.president`
+Create an instance: `president = client.President`
 
 #### Operations
 
@@ -816,20 +836,22 @@ Create an instance: `const president = client.president`
 
 #### Example: Load
 
-```ts
-const president = await client.president.load({ id: 'president_id' })
+```ruby
+# load returns the bare President record (raises on error).
+president = client.President.load({ "id" => "president_id" })
 ```
 
 #### Example: List
 
-```ts
-const presidents = await client.president.list()
+```ruby
+# list returns an Array of President records (raises on error).
+presidents = client.President.list
 ```
 
 
 ### Radio
 
-Create an instance: `const radio = client.radio`
+Create an instance: `radio = client.Radio`
 
 #### Operations
 
@@ -850,20 +872,22 @@ Create an instance: `const radio = client.radio`
 
 #### Example: Load
 
-```ts
-const radio = await client.radio.load({ id: 'radio_id' })
+```ruby
+# load returns the bare Radio record (raises on error).
+radio = client.Radio.load({ "id" => "radio_id" })
 ```
 
 #### Example: List
 
-```ts
-const radios = await client.radio.list()
+```ruby
+# list returns an Array of Radio records (raises on error).
+radios = client.Radio.list
 ```
 
 
 ### Region
 
-Create an instance: `const region = client.region`
+Create an instance: `region = client.Region`
 
 #### Operations
 
@@ -883,20 +907,22 @@ Create an instance: `const region = client.region`
 
 #### Example: Load
 
-```ts
-const region = await client.region.load({ id: 'region_id' })
+```ruby
+# load returns the bare Region record (raises on error).
+region = client.Region.load({ "id" => "region_id" })
 ```
 
 #### Example: List
 
-```ts
-const regions = await client.region.list()
+```ruby
+# list returns an Array of Region records (raises on error).
+regions = client.Region.list
 ```
 
 
 ### TouristicAttraction
 
-Create an instance: `const touristic_attraction = client.touristic_attraction`
+Create an instance: `touristic_attraction = client.TouristicAttraction`
 
 #### Operations
 
@@ -919,20 +945,22 @@ Create an instance: `const touristic_attraction = client.touristic_attraction`
 
 #### Example: Load
 
-```ts
-const touristic_attraction = await client.touristic_attraction.load({ id: 'touristic_attraction_id' })
+```ruby
+# load returns the bare TouristicAttraction record (raises on error).
+touristic_attraction = client.TouristicAttraction.load({ "id" => "touristic_attraction_id" })
 ```
 
 #### Example: List
 
-```ts
-const touristic_attractions = await client.touristic_attraction.list()
+```ruby
+# list returns an Array of TouristicAttraction records (raises on error).
+touristic_attractions = client.TouristicAttraction.list
 ```
 
 
 ### TypicalDish
 
-Create an instance: `const typical_dish = client.typical_dish`
+Create an instance: `typical_dish = client.TypicalDish`
 
 #### Operations
 
@@ -954,14 +982,16 @@ Create an instance: `const typical_dish = client.typical_dish`
 
 #### Example: Load
 
-```ts
-const typical_dish = await client.typical_dish.load({ id: 'typical_dish_id' })
+```ruby
+# load returns the bare TypicalDish record (raises on error).
+typical_dish = client.TypicalDish.load({ "id" => "typical_dish_id" })
 ```
 
 #### Example: List
 
-```ts
-const typical_dishs = await client.typical_dish.list()
+```ruby
+# list returns an Array of TypicalDish records (raises on error).
+typical_dishs = client.TypicalDish.list
 ```
 
 
@@ -1036,7 +1066,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-airport = client.airport
+airport = client.Airport
 airport.load({ "id" => "example_id" })
 
 # airport.data_get now returns the loaded airport data

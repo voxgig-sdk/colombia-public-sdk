@@ -26,9 +26,11 @@ import { ColombiaPublicSDK } from '@voxgig-sdk/colombia-public'
 
 const client = new ColombiaPublicSDK()
 
-// List all airports
-const airports = await client.airport.list()
-console.log(airports.data)
+// List all airports (returns Airport[])
+const airports = await client.Airport().list()
+for (const airport of airports) {
+  console.log(airport)
+}
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -97,12 +99,13 @@ from colombiapublic_sdk import ColombiaPublicSDK
 
 client = ColombiaPublicSDK()
 
-# List all airports
-airports = client.airport.list()
-print(airports)
+# List all airports (returns a list, raises on error)
+airports = client.Airport().list({})
+for airport in airports:
+    print(airport)
 
-# Load a specific airport
-airport = client.airport.load({"id": "example_id"})
+# Load a specific airport (returns the record, raises on error)
+airport = client.Airport().load({"id": "example_id"})
 print(airport)
 ```
 
@@ -114,12 +117,12 @@ require_once 'colombiapublic_sdk.php';
 
 $client = new ColombiaPublicSDK();
 
-// List all airports (throws on error)
-$airports = $client->airport()->list();
+// List all airports (returns an array; throws on error)
+$airports = $client->Airport()->list();
 print_r($airports);
 
-// Load a specific airport
-$airport = $client->airport()->load(["id" => "example_id"]);
+// Load a specific airport (returns the bare record; throws on error)
+$airport = $client->Airport()->load(["id" => "example_id"]);
 print_r($airport);
 ```
 
@@ -142,12 +145,12 @@ require_relative "ColombiaPublic_sdk"
 
 client = ColombiaPublicSDK.new
 
-# List all airports
-airports = client.airport.list
+# List all airports (returns an Array; raises on error)
+airports = client.Airport.list
 puts airports
 
-# Load a specific airport
-airport = client.airport.load({ "id" => "example_id" })
+# Load a specific airport (returns the bare record; raises on error)
+airport = client.Airport.load({ "id" => "example_id" })
 puts airport
 ```
 
@@ -159,11 +162,11 @@ local sdk = require("colombia-public_sdk")
 local client = sdk.new()
 
 -- List all airports
-local airports, err = client:airport():list()
+local airports, err = client:Airport():list()
 print(airports)
 
 -- Load a specific airport
-local airport, err = client:airport():load({ id = "example_id" })
+local airport, err = client:Airport():load({ id = "example_id" })
 print(airport)
 ```
 
@@ -176,22 +179,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = ColombiaPublicSDK.test()
-const result = await client.airport.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const airport = await client.Airport().load({ id: 1 })
+// airport is a bare Airport populated with mock data
+console.log(airport)
 ```
 
 ### Python
 
 ```python
 client = ColombiaPublicSDK.test()
-result = client.airport.load({"id": "test01"})
+airport = client.Airport().load({"id": "test01"})
+print(airport)
 ```
 
 ### PHP
 
 ```php
-$client = ColombiaPublicSDK::test();
-$result = $client->airport()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = ColombiaPublicSDK::test([
+    "entity" => ["airport" => ["test01" => ["id" => "test01"]]],
+]);
+$airport = $client->Airport()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -206,15 +214,18 @@ result, err := client.Airport(nil).Load(
 ### Ruby
 
 ```ruby
-client = ColombiaPublicSDK.test
-result = client.airport.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = ColombiaPublicSDK.test({
+  "entity" => { "airport" => { "test01" => { "id" => "test01" } } },
+})
+airport = client.Airport.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:airport():load({ id = "test01" })
+local result, err = client:Airport():load({ id = "test01" })
 ```
 
 ## How it works
@@ -262,6 +273,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

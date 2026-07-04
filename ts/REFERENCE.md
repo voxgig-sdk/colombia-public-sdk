@@ -277,7 +277,7 @@ Alias for `ColombiaPublicSDK.test()`.
 ## AirportEntity
 
 ```ts
-const airport = client.airport
+const airport = client.Airport()
 ```
 
 ### Fields
@@ -300,7 +300,7 @@ const airport = client.airport
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.airport.list()
+const results = await client.Airport().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -308,7 +308,7 @@ const results = await client.airport.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.airport.load({ id: 'airport_id' })
+const result = await client.Airport().load({ id: 'airport_id' })
 ```
 
 ### Common Methods
@@ -342,7 +342,7 @@ Return a copy of the entity options.
 ## CategoryNaturalAreaEntity
 
 ```ts
-const category_natural_area = client.category_natural_area
+const category_natural_area = client.CategoryNaturalArea()
 ```
 
 ### Fields
@@ -360,7 +360,7 @@ const category_natural_area = client.category_natural_area
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.category_natural_area.list()
+const results = await client.CategoryNaturalArea().list()
 ```
 
 ### Common Methods
@@ -394,7 +394,7 @@ Return a copy of the entity options.
 ## ConstitutionArticleEntity
 
 ```ts
-const constitution_article = client.constitution_article
+const constitution_article = client.ConstitutionArticle()
 ```
 
 ### Fields
@@ -414,7 +414,7 @@ const constitution_article = client.constitution_article
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.constitution_article.list()
+const results = await client.ConstitutionArticle().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -422,7 +422,7 @@ const results = await client.constitution_article.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.constitution_article.load({ id: 'constitution_article_id' })
+const result = await client.ConstitutionArticle().load({ id: 'constitution_article_id' })
 ```
 
 ### Common Methods
@@ -456,7 +456,7 @@ Return a copy of the entity options.
 ## CountryEntity
 
 ```ts
-const country = client.country
+const country = client.Country()
 ```
 
 ### Fields
@@ -479,7 +479,7 @@ const country = client.country
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.country.list()
+const results = await client.Country().list()
 ```
 
 ### Common Methods
@@ -513,7 +513,7 @@ Return a copy of the entity options.
 ## DepartmentEntity
 
 ```ts
-const department = client.department
+const department = client.Department()
 ```
 
 ### Fields
@@ -536,7 +536,7 @@ const department = client.department
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.department.list()
+const results = await client.Department().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -544,7 +544,7 @@ const results = await client.department.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.department.load({ id: 'department_id' })
+const result = await client.Department().load({ id: 'department_id' })
 ```
 
 ### Common Methods
@@ -578,7 +578,7 @@ Return a copy of the entity options.
 ## HolidayEntity
 
 ```ts
-const holiday = client.holiday
+const holiday = client.Holiday()
 ```
 
 ### Fields
@@ -598,7 +598,7 @@ const holiday = client.holiday
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.holiday.list()
+const results = await client.Holiday().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -606,7 +606,7 @@ const results = await client.holiday.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.holiday.load({ id: 'holiday_id' })
+const result = await client.Holiday().load({ id: 'holiday_id' })
 ```
 
 ### Common Methods
@@ -640,7 +640,7 @@ Return a copy of the entity options.
 ## InvasiveSpecieEntity
 
 ```ts
-const invasive_specie = client.invasive_specie
+const invasive_specie = client.InvasiveSpecie()
 ```
 
 ### Fields
@@ -661,7 +661,7 @@ const invasive_specie = client.invasive_specie
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.invasive_specie.list()
+const results = await client.InvasiveSpecie().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -669,7 +669,7 @@ const results = await client.invasive_specie.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.invasive_specie.load({ id: 'invasive_specie_id' })
+const result = await client.InvasiveSpecie().load({ id: 'invasive_specie_id' })
 ```
 
 ### Common Methods
@@ -703,7 +703,7 @@ Return a copy of the entity options.
 ## MapEntity
 
 ```ts
-const map = client.map
+const map = client.Map()
 ```
 
 ### Fields
@@ -723,7 +723,7 @@ const map = client.map
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.map.list()
+const results = await client.Map().list()
 ```
 
 ### Common Methods
@@ -757,7 +757,7 @@ Return a copy of the entity options.
 ## NativeCommunityEntity
 
 ```ts
-const native_community = client.native_community
+const native_community = client.NativeCommunity()
 ```
 
 ### Fields
@@ -777,7 +777,7 @@ const native_community = client.native_community
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.native_community.list()
+const results = await client.NativeCommunity().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -785,7 +785,7 @@ const results = await client.native_community.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.native_community.load({ id: 'native_community_id' })
+const result = await client.NativeCommunity().load({ id: 'native_community_id' })
 ```
 
 ### Common Methods
@@ -819,7 +819,7 @@ Return a copy of the entity options.
 ## NaturalAreaEntity
 
 ```ts
-const natural_area = client.natural_area
+const natural_area = client.NaturalArea()
 ```
 
 ### Fields
@@ -842,7 +842,7 @@ const natural_area = client.natural_area
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.natural_area.list()
+const results = await client.NaturalArea().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -850,7 +850,7 @@ const results = await client.natural_area.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.natural_area.load({ id: 'natural_area_id' })
+const result = await client.NaturalArea().load({ id: 'natural_area_id' })
 ```
 
 ### Common Methods
@@ -884,7 +884,7 @@ Return a copy of the entity options.
 ## PresidentEntity
 
 ```ts
-const president = client.president
+const president = client.President()
 ```
 
 ### Fields
@@ -906,7 +906,7 @@ const president = client.president
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.president.list()
+const results = await client.President().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -914,7 +914,7 @@ const results = await client.president.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.president.load({ id: 'president_id' })
+const result = await client.President().load({ id: 'president_id' })
 ```
 
 ### Common Methods
@@ -948,7 +948,7 @@ Return a copy of the entity options.
 ## RadioEntity
 
 ```ts
-const radio = client.radio
+const radio = client.Radio()
 ```
 
 ### Fields
@@ -968,7 +968,7 @@ const radio = client.radio
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.radio.list()
+const results = await client.Radio().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -976,7 +976,7 @@ const results = await client.radio.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.radio.load({ id: 'radio_id' })
+const result = await client.Radio().load({ id: 'radio_id' })
 ```
 
 ### Common Methods
@@ -1010,7 +1010,7 @@ Return a copy of the entity options.
 ## RegionEntity
 
 ```ts
-const region = client.region
+const region = client.Region()
 ```
 
 ### Fields
@@ -1029,7 +1029,7 @@ const region = client.region
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.region.list()
+const results = await client.Region().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -1037,7 +1037,7 @@ const results = await client.region.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.region.load({ id: 'region_id' })
+const result = await client.Region().load({ id: 'region_id' })
 ```
 
 ### Common Methods
@@ -1071,7 +1071,7 @@ Return a copy of the entity options.
 ## TouristicAttractionEntity
 
 ```ts
-const touristic_attraction = client.touristic_attraction
+const touristic_attraction = client.TouristicAttraction()
 ```
 
 ### Fields
@@ -1093,7 +1093,7 @@ const touristic_attraction = client.touristic_attraction
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.touristic_attraction.list()
+const results = await client.TouristicAttraction().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -1101,7 +1101,7 @@ const results = await client.touristic_attraction.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.touristic_attraction.load({ id: 'touristic_attraction_id' })
+const result = await client.TouristicAttraction().load({ id: 'touristic_attraction_id' })
 ```
 
 ### Common Methods
@@ -1135,7 +1135,7 @@ Return a copy of the entity options.
 ## TypicalDishEntity
 
 ```ts
-const typical_dish = client.typical_dish
+const typical_dish = client.TypicalDish()
 ```
 
 ### Fields
@@ -1156,7 +1156,7 @@ const typical_dish = client.typical_dish
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.typical_dish.list()
+const results = await client.TypicalDish().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -1164,7 +1164,7 @@ const results = await client.typical_dish.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.typical_dish.load({ id: 'typical_dish_id' })
+const result = await client.TypicalDish().load({ id: 'typical_dish_id' })
 ```
 
 ### Common Methods

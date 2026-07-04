@@ -136,7 +136,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## AirportEntity
 
 ```python
-airport = client.airport
+airport = client.Airport()
 ```
 
 ### Fields
@@ -159,7 +159,9 @@ airport = client.airport
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.airport.list({})
+results = client.Airport().list({})
+for airport in results:
+    print(airport)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -167,7 +169,7 @@ results = client.airport.list({})
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.airport.load({"id": "airport_id"})
+result = client.Airport().load({"id": "airport_id"})
 ```
 
 ### Common Methods
@@ -202,7 +204,7 @@ Return the entity name.
 ## CategoryNaturalAreaEntity
 
 ```python
-category_natural_area = client.category_natural_area
+category_natural_area = client.CategoryNaturalArea()
 ```
 
 ### Fields
@@ -220,7 +222,9 @@ category_natural_area = client.category_natural_area
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.category_natural_area.list({})
+results = client.CategoryNaturalArea().list({})
+for category_natural_area in results:
+    print(category_natural_area)
 ```
 
 ### Common Methods
@@ -255,7 +259,7 @@ Return the entity name.
 ## ConstitutionArticleEntity
 
 ```python
-constitution_article = client.constitution_article
+constitution_article = client.ConstitutionArticle()
 ```
 
 ### Fields
@@ -275,7 +279,9 @@ constitution_article = client.constitution_article
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.constitution_article.list({})
+results = client.ConstitutionArticle().list({})
+for constitution_article in results:
+    print(constitution_article)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -283,7 +289,7 @@ results = client.constitution_article.list({})
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.constitution_article.load({"id": "constitution_article_id"})
+result = client.ConstitutionArticle().load({"id": "constitution_article_id"})
 ```
 
 ### Common Methods
@@ -318,7 +324,7 @@ Return the entity name.
 ## CountryEntity
 
 ```python
-country = client.country
+country = client.Country()
 ```
 
 ### Fields
@@ -341,7 +347,9 @@ country = client.country
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.country.list({})
+results = client.Country().list({})
+for country in results:
+    print(country)
 ```
 
 ### Common Methods
@@ -376,7 +384,7 @@ Return the entity name.
 ## DepartmentEntity
 
 ```python
-department = client.department
+department = client.Department()
 ```
 
 ### Fields
@@ -399,7 +407,9 @@ department = client.department
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.department.list({})
+results = client.Department().list({})
+for department in results:
+    print(department)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -407,7 +417,7 @@ results = client.department.list({})
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.department.load({"id": "department_id"})
+result = client.Department().load({"id": "department_id"})
 ```
 
 ### Common Methods
@@ -442,7 +452,7 @@ Return the entity name.
 ## HolidayEntity
 
 ```python
-holiday = client.holiday
+holiday = client.Holiday()
 ```
 
 ### Fields
@@ -462,7 +472,9 @@ holiday = client.holiday
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.holiday.list({})
+results = client.Holiday().list({})
+for holiday in results:
+    print(holiday)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -470,7 +482,7 @@ results = client.holiday.list({})
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.holiday.load({"id": "holiday_id"})
+result = client.Holiday().load({"id": "holiday_id"})
 ```
 
 ### Common Methods
@@ -505,7 +517,7 @@ Return the entity name.
 ## InvasiveSpecieEntity
 
 ```python
-invasive_specie = client.invasive_specie
+invasive_specie = client.InvasiveSpecie()
 ```
 
 ### Fields
@@ -526,7 +538,9 @@ invasive_specie = client.invasive_specie
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.invasive_specie.list({})
+results = client.InvasiveSpecie().list({})
+for invasive_specie in results:
+    print(invasive_specie)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -534,7 +548,7 @@ results = client.invasive_specie.list({})
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.invasive_specie.load({"id": "invasive_specie_id"})
+result = client.InvasiveSpecie().load({"id": "invasive_specie_id"})
 ```
 
 ### Common Methods
@@ -569,7 +583,7 @@ Return the entity name.
 ## MapEntity
 
 ```python
-map = client.map
+map = client.Map()
 ```
 
 ### Fields
@@ -589,7 +603,9 @@ map = client.map
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.map.list({})
+results = client.Map().list({})
+for map in results:
+    print(map)
 ```
 
 ### Common Methods
@@ -624,7 +640,7 @@ Return the entity name.
 ## NativeCommunityEntity
 
 ```python
-native_community = client.native_community
+native_community = client.NativeCommunity()
 ```
 
 ### Fields
@@ -644,7 +660,9 @@ native_community = client.native_community
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.native_community.list({})
+results = client.NativeCommunity().list({})
+for native_community in results:
+    print(native_community)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -652,7 +670,7 @@ results = client.native_community.list({})
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.native_community.load({"id": "native_community_id"})
+result = client.NativeCommunity().load({"id": "native_community_id"})
 ```
 
 ### Common Methods
@@ -687,7 +705,7 @@ Return the entity name.
 ## NaturalAreaEntity
 
 ```python
-natural_area = client.natural_area
+natural_area = client.NaturalArea()
 ```
 
 ### Fields
@@ -710,7 +728,9 @@ natural_area = client.natural_area
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.natural_area.list({})
+results = client.NaturalArea().list({})
+for natural_area in results:
+    print(natural_area)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -718,7 +738,7 @@ results = client.natural_area.list({})
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.natural_area.load({"id": "natural_area_id"})
+result = client.NaturalArea().load({"id": "natural_area_id"})
 ```
 
 ### Common Methods
@@ -753,7 +773,7 @@ Return the entity name.
 ## PresidentEntity
 
 ```python
-president = client.president
+president = client.President()
 ```
 
 ### Fields
@@ -775,7 +795,9 @@ president = client.president
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.president.list({})
+results = client.President().list({})
+for president in results:
+    print(president)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -783,7 +805,7 @@ results = client.president.list({})
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.president.load({"id": "president_id"})
+result = client.President().load({"id": "president_id"})
 ```
 
 ### Common Methods
@@ -818,7 +840,7 @@ Return the entity name.
 ## RadioEntity
 
 ```python
-radio = client.radio
+radio = client.Radio()
 ```
 
 ### Fields
@@ -838,7 +860,9 @@ radio = client.radio
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.radio.list({})
+results = client.Radio().list({})
+for radio in results:
+    print(radio)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -846,7 +870,7 @@ results = client.radio.list({})
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.radio.load({"id": "radio_id"})
+result = client.Radio().load({"id": "radio_id"})
 ```
 
 ### Common Methods
@@ -881,7 +905,7 @@ Return the entity name.
 ## RegionEntity
 
 ```python
-region = client.region
+region = client.Region()
 ```
 
 ### Fields
@@ -900,7 +924,9 @@ region = client.region
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.region.list({})
+results = client.Region().list({})
+for region in results:
+    print(region)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -908,7 +934,7 @@ results = client.region.list({})
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.region.load({"id": "region_id"})
+result = client.Region().load({"id": "region_id"})
 ```
 
 ### Common Methods
@@ -943,7 +969,7 @@ Return the entity name.
 ## TouristicAttractionEntity
 
 ```python
-touristic_attraction = client.touristic_attraction
+touristic_attraction = client.TouristicAttraction()
 ```
 
 ### Fields
@@ -965,7 +991,9 @@ touristic_attraction = client.touristic_attraction
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.touristic_attraction.list({})
+results = client.TouristicAttraction().list({})
+for touristic_attraction in results:
+    print(touristic_attraction)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -973,7 +1001,7 @@ results = client.touristic_attraction.list({})
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.touristic_attraction.load({"id": "touristic_attraction_id"})
+result = client.TouristicAttraction().load({"id": "touristic_attraction_id"})
 ```
 
 ### Common Methods
@@ -1008,7 +1036,7 @@ Return the entity name.
 ## TypicalDishEntity
 
 ```python
-typical_dish = client.typical_dish
+typical_dish = client.TypicalDish()
 ```
 
 ### Fields
@@ -1029,7 +1057,9 @@ typical_dish = client.typical_dish
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.typical_dish.list({})
+results = client.TypicalDish().list({})
+for typical_dish in results:
+    print(typical_dish)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -1037,7 +1067,7 @@ results = client.typical_dish.list({})
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.typical_dish.load({"id": "typical_dish_id"})
+result = client.TypicalDish().load({"id": "typical_dish_id"})
 ```
 
 ### Common Methods

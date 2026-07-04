@@ -218,210 +218,105 @@ class ColombiaPublicSDK {
 
 
 
-  _airport?: AirportEntity
-
-  // Idiomatic facade: `client.airport.list()` / `client.airport.load({ id })`.
-  get airport(): AirportEntity {
-    return (this._airport ??= new AirportEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.airport` instead. */
+  // Entity access: `client.Airport().list()` / `client.Airport().load({ id })`.
   Airport(data?: any) {
     const self = this
     return new AirportEntity(self,data)
   }
 
 
-  _category_natural_area?: CategoryNaturalAreaEntity
-
-  // Idiomatic facade: `client.category_natural_area.list()` / `client.category_natural_area.load({ id })`.
-  get category_natural_area(): CategoryNaturalAreaEntity {
-    return (this._category_natural_area ??= new CategoryNaturalAreaEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.category_natural_area` instead. */
+  // Entity access: `client.CategoryNaturalArea().list()` / `client.CategoryNaturalArea().load({ id })`.
   CategoryNaturalArea(data?: any) {
     const self = this
     return new CategoryNaturalAreaEntity(self,data)
   }
 
 
-  _constitution_article?: ConstitutionArticleEntity
-
-  // Idiomatic facade: `client.constitution_article.list()` / `client.constitution_article.load({ id })`.
-  get constitution_article(): ConstitutionArticleEntity {
-    return (this._constitution_article ??= new ConstitutionArticleEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.constitution_article` instead. */
+  // Entity access: `client.ConstitutionArticle().list()` / `client.ConstitutionArticle().load({ id })`.
   ConstitutionArticle(data?: any) {
     const self = this
     return new ConstitutionArticleEntity(self,data)
   }
 
 
-  _country?: CountryEntity
-
-  // Idiomatic facade: `client.country.list()` / `client.country.load({ id })`.
-  get country(): CountryEntity {
-    return (this._country ??= new CountryEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.country` instead. */
+  // Entity access: `client.Country().list()` / `client.Country().load({ id })`.
   Country(data?: any) {
     const self = this
     return new CountryEntity(self,data)
   }
 
 
-  _department?: DepartmentEntity
-
-  // Idiomatic facade: `client.department.list()` / `client.department.load({ id })`.
-  get department(): DepartmentEntity {
-    return (this._department ??= new DepartmentEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.department` instead. */
+  // Entity access: `client.Department().list()` / `client.Department().load({ id })`.
   Department(data?: any) {
     const self = this
     return new DepartmentEntity(self,data)
   }
 
 
-  _holiday?: HolidayEntity
-
-  // Idiomatic facade: `client.holiday.list()` / `client.holiday.load({ id })`.
-  get holiday(): HolidayEntity {
-    return (this._holiday ??= new HolidayEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.holiday` instead. */
+  // Entity access: `client.Holiday().list()` / `client.Holiday().load({ id })`.
   Holiday(data?: any) {
     const self = this
     return new HolidayEntity(self,data)
   }
 
 
-  _invasive_specie?: InvasiveSpecieEntity
-
-  // Idiomatic facade: `client.invasive_specie.list()` / `client.invasive_specie.load({ id })`.
-  get invasive_specie(): InvasiveSpecieEntity {
-    return (this._invasive_specie ??= new InvasiveSpecieEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.invasive_specie` instead. */
+  // Entity access: `client.InvasiveSpecie().list()` / `client.InvasiveSpecie().load({ id })`.
   InvasiveSpecie(data?: any) {
     const self = this
     return new InvasiveSpecieEntity(self,data)
   }
 
 
-  _map?: MapEntity
-
-  // Idiomatic facade: `client.map.list()` / `client.map.load({ id })`.
-  get map(): MapEntity {
-    return (this._map ??= new MapEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.map` instead. */
+  // Entity access: `client.Map().list()` / `client.Map().load({ id })`.
   Map(data?: any) {
     const self = this
     return new MapEntity(self,data)
   }
 
 
-  _native_community?: NativeCommunityEntity
-
-  // Idiomatic facade: `client.native_community.list()` / `client.native_community.load({ id })`.
-  get native_community(): NativeCommunityEntity {
-    return (this._native_community ??= new NativeCommunityEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.native_community` instead. */
+  // Entity access: `client.NativeCommunity().list()` / `client.NativeCommunity().load({ id })`.
   NativeCommunity(data?: any) {
     const self = this
     return new NativeCommunityEntity(self,data)
   }
 
 
-  _natural_area?: NaturalAreaEntity
-
-  // Idiomatic facade: `client.natural_area.list()` / `client.natural_area.load({ id })`.
-  get natural_area(): NaturalAreaEntity {
-    return (this._natural_area ??= new NaturalAreaEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.natural_area` instead. */
+  // Entity access: `client.NaturalArea().list()` / `client.NaturalArea().load({ id })`.
   NaturalArea(data?: any) {
     const self = this
     return new NaturalAreaEntity(self,data)
   }
 
 
-  _president?: PresidentEntity
-
-  // Idiomatic facade: `client.president.list()` / `client.president.load({ id })`.
-  get president(): PresidentEntity {
-    return (this._president ??= new PresidentEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.president` instead. */
+  // Entity access: `client.President().list()` / `client.President().load({ id })`.
   President(data?: any) {
     const self = this
     return new PresidentEntity(self,data)
   }
 
 
-  _radio?: RadioEntity
-
-  // Idiomatic facade: `client.radio.list()` / `client.radio.load({ id })`.
-  get radio(): RadioEntity {
-    return (this._radio ??= new RadioEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.radio` instead. */
+  // Entity access: `client.Radio().list()` / `client.Radio().load({ id })`.
   Radio(data?: any) {
     const self = this
     return new RadioEntity(self,data)
   }
 
 
-  _region?: RegionEntity
-
-  // Idiomatic facade: `client.region.list()` / `client.region.load({ id })`.
-  get region(): RegionEntity {
-    return (this._region ??= new RegionEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.region` instead. */
+  // Entity access: `client.Region().list()` / `client.Region().load({ id })`.
   Region(data?: any) {
     const self = this
     return new RegionEntity(self,data)
   }
 
 
-  _touristic_attraction?: TouristicAttractionEntity
-
-  // Idiomatic facade: `client.touristic_attraction.list()` / `client.touristic_attraction.load({ id })`.
-  get touristic_attraction(): TouristicAttractionEntity {
-    return (this._touristic_attraction ??= new TouristicAttractionEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.touristic_attraction` instead. */
+  // Entity access: `client.TouristicAttraction().list()` / `client.TouristicAttraction().load({ id })`.
   TouristicAttraction(data?: any) {
     const self = this
     return new TouristicAttractionEntity(self,data)
   }
 
 
-  _typical_dish?: TypicalDishEntity
-
-  // Idiomatic facade: `client.typical_dish.list()` / `client.typical_dish.load({ id })`.
-  get typical_dish(): TypicalDishEntity {
-    return (this._typical_dish ??= new TypicalDishEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.typical_dish` instead. */
+  // Entity access: `client.TypicalDish().list()` / `client.TypicalDish().load({ id })`.
   TypicalDish(data?: any) {
     const self = this
     return new TypicalDishEntity(self,data)
