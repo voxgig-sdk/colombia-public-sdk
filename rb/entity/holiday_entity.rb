@@ -45,6 +45,7 @@ class HolidayEntity
     end
   end
 
+  # @return [Holiday, Hash] the current Holiday data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class HolidayEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Holiday fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single Holiday.
+  #
+  # @param reqmatch [HolidayLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Holiday, Hash] the loaded Holiday; raises ColombiaPublicError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
@@ -86,6 +93,11 @@ class HolidayEntity
 
 
   
+  # List Holiday items matching the given filter.
+  #
+  # @param reqmatch [HolidayListMatch, Hash, nil] match filter (any subset of Holiday fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<Holiday>, Array] the matching Holiday items; raises ColombiaPublicError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

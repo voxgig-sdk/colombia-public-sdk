@@ -85,6 +85,27 @@ func (e *TouristicAttractionEntity) Match(args ...any) any {
 	return out
 }
 
+// DataTyped is the statically-typed accessor for this entity's data. With no
+// argument it returns the current data as an TouristicAttraction; with an argument it
+// sets the data and returns the stored value. It delegates to the untyped Data
+// (identical runtime) and converts at the typed boundary.
+func (e *TouristicAttractionEntity) DataTyped(data ...TouristicAttraction) TouristicAttraction {
+	if len(data) > 0 {
+		return typedFrom[TouristicAttraction](e.Data(asMap(data[0])))
+	}
+	return typedFrom[TouristicAttraction](e.Data())
+}
+
+// MatchTyped mirrors DataTyped for the entity's match filter. The match is a
+// partial of the entity, so it round-trips through TouristicAttraction (all fields
+// optional at the wire level).
+func (e *TouristicAttractionEntity) MatchTyped(match ...TouristicAttraction) TouristicAttraction {
+	if len(match) > 0 {
+		return typedFrom[TouristicAttraction](e.Match(asMap(match[0])))
+	}
+	return typedFrom[TouristicAttraction](e.Match())
+}
+
 
 func (e *TouristicAttractionEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any, error) {
 	utility := e.utility
@@ -111,6 +132,17 @@ func (e *TouristicAttractionEntity) Load(reqmatch map[string]any, ctrl map[strin
 	})
 }
 
+// LoadTyped is the statically-typed variant of Load: it takes an
+// TouristicAttractionLoadMatch and returns an TouristicAttraction. It delegates to the untyped
+// Load (identical runtime) and converts at the typed boundary.
+func (e *TouristicAttractionEntity) LoadTyped(reqmatch TouristicAttractionLoadMatch, ctrl map[string]any) (TouristicAttraction, error) {
+	res, err := e.Load(asMap(reqmatch), ctrl)
+	if err != nil {
+		return TouristicAttraction{}, err
+	}
+	return typedFrom[TouristicAttraction](res), nil
+}
+
 
 
 
@@ -131,6 +163,17 @@ func (e *TouristicAttractionEntity) List(reqmatch map[string]any, ctrl map[strin
 			}
 		}
 	})
+}
+
+// ListTyped is the statically-typed variant of List: it takes an
+// TouristicAttractionListMatch and returns []TouristicAttraction. It delegates to the untyped
+// List (identical runtime) and converts at the typed boundary.
+func (e *TouristicAttractionEntity) ListTyped(reqmatch TouristicAttractionListMatch, ctrl map[string]any) ([]TouristicAttraction, error) {
+	res, err := e.List(asMap(reqmatch), ctrl)
+	if err != nil {
+		return nil, err
+	}
+	return typedSliceFrom[TouristicAttraction](res), nil
 }
 
 

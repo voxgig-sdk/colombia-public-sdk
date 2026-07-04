@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch CategoryNaturalAreaListMatch
+---@param ctrl? table
+---@return CategoryNaturalArea[]
+---@return string? err
 function CategoryNaturalAreaEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

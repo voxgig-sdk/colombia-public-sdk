@@ -50,16 +50,14 @@ class RegionEntityTest extends TestCase
         $region_ref01_ent = $client->Region(null);
         $region_ref01_match = [];
 
-        [$region_ref01_list_result, $err] = $region_ref01_ent->list($region_ref01_match, null);
-        $this->assertNull($err);
+        $region_ref01_list_result = $region_ref01_ent->list($region_ref01_match, null);
         $this->assertIsArray($region_ref01_list_result);
 
         // LOAD
         $region_ref01_match_dt0 = [
             "id" => $region_ref01_data["id"],
         ];
-        [$region_ref01_data_dt0_loaded, $err] = $region_ref01_ent->load($region_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $region_ref01_data_dt0_loaded = $region_ref01_ent->load($region_ref01_match_dt0, null);
         $region_ref01_data_dt0_load_result = Helpers::to_map($region_ref01_data_dt0_loaded);
         $this->assertNotNull($region_ref01_data_dt0_load_result);
         $this->assertEquals($region_ref01_data_dt0_load_result["id"], $region_ref01_data["id"]);
@@ -96,7 +94,6 @@ function region_basic_setup($extra)
         "COLOMBIAPUBLIC_TEST_REGION_ENTID" => $idmap,
         "COLOMBIAPUBLIC_TEST_LIVE" => "FALSE",
         "COLOMBIAPUBLIC_TEST_EXPLAIN" => "FALSE",
-        "COLOMBIAPUBLIC_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -108,7 +105,6 @@ function region_basic_setup($extra)
     if ($env["COLOMBIAPUBLIC_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["COLOMBIAPUBLIC_APIKEY"],
             ],
             $extra ?? [],
         ]);

@@ -194,14 +194,12 @@ func constitution_articleDirectSetup(mockres any) *constitution_articleDirectSet
 	env := envOverride(map[string]any{
 		"COLOMBIAPUBLIC_TEST_CONSTITUTION_ARTICLE_ENTID": map[string]any{},
 		"COLOMBIAPUBLIC_TEST_LIVE":    "FALSE",
-		"COLOMBIAPUBLIC_APIKEY":       "NONE",
 	})
 
 	live := env["COLOMBIAPUBLIC_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
-			"apikey": env["COLOMBIAPUBLIC_APIKEY"],
 		}
 		client := sdk.NewColombiaPublicSDK(mergedOpts)
 

@@ -45,6 +45,7 @@ class PresidentEntity
     end
   end
 
+  # @return [President, Hash] the current President data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class PresidentEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of President fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single President.
+  #
+  # @param reqmatch [PresidentLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [President, Hash] the loaded President; raises ColombiaPublicError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
@@ -86,6 +93,11 @@ class PresidentEntity
 
 
   
+  # List President items matching the given filter.
+  #
+  # @param reqmatch [PresidentListMatch, Hash, nil] match filter (any subset of President fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<President>, Array] the matching President items; raises ColombiaPublicError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

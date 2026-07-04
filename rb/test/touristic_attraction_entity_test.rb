@@ -43,16 +43,14 @@ class TouristicAttractionEntityTest < Minitest::Test
     touristic_attraction_ref01_ent = client.TouristicAttraction(nil)
     touristic_attraction_ref01_match = {}
 
-    touristic_attraction_ref01_list_result, err = touristic_attraction_ref01_ent.list(touristic_attraction_ref01_match, nil)
-    assert_nil err
+    touristic_attraction_ref01_list_result = touristic_attraction_ref01_ent.list(touristic_attraction_ref01_match, nil)
     assert touristic_attraction_ref01_list_result.is_a?(Array)
 
     # LOAD
     touristic_attraction_ref01_match_dt0 = {
       "id" => touristic_attraction_ref01_data["id"],
     }
-    touristic_attraction_ref01_data_dt0_loaded, err = touristic_attraction_ref01_ent.load(touristic_attraction_ref01_match_dt0, nil)
-    assert_nil err
+    touristic_attraction_ref01_data_dt0_loaded = touristic_attraction_ref01_ent.load(touristic_attraction_ref01_match_dt0, nil)
     touristic_attraction_ref01_data_dt0_load_result = Helpers.to_map(touristic_attraction_ref01_data_dt0_loaded)
     assert !touristic_attraction_ref01_data_dt0_load_result.nil?
     assert_equal touristic_attraction_ref01_data_dt0_load_result["id"], touristic_attraction_ref01_data["id"]
@@ -93,7 +91,6 @@ def touristic_attraction_basic_setup(extra)
     "COLOMBIAPUBLIC_TEST_TOURISTIC_ATTRACTION_ENTID" => idmap,
     "COLOMBIAPUBLIC_TEST_LIVE" => "FALSE",
     "COLOMBIAPUBLIC_TEST_EXPLAIN" => "FALSE",
-    "COLOMBIAPUBLIC_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -105,7 +102,6 @@ def touristic_attraction_basic_setup(extra)
   if env["COLOMBIAPUBLIC_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["COLOMBIAPUBLIC_APIKEY"],
       },
       extra || {},
     ])

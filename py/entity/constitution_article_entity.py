@@ -1,7 +1,14 @@
 # ColombiaPublic SDK ConstitutionArticle entity
 
+from __future__ import annotations
+
 from utility.voxgig_struct import voxgig_struct as vs
 from core import helpers
+from colombiapublic_types import (
+    ConstitutionArticle,
+    ConstitutionArticleLoadMatch,
+    ConstitutionArticleListMatch,
+)
 
 
 class ConstitutionArticleEntity:
@@ -44,7 +51,7 @@ class ConstitutionArticleEntity:
             self._data = helpers.to_map(vs.clone(args)) or {}
             self._utility.feature_hook(self._entctx, "SetData")
 
-    def data_get(self):
+    def data_get(self) -> ConstitutionArticle:
         self._utility.feature_hook(self._entctx, "GetData")
         return vs.clone(self._data)
 
@@ -53,12 +60,12 @@ class ConstitutionArticleEntity:
             self._match = helpers.to_map(vs.clone(args)) or {}
             self._utility.feature_hook(self._entctx, "SetMatch")
 
-    def match_get(self):
+    def match_get(self) -> ConstitutionArticle:
         self._utility.feature_hook(self._entctx, "GetMatch")
         return vs.clone(self._match)
 
     
-    def load(self, reqmatch, ctrl=None):
+    def load(self, reqmatch: ConstitutionArticleLoadMatch, ctrl=None) -> ConstitutionArticle:
         utility = self._utility
         ctx = utility.make_context({
             "opname": "load",
@@ -80,7 +87,7 @@ class ConstitutionArticleEntity:
 
 
     
-    def list(self, reqmatch, ctrl=None):
+    def list(self, reqmatch: ConstitutionArticleListMatch, ctrl=None) -> list[ConstitutionArticle]:
         utility = self._utility
         ctx = utility.make_context({
             "opname": "list",

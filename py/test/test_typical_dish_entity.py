@@ -50,16 +50,14 @@ class TestTypicalDishEntity:
         typical_dish_ref01_ent = client.TypicalDish(None)
         typical_dish_ref01_match = {}
 
-        typical_dish_ref01_list_result, err = typical_dish_ref01_ent.list(typical_dish_ref01_match, None)
-        assert err is None
+        typical_dish_ref01_list_result = typical_dish_ref01_ent.list(typical_dish_ref01_match, None)
         assert isinstance(typical_dish_ref01_list_result, list)
 
         # LOAD
         typical_dish_ref01_match_dt0 = {
             "id": typical_dish_ref01_data["id"],
         }
-        typical_dish_ref01_data_dt0_loaded, err = typical_dish_ref01_ent.load(typical_dish_ref01_match_dt0, None)
-        assert err is None
+        typical_dish_ref01_data_dt0_loaded = typical_dish_ref01_ent.load(typical_dish_ref01_match_dt0, None)
         typical_dish_ref01_data_dt0_load_result = helpers.to_map(typical_dish_ref01_data_dt0_loaded)
         assert typical_dish_ref01_data_dt0_load_result is not None
         assert typical_dish_ref01_data_dt0_load_result["id"] == typical_dish_ref01_data["id"]
@@ -102,7 +100,6 @@ def _typical_dish_basic_setup(extra):
         "COLOMBIAPUBLIC_TEST_TYPICAL_DISH_ENTID": idmap,
         "COLOMBIAPUBLIC_TEST_LIVE": "FALSE",
         "COLOMBIAPUBLIC_TEST_EXPLAIN": "FALSE",
-        "COLOMBIAPUBLIC_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -113,7 +110,6 @@ def _typical_dish_basic_setup(extra):
     if env.get("COLOMBIAPUBLIC_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("COLOMBIAPUBLIC_APIKEY"),
             },
             extra or {},
         ])

@@ -45,6 +45,7 @@ class RadioEntity
     end
   end
 
+  # @return [Radio, Hash] the current Radio data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class RadioEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Radio fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single Radio.
+  #
+  # @param reqmatch [RadioLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Radio, Hash] the loaded Radio; raises ColombiaPublicError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
@@ -86,6 +93,11 @@ class RadioEntity
 
 
   
+  # List Radio items matching the given filter.
+  #
+  # @param reqmatch [RadioListMatch, Hash, nil] match filter (any subset of Radio fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<Radio>, Array] the matching Radio items; raises ColombiaPublicError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

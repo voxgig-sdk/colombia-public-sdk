@@ -103,7 +103,7 @@ class ColombiaPublicSDK
         return $this->_rootctx;
     }
 
-    public function prepare(array $fetchargs = []): array
+    public function prepare(array $fetchargs = []): mixed
     {
         $utility = $this->_utility;
         $fetchargs = $fetchargs ?? [];
@@ -149,19 +149,27 @@ class ColombiaPublicSDK
 
         [$_, $err] = ($utility->prepare_auth)($ctx);
         if ($err) {
-            return [null, $err];
+            return ($utility->make_error)($ctx, $err);
         }
 
-        return ($utility->make_fetch_def)($ctx);
+        [$fetchdef, $fd_err] = ($utility->make_fetch_def)($ctx);
+        if ($fd_err) {
+            return ($utility->make_error)($ctx, $fd_err);
+        }
+        return $fetchdef;
     }
 
-    public function direct(array $fetchargs = []): array
+    public function direct(array $fetchargs = []): mixed
     {
         $utility = $this->_utility;
 
-        [$fetchdef, $err] = $this->prepare($fetchargs);
-        if ($err) {
-            return [["ok" => false, "err" => $err], null];
+        // direct() is the raw-HTTP escape hatch: it never throws, it returns
+        // an {ok, err, ...} dict. prepare() now raises on error, so catch it
+        // and surface the failure through the dict instead.
+        try {
+            $fetchdef = $this->prepare($fetchargs);
+        } catch (\Throwable $err) {
+            return ["ok" => false, "err" => $err];
         }
 
         $fetchargs = $fetchargs ?? [];
@@ -176,14 +184,14 @@ class ColombiaPublicSDK
         [$fetched, $fetch_err] = ($utility->fetcher)($ctx, $url, $fetchdef);
 
         if ($fetch_err) {
-            return [["ok" => false, "err" => $fetch_err], null];
+            return ["ok" => false, "err" => $fetch_err];
         }
 
         if ($fetched === null) {
-            return [[
+            return [
                 "ok" => false,
                 "err" => $ctx->make_error("direct_no_response", "response: undefined"),
-            ], null];
+            ];
         }
 
         if (is_array($fetched)) {
@@ -208,122 +216,287 @@ class ColombiaPublicSDK
                 }
             }
 
-            return [[
+            return [
                 "ok" => $status >= 200 && $status < 300,
                 "status" => $status,
                 "headers" => Struct::getprop($fetched, "headers"),
                 "data" => $json_data,
-            ], null];
+            ];
         }
 
-        return [[
+        return [
             "ok" => false,
             "err" => $ctx->make_error("direct_invalid", "invalid response type"),
-        ], null];
+        ];
     }
 
 
-    public function Airport($data = null)
+    private $_airport = null;
+
+    // Idiomatic facade: $client->airport()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Airport() (PHP method
+    // names are case-insensitive).
+    public function airport($data = null)
     {
         require_once __DIR__ . '/entity/airport_entity.php';
+        if ($data === null) {
+            if ($this->_airport === null) {
+                $this->_airport = new AirportEntity($this, null);
+            }
+            return $this->_airport;
+        }
         return new AirportEntity($this, $data);
     }
 
 
-    public function CategoryNaturalArea($data = null)
+    private $_category_natural_area = null;
+
+    // Idiomatic facade: $client->category_natural_area()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias CategoryNaturalArea() (PHP method
+    // names are case-insensitive).
+    public function category_natural_area($data = null)
     {
         require_once __DIR__ . '/entity/category_natural_area_entity.php';
+        if ($data === null) {
+            if ($this->_category_natural_area === null) {
+                $this->_category_natural_area = new CategoryNaturalAreaEntity($this, null);
+            }
+            return $this->_category_natural_area;
+        }
         return new CategoryNaturalAreaEntity($this, $data);
     }
 
 
-    public function ConstitutionArticle($data = null)
+    private $_constitution_article = null;
+
+    // Idiomatic facade: $client->constitution_article()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias ConstitutionArticle() (PHP method
+    // names are case-insensitive).
+    public function constitution_article($data = null)
     {
         require_once __DIR__ . '/entity/constitution_article_entity.php';
+        if ($data === null) {
+            if ($this->_constitution_article === null) {
+                $this->_constitution_article = new ConstitutionArticleEntity($this, null);
+            }
+            return $this->_constitution_article;
+        }
         return new ConstitutionArticleEntity($this, $data);
     }
 
 
-    public function Country($data = null)
+    private $_country = null;
+
+    // Idiomatic facade: $client->country()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Country() (PHP method
+    // names are case-insensitive).
+    public function country($data = null)
     {
         require_once __DIR__ . '/entity/country_entity.php';
+        if ($data === null) {
+            if ($this->_country === null) {
+                $this->_country = new CountryEntity($this, null);
+            }
+            return $this->_country;
+        }
         return new CountryEntity($this, $data);
     }
 
 
-    public function Department($data = null)
+    private $_department = null;
+
+    // Idiomatic facade: $client->department()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Department() (PHP method
+    // names are case-insensitive).
+    public function department($data = null)
     {
         require_once __DIR__ . '/entity/department_entity.php';
+        if ($data === null) {
+            if ($this->_department === null) {
+                $this->_department = new DepartmentEntity($this, null);
+            }
+            return $this->_department;
+        }
         return new DepartmentEntity($this, $data);
     }
 
 
-    public function Holiday($data = null)
+    private $_holiday = null;
+
+    // Idiomatic facade: $client->holiday()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Holiday() (PHP method
+    // names are case-insensitive).
+    public function holiday($data = null)
     {
         require_once __DIR__ . '/entity/holiday_entity.php';
+        if ($data === null) {
+            if ($this->_holiday === null) {
+                $this->_holiday = new HolidayEntity($this, null);
+            }
+            return $this->_holiday;
+        }
         return new HolidayEntity($this, $data);
     }
 
 
-    public function InvasiveSpecie($data = null)
+    private $_invasive_specie = null;
+
+    // Idiomatic facade: $client->invasive_specie()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias InvasiveSpecie() (PHP method
+    // names are case-insensitive).
+    public function invasive_specie($data = null)
     {
         require_once __DIR__ . '/entity/invasive_specie_entity.php';
+        if ($data === null) {
+            if ($this->_invasive_specie === null) {
+                $this->_invasive_specie = new InvasiveSpecieEntity($this, null);
+            }
+            return $this->_invasive_specie;
+        }
         return new InvasiveSpecieEntity($this, $data);
     }
 
 
-    public function Map($data = null)
+    private $_map = null;
+
+    // Idiomatic facade: $client->map()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Map() (PHP method
+    // names are case-insensitive).
+    public function map($data = null)
     {
         require_once __DIR__ . '/entity/map_entity.php';
+        if ($data === null) {
+            if ($this->_map === null) {
+                $this->_map = new MapEntity($this, null);
+            }
+            return $this->_map;
+        }
         return new MapEntity($this, $data);
     }
 
 
-    public function NativeCommunity($data = null)
+    private $_native_community = null;
+
+    // Idiomatic facade: $client->native_community()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias NativeCommunity() (PHP method
+    // names are case-insensitive).
+    public function native_community($data = null)
     {
         require_once __DIR__ . '/entity/native_community_entity.php';
+        if ($data === null) {
+            if ($this->_native_community === null) {
+                $this->_native_community = new NativeCommunityEntity($this, null);
+            }
+            return $this->_native_community;
+        }
         return new NativeCommunityEntity($this, $data);
     }
 
 
-    public function NaturalArea($data = null)
+    private $_natural_area = null;
+
+    // Idiomatic facade: $client->natural_area()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias NaturalArea() (PHP method
+    // names are case-insensitive).
+    public function natural_area($data = null)
     {
         require_once __DIR__ . '/entity/natural_area_entity.php';
+        if ($data === null) {
+            if ($this->_natural_area === null) {
+                $this->_natural_area = new NaturalAreaEntity($this, null);
+            }
+            return $this->_natural_area;
+        }
         return new NaturalAreaEntity($this, $data);
     }
 
 
-    public function President($data = null)
+    private $_president = null;
+
+    // Idiomatic facade: $client->president()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias President() (PHP method
+    // names are case-insensitive).
+    public function president($data = null)
     {
         require_once __DIR__ . '/entity/president_entity.php';
+        if ($data === null) {
+            if ($this->_president === null) {
+                $this->_president = new PresidentEntity($this, null);
+            }
+            return $this->_president;
+        }
         return new PresidentEntity($this, $data);
     }
 
 
-    public function Radio($data = null)
+    private $_radio = null;
+
+    // Idiomatic facade: $client->radio()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Radio() (PHP method
+    // names are case-insensitive).
+    public function radio($data = null)
     {
         require_once __DIR__ . '/entity/radio_entity.php';
+        if ($data === null) {
+            if ($this->_radio === null) {
+                $this->_radio = new RadioEntity($this, null);
+            }
+            return $this->_radio;
+        }
         return new RadioEntity($this, $data);
     }
 
 
-    public function Region($data = null)
+    private $_region = null;
+
+    // Idiomatic facade: $client->region()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Region() (PHP method
+    // names are case-insensitive).
+    public function region($data = null)
     {
         require_once __DIR__ . '/entity/region_entity.php';
+        if ($data === null) {
+            if ($this->_region === null) {
+                $this->_region = new RegionEntity($this, null);
+            }
+            return $this->_region;
+        }
         return new RegionEntity($this, $data);
     }
 
 
-    public function TouristicAttraction($data = null)
+    private $_touristic_attraction = null;
+
+    // Idiomatic facade: $client->touristic_attraction()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias TouristicAttraction() (PHP method
+    // names are case-insensitive).
+    public function touristic_attraction($data = null)
     {
         require_once __DIR__ . '/entity/touristic_attraction_entity.php';
+        if ($data === null) {
+            if ($this->_touristic_attraction === null) {
+                $this->_touristic_attraction = new TouristicAttractionEntity($this, null);
+            }
+            return $this->_touristic_attraction;
+        }
         return new TouristicAttractionEntity($this, $data);
     }
 
 
-    public function TypicalDish($data = null)
+    private $_typical_dish = null;
+
+    // Idiomatic facade: $client->typical_dish()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias TypicalDish() (PHP method
+    // names are case-insensitive).
+    public function typical_dish($data = null)
     {
         require_once __DIR__ . '/entity/typical_dish_entity.php';
+        if ($data === null) {
+            if ($this->_typical_dish === null) {
+                $this->_typical_dish = new TypicalDishEntity($this, null);
+            }
+            return $this->_typical_dish;
+        }
         return new TypicalDishEntity($this, $data);
     }
 

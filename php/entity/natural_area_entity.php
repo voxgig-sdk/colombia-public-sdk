@@ -55,6 +55,9 @@ class NaturalAreaEntity
         return new NaturalAreaEntity($this->_client, $opts);
     }
 
+    /**
+     * @param NaturalArea|array $args NaturalArea data (assoc-array) to store.
+     */
     public function data_set($args): void
     {
         if ($args) {
@@ -63,12 +66,18 @@ class NaturalAreaEntity
         }
     }
 
+    /**
+     * @return NaturalArea|array The current NaturalArea data as an assoc-array.
+     */
     public function data_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetData");
         return Struct::clone($this->_data);
     }
 
+    /**
+     * @param array $args Match filter (any subset of NaturalArea fields).
+     */
     public function match_set($args): void
     {
         if ($args) {
@@ -77,6 +86,9 @@ class NaturalAreaEntity
         }
     }
 
+    /**
+     * @return array The current match filter (any subset of NaturalArea fields).
+     */
     public function match_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetMatch");
@@ -84,7 +96,16 @@ class NaturalAreaEntity
     }
 
     
-    public function load($reqmatch, $ctrl = null): array
+    /**
+     * Load a single NaturalArea.
+     *
+     * @param NaturalAreaLoadMatch|array|null $reqmatch Match criteria (id/query
+     *   fields) as an assoc-array; a typed NaturalAreaLoadMatch names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return NaturalArea|array The loaded NaturalArea as an assoc-array at the
+     *   SDK boundary; throws ColombiaPublicError on failure (item-5 convention).
+     */
+    public function load(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
@@ -110,7 +131,16 @@ class NaturalAreaEntity
 
 
     
-    public function list($reqmatch, $ctrl = null): array
+    /**
+     * List NaturalArea items matching the given filter.
+     *
+     * @param NaturalAreaListMatch|array|null $reqmatch Match filter (any subset
+     *   of NaturalArea fields) as an assoc-array; NaturalAreaListMatch names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return NaturalArea[]|array A list of NaturalArea items as assoc-arrays at
+     *   the SDK boundary; throws ColombiaPublicError on failure (item-5 convention).
+     */
+    public function list(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
@@ -138,7 +168,7 @@ class NaturalAreaEntity
 
     
 
-    private function _run_op($ctx, callable $post_done): array
+    private function _run_op($ctx, callable $post_done): mixed
     {
         $utility = $this->_utility;
 

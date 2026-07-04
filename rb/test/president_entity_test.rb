@@ -43,16 +43,14 @@ class PresidentEntityTest < Minitest::Test
     president_ref01_ent = client.President(nil)
     president_ref01_match = {}
 
-    president_ref01_list_result, err = president_ref01_ent.list(president_ref01_match, nil)
-    assert_nil err
+    president_ref01_list_result = president_ref01_ent.list(president_ref01_match, nil)
     assert president_ref01_list_result.is_a?(Array)
 
     # LOAD
     president_ref01_match_dt0 = {
       "id" => president_ref01_data["id"],
     }
-    president_ref01_data_dt0_loaded, err = president_ref01_ent.load(president_ref01_match_dt0, nil)
-    assert_nil err
+    president_ref01_data_dt0_loaded = president_ref01_ent.load(president_ref01_match_dt0, nil)
     president_ref01_data_dt0_load_result = Helpers.to_map(president_ref01_data_dt0_loaded)
     assert !president_ref01_data_dt0_load_result.nil?
     assert_equal president_ref01_data_dt0_load_result["id"], president_ref01_data["id"]
@@ -93,7 +91,6 @@ def president_basic_setup(extra)
     "COLOMBIAPUBLIC_TEST_PRESIDENT_ENTID" => idmap,
     "COLOMBIAPUBLIC_TEST_LIVE" => "FALSE",
     "COLOMBIAPUBLIC_TEST_EXPLAIN" => "FALSE",
-    "COLOMBIAPUBLIC_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -105,7 +102,6 @@ def president_basic_setup(extra)
   if env["COLOMBIAPUBLIC_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["COLOMBIAPUBLIC_APIKEY"],
       },
       extra || {},
     ])

@@ -43,16 +43,14 @@ class ConstitutionArticleEntityTest < Minitest::Test
     constitution_article_ref01_ent = client.ConstitutionArticle(nil)
     constitution_article_ref01_match = {}
 
-    constitution_article_ref01_list_result, err = constitution_article_ref01_ent.list(constitution_article_ref01_match, nil)
-    assert_nil err
+    constitution_article_ref01_list_result = constitution_article_ref01_ent.list(constitution_article_ref01_match, nil)
     assert constitution_article_ref01_list_result.is_a?(Array)
 
     # LOAD
     constitution_article_ref01_match_dt0 = {
       "id" => constitution_article_ref01_data["id"],
     }
-    constitution_article_ref01_data_dt0_loaded, err = constitution_article_ref01_ent.load(constitution_article_ref01_match_dt0, nil)
-    assert_nil err
+    constitution_article_ref01_data_dt0_loaded = constitution_article_ref01_ent.load(constitution_article_ref01_match_dt0, nil)
     constitution_article_ref01_data_dt0_load_result = Helpers.to_map(constitution_article_ref01_data_dt0_loaded)
     assert !constitution_article_ref01_data_dt0_load_result.nil?
     assert_equal constitution_article_ref01_data_dt0_load_result["id"], constitution_article_ref01_data["id"]
@@ -93,7 +91,6 @@ def constitution_article_basic_setup(extra)
     "COLOMBIAPUBLIC_TEST_CONSTITUTION_ARTICLE_ENTID" => idmap,
     "COLOMBIAPUBLIC_TEST_LIVE" => "FALSE",
     "COLOMBIAPUBLIC_TEST_EXPLAIN" => "FALSE",
-    "COLOMBIAPUBLIC_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -105,7 +102,6 @@ def constitution_article_basic_setup(extra)
   if env["COLOMBIAPUBLIC_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["COLOMBIAPUBLIC_APIKEY"],
       },
       extra || {},
     ])

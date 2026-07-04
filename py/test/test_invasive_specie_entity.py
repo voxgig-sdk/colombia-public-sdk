@@ -50,16 +50,14 @@ class TestInvasiveSpecieEntity:
         invasive_specie_ref01_ent = client.InvasiveSpecie(None)
         invasive_specie_ref01_match = {}
 
-        invasive_specie_ref01_list_result, err = invasive_specie_ref01_ent.list(invasive_specie_ref01_match, None)
-        assert err is None
+        invasive_specie_ref01_list_result = invasive_specie_ref01_ent.list(invasive_specie_ref01_match, None)
         assert isinstance(invasive_specie_ref01_list_result, list)
 
         # LOAD
         invasive_specie_ref01_match_dt0 = {
             "id": invasive_specie_ref01_data["id"],
         }
-        invasive_specie_ref01_data_dt0_loaded, err = invasive_specie_ref01_ent.load(invasive_specie_ref01_match_dt0, None)
-        assert err is None
+        invasive_specie_ref01_data_dt0_loaded = invasive_specie_ref01_ent.load(invasive_specie_ref01_match_dt0, None)
         invasive_specie_ref01_data_dt0_load_result = helpers.to_map(invasive_specie_ref01_data_dt0_loaded)
         assert invasive_specie_ref01_data_dt0_load_result is not None
         assert invasive_specie_ref01_data_dt0_load_result["id"] == invasive_specie_ref01_data["id"]
@@ -102,7 +100,6 @@ def _invasive_specie_basic_setup(extra):
         "COLOMBIAPUBLIC_TEST_INVASIVE_SPECIE_ENTID": idmap,
         "COLOMBIAPUBLIC_TEST_LIVE": "FALSE",
         "COLOMBIAPUBLIC_TEST_EXPLAIN": "FALSE",
-        "COLOMBIAPUBLIC_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -113,7 +110,6 @@ def _invasive_specie_basic_setup(extra):
     if env.get("COLOMBIAPUBLIC_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("COLOMBIAPUBLIC_APIKEY"),
             },
             extra or {},
         ])

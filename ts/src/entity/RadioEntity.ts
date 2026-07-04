@@ -14,9 +14,14 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Radio,
+  RadioLoadMatch,
+  RadioListMatch,
+} from '../ColombiaPublicTypes'
 
 // TODO: needs Entity superclass
-class RadioEntity extends ColombiaPublicEntityBase {
+class RadioEntity extends ColombiaPublicEntityBase<Radio> {
 
   constructor(client: ColombiaPublicSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +37,7 @@ class RadioEntity extends ColombiaPublicEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: RadioLoadMatch, ctrl?: Control): Promise<Radio> {
 
     const utility = this._utility
 
@@ -136,14 +141,16 @@ class RadioEntity extends ColombiaPublicEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Radio> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: RadioListMatch, ctrl?: Control): Promise<Radio[]> {
 
     const utility = this._utility
 
@@ -243,7 +250,9 @@ class RadioEntity extends ColombiaPublicEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Radio[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

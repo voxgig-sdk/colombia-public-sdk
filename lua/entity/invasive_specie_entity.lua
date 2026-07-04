@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch InvasiveSpecieLoadMatch
+---@param ctrl? table
+---@return InvasiveSpecie
+---@return string? err
 function InvasiveSpecieEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -104,6 +108,10 @@ end
 
 
 
+---@param reqmatch InvasiveSpecieListMatch
+---@param ctrl? table
+---@return InvasiveSpecie[]
+---@return string? err
 function InvasiveSpecieEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

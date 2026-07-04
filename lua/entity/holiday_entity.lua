@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch HolidayLoadMatch
+---@param ctrl? table
+---@return Holiday
+---@return string? err
 function HolidayEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -104,6 +108,10 @@ end
 
 
 
+---@param reqmatch HolidayListMatch
+---@param ctrl? table
+---@return Holiday[]
+---@return string? err
 function HolidayEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

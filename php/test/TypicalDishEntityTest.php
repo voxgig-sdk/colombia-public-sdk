@@ -50,16 +50,14 @@ class TypicalDishEntityTest extends TestCase
         $typical_dish_ref01_ent = $client->TypicalDish(null);
         $typical_dish_ref01_match = [];
 
-        [$typical_dish_ref01_list_result, $err] = $typical_dish_ref01_ent->list($typical_dish_ref01_match, null);
-        $this->assertNull($err);
+        $typical_dish_ref01_list_result = $typical_dish_ref01_ent->list($typical_dish_ref01_match, null);
         $this->assertIsArray($typical_dish_ref01_list_result);
 
         // LOAD
         $typical_dish_ref01_match_dt0 = [
             "id" => $typical_dish_ref01_data["id"],
         ];
-        [$typical_dish_ref01_data_dt0_loaded, $err] = $typical_dish_ref01_ent->load($typical_dish_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $typical_dish_ref01_data_dt0_loaded = $typical_dish_ref01_ent->load($typical_dish_ref01_match_dt0, null);
         $typical_dish_ref01_data_dt0_load_result = Helpers::to_map($typical_dish_ref01_data_dt0_loaded);
         $this->assertNotNull($typical_dish_ref01_data_dt0_load_result);
         $this->assertEquals($typical_dish_ref01_data_dt0_load_result["id"], $typical_dish_ref01_data["id"]);
@@ -96,7 +94,6 @@ function typical_dish_basic_setup($extra)
         "COLOMBIAPUBLIC_TEST_TYPICAL_DISH_ENTID" => $idmap,
         "COLOMBIAPUBLIC_TEST_LIVE" => "FALSE",
         "COLOMBIAPUBLIC_TEST_EXPLAIN" => "FALSE",
-        "COLOMBIAPUBLIC_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -108,7 +105,6 @@ function typical_dish_basic_setup($extra)
     if ($env["COLOMBIAPUBLIC_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["COLOMBIAPUBLIC_APIKEY"],
             ],
             $extra ?? [],
         ]);

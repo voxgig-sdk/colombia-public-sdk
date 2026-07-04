@@ -93,14 +93,12 @@ func mapDirectSetup(mockres any) *mapDirectSetupResult {
 	env := envOverride(map[string]any{
 		"COLOMBIAPUBLIC_TEST_MAP_ENTID": map[string]any{},
 		"COLOMBIAPUBLIC_TEST_LIVE":    "FALSE",
-		"COLOMBIAPUBLIC_APIKEY":       "NONE",
 	})
 
 	live := env["COLOMBIAPUBLIC_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
-			"apikey": env["COLOMBIAPUBLIC_APIKEY"],
 		}
 		client := sdk.NewColombiaPublicSDK(mergedOpts)
 

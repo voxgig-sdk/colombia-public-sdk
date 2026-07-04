@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch RegionLoadMatch
+---@param ctrl? table
+---@return Region
+---@return string? err
 function RegionEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -104,6 +108,10 @@ end
 
 
 
+---@param reqmatch RegionListMatch
+---@param ctrl? table
+---@return Region[]
+---@return string? err
 function RegionEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

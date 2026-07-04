@@ -43,16 +43,14 @@ class HolidayEntityTest < Minitest::Test
     holiday_ref01_ent = client.Holiday(nil)
     holiday_ref01_match = {}
 
-    holiday_ref01_list_result, err = holiday_ref01_ent.list(holiday_ref01_match, nil)
-    assert_nil err
+    holiday_ref01_list_result = holiday_ref01_ent.list(holiday_ref01_match, nil)
     assert holiday_ref01_list_result.is_a?(Array)
 
     # LOAD
     holiday_ref01_match_dt0 = {
       "id" => holiday_ref01_data["id"],
     }
-    holiday_ref01_data_dt0_loaded, err = holiday_ref01_ent.load(holiday_ref01_match_dt0, nil)
-    assert_nil err
+    holiday_ref01_data_dt0_loaded = holiday_ref01_ent.load(holiday_ref01_match_dt0, nil)
     holiday_ref01_data_dt0_load_result = Helpers.to_map(holiday_ref01_data_dt0_loaded)
     assert !holiday_ref01_data_dt0_load_result.nil?
     assert_equal holiday_ref01_data_dt0_load_result["id"], holiday_ref01_data["id"]
@@ -93,7 +91,6 @@ def holiday_basic_setup(extra)
     "COLOMBIAPUBLIC_TEST_HOLIDAY_ENTID" => idmap,
     "COLOMBIAPUBLIC_TEST_LIVE" => "FALSE",
     "COLOMBIAPUBLIC_TEST_EXPLAIN" => "FALSE",
-    "COLOMBIAPUBLIC_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -105,7 +102,6 @@ def holiday_basic_setup(extra)
   if env["COLOMBIAPUBLIC_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["COLOMBIAPUBLIC_APIKEY"],
       },
       extra || {},
     ])

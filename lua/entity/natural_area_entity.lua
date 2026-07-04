@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch NaturalAreaLoadMatch
+---@param ctrl? table
+---@return NaturalArea
+---@return string? err
 function NaturalAreaEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -104,6 +108,10 @@ end
 
 
 
+---@param reqmatch NaturalAreaListMatch
+---@param ctrl? table
+---@return NaturalArea[]
+---@return string? err
 function NaturalAreaEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

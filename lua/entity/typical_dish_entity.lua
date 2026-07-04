@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch TypicalDishLoadMatch
+---@param ctrl? table
+---@return TypicalDish
+---@return string? err
 function TypicalDishEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -104,6 +108,10 @@ end
 
 
 
+---@param reqmatch TypicalDishListMatch
+---@param ctrl? table
+---@return TypicalDish[]
+---@return string? err
 function TypicalDishEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

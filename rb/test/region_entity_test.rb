@@ -43,16 +43,14 @@ class RegionEntityTest < Minitest::Test
     region_ref01_ent = client.Region(nil)
     region_ref01_match = {}
 
-    region_ref01_list_result, err = region_ref01_ent.list(region_ref01_match, nil)
-    assert_nil err
+    region_ref01_list_result = region_ref01_ent.list(region_ref01_match, nil)
     assert region_ref01_list_result.is_a?(Array)
 
     # LOAD
     region_ref01_match_dt0 = {
       "id" => region_ref01_data["id"],
     }
-    region_ref01_data_dt0_loaded, err = region_ref01_ent.load(region_ref01_match_dt0, nil)
-    assert_nil err
+    region_ref01_data_dt0_loaded = region_ref01_ent.load(region_ref01_match_dt0, nil)
     region_ref01_data_dt0_load_result = Helpers.to_map(region_ref01_data_dt0_loaded)
     assert !region_ref01_data_dt0_load_result.nil?
     assert_equal region_ref01_data_dt0_load_result["id"], region_ref01_data["id"]
@@ -93,7 +91,6 @@ def region_basic_setup(extra)
     "COLOMBIAPUBLIC_TEST_REGION_ENTID" => idmap,
     "COLOMBIAPUBLIC_TEST_LIVE" => "FALSE",
     "COLOMBIAPUBLIC_TEST_EXPLAIN" => "FALSE",
-    "COLOMBIAPUBLIC_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -105,7 +102,6 @@ def region_basic_setup(extra)
   if env["COLOMBIAPUBLIC_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["COLOMBIAPUBLIC_APIKEY"],
       },
       extra || {},
     ])

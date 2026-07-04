@@ -55,6 +55,9 @@ class PresidentEntity
         return new PresidentEntity($this->_client, $opts);
     }
 
+    /**
+     * @param President|array $args President data (assoc-array) to store.
+     */
     public function data_set($args): void
     {
         if ($args) {
@@ -63,12 +66,18 @@ class PresidentEntity
         }
     }
 
+    /**
+     * @return President|array The current President data as an assoc-array.
+     */
     public function data_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetData");
         return Struct::clone($this->_data);
     }
 
+    /**
+     * @param array $args Match filter (any subset of President fields).
+     */
     public function match_set($args): void
     {
         if ($args) {
@@ -77,6 +86,9 @@ class PresidentEntity
         }
     }
 
+    /**
+     * @return array The current match filter (any subset of President fields).
+     */
     public function match_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetMatch");
@@ -84,7 +96,16 @@ class PresidentEntity
     }
 
     
-    public function load($reqmatch, $ctrl = null): array
+    /**
+     * Load a single President.
+     *
+     * @param PresidentLoadMatch|array|null $reqmatch Match criteria (id/query
+     *   fields) as an assoc-array; a typed PresidentLoadMatch names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return President|array The loaded President as an assoc-array at the
+     *   SDK boundary; throws ColombiaPublicError on failure (item-5 convention).
+     */
+    public function load(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
@@ -110,7 +131,16 @@ class PresidentEntity
 
 
     
-    public function list($reqmatch, $ctrl = null): array
+    /**
+     * List President items matching the given filter.
+     *
+     * @param PresidentListMatch|array|null $reqmatch Match filter (any subset
+     *   of President fields) as an assoc-array; PresidentListMatch names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return President[]|array A list of President items as assoc-arrays at
+     *   the SDK boundary; throws ColombiaPublicError on failure (item-5 convention).
+     */
+    public function list(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
@@ -138,7 +168,7 @@ class PresidentEntity
 
     
 
-    private function _run_op($ctx, callable $post_done): array
+    private function _run_op($ctx, callable $post_done): mixed
     {
         $utility = $this->_utility;
 

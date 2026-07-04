@@ -50,8 +50,7 @@ class MapEntityTest extends TestCase
         $map_ref01_ent = $client->Map(null);
         $map_ref01_match = [];
 
-        [$map_ref01_list_result, $err] = $map_ref01_ent->list($map_ref01_match, null);
-        $this->assertNull($err);
+        $map_ref01_list_result = $map_ref01_ent->list($map_ref01_match, null);
         $this->assertIsArray($map_ref01_list_result);
 
     }
@@ -86,7 +85,6 @@ function map_basic_setup($extra)
         "COLOMBIAPUBLIC_TEST_MAP_ENTID" => $idmap,
         "COLOMBIAPUBLIC_TEST_LIVE" => "FALSE",
         "COLOMBIAPUBLIC_TEST_EXPLAIN" => "FALSE",
-        "COLOMBIAPUBLIC_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -98,7 +96,6 @@ function map_basic_setup($extra)
     if ($env["COLOMBIAPUBLIC_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["COLOMBIAPUBLIC_APIKEY"],
             ],
             $extra ?? [],
         ]);

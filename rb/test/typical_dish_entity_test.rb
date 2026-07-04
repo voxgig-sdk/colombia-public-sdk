@@ -43,16 +43,14 @@ class TypicalDishEntityTest < Minitest::Test
     typical_dish_ref01_ent = client.TypicalDish(nil)
     typical_dish_ref01_match = {}
 
-    typical_dish_ref01_list_result, err = typical_dish_ref01_ent.list(typical_dish_ref01_match, nil)
-    assert_nil err
+    typical_dish_ref01_list_result = typical_dish_ref01_ent.list(typical_dish_ref01_match, nil)
     assert typical_dish_ref01_list_result.is_a?(Array)
 
     # LOAD
     typical_dish_ref01_match_dt0 = {
       "id" => typical_dish_ref01_data["id"],
     }
-    typical_dish_ref01_data_dt0_loaded, err = typical_dish_ref01_ent.load(typical_dish_ref01_match_dt0, nil)
-    assert_nil err
+    typical_dish_ref01_data_dt0_loaded = typical_dish_ref01_ent.load(typical_dish_ref01_match_dt0, nil)
     typical_dish_ref01_data_dt0_load_result = Helpers.to_map(typical_dish_ref01_data_dt0_loaded)
     assert !typical_dish_ref01_data_dt0_load_result.nil?
     assert_equal typical_dish_ref01_data_dt0_load_result["id"], typical_dish_ref01_data["id"]
@@ -93,7 +91,6 @@ def typical_dish_basic_setup(extra)
     "COLOMBIAPUBLIC_TEST_TYPICAL_DISH_ENTID" => idmap,
     "COLOMBIAPUBLIC_TEST_LIVE" => "FALSE",
     "COLOMBIAPUBLIC_TEST_EXPLAIN" => "FALSE",
-    "COLOMBIAPUBLIC_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -105,7 +102,6 @@ def typical_dish_basic_setup(extra)
   if env["COLOMBIAPUBLIC_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["COLOMBIAPUBLIC_APIKEY"],
       },
       extra || {},
     ])

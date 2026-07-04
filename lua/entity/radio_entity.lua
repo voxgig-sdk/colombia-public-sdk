@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch RadioLoadMatch
+---@param ctrl? table
+---@return Radio
+---@return string? err
 function RadioEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -104,6 +108,10 @@ end
 
 
 
+---@param reqmatch RadioListMatch
+---@param ctrl? table
+---@return Radio[]
+---@return string? err
 function RadioEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

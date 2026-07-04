@@ -50,16 +50,14 @@ class ConstitutionArticleEntityTest extends TestCase
         $constitution_article_ref01_ent = $client->ConstitutionArticle(null);
         $constitution_article_ref01_match = [];
 
-        [$constitution_article_ref01_list_result, $err] = $constitution_article_ref01_ent->list($constitution_article_ref01_match, null);
-        $this->assertNull($err);
+        $constitution_article_ref01_list_result = $constitution_article_ref01_ent->list($constitution_article_ref01_match, null);
         $this->assertIsArray($constitution_article_ref01_list_result);
 
         // LOAD
         $constitution_article_ref01_match_dt0 = [
             "id" => $constitution_article_ref01_data["id"],
         ];
-        [$constitution_article_ref01_data_dt0_loaded, $err] = $constitution_article_ref01_ent->load($constitution_article_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $constitution_article_ref01_data_dt0_loaded = $constitution_article_ref01_ent->load($constitution_article_ref01_match_dt0, null);
         $constitution_article_ref01_data_dt0_load_result = Helpers::to_map($constitution_article_ref01_data_dt0_loaded);
         $this->assertNotNull($constitution_article_ref01_data_dt0_load_result);
         $this->assertEquals($constitution_article_ref01_data_dt0_load_result["id"], $constitution_article_ref01_data["id"]);
@@ -96,7 +94,6 @@ function constitution_article_basic_setup($extra)
         "COLOMBIAPUBLIC_TEST_CONSTITUTION_ARTICLE_ENTID" => $idmap,
         "COLOMBIAPUBLIC_TEST_LIVE" => "FALSE",
         "COLOMBIAPUBLIC_TEST_EXPLAIN" => "FALSE",
-        "COLOMBIAPUBLIC_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -108,7 +105,6 @@ function constitution_article_basic_setup($extra)
     if ($env["COLOMBIAPUBLIC_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["COLOMBIAPUBLIC_APIKEY"],
             ],
             $extra ?? [],
         ]);

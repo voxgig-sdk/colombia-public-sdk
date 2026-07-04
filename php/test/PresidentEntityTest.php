@@ -50,16 +50,14 @@ class PresidentEntityTest extends TestCase
         $president_ref01_ent = $client->President(null);
         $president_ref01_match = [];
 
-        [$president_ref01_list_result, $err] = $president_ref01_ent->list($president_ref01_match, null);
-        $this->assertNull($err);
+        $president_ref01_list_result = $president_ref01_ent->list($president_ref01_match, null);
         $this->assertIsArray($president_ref01_list_result);
 
         // LOAD
         $president_ref01_match_dt0 = [
             "id" => $president_ref01_data["id"],
         ];
-        [$president_ref01_data_dt0_loaded, $err] = $president_ref01_ent->load($president_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $president_ref01_data_dt0_loaded = $president_ref01_ent->load($president_ref01_match_dt0, null);
         $president_ref01_data_dt0_load_result = Helpers::to_map($president_ref01_data_dt0_loaded);
         $this->assertNotNull($president_ref01_data_dt0_load_result);
         $this->assertEquals($president_ref01_data_dt0_load_result["id"], $president_ref01_data["id"]);
@@ -96,7 +94,6 @@ function president_basic_setup($extra)
         "COLOMBIAPUBLIC_TEST_PRESIDENT_ENTID" => $idmap,
         "COLOMBIAPUBLIC_TEST_LIVE" => "FALSE",
         "COLOMBIAPUBLIC_TEST_EXPLAIN" => "FALSE",
-        "COLOMBIAPUBLIC_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -108,7 +105,6 @@ function president_basic_setup($extra)
     if ($env["COLOMBIAPUBLIC_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["COLOMBIAPUBLIC_APIKEY"],
             ],
             $extra ?? [],
         ]);

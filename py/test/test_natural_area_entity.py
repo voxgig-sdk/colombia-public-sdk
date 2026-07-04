@@ -50,16 +50,14 @@ class TestNaturalAreaEntity:
         natural_area_ref01_ent = client.NaturalArea(None)
         natural_area_ref01_match = {}
 
-        natural_area_ref01_list_result, err = natural_area_ref01_ent.list(natural_area_ref01_match, None)
-        assert err is None
+        natural_area_ref01_list_result = natural_area_ref01_ent.list(natural_area_ref01_match, None)
         assert isinstance(natural_area_ref01_list_result, list)
 
         # LOAD
         natural_area_ref01_match_dt0 = {
             "id": natural_area_ref01_data["id"],
         }
-        natural_area_ref01_data_dt0_loaded, err = natural_area_ref01_ent.load(natural_area_ref01_match_dt0, None)
-        assert err is None
+        natural_area_ref01_data_dt0_loaded = natural_area_ref01_ent.load(natural_area_ref01_match_dt0, None)
         natural_area_ref01_data_dt0_load_result = helpers.to_map(natural_area_ref01_data_dt0_loaded)
         assert natural_area_ref01_data_dt0_load_result is not None
         assert natural_area_ref01_data_dt0_load_result["id"] == natural_area_ref01_data["id"]
@@ -102,7 +100,6 @@ def _natural_area_basic_setup(extra):
         "COLOMBIAPUBLIC_TEST_NATURAL_AREA_ENTID": idmap,
         "COLOMBIAPUBLIC_TEST_LIVE": "FALSE",
         "COLOMBIAPUBLIC_TEST_EXPLAIN": "FALSE",
-        "COLOMBIAPUBLIC_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -113,7 +110,6 @@ def _natural_area_basic_setup(extra):
     if env.get("COLOMBIAPUBLIC_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("COLOMBIAPUBLIC_APIKEY"),
             },
             extra or {},
         ])

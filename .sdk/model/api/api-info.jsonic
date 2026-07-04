@@ -4,6 +4,7 @@
 main: {
   kit: {
     info: {
+      auth: false
       contact: {
         name: "API-Colombia"
         url: "https://api-colombia.com/"

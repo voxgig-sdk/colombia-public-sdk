@@ -14,9 +14,14 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Department,
+  DepartmentLoadMatch,
+  DepartmentListMatch,
+} from '../ColombiaPublicTypes'
 
 // TODO: needs Entity superclass
-class DepartmentEntity extends ColombiaPublicEntityBase {
+class DepartmentEntity extends ColombiaPublicEntityBase<Department> {
 
   constructor(client: ColombiaPublicSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +37,7 @@ class DepartmentEntity extends ColombiaPublicEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: DepartmentLoadMatch, ctrl?: Control): Promise<Department> {
 
     const utility = this._utility
 
@@ -136,14 +141,16 @@ class DepartmentEntity extends ColombiaPublicEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Department> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: DepartmentListMatch, ctrl?: Control): Promise<Department[]> {
 
     const utility = this._utility
 
@@ -243,7 +250,9 @@ class DepartmentEntity extends ColombiaPublicEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Department[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

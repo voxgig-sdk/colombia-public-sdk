@@ -45,6 +45,7 @@ class TypicalDishEntity
     end
   end
 
+  # @return [TypicalDish, Hash] the current TypicalDish data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class TypicalDishEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of TypicalDish fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single TypicalDish.
+  #
+  # @param reqmatch [TypicalDishLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [TypicalDish, Hash] the loaded TypicalDish; raises ColombiaPublicError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
@@ -86,6 +93,11 @@ class TypicalDishEntity
 
 
   
+  # List TypicalDish items matching the given filter.
+  #
+  # @param reqmatch [TypicalDishListMatch, Hash, nil] match filter (any subset of TypicalDish fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<TypicalDish>, Array] the matching TypicalDish items; raises ColombiaPublicError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

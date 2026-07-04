@@ -45,6 +45,7 @@ class NativeCommunityEntity
     end
   end
 
+  # @return [NativeCommunity, Hash] the current NativeCommunity data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class NativeCommunityEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of NativeCommunity fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single NativeCommunity.
+  #
+  # @param reqmatch [NativeCommunityLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [NativeCommunity, Hash] the loaded NativeCommunity; raises ColombiaPublicError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
@@ -86,6 +93,11 @@ class NativeCommunityEntity
 
 
   
+  # List NativeCommunity items matching the given filter.
+  #
+  # @param reqmatch [NativeCommunityListMatch, Hash, nil] match filter (any subset of NativeCommunity fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<NativeCommunity>, Array] the matching NativeCommunity items; raises ColombiaPublicError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

@@ -14,9 +14,14 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  NaturalArea,
+  NaturalAreaLoadMatch,
+  NaturalAreaListMatch,
+} from '../ColombiaPublicTypes'
 
 // TODO: needs Entity superclass
-class NaturalAreaEntity extends ColombiaPublicEntityBase {
+class NaturalAreaEntity extends ColombiaPublicEntityBase<NaturalArea> {
 
   constructor(client: ColombiaPublicSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +37,7 @@ class NaturalAreaEntity extends ColombiaPublicEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: NaturalAreaLoadMatch, ctrl?: Control): Promise<NaturalArea> {
 
     const utility = this._utility
 
@@ -136,14 +141,16 @@ class NaturalAreaEntity extends ColombiaPublicEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<NaturalArea> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: NaturalAreaListMatch, ctrl?: Control): Promise<NaturalArea[]> {
 
     const utility = this._utility
 
@@ -243,7 +250,9 @@ class NaturalAreaEntity extends ColombiaPublicEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<NaturalArea[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

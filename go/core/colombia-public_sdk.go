@@ -245,76 +245,121 @@ func (sdk *ColombiaPublicSDK) Direct(fetchargs map[string]any) (map[string]any, 
 }
 
 
+// Airport returns a Airport entity bound to this client.
+// Idiomatic usage: client.Airport(nil).List(nil, nil) or
+// client.Airport(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ColombiaPublicSDK) Airport(data map[string]any) ColombiaPublicEntity {
 	return NewAirportEntityFunc(sdk, data)
 }
 
 
+// CategoryNaturalArea returns a CategoryNaturalArea entity bound to this client.
+// Idiomatic usage: client.CategoryNaturalArea(nil).List(nil, nil) or
+// client.CategoryNaturalArea(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ColombiaPublicSDK) CategoryNaturalArea(data map[string]any) ColombiaPublicEntity {
 	return NewCategoryNaturalAreaEntityFunc(sdk, data)
 }
 
 
+// ConstitutionArticle returns a ConstitutionArticle entity bound to this client.
+// Idiomatic usage: client.ConstitutionArticle(nil).List(nil, nil) or
+// client.ConstitutionArticle(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ColombiaPublicSDK) ConstitutionArticle(data map[string]any) ColombiaPublicEntity {
 	return NewConstitutionArticleEntityFunc(sdk, data)
 }
 
 
+// Country returns a Country entity bound to this client.
+// Idiomatic usage: client.Country(nil).List(nil, nil) or
+// client.Country(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ColombiaPublicSDK) Country(data map[string]any) ColombiaPublicEntity {
 	return NewCountryEntityFunc(sdk, data)
 }
 
 
+// Department returns a Department entity bound to this client.
+// Idiomatic usage: client.Department(nil).List(nil, nil) or
+// client.Department(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ColombiaPublicSDK) Department(data map[string]any) ColombiaPublicEntity {
 	return NewDepartmentEntityFunc(sdk, data)
 }
 
 
+// Holiday returns a Holiday entity bound to this client.
+// Idiomatic usage: client.Holiday(nil).List(nil, nil) or
+// client.Holiday(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ColombiaPublicSDK) Holiday(data map[string]any) ColombiaPublicEntity {
 	return NewHolidayEntityFunc(sdk, data)
 }
 
 
+// InvasiveSpecie returns a InvasiveSpecie entity bound to this client.
+// Idiomatic usage: client.InvasiveSpecie(nil).List(nil, nil) or
+// client.InvasiveSpecie(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ColombiaPublicSDK) InvasiveSpecie(data map[string]any) ColombiaPublicEntity {
 	return NewInvasiveSpecieEntityFunc(sdk, data)
 }
 
 
+// Map returns a Map entity bound to this client.
+// Idiomatic usage: client.Map(nil).List(nil, nil) or
+// client.Map(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ColombiaPublicSDK) Map(data map[string]any) ColombiaPublicEntity {
 	return NewMapEntityFunc(sdk, data)
 }
 
 
+// NativeCommunity returns a NativeCommunity entity bound to this client.
+// Idiomatic usage: client.NativeCommunity(nil).List(nil, nil) or
+// client.NativeCommunity(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ColombiaPublicSDK) NativeCommunity(data map[string]any) ColombiaPublicEntity {
 	return NewNativeCommunityEntityFunc(sdk, data)
 }
 
 
+// NaturalArea returns a NaturalArea entity bound to this client.
+// Idiomatic usage: client.NaturalArea(nil).List(nil, nil) or
+// client.NaturalArea(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ColombiaPublicSDK) NaturalArea(data map[string]any) ColombiaPublicEntity {
 	return NewNaturalAreaEntityFunc(sdk, data)
 }
 
 
+// President returns a President entity bound to this client.
+// Idiomatic usage: client.President(nil).List(nil, nil) or
+// client.President(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ColombiaPublicSDK) President(data map[string]any) ColombiaPublicEntity {
 	return NewPresidentEntityFunc(sdk, data)
 }
 
 
+// Radio returns a Radio entity bound to this client.
+// Idiomatic usage: client.Radio(nil).List(nil, nil) or
+// client.Radio(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ColombiaPublicSDK) Radio(data map[string]any) ColombiaPublicEntity {
 	return NewRadioEntityFunc(sdk, data)
 }
 
 
+// Region returns a Region entity bound to this client.
+// Idiomatic usage: client.Region(nil).List(nil, nil) or
+// client.Region(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ColombiaPublicSDK) Region(data map[string]any) ColombiaPublicEntity {
 	return NewRegionEntityFunc(sdk, data)
 }
 
 
+// TouristicAttraction returns a TouristicAttraction entity bound to this client.
+// Idiomatic usage: client.TouristicAttraction(nil).List(nil, nil) or
+// client.TouristicAttraction(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ColombiaPublicSDK) TouristicAttraction(data map[string]any) ColombiaPublicEntity {
 	return NewTouristicAttractionEntityFunc(sdk, data)
 }
 
 
+// TypicalDish returns a TypicalDish entity bound to this client.
+// Idiomatic usage: client.TypicalDish(nil).List(nil, nil) or
+// client.TypicalDish(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ColombiaPublicSDK) TypicalDish(data map[string]any) ColombiaPublicEntity {
 	return NewTypicalDishEntityFunc(sdk, data)
 }

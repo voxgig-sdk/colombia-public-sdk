@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch TouristicAttractionLoadMatch
+---@param ctrl? table
+---@return TouristicAttraction
+---@return string? err
 function TouristicAttractionEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -104,6 +108,10 @@ end
 
 
 
+---@param reqmatch TouristicAttractionListMatch
+---@param ctrl? table
+---@return TouristicAttraction[]
+---@return string? err
 function TouristicAttractionEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

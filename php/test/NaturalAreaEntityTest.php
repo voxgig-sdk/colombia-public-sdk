@@ -50,16 +50,14 @@ class NaturalAreaEntityTest extends TestCase
         $natural_area_ref01_ent = $client->NaturalArea(null);
         $natural_area_ref01_match = [];
 
-        [$natural_area_ref01_list_result, $err] = $natural_area_ref01_ent->list($natural_area_ref01_match, null);
-        $this->assertNull($err);
+        $natural_area_ref01_list_result = $natural_area_ref01_ent->list($natural_area_ref01_match, null);
         $this->assertIsArray($natural_area_ref01_list_result);
 
         // LOAD
         $natural_area_ref01_match_dt0 = [
             "id" => $natural_area_ref01_data["id"],
         ];
-        [$natural_area_ref01_data_dt0_loaded, $err] = $natural_area_ref01_ent->load($natural_area_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $natural_area_ref01_data_dt0_loaded = $natural_area_ref01_ent->load($natural_area_ref01_match_dt0, null);
         $natural_area_ref01_data_dt0_load_result = Helpers::to_map($natural_area_ref01_data_dt0_loaded);
         $this->assertNotNull($natural_area_ref01_data_dt0_load_result);
         $this->assertEquals($natural_area_ref01_data_dt0_load_result["id"], $natural_area_ref01_data["id"]);
@@ -96,7 +94,6 @@ function natural_area_basic_setup($extra)
         "COLOMBIAPUBLIC_TEST_NATURAL_AREA_ENTID" => $idmap,
         "COLOMBIAPUBLIC_TEST_LIVE" => "FALSE",
         "COLOMBIAPUBLIC_TEST_EXPLAIN" => "FALSE",
-        "COLOMBIAPUBLIC_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -108,7 +105,6 @@ function natural_area_basic_setup($extra)
     if ($env["COLOMBIAPUBLIC_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["COLOMBIAPUBLIC_APIKEY"],
             ],
             $extra ?? [],
         ]);

@@ -50,8 +50,7 @@ class TestMapEntity:
         map_ref01_ent = client.Map(None)
         map_ref01_match = {}
 
-        map_ref01_list_result, err = map_ref01_ent.list(map_ref01_match, None)
-        assert err is None
+        map_ref01_list_result = map_ref01_ent.list(map_ref01_match, None)
         assert isinstance(map_ref01_list_result, list)
 
 
@@ -92,7 +91,6 @@ def _map_basic_setup(extra):
         "COLOMBIAPUBLIC_TEST_MAP_ENTID": idmap,
         "COLOMBIAPUBLIC_TEST_LIVE": "FALSE",
         "COLOMBIAPUBLIC_TEST_EXPLAIN": "FALSE",
-        "COLOMBIAPUBLIC_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -103,7 +101,6 @@ def _map_basic_setup(extra):
     if env.get("COLOMBIAPUBLIC_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("COLOMBIAPUBLIC_APIKEY"),
             },
             extra or {},
         ])

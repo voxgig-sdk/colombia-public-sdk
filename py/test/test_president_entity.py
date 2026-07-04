@@ -50,16 +50,14 @@ class TestPresidentEntity:
         president_ref01_ent = client.President(None)
         president_ref01_match = {}
 
-        president_ref01_list_result, err = president_ref01_ent.list(president_ref01_match, None)
-        assert err is None
+        president_ref01_list_result = president_ref01_ent.list(president_ref01_match, None)
         assert isinstance(president_ref01_list_result, list)
 
         # LOAD
         president_ref01_match_dt0 = {
             "id": president_ref01_data["id"],
         }
-        president_ref01_data_dt0_loaded, err = president_ref01_ent.load(president_ref01_match_dt0, None)
-        assert err is None
+        president_ref01_data_dt0_loaded = president_ref01_ent.load(president_ref01_match_dt0, None)
         president_ref01_data_dt0_load_result = helpers.to_map(president_ref01_data_dt0_loaded)
         assert president_ref01_data_dt0_load_result is not None
         assert president_ref01_data_dt0_load_result["id"] == president_ref01_data["id"]
@@ -102,7 +100,6 @@ def _president_basic_setup(extra):
         "COLOMBIAPUBLIC_TEST_PRESIDENT_ENTID": idmap,
         "COLOMBIAPUBLIC_TEST_LIVE": "FALSE",
         "COLOMBIAPUBLIC_TEST_EXPLAIN": "FALSE",
-        "COLOMBIAPUBLIC_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -113,7 +110,6 @@ def _president_basic_setup(extra):
     if env.get("COLOMBIAPUBLIC_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("COLOMBIAPUBLIC_APIKEY"),
             },
             extra or {},
         ])

@@ -14,9 +14,14 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  TouristicAttraction,
+  TouristicAttractionLoadMatch,
+  TouristicAttractionListMatch,
+} from '../ColombiaPublicTypes'
 
 // TODO: needs Entity superclass
-class TouristicAttractionEntity extends ColombiaPublicEntityBase {
+class TouristicAttractionEntity extends ColombiaPublicEntityBase<TouristicAttraction> {
 
   constructor(client: ColombiaPublicSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +37,7 @@ class TouristicAttractionEntity extends ColombiaPublicEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: TouristicAttractionLoadMatch, ctrl?: Control): Promise<TouristicAttraction> {
 
     const utility = this._utility
 
@@ -136,14 +141,16 @@ class TouristicAttractionEntity extends ColombiaPublicEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<TouristicAttraction> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: TouristicAttractionListMatch, ctrl?: Control): Promise<TouristicAttraction[]> {
 
     const utility = this._utility
 
@@ -243,7 +250,9 @@ class TouristicAttractionEntity extends ColombiaPublicEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<TouristicAttraction[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

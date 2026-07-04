@@ -43,16 +43,14 @@ class DepartmentEntityTest < Minitest::Test
     department_ref01_ent = client.Department(nil)
     department_ref01_match = {}
 
-    department_ref01_list_result, err = department_ref01_ent.list(department_ref01_match, nil)
-    assert_nil err
+    department_ref01_list_result = department_ref01_ent.list(department_ref01_match, nil)
     assert department_ref01_list_result.is_a?(Array)
 
     # LOAD
     department_ref01_match_dt0 = {
       "id" => department_ref01_data["id"],
     }
-    department_ref01_data_dt0_loaded, err = department_ref01_ent.load(department_ref01_match_dt0, nil)
-    assert_nil err
+    department_ref01_data_dt0_loaded = department_ref01_ent.load(department_ref01_match_dt0, nil)
     department_ref01_data_dt0_load_result = Helpers.to_map(department_ref01_data_dt0_loaded)
     assert !department_ref01_data_dt0_load_result.nil?
     assert_equal department_ref01_data_dt0_load_result["id"], department_ref01_data["id"]
@@ -93,7 +91,6 @@ def department_basic_setup(extra)
     "COLOMBIAPUBLIC_TEST_DEPARTMENT_ENTID" => idmap,
     "COLOMBIAPUBLIC_TEST_LIVE" => "FALSE",
     "COLOMBIAPUBLIC_TEST_EXPLAIN" => "FALSE",
-    "COLOMBIAPUBLIC_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -105,7 +102,6 @@ def department_basic_setup(extra)
   if env["COLOMBIAPUBLIC_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["COLOMBIAPUBLIC_APIKEY"],
       },
       extra || {},
     ])

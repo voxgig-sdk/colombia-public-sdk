@@ -50,16 +50,14 @@ class DepartmentEntityTest extends TestCase
         $department_ref01_ent = $client->Department(null);
         $department_ref01_match = [];
 
-        [$department_ref01_list_result, $err] = $department_ref01_ent->list($department_ref01_match, null);
-        $this->assertNull($err);
+        $department_ref01_list_result = $department_ref01_ent->list($department_ref01_match, null);
         $this->assertIsArray($department_ref01_list_result);
 
         // LOAD
         $department_ref01_match_dt0 = [
             "id" => $department_ref01_data["id"],
         ];
-        [$department_ref01_data_dt0_loaded, $err] = $department_ref01_ent->load($department_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $department_ref01_data_dt0_loaded = $department_ref01_ent->load($department_ref01_match_dt0, null);
         $department_ref01_data_dt0_load_result = Helpers::to_map($department_ref01_data_dt0_loaded);
         $this->assertNotNull($department_ref01_data_dt0_load_result);
         $this->assertEquals($department_ref01_data_dt0_load_result["id"], $department_ref01_data["id"]);
@@ -96,7 +94,6 @@ function department_basic_setup($extra)
         "COLOMBIAPUBLIC_TEST_DEPARTMENT_ENTID" => $idmap,
         "COLOMBIAPUBLIC_TEST_LIVE" => "FALSE",
         "COLOMBIAPUBLIC_TEST_EXPLAIN" => "FALSE",
-        "COLOMBIAPUBLIC_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -108,7 +105,6 @@ function department_basic_setup($extra)
     if ($env["COLOMBIAPUBLIC_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["COLOMBIAPUBLIC_APIKEY"],
             ],
             $extra ?? [],
         ]);

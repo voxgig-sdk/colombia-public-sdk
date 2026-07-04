@@ -50,8 +50,7 @@ class CategoryNaturalAreaEntityTest extends TestCase
         $category_natural_area_ref01_ent = $client->CategoryNaturalArea(null);
         $category_natural_area_ref01_match = [];
 
-        [$category_natural_area_ref01_list_result, $err] = $category_natural_area_ref01_ent->list($category_natural_area_ref01_match, null);
-        $this->assertNull($err);
+        $category_natural_area_ref01_list_result = $category_natural_area_ref01_ent->list($category_natural_area_ref01_match, null);
         $this->assertIsArray($category_natural_area_ref01_list_result);
 
     }
@@ -86,7 +85,6 @@ function category_natural_area_basic_setup($extra)
         "COLOMBIAPUBLIC_TEST_CATEGORY_NATURAL_AREA_ENTID" => $idmap,
         "COLOMBIAPUBLIC_TEST_LIVE" => "FALSE",
         "COLOMBIAPUBLIC_TEST_EXPLAIN" => "FALSE",
-        "COLOMBIAPUBLIC_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -98,7 +96,6 @@ function category_natural_area_basic_setup($extra)
     if ($env["COLOMBIAPUBLIC_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["COLOMBIAPUBLIC_APIKEY"],
             ],
             $extra ?? [],
         ]);

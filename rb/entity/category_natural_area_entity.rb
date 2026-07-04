@@ -45,6 +45,7 @@ class CategoryNaturalAreaEntity
     end
   end
 
+  # @return [CategoryNaturalArea, Hash] the current CategoryNaturalArea data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,6 +58,7 @@ class CategoryNaturalAreaEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of CategoryNaturalArea fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
@@ -65,6 +67,11 @@ class CategoryNaturalAreaEntity
   
 
   
+  # List CategoryNaturalArea items matching the given filter.
+  #
+  # @param reqmatch [CategoryNaturalAreaListMatch, Hash, nil] match filter (any subset of CategoryNaturalArea fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<CategoryNaturalArea>, Array] the matching CategoryNaturalArea items; raises ColombiaPublicError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

@@ -50,16 +50,14 @@ class TestHolidayEntity:
         holiday_ref01_ent = client.Holiday(None)
         holiday_ref01_match = {}
 
-        holiday_ref01_list_result, err = holiday_ref01_ent.list(holiday_ref01_match, None)
-        assert err is None
+        holiday_ref01_list_result = holiday_ref01_ent.list(holiday_ref01_match, None)
         assert isinstance(holiday_ref01_list_result, list)
 
         # LOAD
         holiday_ref01_match_dt0 = {
             "id": holiday_ref01_data["id"],
         }
-        holiday_ref01_data_dt0_loaded, err = holiday_ref01_ent.load(holiday_ref01_match_dt0, None)
-        assert err is None
+        holiday_ref01_data_dt0_loaded = holiday_ref01_ent.load(holiday_ref01_match_dt0, None)
         holiday_ref01_data_dt0_load_result = helpers.to_map(holiday_ref01_data_dt0_loaded)
         assert holiday_ref01_data_dt0_load_result is not None
         assert holiday_ref01_data_dt0_load_result["id"] == holiday_ref01_data["id"]
@@ -102,7 +100,6 @@ def _holiday_basic_setup(extra):
         "COLOMBIAPUBLIC_TEST_HOLIDAY_ENTID": idmap,
         "COLOMBIAPUBLIC_TEST_LIVE": "FALSE",
         "COLOMBIAPUBLIC_TEST_EXPLAIN": "FALSE",
-        "COLOMBIAPUBLIC_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -113,7 +110,6 @@ def _holiday_basic_setup(extra):
     if env.get("COLOMBIAPUBLIC_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("COLOMBIAPUBLIC_APIKEY"),
             },
             extra or {},
         ])

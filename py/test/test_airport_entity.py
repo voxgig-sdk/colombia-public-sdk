@@ -50,16 +50,14 @@ class TestAirportEntity:
         airport_ref01_ent = client.Airport(None)
         airport_ref01_match = {}
 
-        airport_ref01_list_result, err = airport_ref01_ent.list(airport_ref01_match, None)
-        assert err is None
+        airport_ref01_list_result = airport_ref01_ent.list(airport_ref01_match, None)
         assert isinstance(airport_ref01_list_result, list)
 
         # LOAD
         airport_ref01_match_dt0 = {
             "id": airport_ref01_data["id"],
         }
-        airport_ref01_data_dt0_loaded, err = airport_ref01_ent.load(airport_ref01_match_dt0, None)
-        assert err is None
+        airport_ref01_data_dt0_loaded = airport_ref01_ent.load(airport_ref01_match_dt0, None)
         airport_ref01_data_dt0_load_result = helpers.to_map(airport_ref01_data_dt0_loaded)
         assert airport_ref01_data_dt0_load_result is not None
         assert airport_ref01_data_dt0_load_result["id"] == airport_ref01_data["id"]
@@ -102,7 +100,6 @@ def _airport_basic_setup(extra):
         "COLOMBIAPUBLIC_TEST_AIRPORT_ENTID": idmap,
         "COLOMBIAPUBLIC_TEST_LIVE": "FALSE",
         "COLOMBIAPUBLIC_TEST_EXPLAIN": "FALSE",
-        "COLOMBIAPUBLIC_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -113,7 +110,6 @@ def _airport_basic_setup(extra):
     if env.get("COLOMBIAPUBLIC_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("COLOMBIAPUBLIC_APIKEY"),
             },
             extra or {},
         ])

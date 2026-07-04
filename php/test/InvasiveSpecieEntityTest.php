@@ -50,16 +50,14 @@ class InvasiveSpecieEntityTest extends TestCase
         $invasive_specie_ref01_ent = $client->InvasiveSpecie(null);
         $invasive_specie_ref01_match = [];
 
-        [$invasive_specie_ref01_list_result, $err] = $invasive_specie_ref01_ent->list($invasive_specie_ref01_match, null);
-        $this->assertNull($err);
+        $invasive_specie_ref01_list_result = $invasive_specie_ref01_ent->list($invasive_specie_ref01_match, null);
         $this->assertIsArray($invasive_specie_ref01_list_result);
 
         // LOAD
         $invasive_specie_ref01_match_dt0 = [
             "id" => $invasive_specie_ref01_data["id"],
         ];
-        [$invasive_specie_ref01_data_dt0_loaded, $err] = $invasive_specie_ref01_ent->load($invasive_specie_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $invasive_specie_ref01_data_dt0_loaded = $invasive_specie_ref01_ent->load($invasive_specie_ref01_match_dt0, null);
         $invasive_specie_ref01_data_dt0_load_result = Helpers::to_map($invasive_specie_ref01_data_dt0_loaded);
         $this->assertNotNull($invasive_specie_ref01_data_dt0_load_result);
         $this->assertEquals($invasive_specie_ref01_data_dt0_load_result["id"], $invasive_specie_ref01_data["id"]);
@@ -96,7 +94,6 @@ function invasive_specie_basic_setup($extra)
         "COLOMBIAPUBLIC_TEST_INVASIVE_SPECIE_ENTID" => $idmap,
         "COLOMBIAPUBLIC_TEST_LIVE" => "FALSE",
         "COLOMBIAPUBLIC_TEST_EXPLAIN" => "FALSE",
-        "COLOMBIAPUBLIC_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -108,7 +105,6 @@ function invasive_specie_basic_setup($extra)
     if ($env["COLOMBIAPUBLIC_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["COLOMBIAPUBLIC_APIKEY"],
             ],
             $extra ?? [],
         ]);

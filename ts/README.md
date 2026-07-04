@@ -9,9 +9,12 @@ The TypeScript SDK for the ColombiaPublic API — a type-safe, entity-oriented c
 
 
 ## Install
-```bash
-npm install @voxgig-sdk/colombia-public
-```
+This package is not yet published to npm. Install it from the GitHub
+release tag (`ts/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/colombia-public-sdk/releases](https://github.com/voxgig-sdk/colombia-public-sdk/releases)
+
+
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
@@ -20,17 +23,15 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { ColombiaPublicSDK } from 'colombia-public'
+import { ColombiaPublicSDK } from '@voxgig-sdk/colombia-public'
 
-const client = new ColombiaPublicSDK({
-  apikey: process.env.COLOMBIA-PUBLIC_APIKEY,
-})
+const client = new ColombiaPublicSDK()
 ```
 
 ### 2. List airports
 
 ```ts
-const result = await client.Airport().list()
+const result = await client.airport.list()
 
 if (result.ok) {
   for (const item of result.data) {
@@ -39,10 +40,10 @@ if (result.ok) {
 }
 ```
 
-### 3. Load a airport
+### 3. Load an airport
 
 ```ts
-const result = await client.Airport().load({ id: 'example_id' })
+const result = await client.airport.load({ id: 'example_id' })
 
 if (result.ok) {
   console.log(result.data)
@@ -91,7 +92,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = ColombiaPublicSDK.test()
 
-const result = await client.Planet().load({ id: 'test01' })
+const result = await client.airport.load({ id: 'test01' })
 // result.ok === true
 // result.data contains mock response data
 ```
@@ -99,7 +100,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new ColombiaPublicSDK({ apikey: '...' })
+const client = new ColombiaPublicSDK()
 const testClient = client.tester()
 ```
 
@@ -108,7 +109,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Planet()
+const entity = client.airport
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -135,7 +136,6 @@ const logger = {
 }
 
 const client = new ColombiaPublicSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -145,8 +145,7 @@ const client = new ColombiaPublicSDK({
 Create a `.env.local` file at the project root:
 
 ```
-COLOMBIA-PUBLIC_TEST_LIVE=TRUE
-COLOMBIA-PUBLIC_APIKEY=<your-key>
+COLOMBIA_PUBLIC_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -164,7 +163,6 @@ cd ts && npm test
 
 ```ts
 new ColombiaPublicSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -175,7 +173,6 @@ new ColombiaPublicSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -507,7 +504,7 @@ API path: `/TypicalDish`
 
 ### Airport
 
-Create an instance: `const airport = client.Airport()`
+Create an instance: `const airport = client.airport`
 
 #### Operations
 
@@ -532,19 +529,19 @@ Create an instance: `const airport = client.Airport()`
 #### Example: Load
 
 ```ts
-const airport = await client.Airport().load({ id: 'airport_id' })
+const airport = await client.airport.load({ id: 'airport_id' })
 ```
 
 #### Example: List
 
 ```ts
-const airports = await client.Airport().list()
+const airports = await client.airport.list()
 ```
 
 
 ### CategoryNaturalArea
 
-Create an instance: `const category_natural_area = client.CategoryNaturalArea()`
+Create an instance: `const category_natural_area = client.category_natural_area`
 
 #### Operations
 
@@ -563,13 +560,13 @@ Create an instance: `const category_natural_area = client.CategoryNaturalArea()`
 #### Example: List
 
 ```ts
-const category_natural_areas = await client.CategoryNaturalArea().list()
+const category_natural_areas = await client.category_natural_area.list()
 ```
 
 
 ### ConstitutionArticle
 
-Create an instance: `const constitution_article = client.ConstitutionArticle()`
+Create an instance: `const constitution_article = client.constitution_article`
 
 #### Operations
 
@@ -591,19 +588,19 @@ Create an instance: `const constitution_article = client.ConstitutionArticle()`
 #### Example: Load
 
 ```ts
-const constitution_article = await client.ConstitutionArticle().load({ id: 'constitution_article_id' })
+const constitution_article = await client.constitution_article.load({ id: 'constitution_article_id' })
 ```
 
 #### Example: List
 
 ```ts
-const constitution_articles = await client.ConstitutionArticle().list()
+const constitution_articles = await client.constitution_article.list()
 ```
 
 
 ### Country
 
-Create an instance: `const country = client.Country()`
+Create an instance: `const country = client.country`
 
 #### Operations
 
@@ -627,13 +624,13 @@ Create an instance: `const country = client.Country()`
 #### Example: List
 
 ```ts
-const countrys = await client.Country().list()
+const countrys = await client.country.list()
 ```
 
 
 ### Department
 
-Create an instance: `const department = client.Department()`
+Create an instance: `const department = client.department`
 
 #### Operations
 
@@ -658,19 +655,19 @@ Create an instance: `const department = client.Department()`
 #### Example: Load
 
 ```ts
-const department = await client.Department().load({ id: 'department_id' })
+const department = await client.department.load({ id: 'department_id' })
 ```
 
 #### Example: List
 
 ```ts
-const departments = await client.Department().list()
+const departments = await client.department.list()
 ```
 
 
 ### Holiday
 
-Create an instance: `const holiday = client.Holiday()`
+Create an instance: `const holiday = client.holiday`
 
 #### Operations
 
@@ -692,19 +689,19 @@ Create an instance: `const holiday = client.Holiday()`
 #### Example: Load
 
 ```ts
-const holiday = await client.Holiday().load({ id: 'holiday_id' })
+const holiday = await client.holiday.load({ id: 'holiday_id' })
 ```
 
 #### Example: List
 
 ```ts
-const holidays = await client.Holiday().list()
+const holidays = await client.holiday.list()
 ```
 
 
 ### InvasiveSpecie
 
-Create an instance: `const invasive_specie = client.InvasiveSpecie()`
+Create an instance: `const invasive_specie = client.invasive_specie`
 
 #### Operations
 
@@ -727,19 +724,19 @@ Create an instance: `const invasive_specie = client.InvasiveSpecie()`
 #### Example: Load
 
 ```ts
-const invasive_specie = await client.InvasiveSpecie().load({ id: 'invasive_specie_id' })
+const invasive_specie = await client.invasive_specie.load({ id: 'invasive_specie_id' })
 ```
 
 #### Example: List
 
 ```ts
-const invasive_species = await client.InvasiveSpecie().list()
+const invasive_species = await client.invasive_specie.list()
 ```
 
 
 ### Map
 
-Create an instance: `const map = client.Map()`
+Create an instance: `const map = client.map`
 
 #### Operations
 
@@ -760,13 +757,13 @@ Create an instance: `const map = client.Map()`
 #### Example: List
 
 ```ts
-const maps = await client.Map().list()
+const maps = await client.map.list()
 ```
 
 
 ### NativeCommunity
 
-Create an instance: `const native_community = client.NativeCommunity()`
+Create an instance: `const native_community = client.native_community`
 
 #### Operations
 
@@ -788,19 +785,19 @@ Create an instance: `const native_community = client.NativeCommunity()`
 #### Example: Load
 
 ```ts
-const native_community = await client.NativeCommunity().load({ id: 'native_community_id' })
+const native_community = await client.native_community.load({ id: 'native_community_id' })
 ```
 
 #### Example: List
 
 ```ts
-const native_communitys = await client.NativeCommunity().list()
+const native_communitys = await client.native_community.list()
 ```
 
 
 ### NaturalArea
 
-Create an instance: `const natural_area = client.NaturalArea()`
+Create an instance: `const natural_area = client.natural_area`
 
 #### Operations
 
@@ -825,19 +822,19 @@ Create an instance: `const natural_area = client.NaturalArea()`
 #### Example: Load
 
 ```ts
-const natural_area = await client.NaturalArea().load({ id: 'natural_area_id' })
+const natural_area = await client.natural_area.load({ id: 'natural_area_id' })
 ```
 
 #### Example: List
 
 ```ts
-const natural_areas = await client.NaturalArea().list()
+const natural_areas = await client.natural_area.list()
 ```
 
 
 ### President
 
-Create an instance: `const president = client.President()`
+Create an instance: `const president = client.president`
 
 #### Operations
 
@@ -861,19 +858,19 @@ Create an instance: `const president = client.President()`
 #### Example: Load
 
 ```ts
-const president = await client.President().load({ id: 'president_id' })
+const president = await client.president.load({ id: 'president_id' })
 ```
 
 #### Example: List
 
 ```ts
-const presidents = await client.President().list()
+const presidents = await client.president.list()
 ```
 
 
 ### Radio
 
-Create an instance: `const radio = client.Radio()`
+Create an instance: `const radio = client.radio`
 
 #### Operations
 
@@ -895,19 +892,19 @@ Create an instance: `const radio = client.Radio()`
 #### Example: Load
 
 ```ts
-const radio = await client.Radio().load({ id: 'radio_id' })
+const radio = await client.radio.load({ id: 'radio_id' })
 ```
 
 #### Example: List
 
 ```ts
-const radios = await client.Radio().list()
+const radios = await client.radio.list()
 ```
 
 
 ### Region
 
-Create an instance: `const region = client.Region()`
+Create an instance: `const region = client.region`
 
 #### Operations
 
@@ -928,19 +925,19 @@ Create an instance: `const region = client.Region()`
 #### Example: Load
 
 ```ts
-const region = await client.Region().load({ id: 'region_id' })
+const region = await client.region.load({ id: 'region_id' })
 ```
 
 #### Example: List
 
 ```ts
-const regions = await client.Region().list()
+const regions = await client.region.list()
 ```
 
 
 ### TouristicAttraction
 
-Create an instance: `const touristic_attraction = client.TouristicAttraction()`
+Create an instance: `const touristic_attraction = client.touristic_attraction`
 
 #### Operations
 
@@ -964,19 +961,19 @@ Create an instance: `const touristic_attraction = client.TouristicAttraction()`
 #### Example: Load
 
 ```ts
-const touristic_attraction = await client.TouristicAttraction().load({ id: 'touristic_attraction_id' })
+const touristic_attraction = await client.touristic_attraction.load({ id: 'touristic_attraction_id' })
 ```
 
 #### Example: List
 
 ```ts
-const touristic_attractions = await client.TouristicAttraction().list()
+const touristic_attractions = await client.touristic_attraction.list()
 ```
 
 
 ### TypicalDish
 
-Create an instance: `const typical_dish = client.TypicalDish()`
+Create an instance: `const typical_dish = client.typical_dish`
 
 #### Operations
 
@@ -999,13 +996,13 @@ Create an instance: `const typical_dish = client.TypicalDish()`
 #### Example: Load
 
 ```ts
-const typical_dish = await client.TypicalDish().load({ id: 'typical_dish_id' })
+const typical_dish = await client.typical_dish.load({ id: 'typical_dish_id' })
 ```
 
 #### Example: List
 
 ```ts
-const typical_dishs = await client.TypicalDish().list()
+const typical_dishs = await client.typical_dish.list()
 ```
 
 
@@ -1066,7 +1063,7 @@ colombia-public/
 Import the SDK from the package root:
 
 ```ts
-import { ColombiaPublicSDK } from 'colombia-public'
+import { ColombiaPublicSDK } from '@voxgig-sdk/colombia-public'
 ```
 
 ### Entity state
@@ -1076,11 +1073,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moon = client.Moon()
-await moon.load({ planet_id: 'earth', id: 'luna' })
+const airport = client.airport
+await airport.load({ id: "example_id" })
 
-// moon.data() now returns the loaded moon data
-// moon.match() returns { planet_id: 'earth', id: 'luna' }
+// airport.data() now returns the loaded airport data
+// airport.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

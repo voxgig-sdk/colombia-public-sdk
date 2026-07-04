@@ -14,9 +14,14 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  ConstitutionArticle,
+  ConstitutionArticleLoadMatch,
+  ConstitutionArticleListMatch,
+} from '../ColombiaPublicTypes'
 
 // TODO: needs Entity superclass
-class ConstitutionArticleEntity extends ColombiaPublicEntityBase {
+class ConstitutionArticleEntity extends ColombiaPublicEntityBase<ConstitutionArticle> {
 
   constructor(client: ColombiaPublicSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +37,7 @@ class ConstitutionArticleEntity extends ColombiaPublicEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: ConstitutionArticleLoadMatch, ctrl?: Control): Promise<ConstitutionArticle> {
 
     const utility = this._utility
 
@@ -136,14 +141,16 @@ class ConstitutionArticleEntity extends ColombiaPublicEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<ConstitutionArticle> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: ConstitutionArticleListMatch, ctrl?: Control): Promise<ConstitutionArticle[]> {
 
     const utility = this._utility
 
@@ -243,7 +250,9 @@ class ConstitutionArticleEntity extends ColombiaPublicEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<ConstitutionArticle[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

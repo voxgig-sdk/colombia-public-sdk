@@ -55,6 +55,9 @@ class ConstitutionArticleEntity
         return new ConstitutionArticleEntity($this->_client, $opts);
     }
 
+    /**
+     * @param ConstitutionArticle|array $args ConstitutionArticle data (assoc-array) to store.
+     */
     public function data_set($args): void
     {
         if ($args) {
@@ -63,12 +66,18 @@ class ConstitutionArticleEntity
         }
     }
 
+    /**
+     * @return ConstitutionArticle|array The current ConstitutionArticle data as an assoc-array.
+     */
     public function data_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetData");
         return Struct::clone($this->_data);
     }
 
+    /**
+     * @param array $args Match filter (any subset of ConstitutionArticle fields).
+     */
     public function match_set($args): void
     {
         if ($args) {
@@ -77,6 +86,9 @@ class ConstitutionArticleEntity
         }
     }
 
+    /**
+     * @return array The current match filter (any subset of ConstitutionArticle fields).
+     */
     public function match_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetMatch");
@@ -84,7 +96,16 @@ class ConstitutionArticleEntity
     }
 
     
-    public function load($reqmatch, $ctrl = null): array
+    /**
+     * Load a single ConstitutionArticle.
+     *
+     * @param ConstitutionArticleLoadMatch|array|null $reqmatch Match criteria (id/query
+     *   fields) as an assoc-array; a typed ConstitutionArticleLoadMatch names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return ConstitutionArticle|array The loaded ConstitutionArticle as an assoc-array at the
+     *   SDK boundary; throws ColombiaPublicError on failure (item-5 convention).
+     */
+    public function load(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
@@ -110,7 +131,16 @@ class ConstitutionArticleEntity
 
 
     
-    public function list($reqmatch, $ctrl = null): array
+    /**
+     * List ConstitutionArticle items matching the given filter.
+     *
+     * @param ConstitutionArticleListMatch|array|null $reqmatch Match filter (any subset
+     *   of ConstitutionArticle fields) as an assoc-array; ConstitutionArticleListMatch names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return ConstitutionArticle[]|array A list of ConstitutionArticle items as assoc-arrays at
+     *   the SDK boundary; throws ColombiaPublicError on failure (item-5 convention).
+     */
+    public function list(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
@@ -138,7 +168,7 @@ class ConstitutionArticleEntity
 
     
 
-    private function _run_op($ctx, callable $post_done): array
+    private function _run_op($ctx, callable $post_done): mixed
     {
         $utility = $this->_utility;
 

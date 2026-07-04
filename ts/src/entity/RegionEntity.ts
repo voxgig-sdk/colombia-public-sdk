@@ -14,9 +14,14 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Region,
+  RegionLoadMatch,
+  RegionListMatch,
+} from '../ColombiaPublicTypes'
 
 // TODO: needs Entity superclass
-class RegionEntity extends ColombiaPublicEntityBase {
+class RegionEntity extends ColombiaPublicEntityBase<Region> {
 
   constructor(client: ColombiaPublicSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +37,7 @@ class RegionEntity extends ColombiaPublicEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: RegionLoadMatch, ctrl?: Control): Promise<Region> {
 
     const utility = this._utility
 
@@ -136,14 +141,16 @@ class RegionEntity extends ColombiaPublicEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Region> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: RegionListMatch, ctrl?: Control): Promise<Region[]> {
 
     const utility = this._utility
 
@@ -243,7 +250,9 @@ class RegionEntity extends ColombiaPublicEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Region[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

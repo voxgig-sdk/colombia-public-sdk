@@ -13,6 +13,9 @@ require_relative 'config'
 require_relative 'feature/base_feature'
 require_relative 'features'
 
+# Load typed models (Struct value objects).
+require_relative 'ColombiaPublic_types'
+
 
 class ColombiaPublicSDK
   attr_accessor :mode, :features, :options
@@ -131,7 +134,7 @@ class ColombiaPublicSDK
     end
 
     _, err = utility.prepare_auth.call(ctx)
-    return nil, err if err
+    raise err if err
 
     utility.make_fetch_def.call(ctx)
   end
@@ -139,8 +142,14 @@ class ColombiaPublicSDK
   def direct(fetchargs = {})
     utility = @_utility
 
-    fetchdef, err = prepare(fetchargs)
-    return { "ok" => false, "err" => err }, nil if err
+    # direct() is the raw-HTTP escape hatch: it always returns a result hash
+    # ({ "ok" => ..., ... }) and never raises. prepare() raises on error, so
+    # trap that and surface it in the hash.
+    begin
+      fetchdef = prepare(fetchargs)
+    rescue ColombiaPublicError => err
+      return { "ok" => false, "err" => err }
+    end
 
     fetchargs ||= {}
     ctrl = ColombiaPublicHelpers.to_map(VoxgigStruct.getprop(fetchargs, "ctrl")) || {}
@@ -153,13 +162,13 @@ class ColombiaPublicSDK
     url = fetchdef["url"] || ""
     fetched, fetch_err = utility.fetcher.call(ctx, url, fetchdef)
 
-    return { "ok" => false, "err" => fetch_err }, nil if fetch_err
+    return { "ok" => false, "err" => fetch_err } if fetch_err
 
     if fetched.nil?
       return {
         "ok" => false,
         "err" => ctx.make_error("direct_no_response", "response: undefined"),
-      }, nil
+      }
     end
 
     if fetched.is_a?(Hash)
@@ -189,100 +198,205 @@ class ColombiaPublicSDK
         "status" => status,
         "headers" => headers,
         "data" => json_data,
-      }, nil
+      }
     end
 
     return {
       "ok" => false,
       "err" => ctx.make_error("direct_invalid", "invalid response type"),
-    }, nil
+    }
   end
 
 
+  # Idiomatic facade: client.airport.list / client.airport.load({ "id" => ... })
+  def airport
+    require_relative 'entity/airport_entity'
+    @airport ||= AirportEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.airport instead.
   def Airport(data = nil)
     require_relative 'entity/airport_entity'
     AirportEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.category_natural_area.list / client.category_natural_area.load({ "id" => ... })
+  def category_natural_area
+    require_relative 'entity/category_natural_area_entity'
+    @category_natural_area ||= CategoryNaturalAreaEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.category_natural_area instead.
   def CategoryNaturalArea(data = nil)
     require_relative 'entity/category_natural_area_entity'
     CategoryNaturalAreaEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.constitution_article.list / client.constitution_article.load({ "id" => ... })
+  def constitution_article
+    require_relative 'entity/constitution_article_entity'
+    @constitution_article ||= ConstitutionArticleEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.constitution_article instead.
   def ConstitutionArticle(data = nil)
     require_relative 'entity/constitution_article_entity'
     ConstitutionArticleEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.country.list / client.country.load({ "id" => ... })
+  def country
+    require_relative 'entity/country_entity'
+    @country ||= CountryEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.country instead.
   def Country(data = nil)
     require_relative 'entity/country_entity'
     CountryEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.department.list / client.department.load({ "id" => ... })
+  def department
+    require_relative 'entity/department_entity'
+    @department ||= DepartmentEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.department instead.
   def Department(data = nil)
     require_relative 'entity/department_entity'
     DepartmentEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.holiday.list / client.holiday.load({ "id" => ... })
+  def holiday
+    require_relative 'entity/holiday_entity'
+    @holiday ||= HolidayEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.holiday instead.
   def Holiday(data = nil)
     require_relative 'entity/holiday_entity'
     HolidayEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.invasive_specie.list / client.invasive_specie.load({ "id" => ... })
+  def invasive_specie
+    require_relative 'entity/invasive_specie_entity'
+    @invasive_specie ||= InvasiveSpecieEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.invasive_specie instead.
   def InvasiveSpecie(data = nil)
     require_relative 'entity/invasive_specie_entity'
     InvasiveSpecieEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.map.list / client.map.load({ "id" => ... })
+  def map
+    require_relative 'entity/map_entity'
+    @map ||= MapEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.map instead.
   def Map(data = nil)
     require_relative 'entity/map_entity'
     MapEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.native_community.list / client.native_community.load({ "id" => ... })
+  def native_community
+    require_relative 'entity/native_community_entity'
+    @native_community ||= NativeCommunityEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.native_community instead.
   def NativeCommunity(data = nil)
     require_relative 'entity/native_community_entity'
     NativeCommunityEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.natural_area.list / client.natural_area.load({ "id" => ... })
+  def natural_area
+    require_relative 'entity/natural_area_entity'
+    @natural_area ||= NaturalAreaEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.natural_area instead.
   def NaturalArea(data = nil)
     require_relative 'entity/natural_area_entity'
     NaturalAreaEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.president.list / client.president.load({ "id" => ... })
+  def president
+    require_relative 'entity/president_entity'
+    @president ||= PresidentEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.president instead.
   def President(data = nil)
     require_relative 'entity/president_entity'
     PresidentEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.radio.list / client.radio.load({ "id" => ... })
+  def radio
+    require_relative 'entity/radio_entity'
+    @radio ||= RadioEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.radio instead.
   def Radio(data = nil)
     require_relative 'entity/radio_entity'
     RadioEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.region.list / client.region.load({ "id" => ... })
+  def region
+    require_relative 'entity/region_entity'
+    @region ||= RegionEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.region instead.
   def Region(data = nil)
     require_relative 'entity/region_entity'
     RegionEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.touristic_attraction.list / client.touristic_attraction.load({ "id" => ... })
+  def touristic_attraction
+    require_relative 'entity/touristic_attraction_entity'
+    @touristic_attraction ||= TouristicAttractionEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.touristic_attraction instead.
   def TouristicAttraction(data = nil)
     require_relative 'entity/touristic_attraction_entity'
     TouristicAttractionEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.typical_dish.list / client.typical_dish.load({ "id" => ... })
+  def typical_dish
+    require_relative 'entity/typical_dish_entity'
+    @typical_dish ||= TypicalDishEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.typical_dish instead.
   def TypicalDish(data = nil)
     require_relative 'entity/typical_dish_entity'
     TypicalDishEntity.new(self, data)

@@ -43,16 +43,14 @@ class RadioEntityTest < Minitest::Test
     radio_ref01_ent = client.Radio(nil)
     radio_ref01_match = {}
 
-    radio_ref01_list_result, err = radio_ref01_ent.list(radio_ref01_match, nil)
-    assert_nil err
+    radio_ref01_list_result = radio_ref01_ent.list(radio_ref01_match, nil)
     assert radio_ref01_list_result.is_a?(Array)
 
     # LOAD
     radio_ref01_match_dt0 = {
       "id" => radio_ref01_data["id"],
     }
-    radio_ref01_data_dt0_loaded, err = radio_ref01_ent.load(radio_ref01_match_dt0, nil)
-    assert_nil err
+    radio_ref01_data_dt0_loaded = radio_ref01_ent.load(radio_ref01_match_dt0, nil)
     radio_ref01_data_dt0_load_result = Helpers.to_map(radio_ref01_data_dt0_loaded)
     assert !radio_ref01_data_dt0_load_result.nil?
     assert_equal radio_ref01_data_dt0_load_result["id"], radio_ref01_data["id"]
@@ -93,7 +91,6 @@ def radio_basic_setup(extra)
     "COLOMBIAPUBLIC_TEST_RADIO_ENTID" => idmap,
     "COLOMBIAPUBLIC_TEST_LIVE" => "FALSE",
     "COLOMBIAPUBLIC_TEST_EXPLAIN" => "FALSE",
-    "COLOMBIAPUBLIC_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -105,7 +102,6 @@ def radio_basic_setup(extra)
   if env["COLOMBIAPUBLIC_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["COLOMBIAPUBLIC_APIKEY"],
       },
       extra || {},
     ])

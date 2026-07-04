@@ -43,16 +43,14 @@ class AirportEntityTest < Minitest::Test
     airport_ref01_ent = client.Airport(nil)
     airport_ref01_match = {}
 
-    airport_ref01_list_result, err = airport_ref01_ent.list(airport_ref01_match, nil)
-    assert_nil err
+    airport_ref01_list_result = airport_ref01_ent.list(airport_ref01_match, nil)
     assert airport_ref01_list_result.is_a?(Array)
 
     # LOAD
     airport_ref01_match_dt0 = {
       "id" => airport_ref01_data["id"],
     }
-    airport_ref01_data_dt0_loaded, err = airport_ref01_ent.load(airport_ref01_match_dt0, nil)
-    assert_nil err
+    airport_ref01_data_dt0_loaded = airport_ref01_ent.load(airport_ref01_match_dt0, nil)
     airport_ref01_data_dt0_load_result = Helpers.to_map(airport_ref01_data_dt0_loaded)
     assert !airport_ref01_data_dt0_load_result.nil?
     assert_equal airport_ref01_data_dt0_load_result["id"], airport_ref01_data["id"]
@@ -93,7 +91,6 @@ def airport_basic_setup(extra)
     "COLOMBIAPUBLIC_TEST_AIRPORT_ENTID" => idmap,
     "COLOMBIAPUBLIC_TEST_LIVE" => "FALSE",
     "COLOMBIAPUBLIC_TEST_EXPLAIN" => "FALSE",
-    "COLOMBIAPUBLIC_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -105,7 +102,6 @@ def airport_basic_setup(extra)
   if env["COLOMBIAPUBLIC_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["COLOMBIAPUBLIC_APIKEY"],
       },
       extra || {},
     ])

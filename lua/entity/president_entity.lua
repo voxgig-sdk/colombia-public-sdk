@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch PresidentLoadMatch
+---@param ctrl? table
+---@return President
+---@return string? err
 function PresidentEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -104,6 +108,10 @@ end
 
 
 
+---@param reqmatch PresidentListMatch
+---@param ctrl? table
+---@return President[]
+---@return string? err
 function PresidentEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

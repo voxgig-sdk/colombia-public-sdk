@@ -43,16 +43,14 @@ class NativeCommunityEntityTest < Minitest::Test
     native_community_ref01_ent = client.NativeCommunity(nil)
     native_community_ref01_match = {}
 
-    native_community_ref01_list_result, err = native_community_ref01_ent.list(native_community_ref01_match, nil)
-    assert_nil err
+    native_community_ref01_list_result = native_community_ref01_ent.list(native_community_ref01_match, nil)
     assert native_community_ref01_list_result.is_a?(Array)
 
     # LOAD
     native_community_ref01_match_dt0 = {
       "id" => native_community_ref01_data["id"],
     }
-    native_community_ref01_data_dt0_loaded, err = native_community_ref01_ent.load(native_community_ref01_match_dt0, nil)
-    assert_nil err
+    native_community_ref01_data_dt0_loaded = native_community_ref01_ent.load(native_community_ref01_match_dt0, nil)
     native_community_ref01_data_dt0_load_result = Helpers.to_map(native_community_ref01_data_dt0_loaded)
     assert !native_community_ref01_data_dt0_load_result.nil?
     assert_equal native_community_ref01_data_dt0_load_result["id"], native_community_ref01_data["id"]
@@ -93,7 +91,6 @@ def native_community_basic_setup(extra)
     "COLOMBIAPUBLIC_TEST_NATIVE_COMMUNITY_ENTID" => idmap,
     "COLOMBIAPUBLIC_TEST_LIVE" => "FALSE",
     "COLOMBIAPUBLIC_TEST_EXPLAIN" => "FALSE",
-    "COLOMBIAPUBLIC_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -105,7 +102,6 @@ def native_community_basic_setup(extra)
   if env["COLOMBIAPUBLIC_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["COLOMBIAPUBLIC_APIKEY"],
       },
       extra || {},
     ])

@@ -50,16 +50,14 @@ class AirportEntityTest extends TestCase
         $airport_ref01_ent = $client->Airport(null);
         $airport_ref01_match = [];
 
-        [$airport_ref01_list_result, $err] = $airport_ref01_ent->list($airport_ref01_match, null);
-        $this->assertNull($err);
+        $airport_ref01_list_result = $airport_ref01_ent->list($airport_ref01_match, null);
         $this->assertIsArray($airport_ref01_list_result);
 
         // LOAD
         $airport_ref01_match_dt0 = [
             "id" => $airport_ref01_data["id"],
         ];
-        [$airport_ref01_data_dt0_loaded, $err] = $airport_ref01_ent->load($airport_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $airport_ref01_data_dt0_loaded = $airport_ref01_ent->load($airport_ref01_match_dt0, null);
         $airport_ref01_data_dt0_load_result = Helpers::to_map($airport_ref01_data_dt0_loaded);
         $this->assertNotNull($airport_ref01_data_dt0_load_result);
         $this->assertEquals($airport_ref01_data_dt0_load_result["id"], $airport_ref01_data["id"]);
@@ -96,7 +94,6 @@ function airport_basic_setup($extra)
         "COLOMBIAPUBLIC_TEST_AIRPORT_ENTID" => $idmap,
         "COLOMBIAPUBLIC_TEST_LIVE" => "FALSE",
         "COLOMBIAPUBLIC_TEST_EXPLAIN" => "FALSE",
-        "COLOMBIAPUBLIC_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -108,7 +105,6 @@ function airport_basic_setup($extra)
     if ($env["COLOMBIAPUBLIC_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["COLOMBIAPUBLIC_APIKEY"],
             ],
             $extra ?? [],
         ]);

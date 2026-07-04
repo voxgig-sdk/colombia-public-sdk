@@ -50,8 +50,7 @@ class CountryEntityTest extends TestCase
         $country_ref01_ent = $client->Country(null);
         $country_ref01_match = [];
 
-        [$country_ref01_list_result, $err] = $country_ref01_ent->list($country_ref01_match, null);
-        $this->assertNull($err);
+        $country_ref01_list_result = $country_ref01_ent->list($country_ref01_match, null);
         $this->assertIsArray($country_ref01_list_result);
 
     }
@@ -86,7 +85,6 @@ function country_basic_setup($extra)
         "COLOMBIAPUBLIC_TEST_COUNTRY_ENTID" => $idmap,
         "COLOMBIAPUBLIC_TEST_LIVE" => "FALSE",
         "COLOMBIAPUBLIC_TEST_EXPLAIN" => "FALSE",
-        "COLOMBIAPUBLIC_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -98,7 +96,6 @@ function country_basic_setup($extra)
     if ($env["COLOMBIAPUBLIC_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["COLOMBIAPUBLIC_APIKEY"],
             ],
             $extra ?? [],
         ]);

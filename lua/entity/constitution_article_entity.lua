@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch ConstitutionArticleLoadMatch
+---@param ctrl? table
+---@return ConstitutionArticle
+---@return string? err
 function ConstitutionArticleEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -104,6 +108,10 @@ end
 
 
 
+---@param reqmatch ConstitutionArticleListMatch
+---@param ctrl? table
+---@return ConstitutionArticle[]
+---@return string? err
 function ConstitutionArticleEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
