@@ -4,6 +4,8 @@
 
 The Golang SDK for the ColombiaPublic API — an entity-oriented client using standard Go conventions. No generics required; data flows as `map[string]any`.
 
+It exposes the API as capitalised, semantic **Entities** — e.g. `client.Airport(nil)` — each with the same small set of operations (`List`, `Load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -58,12 +60,41 @@ func main() {
     }
 
     // Load a single airport — the value is the loaded record.
-    airport, err := client.Airport(nil).Load(map[string]any{"id": "example_id"}, nil)
+    airport, err := client.Airport(nil).Load(map[string]any{"id": 1}, nil)
     if err != nil {
         panic(err)
     }
     fmt.Println(airport)
 }
+```
+
+
+## Error handling
+
+Every entity operation returns `(value, error)`. Check `err` before
+using the value — there is no exception to catch:
+
+```go
+airports, err := client.Airport(nil).List(nil, nil)
+if err != nil {
+    // handle err
+    return
+}
+_ = airports
+```
+
+`Direct` follows the same `(value, error)` convention:
+
+```go
+result, err := client.Direct(map[string]any{
+    "path":   "/api/resource/{id}",
+    "method": "GET",
+    "params": map[string]any{"id": "example_id"},
+})
+if err != nil {
+    // handle err
+}
+_ = result
 ```
 
 
@@ -113,13 +144,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-airport, err := client.Airport(nil).Load(
-    map[string]any{"id": "test01"}, nil,
+airport, err := client.Airport(nil).List(
+    nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(airport) // the loaded mock data
+fmt.Println(airport) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -220,9 +251,6 @@ All entities implement the `ColombiaPublicEntity` interface.
 | --- | --- | --- |
 | `Load` | `(reqmatch, ctrl map[string]any) (any, error)` | Load a single entity by match criteria. |
 | `List` | `(reqmatch, ctrl map[string]any) (any, error)` | List entities matching the criteria. |
-| `Create` | `(reqdata, ctrl map[string]any) (any, error)` | Create a new entity. |
-| `Update` | `(reqdata, ctrl map[string]any) (any, error)` | Update an existing entity. |
-| `Remove` | `(reqmatch, ctrl map[string]any) (any, error)` | Remove an entity. |
 | `Data` | `(args ...any) any` | Get or set entity data. |
 | `Match` | `(args ...any) any` | Get or set entity match criteria. |
 | `Make` | `() Entity` | Create a new instance with the same options. |
@@ -235,16 +263,16 @@ operation's data **directly** — there is no wrapper:
 
 | Operation | `value` |
 | --- | --- |
-| `Load` / `Create` / `Update` / `Remove` | the entity record (`map[string]any`) |
+| `Load` | the entity record (`map[string]any`) |
 | `List` | a `[]any` of entity records |
 
 Check `err` first, then use the value directly (or the typed
 `...Typed` variants, which return the entity's model struct and a typed
 slice):
 
-    airport, err := client.Airport(nil).Load(map[string]any{"id": "example_id"}, nil)
+    airport, err := client.Airport(nil).List(map[string]any{/* fields */}, nil)
     if err != nil { /* handle */ }
-    // airport is the loaded record
+    // airport is the returned record
 
 Only `Direct()` returns a response envelope — a `map[string]any` with
 `"ok"`, `"status"`, `"headers"`, and `"data"` keys.
@@ -496,14 +524,14 @@ Create an instance: `airport := client.Airport(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `city_id` | ``$INTEGER`` |  |
-| `code` | ``$STRING`` |  |
-| `department_id` | ``$INTEGER`` |  |
-| `id` | ``$INTEGER`` |  |
-| `latitude` | ``$NUMBER`` |  |
-| `longitude` | ``$NUMBER`` |  |
-| `name` | ``$STRING`` |  |
-| `type` | ``$STRING`` |  |
+| `city_id` | `int` |  |
+| `code` | `string` |  |
+| `department_id` | `int` |  |
+| `id` | `int` |  |
+| `latitude` | `float64` |  |
+| `longitude` | `float64` |  |
+| `name` | `string` |  |
+| `type` | `string` |  |
 
 #### Example: Load
 
@@ -540,9 +568,9 @@ Create an instance: `category_natural_area := client.CategoryNaturalArea(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
+| `description` | `string` |  |
+| `id` | `int` |  |
+| `name` | `string` |  |
 
 #### Example: List
 
@@ -570,11 +598,11 @@ Create an instance: `constitution_article := client.ConstitutionArticle(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `article_number` | ``$INTEGER`` |  |
-| `chapter` | ``$STRING`` |  |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `title` | ``$STRING`` |  |
+| `article_number` | `int` |  |
+| `chapter` | `string` |  |
+| `description` | `string` |  |
+| `id` | `int` |  |
+| `title` | `string` |  |
 
 #### Example: Load
 
@@ -611,14 +639,14 @@ Create an instance: `country := client.Country(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `capital` | ``$STRING`` |  |
-| `currency` | ``$STRING`` |  |
-| `flag` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `language` | ``$ARRAY`` |  |
-| `name` | ``$STRING`` |  |
-| `population` | ``$INTEGER`` |  |
-| `surface` | ``$NUMBER`` |  |
+| `capital` | `string` |  |
+| `currency` | `string` |  |
+| `flag` | `string` |  |
+| `id` | `int` |  |
+| `language` | `[]any` |  |
+| `name` | `string` |  |
+| `population` | `int` |  |
+| `surface` | `float64` |  |
 
 #### Example: List
 
@@ -646,14 +674,14 @@ Create an instance: `department := client.Department(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `city_capital` | ``$STRING`` |  |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `municipality` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `population` | ``$INTEGER`` |  |
-| `region_id` | ``$INTEGER`` |  |
-| `surface` | ``$NUMBER`` |  |
+| `city_capital` | `string` |  |
+| `description` | `string` |  |
+| `id` | `int` |  |
+| `municipality` | `int` |  |
+| `name` | `string` |  |
+| `population` | `int` |  |
+| `region_id` | `int` |  |
+| `surface` | `float64` |  |
 
 #### Example: Load
 
@@ -691,11 +719,11 @@ Create an instance: `holiday := client.Holiday(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `date` | ``$STRING`` |  |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `type` | ``$STRING`` |  |
+| `date` | `string` |  |
+| `description` | `string` |  |
+| `id` | `int` |  |
+| `name` | `string` |  |
+| `type` | `string` |  |
 
 #### Example: Load
 
@@ -733,12 +761,12 @@ Create an instance: `invasive_specie := client.InvasiveSpecie(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id` | ``$INTEGER`` |  |
-| `impact` | ``$STRING`` |  |
-| `manage` | ``$STRING`` |  |
-| `name` | ``$STRING`` |  |
-| `scientific_name` | ``$STRING`` |  |
-| `url_image` | ``$STRING`` |  |
+| `id` | `int` |  |
+| `impact` | `string` |  |
+| `manage` | `string` |  |
+| `name` | `string` |  |
+| `scientific_name` | `string` |  |
+| `url_image` | `string` |  |
 
 #### Example: Load
 
@@ -763,7 +791,7 @@ fmt.Println(invasive_species) // the array of records
 
 ### Map
 
-Create an instance: `map := client.Map(nil)`
+Create an instance: `map_ := client.Map(nil)`
 
 #### Operations
 
@@ -775,20 +803,20 @@ Create an instance: `map := client.Map(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `department_id` | ``$INTEGER`` |  |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `url_image` | ``$ARRAY`` |  |
+| `department_id` | `int` |  |
+| `description` | `string` |  |
+| `id` | `int` |  |
+| `name` | `string` |  |
+| `url_image` | `[]any` |  |
 
 #### Example: List
 
 ```go
-maps, err := client.Map(nil).List(nil, nil)
+map_s, err := client.Map(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(maps) // the array of records
+fmt.Println(map_s) // the array of records
 ```
 
 
@@ -807,11 +835,11 @@ Create an instance: `native_community := client.NativeCommunity(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `department_id` | ``$INTEGER`` |  |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `population` | ``$INTEGER`` |  |
+| `department_id` | `int` |  |
+| `description` | `string` |  |
+| `id` | `int` |  |
+| `name` | `string` |  |
+| `population` | `int` |  |
 
 #### Example: Load
 
@@ -849,14 +877,14 @@ Create an instance: `natural_area := client.NaturalArea(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `area_group_id` | ``$INTEGER`` |  |
-| `category_natural_area_id` | ``$INTEGER`` |  |
-| `department_id` | ``$INTEGER`` |  |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `land_area` | ``$NUMBER`` |  |
-| `maritime_area` | ``$NUMBER`` |  |
-| `name` | ``$STRING`` |  |
+| `area_group_id` | `int` |  |
+| `category_natural_area_id` | `int` |  |
+| `department_id` | `int` |  |
+| `description` | `string` |  |
+| `id` | `int` |  |
+| `land_area` | `float64` |  |
+| `maritime_area` | `float64` |  |
+| `name` | `string` |  |
 
 #### Example: Load
 
@@ -894,13 +922,13 @@ Create an instance: `president := client.President(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `end_period_date` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `image` | ``$STRING`` |  |
-| `name` | ``$STRING`` |  |
-| `political_party` | ``$STRING`` |  |
-| `start_period_date` | ``$STRING`` |  |
+| `description` | `string` |  |
+| `end_period_date` | `string` |  |
+| `id` | `int` |  |
+| `image` | `string` |  |
+| `name` | `string` |  |
+| `political_party` | `string` |  |
+| `start_period_date` | `string` |  |
 
 #### Example: Load
 
@@ -938,11 +966,11 @@ Create an instance: `radio := client.Radio(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `band` | ``$STRING`` |  |
-| `frequency` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `url` | ``$STRING`` |  |
+| `band` | `string` |  |
+| `frequency` | `string` |  |
+| `id` | `int` |  |
+| `name` | `string` |  |
+| `url` | `string` |  |
 
 #### Example: Load
 
@@ -980,10 +1008,10 @@ Create an instance: `region := client.Region(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `department` | ``$ARRAY`` |  |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
+| `department` | `[]any` |  |
+| `description` | `string` |  |
+| `id` | `int` |  |
+| `name` | `string` |  |
 
 #### Example: Load
 
@@ -1021,13 +1049,13 @@ Create an instance: `touristic_attraction := client.TouristicAttraction(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `city` | ``$STRING`` |  |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `image` | ``$ARRAY`` |  |
-| `latitude` | ``$NUMBER`` |  |
-| `longitude` | ``$NUMBER`` |  |
-| `name` | ``$STRING`` |  |
+| `city` | `string` |  |
+| `description` | `string` |  |
+| `id` | `int` |  |
+| `image` | `[]any` |  |
+| `latitude` | `float64` |  |
+| `longitude` | `float64` |  |
+| `name` | `string` |  |
 
 #### Example: Load
 
@@ -1065,12 +1093,12 @@ Create an instance: `typical_dish := client.TypicalDish(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `department_id` | ``$INTEGER`` |  |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `ingredient` | ``$ARRAY`` |  |
-| `name` | ``$STRING`` |  |
-| `url_image` | ``$STRING`` |  |
+| `department_id` | `int` |  |
+| `description` | `string` |  |
+| `id` | `int` |  |
+| `ingredient` | `[]any` |  |
+| `name` | `string` |  |
+| `url_image` | `string` |  |
 
 #### Example: Load
 
@@ -1093,12 +1121,16 @@ fmt.Println(typical_dishs) // the array of records
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -1115,9 +1147,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller. An unexpected panic triggers the
-`PreUnexpected` hook.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -1158,14 +1190,14 @@ like `core.ToMapAny`.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `Load`, the entity
+Entity instances are stateful. After a successful `List`, the entity
 stores the returned data and match criteria internally.
 
 ```go
 airport := client.Airport(nil)
-airport.Load(map[string]any{"id": "example_id"}, nil)
+airport.List(nil, nil)
 
-// airport.Data() now returns the loaded airport data
+// airport.Data() now returns the airport data from the last list
 // airport.Match() returns the last match criteria
 ```
 

@@ -31,7 +31,7 @@ class AirportLoadMatch
     public int $id;
 }
 
-/** Match filter for Airport#list (any subset of Airport fields). */
+/** Request payload for Airport#list. */
 class AirportListMatch
 {
     public ?int $city_id = null;
@@ -52,7 +52,7 @@ class CategoryNaturalArea
     public ?string $name = null;
 }
 
-/** Match filter for CategoryNaturalArea#list (any subset of CategoryNaturalArea fields). */
+/** Request payload for CategoryNaturalArea#list. */
 class CategoryNaturalAreaListMatch
 {
     public ?string $description = null;
@@ -76,7 +76,7 @@ class ConstitutionArticleLoadMatch
     public int $id;
 }
 
-/** Match filter for ConstitutionArticle#list (any subset of ConstitutionArticle fields). */
+/** Request payload for ConstitutionArticle#list. */
 class ConstitutionArticleListMatch
 {
     public ?int $article_number = null;
@@ -99,7 +99,7 @@ class Country
     public ?float $surface = null;
 }
 
-/** Match filter for Country#list (any subset of Country fields). */
+/** Request payload for Country#list. */
 class CountryListMatch
 {
     public ?string $capital = null;
@@ -131,7 +131,7 @@ class DepartmentLoadMatch
     public int $id;
 }
 
-/** Match filter for Department#list (any subset of Department fields). */
+/** Request payload for Department#list. */
 class DepartmentListMatch
 {
     public ?string $city_capital = null;
@@ -160,7 +160,7 @@ class HolidayLoadMatch
     public int $id;
 }
 
-/** Match filter for Holiday#list (any subset of Holiday fields). */
+/** Request payload for Holiday#list. */
 class HolidayListMatch
 {
     public ?string $date = null;
@@ -187,7 +187,7 @@ class InvasiveSpecieLoadMatch
     public int $id;
 }
 
-/** Match filter for InvasiveSpecie#list (any subset of InvasiveSpecie fields). */
+/** Request payload for InvasiveSpecie#list. */
 class InvasiveSpecieListMatch
 {
     public ?int $id = null;
@@ -208,7 +208,7 @@ class Map
     public ?array $url_image = null;
 }
 
-/** Match filter for Map#list (any subset of Map fields). */
+/** Request payload for Map#list. */
 class MapListMatch
 {
     public ?int $department_id = null;
@@ -234,7 +234,7 @@ class NativeCommunityLoadMatch
     public int $id;
 }
 
-/** Match filter for NativeCommunity#list (any subset of NativeCommunity fields). */
+/** Request payload for NativeCommunity#list. */
 class NativeCommunityListMatch
 {
     public ?int $department_id = null;
@@ -263,7 +263,7 @@ class NaturalAreaLoadMatch
     public int $id;
 }
 
-/** Match filter for NaturalArea#list (any subset of NaturalArea fields). */
+/** Request payload for NaturalArea#list. */
 class NaturalAreaListMatch
 {
     public ?int $area_group_id = null;
@@ -294,7 +294,7 @@ class PresidentLoadMatch
     public int $id;
 }
 
-/** Match filter for President#list (any subset of President fields). */
+/** Request payload for President#list. */
 class PresidentListMatch
 {
     public ?string $description = null;
@@ -322,7 +322,7 @@ class RadioLoadMatch
     public int $id;
 }
 
-/** Match filter for Radio#list (any subset of Radio fields). */
+/** Request payload for Radio#list. */
 class RadioListMatch
 {
     public ?string $band = null;
@@ -347,7 +347,7 @@ class RegionLoadMatch
     public int $id;
 }
 
-/** Match filter for Region#list (any subset of Region fields). */
+/** Request payload for Region#list. */
 class RegionListMatch
 {
     public ?array $department = null;
@@ -374,7 +374,7 @@ class TouristicAttractionLoadMatch
     public int $id;
 }
 
-/** Match filter for TouristicAttraction#list (any subset of TouristicAttraction fields). */
+/** Request payload for TouristicAttraction#list. */
 class TouristicAttractionListMatch
 {
     public ?string $city = null;
@@ -403,7 +403,7 @@ class TypicalDishLoadMatch
     public int $id;
 }
 
-/** Match filter for TypicalDish#list (any subset of TypicalDish fields). */
+/** Request payload for TypicalDish#list. */
 class TypicalDishListMatch
 {
     public ?int $department_id = null;

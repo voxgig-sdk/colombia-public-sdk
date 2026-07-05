@@ -4,6 +4,8 @@
 
 The Ruby SDK for the ColombiaPublic API — an entity-oriented client using idiomatic Ruby conventions.
 
+The SDK exposes the API as capitalised, semantic **Entities** — for example `client.Airport` — with named operations (`list`/`load`) instead of raw URL paths and query strings. Working with resources and verbs keeps call sites self-describing and reduces cognitive load.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -35,7 +37,7 @@ begin
   # list returns an Array of Airport records — iterate directly.
   airports = client.Airport.list
   airports.each do |item|
-    puts "#{item["id"]} #{item["name"]}"
+    puts "#{item["id"]} #{item["city_id"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -52,6 +54,33 @@ begin
 rescue => err
   warn "load failed: #{err}"
 end
+```
+
+
+## Error handling
+
+Entity operations raise on failure, so rescue them:
+
+```ruby
+begin
+  airports = client.Airport.list()
+rescue => err
+  warn "list failed: #{err}"
+end
+```
+
+`direct` does **not** raise — it returns the result hash. Branch on
+`ok`; on failure `status` holds the HTTP status (for error responses) and
+`err` holds a transport error, so read both defensively:
+
+```ruby
+result = client.direct({
+  "path" => "/api/resource/{id}",
+  "method" => "GET",
+  "params" => { "id" => "example_id" },
+})
+
+warn "request failed: #{result["err"] || "HTTP #{result["status"]}"}" unless result["ok"]
 ```
 
 
@@ -72,7 +101,9 @@ if result["ok"]
   puts result["status"]  # 200
   puts result["data"]    # response body
 else
-  warn result["err"]
+  # On an HTTP error status there is no err (only a transport failure sets
+  # it), so fall back to the status code.
+  warn(result["err"] || "HTTP #{result["status"]}")
 end
 ```
 
@@ -103,8 +134,8 @@ client = ColombiaPublicSDK.test({
   "entity" => { "airport" => { "test01" => { "id" => "test01" } } },
 })
 
-# load returns the bare mock record (raises on error).
-airport = client.Airport.load({ "id" => "test01" })
+# Entity ops return the bare mock record (raises on error).
+airport = client.Airport.list()
 puts airport
 ```
 
@@ -204,10 +235,7 @@ All entities share the same interface.
 | Method | Signature | Description |
 | --- | --- | --- |
 | `load` | `(reqmatch, ctrl) -> any` | Load a single entity by match criteria. Raises on error. |
-| `list` | `(reqmatch, ctrl) -> Array` | List entities matching the criteria. Raises on error. |
-| `create` | `(reqdata, ctrl) -> any` | Create a new entity. Raises on error. |
-| `update` | `(reqdata, ctrl) -> any` | Update an existing entity. Raises on error. |
-| `remove` | `(reqmatch, ctrl) -> any` | Remove an entity. Raises on error. |
+| `list` | `(reqmatch = nil, ctrl) -> Array` | List entities matching the criteria (call with no argument to list all). Raises on error. |
 | `data_get` | `() -> Hash` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> Hash` | Get entity match criteria. |
@@ -479,14 +507,14 @@ Create an instance: `airport = client.Airport`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `city_id` | ``$INTEGER`` |  |
-| `code` | ``$STRING`` |  |
-| `department_id` | ``$INTEGER`` |  |
-| `id` | ``$INTEGER`` |  |
-| `latitude` | ``$NUMBER`` |  |
-| `longitude` | ``$NUMBER`` |  |
-| `name` | ``$STRING`` |  |
-| `type` | ``$STRING`` |  |
+| `city_id` | `Integer` |  |
+| `code` | `String` |  |
+| `department_id` | `Integer` |  |
+| `id` | `Integer` |  |
+| `latitude` | `Float` |  |
+| `longitude` | `Float` |  |
+| `name` | `String` |  |
+| `type` | `String` |  |
 
 #### Example: Load
 
@@ -517,9 +545,9 @@ Create an instance: `category_natural_area = client.CategoryNaturalArea`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
+| `description` | `String` |  |
+| `id` | `Integer` |  |
+| `name` | `String` |  |
 
 #### Example: List
 
@@ -544,11 +572,11 @@ Create an instance: `constitution_article = client.ConstitutionArticle`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `article_number` | ``$INTEGER`` |  |
-| `chapter` | ``$STRING`` |  |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `title` | ``$STRING`` |  |
+| `article_number` | `Integer` |  |
+| `chapter` | `String` |  |
+| `description` | `String` |  |
+| `id` | `Integer` |  |
+| `title` | `String` |  |
 
 #### Example: Load
 
@@ -579,14 +607,14 @@ Create an instance: `country = client.Country`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `capital` | ``$STRING`` |  |
-| `currency` | ``$STRING`` |  |
-| `flag` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `language` | ``$ARRAY`` |  |
-| `name` | ``$STRING`` |  |
-| `population` | ``$INTEGER`` |  |
-| `surface` | ``$NUMBER`` |  |
+| `capital` | `String` |  |
+| `currency` | `String` |  |
+| `flag` | `String` |  |
+| `id` | `Integer` |  |
+| `language` | `Array` |  |
+| `name` | `String` |  |
+| `population` | `Integer` |  |
+| `surface` | `Float` |  |
 
 #### Example: List
 
@@ -611,14 +639,14 @@ Create an instance: `department = client.Department`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `city_capital` | ``$STRING`` |  |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `municipality` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `population` | ``$INTEGER`` |  |
-| `region_id` | ``$INTEGER`` |  |
-| `surface` | ``$NUMBER`` |  |
+| `city_capital` | `String` |  |
+| `description` | `String` |  |
+| `id` | `Integer` |  |
+| `municipality` | `Integer` |  |
+| `name` | `String` |  |
+| `population` | `Integer` |  |
+| `region_id` | `Integer` |  |
+| `surface` | `Float` |  |
 
 #### Example: Load
 
@@ -650,11 +678,11 @@ Create an instance: `holiday = client.Holiday`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `date` | ``$STRING`` |  |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `type` | ``$STRING`` |  |
+| `date` | `String` |  |
+| `description` | `String` |  |
+| `id` | `Integer` |  |
+| `name` | `String` |  |
+| `type` | `String` |  |
 
 #### Example: Load
 
@@ -686,12 +714,12 @@ Create an instance: `invasive_specie = client.InvasiveSpecie`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id` | ``$INTEGER`` |  |
-| `impact` | ``$STRING`` |  |
-| `manage` | ``$STRING`` |  |
-| `name` | ``$STRING`` |  |
-| `scientific_name` | ``$STRING`` |  |
-| `url_image` | ``$STRING`` |  |
+| `id` | `Integer` |  |
+| `impact` | `String` |  |
+| `manage` | `String` |  |
+| `name` | `String` |  |
+| `scientific_name` | `String` |  |
+| `url_image` | `String` |  |
 
 #### Example: Load
 
@@ -722,11 +750,11 @@ Create an instance: `map = client.Map`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `department_id` | ``$INTEGER`` |  |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `url_image` | ``$ARRAY`` |  |
+| `department_id` | `Integer` |  |
+| `description` | `String` |  |
+| `id` | `Integer` |  |
+| `name` | `String` |  |
+| `url_image` | `Array` |  |
 
 #### Example: List
 
@@ -751,11 +779,11 @@ Create an instance: `native_community = client.NativeCommunity`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `department_id` | ``$INTEGER`` |  |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `population` | ``$INTEGER`` |  |
+| `department_id` | `Integer` |  |
+| `description` | `String` |  |
+| `id` | `Integer` |  |
+| `name` | `String` |  |
+| `population` | `Integer` |  |
 
 #### Example: Load
 
@@ -787,14 +815,14 @@ Create an instance: `natural_area = client.NaturalArea`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `area_group_id` | ``$INTEGER`` |  |
-| `category_natural_area_id` | ``$INTEGER`` |  |
-| `department_id` | ``$INTEGER`` |  |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `land_area` | ``$NUMBER`` |  |
-| `maritime_area` | ``$NUMBER`` |  |
-| `name` | ``$STRING`` |  |
+| `area_group_id` | `Integer` |  |
+| `category_natural_area_id` | `Integer` |  |
+| `department_id` | `Integer` |  |
+| `description` | `String` |  |
+| `id` | `Integer` |  |
+| `land_area` | `Float` |  |
+| `maritime_area` | `Float` |  |
+| `name` | `String` |  |
 
 #### Example: Load
 
@@ -826,13 +854,13 @@ Create an instance: `president = client.President`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `end_period_date` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `image` | ``$STRING`` |  |
-| `name` | ``$STRING`` |  |
-| `political_party` | ``$STRING`` |  |
-| `start_period_date` | ``$STRING`` |  |
+| `description` | `String` |  |
+| `end_period_date` | `String` |  |
+| `id` | `Integer` |  |
+| `image` | `String` |  |
+| `name` | `String` |  |
+| `political_party` | `String` |  |
+| `start_period_date` | `String` |  |
 
 #### Example: Load
 
@@ -864,11 +892,11 @@ Create an instance: `radio = client.Radio`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `band` | ``$STRING`` |  |
-| `frequency` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `url` | ``$STRING`` |  |
+| `band` | `String` |  |
+| `frequency` | `String` |  |
+| `id` | `Integer` |  |
+| `name` | `String` |  |
+| `url` | `String` |  |
 
 #### Example: Load
 
@@ -900,10 +928,10 @@ Create an instance: `region = client.Region`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `department` | ``$ARRAY`` |  |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
+| `department` | `Array` |  |
+| `description` | `String` |  |
+| `id` | `Integer` |  |
+| `name` | `String` |  |
 
 #### Example: Load
 
@@ -935,13 +963,13 @@ Create an instance: `touristic_attraction = client.TouristicAttraction`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `city` | ``$STRING`` |  |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `image` | ``$ARRAY`` |  |
-| `latitude` | ``$NUMBER`` |  |
-| `longitude` | ``$NUMBER`` |  |
-| `name` | ``$STRING`` |  |
+| `city` | `String` |  |
+| `description` | `String` |  |
+| `id` | `Integer` |  |
+| `image` | `Array` |  |
+| `latitude` | `Float` |  |
+| `longitude` | `Float` |  |
+| `name` | `String` |  |
 
 #### Example: Load
 
@@ -973,12 +1001,12 @@ Create an instance: `typical_dish = client.TypicalDish`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `department_id` | ``$INTEGER`` |  |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `ingredient` | ``$ARRAY`` |  |
-| `name` | ``$STRING`` |  |
-| `url_image` | ``$STRING`` |  |
+| `department_id` | `Integer` |  |
+| `description` | `String` |  |
+| `id` | `Integer` |  |
+| `ingredient` | `Array` |  |
+| `name` | `String` |  |
+| `url_image` | `String` |  |
 
 #### Example: Load
 
@@ -995,12 +1023,16 @@ typical_dishs = client.TypicalDish.list
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -1017,8 +1049,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller as a second return value.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -1062,14 +1095,14 @@ when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
 airport = client.Airport
-airport.load({ "id" => "example_id" })
+airport.list()
 
-# airport.data_get now returns the loaded airport data
+# airport.data_get now returns the airport data from the last list
 # airport.match_get returns the last match criteria
 ```
 

@@ -221,91 +221,91 @@ class ColombiaPublicSDK:
 
 
     def Airport(self, data=None) -> "AirportEntity":
-        """Entity factory: client.Airport().list({}) / client.Airport().load({"id": ...})."""
+        """Entity factory: client.Airport().list() / client.Airport().load({"id": ...})."""
         from entity.airport_entity import AirportEntity
         return AirportEntity(self, data)
 
 
     def CategoryNaturalArea(self, data=None) -> "CategoryNaturalAreaEntity":
-        """Entity factory: client.CategoryNaturalArea().list({}) / client.CategoryNaturalArea().load({"id": ...})."""
+        """Entity factory: client.CategoryNaturalArea().list() / client.CategoryNaturalArea().load({"id": ...})."""
         from entity.category_natural_area_entity import CategoryNaturalAreaEntity
         return CategoryNaturalAreaEntity(self, data)
 
 
     def ConstitutionArticle(self, data=None) -> "ConstitutionArticleEntity":
-        """Entity factory: client.ConstitutionArticle().list({}) / client.ConstitutionArticle().load({"id": ...})."""
+        """Entity factory: client.ConstitutionArticle().list() / client.ConstitutionArticle().load({"id": ...})."""
         from entity.constitution_article_entity import ConstitutionArticleEntity
         return ConstitutionArticleEntity(self, data)
 
 
     def Country(self, data=None) -> "CountryEntity":
-        """Entity factory: client.Country().list({}) / client.Country().load({"id": ...})."""
+        """Entity factory: client.Country().list() / client.Country().load({"id": ...})."""
         from entity.country_entity import CountryEntity
         return CountryEntity(self, data)
 
 
     def Department(self, data=None) -> "DepartmentEntity":
-        """Entity factory: client.Department().list({}) / client.Department().load({"id": ...})."""
+        """Entity factory: client.Department().list() / client.Department().load({"id": ...})."""
         from entity.department_entity import DepartmentEntity
         return DepartmentEntity(self, data)
 
 
     def Holiday(self, data=None) -> "HolidayEntity":
-        """Entity factory: client.Holiday().list({}) / client.Holiday().load({"id": ...})."""
+        """Entity factory: client.Holiday().list() / client.Holiday().load({"id": ...})."""
         from entity.holiday_entity import HolidayEntity
         return HolidayEntity(self, data)
 
 
     def InvasiveSpecie(self, data=None) -> "InvasiveSpecieEntity":
-        """Entity factory: client.InvasiveSpecie().list({}) / client.InvasiveSpecie().load({"id": ...})."""
+        """Entity factory: client.InvasiveSpecie().list() / client.InvasiveSpecie().load({"id": ...})."""
         from entity.invasive_specie_entity import InvasiveSpecieEntity
         return InvasiveSpecieEntity(self, data)
 
 
     def Map(self, data=None) -> "MapEntity":
-        """Entity factory: client.Map().list({}) / client.Map().load({"id": ...})."""
+        """Entity factory: client.Map().list() / client.Map().load({"id": ...})."""
         from entity.map_entity import MapEntity
         return MapEntity(self, data)
 
 
     def NativeCommunity(self, data=None) -> "NativeCommunityEntity":
-        """Entity factory: client.NativeCommunity().list({}) / client.NativeCommunity().load({"id": ...})."""
+        """Entity factory: client.NativeCommunity().list() / client.NativeCommunity().load({"id": ...})."""
         from entity.native_community_entity import NativeCommunityEntity
         return NativeCommunityEntity(self, data)
 
 
     def NaturalArea(self, data=None) -> "NaturalAreaEntity":
-        """Entity factory: client.NaturalArea().list({}) / client.NaturalArea().load({"id": ...})."""
+        """Entity factory: client.NaturalArea().list() / client.NaturalArea().load({"id": ...})."""
         from entity.natural_area_entity import NaturalAreaEntity
         return NaturalAreaEntity(self, data)
 
 
     def President(self, data=None) -> "PresidentEntity":
-        """Entity factory: client.President().list({}) / client.President().load({"id": ...})."""
+        """Entity factory: client.President().list() / client.President().load({"id": ...})."""
         from entity.president_entity import PresidentEntity
         return PresidentEntity(self, data)
 
 
     def Radio(self, data=None) -> "RadioEntity":
-        """Entity factory: client.Radio().list({}) / client.Radio().load({"id": ...})."""
+        """Entity factory: client.Radio().list() / client.Radio().load({"id": ...})."""
         from entity.radio_entity import RadioEntity
         return RadioEntity(self, data)
 
 
     def Region(self, data=None) -> "RegionEntity":
-        """Entity factory: client.Region().list({}) / client.Region().load({"id": ...})."""
+        """Entity factory: client.Region().list() / client.Region().load({"id": ...})."""
         from entity.region_entity import RegionEntity
         return RegionEntity(self, data)
 
 
     def TouristicAttraction(self, data=None) -> "TouristicAttractionEntity":
-        """Entity factory: client.TouristicAttraction().list({}) / client.TouristicAttraction().load({"id": ...})."""
+        """Entity factory: client.TouristicAttraction().list() / client.TouristicAttraction().load({"id": ...})."""
         from entity.touristic_attraction_entity import TouristicAttractionEntity
         return TouristicAttractionEntity(self, data)
 
 
     def TypicalDish(self, data=None) -> "TypicalDishEntity":
-        """Entity factory: client.TypicalDish().list({}) / client.TypicalDish().load({"id": ...})."""
+        """Entity factory: client.TypicalDish().list() / client.TypicalDish().load({"id": ...})."""
         from entity.typical_dish_entity import TypicalDishEntity
         return TypicalDishEntity(self, data)
 

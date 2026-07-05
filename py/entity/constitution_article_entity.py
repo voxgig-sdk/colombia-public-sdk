@@ -65,8 +65,13 @@ class ConstitutionArticleEntity:
         return vs.clone(self._match)
 
     
-    def load(self, reqmatch: ConstitutionArticleLoadMatch, ctrl=None) -> ConstitutionArticle:
+    def load(self, reqmatch=None, ctrl=None) -> ConstitutionArticle:
         utility = self._utility
+        # reqmatch is optional: an entity with no id-like key loads with no
+        # match. Treat None as an empty match so client.ConstitutionArticle().load()
+        # works with no args.
+        if reqmatch is None:
+            reqmatch = {}
         ctx = utility.make_context({
             "opname": "load",
             "ctrl": ctrl,
@@ -87,8 +92,12 @@ class ConstitutionArticleEntity:
 
 
     
-    def list(self, reqmatch: ConstitutionArticleListMatch, ctrl=None) -> list[ConstitutionArticle]:
+    def list(self, reqmatch=None, ctrl=None) -> list[ConstitutionArticle]:
         utility = self._utility
+        # reqmatch is optional: an omitted match lists all records. Treat None
+        # as an empty match so client.ConstitutionArticle().list() works with no args.
+        if reqmatch is None:
+            reqmatch = {}
         ctx = utility.make_context({
             "opname": "list",
             "ctrl": ctrl,

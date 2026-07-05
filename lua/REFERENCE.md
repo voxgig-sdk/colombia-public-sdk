@@ -146,14 +146,14 @@ local airport = client:Airport(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `city_id` | ``$INTEGER`` | No |  |
-| `code` | ``$STRING`` | No |  |
-| `department_id` | ``$INTEGER`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `latitude` | ``$NUMBER`` | No |  |
-| `longitude` | ``$NUMBER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `city_id` | `number` | No |  |
+| `code` | `string` | No |  |
+| `department_id` | `number` | No |  |
+| `id` | `number` | No |  |
+| `latitude` | `number` | No |  |
+| `longitude` | `number` | No |  |
+| `name` | `string` | No |  |
+| `type` | `string` | No |  |
 
 ### Operations
 
@@ -213,9 +213,9 @@ local category_natural_area = client:CategoryNaturalArea(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `description` | `string` | No |  |
+| `id` | `number` | No |  |
+| `name` | `string` | No |  |
 
 ### Operations
 
@@ -267,11 +267,11 @@ local constitution_article = client:ConstitutionArticle(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `article_number` | ``$INTEGER`` | No |  |
-| `chapter` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `title` | ``$STRING`` | No |  |
+| `article_number` | `number` | No |  |
+| `chapter` | `string` | No |  |
+| `description` | `string` | No |  |
+| `id` | `number` | No |  |
+| `title` | `string` | No |  |
 
 ### Operations
 
@@ -331,14 +331,14 @@ local country = client:Country(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `capital` | ``$STRING`` | No |  |
-| `currency` | ``$STRING`` | No |  |
-| `flag` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `language` | ``$ARRAY`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `population` | ``$INTEGER`` | No |  |
-| `surface` | ``$NUMBER`` | No |  |
+| `capital` | `string` | No |  |
+| `currency` | `string` | No |  |
+| `flag` | `string` | No |  |
+| `id` | `number` | No |  |
+| `language` | `table` | No |  |
+| `name` | `string` | No |  |
+| `population` | `number` | No |  |
+| `surface` | `number` | No |  |
 
 ### Operations
 
@@ -390,14 +390,14 @@ local department = client:Department(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `city_capital` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `municipality` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `population` | ``$INTEGER`` | No |  |
-| `region_id` | ``$INTEGER`` | No |  |
-| `surface` | ``$NUMBER`` | No |  |
+| `city_capital` | `string` | No |  |
+| `description` | `string` | No |  |
+| `id` | `number` | No |  |
+| `municipality` | `number` | No |  |
+| `name` | `string` | No |  |
+| `population` | `number` | No |  |
+| `region_id` | `number` | No |  |
+| `surface` | `number` | No |  |
 
 ### Operations
 
@@ -457,11 +457,11 @@ local holiday = client:Holiday(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `date` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `date` | `string` | No |  |
+| `description` | `string` | No |  |
+| `id` | `number` | No |  |
+| `name` | `string` | No |  |
+| `type` | `string` | No |  |
 
 ### Operations
 
@@ -521,12 +521,12 @@ local invasive_specie = client:InvasiveSpecie(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | ``$INTEGER`` | No |  |
-| `impact` | ``$STRING`` | No |  |
-| `manage` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `scientific_name` | ``$STRING`` | No |  |
-| `url_image` | ``$STRING`` | No |  |
+| `id` | `number` | No |  |
+| `impact` | `string` | No |  |
+| `manage` | `string` | No |  |
+| `name` | `string` | No |  |
+| `scientific_name` | `string` | No |  |
+| `url_image` | `string` | No |  |
 
 ### Operations
 
@@ -586,11 +586,11 @@ local map = client:Map(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `department_id` | ``$INTEGER`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `url_image` | ``$ARRAY`` | No |  |
+| `department_id` | `number` | No |  |
+| `description` | `string` | No |  |
+| `id` | `number` | No |  |
+| `name` | `string` | No |  |
+| `url_image` | `table` | No |  |
 
 ### Operations
 
@@ -642,11 +642,11 @@ local native_community = client:NativeCommunity(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `department_id` | ``$INTEGER`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `population` | ``$INTEGER`` | No |  |
+| `department_id` | `number` | No |  |
+| `description` | `string` | No |  |
+| `id` | `number` | No |  |
+| `name` | `string` | No |  |
+| `population` | `number` | No |  |
 
 ### Operations
 
@@ -706,14 +706,14 @@ local natural_area = client:NaturalArea(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `area_group_id` | ``$INTEGER`` | No |  |
-| `category_natural_area_id` | ``$INTEGER`` | No |  |
-| `department_id` | ``$INTEGER`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `land_area` | ``$NUMBER`` | No |  |
-| `maritime_area` | ``$NUMBER`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `area_group_id` | `number` | No |  |
+| `category_natural_area_id` | `number` | No |  |
+| `department_id` | `number` | No |  |
+| `description` | `string` | No |  |
+| `id` | `number` | No |  |
+| `land_area` | `number` | No |  |
+| `maritime_area` | `number` | No |  |
+| `name` | `string` | No |  |
 
 ### Operations
 
@@ -773,13 +773,13 @@ local president = client:President(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `end_period_date` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `image` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `political_party` | ``$STRING`` | No |  |
-| `start_period_date` | ``$STRING`` | No |  |
+| `description` | `string` | No |  |
+| `end_period_date` | `string` | No |  |
+| `id` | `number` | No |  |
+| `image` | `string` | No |  |
+| `name` | `string` | No |  |
+| `political_party` | `string` | No |  |
+| `start_period_date` | `string` | No |  |
 
 ### Operations
 
@@ -839,11 +839,11 @@ local radio = client:Radio(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `band` | ``$STRING`` | No |  |
-| `frequency` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `band` | `string` | No |  |
+| `frequency` | `string` | No |  |
+| `id` | `number` | No |  |
+| `name` | `string` | No |  |
+| `url` | `string` | No |  |
 
 ### Operations
 
@@ -903,10 +903,10 @@ local region = client:Region(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `department` | ``$ARRAY`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `department` | `table` | No |  |
+| `description` | `string` | No |  |
+| `id` | `number` | No |  |
+| `name` | `string` | No |  |
 
 ### Operations
 
@@ -966,13 +966,13 @@ local touristic_attraction = client:TouristicAttraction(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `city` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `image` | ``$ARRAY`` | No |  |
-| `latitude` | ``$NUMBER`` | No |  |
-| `longitude` | ``$NUMBER`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `city` | `string` | No |  |
+| `description` | `string` | No |  |
+| `id` | `number` | No |  |
+| `image` | `table` | No |  |
+| `latitude` | `number` | No |  |
+| `longitude` | `number` | No |  |
+| `name` | `string` | No |  |
 
 ### Operations
 
@@ -1032,12 +1032,12 @@ local typical_dish = client:TypicalDish(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `department_id` | ``$INTEGER`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `ingredient` | ``$ARRAY`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `url_image` | ``$STRING`` | No |  |
+| `department_id` | `number` | No |  |
+| `description` | `string` | No |  |
+| `id` | `number` | No |  |
+| `ingredient` | `table` | No |  |
+| `name` | `string` | No |  |
+| `url_image` | `string` | No |  |
 
 ### Operations
 

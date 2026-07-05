@@ -4,6 +4,11 @@
 
 The Python SDK for the ColombiaPublic API — an entity-oriented client following Pythonic conventions.
 
+The SDK exposes the API as capitalised, semantic **Entities** — for example `client.Airport()` — each
+carrying a small, uniform set of operations (`list`, `load`) instead of raw URL
+paths and query strings. You work with named resources and verbs, which
+keeps the cognitive load low.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -38,7 +43,7 @@ error — iterate it directly.
 
 ```python
 try:
-    airports = client.Airport().list({})
+    airports = client.Airport().list()
     for airport in airports:
         print(airport)
 except Exception as err:
@@ -55,6 +60,34 @@ try:
     print(airport)
 except Exception as err:
     print(f"load failed: {err}")
+```
+
+
+## Error handling
+
+Entity operations raise on failure, so wrap them in `try` / `except`:
+
+```python
+try:
+    airports = client.Airport().list()
+    print(airports)
+except Exception as err:
+    print(f"list failed: {err}")
+```
+
+`direct()` does **not** raise — it returns the result envelope. Branch
+on `ok`; on failure `status` holds the HTTP status (for error responses)
+and `err` holds a transport error, so read both defensively:
+
+```python
+result = client.direct({
+    "path": "/api/resource/{id}",
+    "method": "GET",
+    "params": {"id": "example_id"},
+})
+
+if not result["ok"]:
+    print("request failed:", result.get("status"), result.get("err"))
 ```
 
 
@@ -75,7 +108,10 @@ if result["ok"]:
     print(result["status"])  # 200
     print(result["data"])    # response body
 else:
-    print(result["err"])     # error value
+    # A non-2xx response carries status + data (the error body); a
+    # transport-level failure carries err instead. Only one is present, so
+    # read both with .get() rather than indexing a key that may be absent.
+    print(result.get("status"), result.get("err"))
 ```
 
 ### Prepare a request without sending it
@@ -101,7 +137,7 @@ Create a mock client for unit testing — no server required:
 client = ColombiaPublicSDK.test()
 
 # Entity ops return the bare record and raise on error.
-airport = client.Airport().load({"id": "test01"})
+airport = client.Airport().list()
 # airport contains the mock response record
 ```
 
@@ -202,9 +238,6 @@ All entities share the same interface.
 | --- | --- | --- |
 | `load` | `(reqmatch, ctrl) -> any` | Load a single entity by match criteria. Raises on error. |
 | `list` | `(reqmatch, ctrl) -> list` | List entities matching the criteria. Raises on error. |
-| `create` | `(reqdata, ctrl) -> any` | Create a new entity. Raises on error. |
-| `update` | `(reqdata, ctrl) -> any` | Update an existing entity. Raises on error. |
-| `remove` | `(reqmatch, ctrl) -> any` | Remove an entity. Raises on error. |
 | `data_get` | `() -> dict` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> dict` | Get entity match criteria. |
@@ -470,21 +503,21 @@ Create an instance: `airport = client.Airport()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `city_id` | ``$INTEGER`` |  |
-| `code` | ``$STRING`` |  |
-| `department_id` | ``$INTEGER`` |  |
-| `id` | ``$INTEGER`` |  |
-| `latitude` | ``$NUMBER`` |  |
-| `longitude` | ``$NUMBER`` |  |
-| `name` | ``$STRING`` |  |
-| `type` | ``$STRING`` |  |
+| `city_id` | `int` |  |
+| `code` | `str` |  |
+| `department_id` | `int` |  |
+| `id` | `int` |  |
+| `latitude` | `float` |  |
+| `longitude` | `float` |  |
+| `name` | `str` |  |
+| `type` | `str` |  |
 
 #### Example: Load
 
@@ -495,7 +528,7 @@ airport = client.Airport().load({"id": "airport_id"})
 #### Example: List
 
 ```python
-airports = client.Airport().list({})
+airports = client.Airport().list()
 ```
 
 
@@ -507,20 +540,20 @@ Create an instance: `category_natural_area = client.CategoryNaturalArea()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
+| `description` | `str` |  |
+| `id` | `int` |  |
+| `name` | `str` |  |
 
 #### Example: List
 
 ```python
-category_natural_areas = client.CategoryNaturalArea().list({})
+category_natural_areas = client.CategoryNaturalArea().list()
 ```
 
 
@@ -532,18 +565,18 @@ Create an instance: `constitution_article = client.ConstitutionArticle()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `article_number` | ``$INTEGER`` |  |
-| `chapter` | ``$STRING`` |  |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `title` | ``$STRING`` |  |
+| `article_number` | `int` |  |
+| `chapter` | `str` |  |
+| `description` | `str` |  |
+| `id` | `int` |  |
+| `title` | `str` |  |
 
 #### Example: Load
 
@@ -554,7 +587,7 @@ constitution_article = client.ConstitutionArticle().load({"id": "constitution_ar
 #### Example: List
 
 ```python
-constitution_articles = client.ConstitutionArticle().list({})
+constitution_articles = client.ConstitutionArticle().list()
 ```
 
 
@@ -566,25 +599,25 @@ Create an instance: `country = client.Country()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `capital` | ``$STRING`` |  |
-| `currency` | ``$STRING`` |  |
-| `flag` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `language` | ``$ARRAY`` |  |
-| `name` | ``$STRING`` |  |
-| `population` | ``$INTEGER`` |  |
-| `surface` | ``$NUMBER`` |  |
+| `capital` | `str` |  |
+| `currency` | `str` |  |
+| `flag` | `str` |  |
+| `id` | `int` |  |
+| `language` | `list` |  |
+| `name` | `str` |  |
+| `population` | `int` |  |
+| `surface` | `float` |  |
 
 #### Example: List
 
 ```python
-countrys = client.Country().list({})
+countrys = client.Country().list()
 ```
 
 
@@ -596,21 +629,21 @@ Create an instance: `department = client.Department()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `city_capital` | ``$STRING`` |  |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `municipality` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `population` | ``$INTEGER`` |  |
-| `region_id` | ``$INTEGER`` |  |
-| `surface` | ``$NUMBER`` |  |
+| `city_capital` | `str` |  |
+| `description` | `str` |  |
+| `id` | `int` |  |
+| `municipality` | `int` |  |
+| `name` | `str` |  |
+| `population` | `int` |  |
+| `region_id` | `int` |  |
+| `surface` | `float` |  |
 
 #### Example: Load
 
@@ -621,7 +654,7 @@ department = client.Department().load({"id": "department_id"})
 #### Example: List
 
 ```python
-departments = client.Department().list({})
+departments = client.Department().list()
 ```
 
 
@@ -633,18 +666,18 @@ Create an instance: `holiday = client.Holiday()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `date` | ``$STRING`` |  |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `type` | ``$STRING`` |  |
+| `date` | `str` |  |
+| `description` | `str` |  |
+| `id` | `int` |  |
+| `name` | `str` |  |
+| `type` | `str` |  |
 
 #### Example: Load
 
@@ -655,7 +688,7 @@ holiday = client.Holiday().load({"id": "holiday_id"})
 #### Example: List
 
 ```python
-holidays = client.Holiday().list({})
+holidays = client.Holiday().list()
 ```
 
 
@@ -667,19 +700,19 @@ Create an instance: `invasive_specie = client.InvasiveSpecie()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id` | ``$INTEGER`` |  |
-| `impact` | ``$STRING`` |  |
-| `manage` | ``$STRING`` |  |
-| `name` | ``$STRING`` |  |
-| `scientific_name` | ``$STRING`` |  |
-| `url_image` | ``$STRING`` |  |
+| `id` | `int` |  |
+| `impact` | `str` |  |
+| `manage` | `str` |  |
+| `name` | `str` |  |
+| `scientific_name` | `str` |  |
+| `url_image` | `str` |  |
 
 #### Example: Load
 
@@ -690,7 +723,7 @@ invasive_specie = client.InvasiveSpecie().load({"id": "invasive_specie_id"})
 #### Example: List
 
 ```python
-invasive_species = client.InvasiveSpecie().list({})
+invasive_species = client.InvasiveSpecie().list()
 ```
 
 
@@ -702,22 +735,22 @@ Create an instance: `map = client.Map()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `department_id` | ``$INTEGER`` |  |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `url_image` | ``$ARRAY`` |  |
+| `department_id` | `int` |  |
+| `description` | `str` |  |
+| `id` | `int` |  |
+| `name` | `str` |  |
+| `url_image` | `list` |  |
 
 #### Example: List
 
 ```python
-maps = client.Map().list({})
+maps = client.Map().list()
 ```
 
 
@@ -729,18 +762,18 @@ Create an instance: `native_community = client.NativeCommunity()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `department_id` | ``$INTEGER`` |  |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `population` | ``$INTEGER`` |  |
+| `department_id` | `int` |  |
+| `description` | `str` |  |
+| `id` | `int` |  |
+| `name` | `str` |  |
+| `population` | `int` |  |
 
 #### Example: Load
 
@@ -751,7 +784,7 @@ native_community = client.NativeCommunity().load({"id": "native_community_id"})
 #### Example: List
 
 ```python
-native_communitys = client.NativeCommunity().list({})
+native_communitys = client.NativeCommunity().list()
 ```
 
 
@@ -763,21 +796,21 @@ Create an instance: `natural_area = client.NaturalArea()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `area_group_id` | ``$INTEGER`` |  |
-| `category_natural_area_id` | ``$INTEGER`` |  |
-| `department_id` | ``$INTEGER`` |  |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `land_area` | ``$NUMBER`` |  |
-| `maritime_area` | ``$NUMBER`` |  |
-| `name` | ``$STRING`` |  |
+| `area_group_id` | `int` |  |
+| `category_natural_area_id` | `int` |  |
+| `department_id` | `int` |  |
+| `description` | `str` |  |
+| `id` | `int` |  |
+| `land_area` | `float` |  |
+| `maritime_area` | `float` |  |
+| `name` | `str` |  |
 
 #### Example: Load
 
@@ -788,7 +821,7 @@ natural_area = client.NaturalArea().load({"id": "natural_area_id"})
 #### Example: List
 
 ```python
-natural_areas = client.NaturalArea().list({})
+natural_areas = client.NaturalArea().list()
 ```
 
 
@@ -800,20 +833,20 @@ Create an instance: `president = client.President()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `end_period_date` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `image` | ``$STRING`` |  |
-| `name` | ``$STRING`` |  |
-| `political_party` | ``$STRING`` |  |
-| `start_period_date` | ``$STRING`` |  |
+| `description` | `str` |  |
+| `end_period_date` | `str` |  |
+| `id` | `int` |  |
+| `image` | `str` |  |
+| `name` | `str` |  |
+| `political_party` | `str` |  |
+| `start_period_date` | `str` |  |
 
 #### Example: Load
 
@@ -824,7 +857,7 @@ president = client.President().load({"id": "president_id"})
 #### Example: List
 
 ```python
-presidents = client.President().list({})
+presidents = client.President().list()
 ```
 
 
@@ -836,18 +869,18 @@ Create an instance: `radio = client.Radio()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `band` | ``$STRING`` |  |
-| `frequency` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `url` | ``$STRING`` |  |
+| `band` | `str` |  |
+| `frequency` | `str` |  |
+| `id` | `int` |  |
+| `name` | `str` |  |
+| `url` | `str` |  |
 
 #### Example: Load
 
@@ -858,7 +891,7 @@ radio = client.Radio().load({"id": "radio_id"})
 #### Example: List
 
 ```python
-radios = client.Radio().list({})
+radios = client.Radio().list()
 ```
 
 
@@ -870,17 +903,17 @@ Create an instance: `region = client.Region()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `department` | ``$ARRAY`` |  |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
+| `department` | `list` |  |
+| `description` | `str` |  |
+| `id` | `int` |  |
+| `name` | `str` |  |
 
 #### Example: Load
 
@@ -891,7 +924,7 @@ region = client.Region().load({"id": "region_id"})
 #### Example: List
 
 ```python
-regions = client.Region().list({})
+regions = client.Region().list()
 ```
 
 
@@ -903,20 +936,20 @@ Create an instance: `touristic_attraction = client.TouristicAttraction()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `city` | ``$STRING`` |  |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `image` | ``$ARRAY`` |  |
-| `latitude` | ``$NUMBER`` |  |
-| `longitude` | ``$NUMBER`` |  |
-| `name` | ``$STRING`` |  |
+| `city` | `str` |  |
+| `description` | `str` |  |
+| `id` | `int` |  |
+| `image` | `list` |  |
+| `latitude` | `float` |  |
+| `longitude` | `float` |  |
+| `name` | `str` |  |
 
 #### Example: Load
 
@@ -927,7 +960,7 @@ touristic_attraction = client.TouristicAttraction().load({"id": "touristic_attra
 #### Example: List
 
 ```python
-touristic_attractions = client.TouristicAttraction().list({})
+touristic_attractions = client.TouristicAttraction().list()
 ```
 
 
@@ -939,19 +972,19 @@ Create an instance: `typical_dish = client.TypicalDish()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `department_id` | ``$INTEGER`` |  |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `ingredient` | ``$ARRAY`` |  |
-| `name` | ``$STRING`` |  |
-| `url_image` | ``$STRING`` |  |
+| `department_id` | `int` |  |
+| `description` | `str` |  |
+| `id` | `int` |  |
+| `ingredient` | `list` |  |
+| `name` | `str` |  |
+| `url_image` | `str` |  |
 
 #### Example: Load
 
@@ -962,16 +995,20 @@ typical_dish = client.TypicalDish().load({"id": "typical_dish_id"})
 #### Example: List
 
 ```python
-typical_dishs = client.TypicalDish().list({})
+typical_dishs = client.TypicalDish().list()
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -988,8 +1025,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller as the second element in the return tuple.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -1032,14 +1070,14 @@ Import entity or utility modules directly only when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```python
 airport = client.Airport()
-airport.load({"id": "example_id"})
+airport.list()
 
-# airport.data_get() now returns the loaded airport data
+# airport.data_get() now returns the airport data from the last list
 # airport.match_get() returns the last match criteria
 ```
 

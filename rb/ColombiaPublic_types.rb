@@ -54,7 +54,7 @@ AirportLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Airport#list (any subset of Airport fields).
+# Request payload for Airport#list.
 #
 # @!attribute [rw] city_id
 #   @return [Integer, nil]
@@ -108,7 +108,7 @@ CategoryNaturalArea = Struct.new(
   keyword_init: true
 )
 
-# Match filter for CategoryNaturalArea#list (any subset of CategoryNaturalArea fields).
+# Request payload for CategoryNaturalArea#list.
 #
 # @!attribute [rw] description
 #   @return [String, nil]
@@ -159,7 +159,7 @@ ConstitutionArticleLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for ConstitutionArticle#list (any subset of ConstitutionArticle fields).
+# Request payload for ConstitutionArticle#list.
 #
 # @!attribute [rw] article_number
 #   @return [Integer, nil]
@@ -221,7 +221,7 @@ Country = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Country#list (any subset of Country fields).
+# Request payload for Country#list.
 #
 # @!attribute [rw] capital
 #   @return [String, nil]
@@ -304,7 +304,7 @@ DepartmentLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Department#list (any subset of Department fields).
+# Request payload for Department#list.
 #
 # @!attribute [rw] city_capital
 #   @return [String, nil]
@@ -375,7 +375,7 @@ HolidayLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Holiday#list (any subset of Holiday fields).
+# Request payload for Holiday#list.
 #
 # @!attribute [rw] date
 #   @return [String, nil]
@@ -438,7 +438,7 @@ InvasiveSpecieLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for InvasiveSpecie#list (any subset of InvasiveSpecie fields).
+# Request payload for InvasiveSpecie#list.
 #
 # @!attribute [rw] id
 #   @return [Integer, nil]
@@ -492,7 +492,7 @@ Map = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Map#list (any subset of Map fields).
+# Request payload for Map#list.
 #
 # @!attribute [rw] department_id
 #   @return [Integer, nil]
@@ -551,7 +551,7 @@ NativeCommunityLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for NativeCommunity#list (any subset of NativeCommunity fields).
+# Request payload for NativeCommunity#list.
 #
 # @!attribute [rw] department_id
 #   @return [Integer, nil]
@@ -622,7 +622,7 @@ NaturalAreaLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for NaturalArea#list (any subset of NaturalArea fields).
+# Request payload for NaturalArea#list.
 #
 # @!attribute [rw] area_group_id
 #   @return [Integer, nil]
@@ -701,7 +701,7 @@ PresidentLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for President#list (any subset of President fields).
+# Request payload for President#list.
 #
 # @!attribute [rw] description
 #   @return [String, nil]
@@ -768,7 +768,7 @@ RadioLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Radio#list (any subset of Radio fields).
+# Request payload for Radio#list.
 #
 # @!attribute [rw] band
 #   @return [String, nil]
@@ -823,7 +823,7 @@ RegionLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Region#list (any subset of Region fields).
+# Request payload for Region#list.
 #
 # @!attribute [rw] department
 #   @return [Array, nil]
@@ -886,7 +886,7 @@ TouristicAttractionLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for TouristicAttraction#list (any subset of TouristicAttraction fields).
+# Request payload for TouristicAttraction#list.
 #
 # @!attribute [rw] city
 #   @return [String, nil]
@@ -957,7 +957,7 @@ TypicalDishLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for TypicalDish#list (any subset of TypicalDish fields).
+# Request payload for TypicalDish#list.
 #
 # @!attribute [rw] department_id
 #   @return [Integer, nil]

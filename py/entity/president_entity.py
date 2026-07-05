@@ -65,8 +65,13 @@ class PresidentEntity:
         return vs.clone(self._match)
 
     
-    def load(self, reqmatch: PresidentLoadMatch, ctrl=None) -> President:
+    def load(self, reqmatch=None, ctrl=None) -> President:
         utility = self._utility
+        # reqmatch is optional: an entity with no id-like key loads with no
+        # match. Treat None as an empty match so client.President().load()
+        # works with no args.
+        if reqmatch is None:
+            reqmatch = {}
         ctx = utility.make_context({
             "opname": "load",
             "ctrl": ctrl,
@@ -87,8 +92,12 @@ class PresidentEntity:
 
 
     
-    def list(self, reqmatch: PresidentListMatch, ctrl=None) -> list[President]:
+    def list(self, reqmatch=None, ctrl=None) -> list[President]:
         utility = self._utility
+        # reqmatch is optional: an omitted match lists all records. Treat None
+        # as an empty match so client.President().list() works with no args.
+        if reqmatch is None:
+            reqmatch = {}
         ctx = utility.make_context({
             "opname": "list",
             "ctrl": ctrl,

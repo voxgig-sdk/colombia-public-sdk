@@ -4,6 +4,11 @@
 
 The TypeScript SDK for the ColombiaPublic API — a type-safe, entity-oriented client with full async/await support.
 
+The API is exposed as capitalised, semantic **Entities** — e.g.
+`client.Airport()` — each with a small set of operations (`list`, `load`)
+instead of raw URL paths and query parameters. This keeps the surface
+predictable and low-friction for both humans and AI agents.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -46,10 +51,39 @@ for (const airport of airports) {
 
 ```ts
 try {
-  const airport = await client.Airport().load({ id: 'example_id' })
+  const airport = await client.Airport().load({ id: 1 })
   console.log(airport)
 } catch (err) {
   console.error('load failed:', err)
+}
+```
+
+
+## Error handling
+
+Entity operations reject on failure, so wrap them in `try` / `catch`:
+
+```ts
+try {
+  const airports = await client.Airport().list()
+  console.log(airports)
+} catch (err) {
+  console.error('list failed:', err)
+}
+```
+
+The low-level `direct()` method does **not** throw — it returns the
+value or an `Error`, so check the result before using it:
+
+```ts
+const result = await client.direct({
+  path: '/api/resource/{id}',
+  method: 'GET',
+  params: { id: 'example_id' },
+})
+
+if (result instanceof Error) {
+  throw result
 }
 ```
 
@@ -98,7 +132,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = ColombiaPublicSDK.test()
 
-const airport = await client.Airport().load({ id: 'test01' })
+const airport = await client.Airport().list()
 // airport is a bare entity populated with mock response data
 console.log(airport)
 ```
@@ -117,12 +151,12 @@ Entity instances remember their last match and data:
 ```ts
 const entity = client.Airport()
 
-// First call sets internal match
-await entity.load({ id: 'example' })
+// First call runs the operation and stores its result
+await entity.list()
 
-// Subsequent calls reuse the stored match
+// Subsequent calls reuse the stored state
 const data = entity.data()
-console.log(data.id) // 'example'
+console.log(data.id)
 ```
 
 ### Add custom middleware
@@ -226,11 +260,8 @@ All entities share the same interface.
 | --- | --- | --- |
 | `load` | `load(reqmatch?, ctrl?): Promise<Entity>` | Load a single entity by match criteria. |
 | `list` | `list(reqmatch?, ctrl?): Promise<Entity[]>` | List entities matching the criteria. |
-| `create` | `create(reqdata?, ctrl?): Promise<Entity>` | Create a new entity. |
-| `update` | `update(reqdata?, ctrl?): Promise<Entity>` | Update an existing entity. |
-| `remove` | `remove(reqmatch?, ctrl?): Promise<void>` | Remove an entity. |
-| `data` | `data(data?): any` | Get or set entity data. |
-| `match` | `match(match?): any` | Get or set entity match criteria. |
+| `data` | `data(data?: Partial<Entity>): Entity` | Get or set entity data. |
+| `match` | `match(match?: Partial<Entity>): Partial<Entity>` | Get or set entity match criteria. |
 | `make` | `make(): Entity` | Create a new instance with the same options. |
 | `client` | `client(): ColombiaPublicSDK` | Return the parent SDK client. |
 | `entopts` | `entopts(): object` | Return a copy of the entity options. |
@@ -240,10 +271,9 @@ All entities share the same interface.
 Entity operations resolve to the entity data directly — there is no
 result envelope:
 
-- `load`, `create` and `update` resolve to a single entity object.
+- `load` resolves to a single entity object.
 - `list` resolves to an **array** of entity objects (iterate it directly;
   there is no `.data` and no `.ok`).
-- `remove` resolves to `void`.
 
 On a failed request these methods **throw**, so wrap calls in
 `try`/`catch` to handle errors. Only `direct()` returns the result
@@ -524,19 +554,19 @@ Create an instance: `const airport = client.Airport()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `city_id` | ``$INTEGER`` |  |
-| `code` | ``$STRING`` |  |
-| `department_id` | ``$INTEGER`` |  |
-| `id` | ``$INTEGER`` |  |
-| `latitude` | ``$NUMBER`` |  |
-| `longitude` | ``$NUMBER`` |  |
-| `name` | ``$STRING`` |  |
-| `type` | ``$STRING`` |  |
+| `city_id` | `number` |  |
+| `code` | `string` |  |
+| `department_id` | `number` |  |
+| `id` | `number` |  |
+| `latitude` | `number` |  |
+| `longitude` | `number` |  |
+| `name` | `string` |  |
+| `type` | `string` |  |
 
 #### Example: Load
 
 ```ts
-const airport = await client.Airport().load({ id: 'airport_id' })
+const airport = await client.Airport().load({ id: 1 })
 ```
 
 #### Example: List
@@ -560,9 +590,9 @@ Create an instance: `const category_natural_area = client.CategoryNaturalArea()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
+| `description` | `string` |  |
+| `id` | `number` |  |
+| `name` | `string` |  |
 
 #### Example: List
 
@@ -586,16 +616,16 @@ Create an instance: `const constitution_article = client.ConstitutionArticle()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `article_number` | ``$INTEGER`` |  |
-| `chapter` | ``$STRING`` |  |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `title` | ``$STRING`` |  |
+| `article_number` | `number` |  |
+| `chapter` | `string` |  |
+| `description` | `string` |  |
+| `id` | `number` |  |
+| `title` | `string` |  |
 
 #### Example: Load
 
 ```ts
-const constitution_article = await client.ConstitutionArticle().load({ id: 'constitution_article_id' })
+const constitution_article = await client.ConstitutionArticle().load({ id: 1 })
 ```
 
 #### Example: List
@@ -619,14 +649,14 @@ Create an instance: `const country = client.Country()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `capital` | ``$STRING`` |  |
-| `currency` | ``$STRING`` |  |
-| `flag` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `language` | ``$ARRAY`` |  |
-| `name` | ``$STRING`` |  |
-| `population` | ``$INTEGER`` |  |
-| `surface` | ``$NUMBER`` |  |
+| `capital` | `string` |  |
+| `currency` | `string` |  |
+| `flag` | `string` |  |
+| `id` | `number` |  |
+| `language` | `any[]` |  |
+| `name` | `string` |  |
+| `population` | `number` |  |
+| `surface` | `number` |  |
 
 #### Example: List
 
@@ -650,19 +680,19 @@ Create an instance: `const department = client.Department()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `city_capital` | ``$STRING`` |  |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `municipality` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `population` | ``$INTEGER`` |  |
-| `region_id` | ``$INTEGER`` |  |
-| `surface` | ``$NUMBER`` |  |
+| `city_capital` | `string` |  |
+| `description` | `string` |  |
+| `id` | `number` |  |
+| `municipality` | `number` |  |
+| `name` | `string` |  |
+| `population` | `number` |  |
+| `region_id` | `number` |  |
+| `surface` | `number` |  |
 
 #### Example: Load
 
 ```ts
-const department = await client.Department().load({ id: 'department_id' })
+const department = await client.Department().load({ id: 1 })
 ```
 
 #### Example: List
@@ -687,16 +717,16 @@ Create an instance: `const holiday = client.Holiday()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `date` | ``$STRING`` |  |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `type` | ``$STRING`` |  |
+| `date` | `string` |  |
+| `description` | `string` |  |
+| `id` | `number` |  |
+| `name` | `string` |  |
+| `type` | `string` |  |
 
 #### Example: Load
 
 ```ts
-const holiday = await client.Holiday().load({ id: 'holiday_id' })
+const holiday = await client.Holiday().load({ id: 1 })
 ```
 
 #### Example: List
@@ -721,17 +751,17 @@ Create an instance: `const invasive_specie = client.InvasiveSpecie()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id` | ``$INTEGER`` |  |
-| `impact` | ``$STRING`` |  |
-| `manage` | ``$STRING`` |  |
-| `name` | ``$STRING`` |  |
-| `scientific_name` | ``$STRING`` |  |
-| `url_image` | ``$STRING`` |  |
+| `id` | `number` |  |
+| `impact` | `string` |  |
+| `manage` | `string` |  |
+| `name` | `string` |  |
+| `scientific_name` | `string` |  |
+| `url_image` | `string` |  |
 
 #### Example: Load
 
 ```ts
-const invasive_specie = await client.InvasiveSpecie().load({ id: 'invasive_specie_id' })
+const invasive_specie = await client.InvasiveSpecie().load({ id: 1 })
 ```
 
 #### Example: List
@@ -755,11 +785,11 @@ Create an instance: `const map = client.Map()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `department_id` | ``$INTEGER`` |  |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `url_image` | ``$ARRAY`` |  |
+| `department_id` | `number` |  |
+| `description` | `string` |  |
+| `id` | `number` |  |
+| `name` | `string` |  |
+| `url_image` | `any[]` |  |
 
 #### Example: List
 
@@ -783,16 +813,16 @@ Create an instance: `const native_community = client.NativeCommunity()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `department_id` | ``$INTEGER`` |  |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `population` | ``$INTEGER`` |  |
+| `department_id` | `number` |  |
+| `description` | `string` |  |
+| `id` | `number` |  |
+| `name` | `string` |  |
+| `population` | `number` |  |
 
 #### Example: Load
 
 ```ts
-const native_community = await client.NativeCommunity().load({ id: 'native_community_id' })
+const native_community = await client.NativeCommunity().load({ id: 1 })
 ```
 
 #### Example: List
@@ -817,19 +847,19 @@ Create an instance: `const natural_area = client.NaturalArea()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `area_group_id` | ``$INTEGER`` |  |
-| `category_natural_area_id` | ``$INTEGER`` |  |
-| `department_id` | ``$INTEGER`` |  |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `land_area` | ``$NUMBER`` |  |
-| `maritime_area` | ``$NUMBER`` |  |
-| `name` | ``$STRING`` |  |
+| `area_group_id` | `number` |  |
+| `category_natural_area_id` | `number` |  |
+| `department_id` | `number` |  |
+| `description` | `string` |  |
+| `id` | `number` |  |
+| `land_area` | `number` |  |
+| `maritime_area` | `number` |  |
+| `name` | `string` |  |
 
 #### Example: Load
 
 ```ts
-const natural_area = await client.NaturalArea().load({ id: 'natural_area_id' })
+const natural_area = await client.NaturalArea().load({ id: 1 })
 ```
 
 #### Example: List
@@ -854,18 +884,18 @@ Create an instance: `const president = client.President()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `end_period_date` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `image` | ``$STRING`` |  |
-| `name` | ``$STRING`` |  |
-| `political_party` | ``$STRING`` |  |
-| `start_period_date` | ``$STRING`` |  |
+| `description` | `string` |  |
+| `end_period_date` | `string` |  |
+| `id` | `number` |  |
+| `image` | `string` |  |
+| `name` | `string` |  |
+| `political_party` | `string` |  |
+| `start_period_date` | `string` |  |
 
 #### Example: Load
 
 ```ts
-const president = await client.President().load({ id: 'president_id' })
+const president = await client.President().load({ id: 1 })
 ```
 
 #### Example: List
@@ -890,16 +920,16 @@ Create an instance: `const radio = client.Radio()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `band` | ``$STRING`` |  |
-| `frequency` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `url` | ``$STRING`` |  |
+| `band` | `string` |  |
+| `frequency` | `string` |  |
+| `id` | `number` |  |
+| `name` | `string` |  |
+| `url` | `string` |  |
 
 #### Example: Load
 
 ```ts
-const radio = await client.Radio().load({ id: 'radio_id' })
+const radio = await client.Radio().load({ id: 1 })
 ```
 
 #### Example: List
@@ -924,15 +954,15 @@ Create an instance: `const region = client.Region()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `department` | ``$ARRAY`` |  |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
+| `department` | `any[]` |  |
+| `description` | `string` |  |
+| `id` | `number` |  |
+| `name` | `string` |  |
 
 #### Example: Load
 
 ```ts
-const region = await client.Region().load({ id: 'region_id' })
+const region = await client.Region().load({ id: 1 })
 ```
 
 #### Example: List
@@ -957,18 +987,18 @@ Create an instance: `const touristic_attraction = client.TouristicAttraction()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `city` | ``$STRING`` |  |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `image` | ``$ARRAY`` |  |
-| `latitude` | ``$NUMBER`` |  |
-| `longitude` | ``$NUMBER`` |  |
-| `name` | ``$STRING`` |  |
+| `city` | `string` |  |
+| `description` | `string` |  |
+| `id` | `number` |  |
+| `image` | `any[]` |  |
+| `latitude` | `number` |  |
+| `longitude` | `number` |  |
+| `name` | `string` |  |
 
 #### Example: Load
 
 ```ts
-const touristic_attraction = await client.TouristicAttraction().load({ id: 'touristic_attraction_id' })
+const touristic_attraction = await client.TouristicAttraction().load({ id: 1 })
 ```
 
 #### Example: List
@@ -993,17 +1023,17 @@ Create an instance: `const typical_dish = client.TypicalDish()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `department_id` | ``$INTEGER`` |  |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `ingredient` | ``$ARRAY`` |  |
-| `name` | ``$STRING`` |  |
-| `url_image` | ``$STRING`` |  |
+| `department_id` | `number` |  |
+| `description` | `string` |  |
+| `id` | `number` |  |
+| `ingredient` | `any[]` |  |
+| `name` | `string` |  |
+| `url_image` | `string` |  |
 
 #### Example: Load
 
 ```ts
-const typical_dish = await client.TypicalDish().load({ id: 'typical_dish_id' })
+const typical_dish = await client.TypicalDish().load({ id: 1 })
 ```
 
 #### Example: List
@@ -1013,12 +1043,16 @@ const typical_dishs = await client.TypicalDish().list()
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -1035,11 +1069,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller.
-
-An unexpected exception triggers the `PreUnexpected` hook before
-propagating.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -1075,16 +1107,16 @@ import { ColombiaPublicSDK } from '@voxgig-sdk/colombia-public'
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
 const airport = client.Airport()
-await airport.load({ id: "example_id" })
+await airport.list()
 
-// airport.data() now returns the loaded airport data
-// airport.match() returns { id: "example_id" }
+// airport.data() now returns the airport data from the last `list`
+// airport.match() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

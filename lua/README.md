@@ -4,6 +4,8 @@
 
 The Lua SDK for the ColombiaPublic API — an entity-oriented client using Lua conventions.
 
+It exposes the API as capitalised, semantic **Entities** — e.g. `client:Airport()` — each with the same small set of operations (`list`, `load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -41,7 +43,7 @@ local airports, err = client:Airport():list()
 if err then error(err) end
 
 for _, item in ipairs(airports) do
-  print(item["id"], item["name"])
+  print(item["id"], item["code"])
 end
 ```
 
@@ -51,6 +53,28 @@ end
 local airport, err = client:Airport():load({ id = "example_id" })
 if err then error(err) end
 print(airport)
+```
+
+
+## Error handling
+
+Entity operations return `(value, err)`. Check `err` before using
+the value:
+
+```lua
+local airports, err = client:Airport():list()
+if err then error(err) end
+```
+
+`direct` follows the same `(value, err)` convention:
+
+```lua
+local result, err = client:direct({
+  path = "/api/resource/{id}",
+  method = "GET",
+  params = { id = "example_id" },
+})
+if err then error(err) end
 ```
 
 
@@ -96,8 +120,8 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:Airport():load({ id = "test01" })
--- result is the loaded data; err is set on failure
+local result, err = client:Airport():list()
+-- result is the returned data; err is set on failure
 ```
 
 ### Use a custom fetch function
@@ -199,9 +223,6 @@ All entities share the same interface.
 | --- | --- | --- |
 | `load` | `(reqmatch, ctrl) -> any, err` | Load a single entity by match criteria. |
 | `list` | `(reqmatch, ctrl) -> any, err` | List entities matching the criteria. |
-| `create` | `(reqdata, ctrl) -> any, err` | Create a new entity. |
-| `update` | `(reqdata, ctrl) -> any, err` | Update an existing entity. |
-| `remove` | `(reqmatch, ctrl) -> any, err` | Remove an entity. |
 | `data_get` | `() -> table` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> table` | Get entity match criteria. |
@@ -216,7 +237,7 @@ data **directly** — there is no wrapper:
 
 | Operation | `value` |
 | --- | --- |
-| `load` / `create` / `update` / `remove` | the entity record (a `table`) |
+| `load` | the entity record (a `table`) |
 | `list` | an array (`table`) of entity records |
 
 Check `err` first (it is non-`nil` on failure), then use `value`:
@@ -475,14 +496,14 @@ Create an instance: `local airport = client:Airport(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `city_id` | ``$INTEGER`` |  |
-| `code` | ``$STRING`` |  |
-| `department_id` | ``$INTEGER`` |  |
-| `id` | ``$INTEGER`` |  |
-| `latitude` | ``$NUMBER`` |  |
-| `longitude` | ``$NUMBER`` |  |
-| `name` | ``$STRING`` |  |
-| `type` | ``$STRING`` |  |
+| `city_id` | `number` |  |
+| `code` | `string` |  |
+| `department_id` | `number` |  |
+| `id` | `number` |  |
+| `latitude` | `number` |  |
+| `longitude` | `number` |  |
+| `name` | `string` |  |
+| `type` | `string` |  |
 
 #### Example: Load
 
@@ -511,9 +532,9 @@ Create an instance: `local category_natural_area = client:CategoryNaturalArea(ni
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
+| `description` | `string` |  |
+| `id` | `number` |  |
+| `name` | `string` |  |
 
 #### Example: List
 
@@ -537,11 +558,11 @@ Create an instance: `local constitution_article = client:ConstitutionArticle(nil
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `article_number` | ``$INTEGER`` |  |
-| `chapter` | ``$STRING`` |  |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `title` | ``$STRING`` |  |
+| `article_number` | `number` |  |
+| `chapter` | `string` |  |
+| `description` | `string` |  |
+| `id` | `number` |  |
+| `title` | `string` |  |
 
 #### Example: Load
 
@@ -570,14 +591,14 @@ Create an instance: `local country = client:Country(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `capital` | ``$STRING`` |  |
-| `currency` | ``$STRING`` |  |
-| `flag` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `language` | ``$ARRAY`` |  |
-| `name` | ``$STRING`` |  |
-| `population` | ``$INTEGER`` |  |
-| `surface` | ``$NUMBER`` |  |
+| `capital` | `string` |  |
+| `currency` | `string` |  |
+| `flag` | `string` |  |
+| `id` | `number` |  |
+| `language` | `table` |  |
+| `name` | `string` |  |
+| `population` | `number` |  |
+| `surface` | `number` |  |
 
 #### Example: List
 
@@ -601,14 +622,14 @@ Create an instance: `local department = client:Department(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `city_capital` | ``$STRING`` |  |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `municipality` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `population` | ``$INTEGER`` |  |
-| `region_id` | ``$INTEGER`` |  |
-| `surface` | ``$NUMBER`` |  |
+| `city_capital` | `string` |  |
+| `description` | `string` |  |
+| `id` | `number` |  |
+| `municipality` | `number` |  |
+| `name` | `string` |  |
+| `population` | `number` |  |
+| `region_id` | `number` |  |
+| `surface` | `number` |  |
 
 #### Example: Load
 
@@ -638,11 +659,11 @@ Create an instance: `local holiday = client:Holiday(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `date` | ``$STRING`` |  |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `type` | ``$STRING`` |  |
+| `date` | `string` |  |
+| `description` | `string` |  |
+| `id` | `number` |  |
+| `name` | `string` |  |
+| `type` | `string` |  |
 
 #### Example: Load
 
@@ -672,12 +693,12 @@ Create an instance: `local invasive_specie = client:InvasiveSpecie(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id` | ``$INTEGER`` |  |
-| `impact` | ``$STRING`` |  |
-| `manage` | ``$STRING`` |  |
-| `name` | ``$STRING`` |  |
-| `scientific_name` | ``$STRING`` |  |
-| `url_image` | ``$STRING`` |  |
+| `id` | `number` |  |
+| `impact` | `string` |  |
+| `manage` | `string` |  |
+| `name` | `string` |  |
+| `scientific_name` | `string` |  |
+| `url_image` | `string` |  |
 
 #### Example: Load
 
@@ -706,11 +727,11 @@ Create an instance: `local map = client:Map(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `department_id` | ``$INTEGER`` |  |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `url_image` | ``$ARRAY`` |  |
+| `department_id` | `number` |  |
+| `description` | `string` |  |
+| `id` | `number` |  |
+| `name` | `string` |  |
+| `url_image` | `table` |  |
 
 #### Example: List
 
@@ -734,11 +755,11 @@ Create an instance: `local native_community = client:NativeCommunity(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `department_id` | ``$INTEGER`` |  |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `population` | ``$INTEGER`` |  |
+| `department_id` | `number` |  |
+| `description` | `string` |  |
+| `id` | `number` |  |
+| `name` | `string` |  |
+| `population` | `number` |  |
 
 #### Example: Load
 
@@ -768,14 +789,14 @@ Create an instance: `local natural_area = client:NaturalArea(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `area_group_id` | ``$INTEGER`` |  |
-| `category_natural_area_id` | ``$INTEGER`` |  |
-| `department_id` | ``$INTEGER`` |  |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `land_area` | ``$NUMBER`` |  |
-| `maritime_area` | ``$NUMBER`` |  |
-| `name` | ``$STRING`` |  |
+| `area_group_id` | `number` |  |
+| `category_natural_area_id` | `number` |  |
+| `department_id` | `number` |  |
+| `description` | `string` |  |
+| `id` | `number` |  |
+| `land_area` | `number` |  |
+| `maritime_area` | `number` |  |
+| `name` | `string` |  |
 
 #### Example: Load
 
@@ -805,13 +826,13 @@ Create an instance: `local president = client:President(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `end_period_date` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `image` | ``$STRING`` |  |
-| `name` | ``$STRING`` |  |
-| `political_party` | ``$STRING`` |  |
-| `start_period_date` | ``$STRING`` |  |
+| `description` | `string` |  |
+| `end_period_date` | `string` |  |
+| `id` | `number` |  |
+| `image` | `string` |  |
+| `name` | `string` |  |
+| `political_party` | `string` |  |
+| `start_period_date` | `string` |  |
 
 #### Example: Load
 
@@ -841,11 +862,11 @@ Create an instance: `local radio = client:Radio(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `band` | ``$STRING`` |  |
-| `frequency` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `url` | ``$STRING`` |  |
+| `band` | `string` |  |
+| `frequency` | `string` |  |
+| `id` | `number` |  |
+| `name` | `string` |  |
+| `url` | `string` |  |
 
 #### Example: Load
 
@@ -875,10 +896,10 @@ Create an instance: `local region = client:Region(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `department` | ``$ARRAY`` |  |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
+| `department` | `table` |  |
+| `description` | `string` |  |
+| `id` | `number` |  |
+| `name` | `string` |  |
 
 #### Example: Load
 
@@ -908,13 +929,13 @@ Create an instance: `local touristic_attraction = client:TouristicAttraction(nil
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `city` | ``$STRING`` |  |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `image` | ``$ARRAY`` |  |
-| `latitude` | ``$NUMBER`` |  |
-| `longitude` | ``$NUMBER`` |  |
-| `name` | ``$STRING`` |  |
+| `city` | `string` |  |
+| `description` | `string` |  |
+| `id` | `number` |  |
+| `image` | `table` |  |
+| `latitude` | `number` |  |
+| `longitude` | `number` |  |
+| `name` | `string` |  |
 
 #### Example: Load
 
@@ -944,12 +965,12 @@ Create an instance: `local typical_dish = client:TypicalDish(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `department_id` | ``$INTEGER`` |  |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `ingredient` | ``$ARRAY`` |  |
-| `name` | ``$STRING`` |  |
-| `url_image` | ``$STRING`` |  |
+| `department_id` | `number` |  |
+| `description` | `string` |  |
+| `id` | `number` |  |
+| `ingredient` | `table` |  |
+| `name` | `string` |  |
+| `url_image` | `string` |  |
 
 #### Example: Load
 
@@ -964,12 +985,16 @@ local typical_dishs, err = client:TypicalDish():list()
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -986,8 +1011,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller as a second return value.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -1031,14 +1057,14 @@ when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
 local airport = client:Airport()
-airport:load({ id = "example_id" })
+airport:list()
 
--- airport:data_get() now returns the loaded airport data
+-- airport:data_get() now returns the airport data from the last list
 -- airport:match_get() returns the last match criteria
 ```
 

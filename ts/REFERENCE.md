@@ -284,14 +284,14 @@ const airport = client.Airport()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `city_id` | ``$INTEGER`` | No |  |
-| `code` | ``$STRING`` | No |  |
-| `department_id` | ``$INTEGER`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `latitude` | ``$NUMBER`` | No |  |
-| `longitude` | ``$NUMBER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `city_id` | `number` | No |  |
+| `code` | `string` | No |  |
+| `department_id` | `number` | No |  |
+| `id` | `number` | No |  |
+| `latitude` | `number` | No |  |
+| `longitude` | `number` | No |  |
+| `name` | `string` | No |  |
+| `type` | `string` | No |  |
 
 ### Operations
 
@@ -308,7 +308,7 @@ const results = await client.Airport().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Airport().load({ id: 'airport_id' })
+const result = await client.Airport().load({ id: 1 })
 ```
 
 ### Common Methods
@@ -349,9 +349,9 @@ const category_natural_area = client.CategoryNaturalArea()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `description` | `string` | No |  |
+| `id` | `number` | No |  |
+| `name` | `string` | No |  |
 
 ### Operations
 
@@ -401,11 +401,11 @@ const constitution_article = client.ConstitutionArticle()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `article_number` | ``$INTEGER`` | No |  |
-| `chapter` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `title` | ``$STRING`` | No |  |
+| `article_number` | `number` | No |  |
+| `chapter` | `string` | No |  |
+| `description` | `string` | No |  |
+| `id` | `number` | No |  |
+| `title` | `string` | No |  |
 
 ### Operations
 
@@ -422,7 +422,7 @@ const results = await client.ConstitutionArticle().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.ConstitutionArticle().load({ id: 'constitution_article_id' })
+const result = await client.ConstitutionArticle().load({ id: 1 })
 ```
 
 ### Common Methods
@@ -463,14 +463,14 @@ const country = client.Country()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `capital` | ``$STRING`` | No |  |
-| `currency` | ``$STRING`` | No |  |
-| `flag` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `language` | ``$ARRAY`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `population` | ``$INTEGER`` | No |  |
-| `surface` | ``$NUMBER`` | No |  |
+| `capital` | `string` | No |  |
+| `currency` | `string` | No |  |
+| `flag` | `string` | No |  |
+| `id` | `number` | No |  |
+| `language` | `any[]` | No |  |
+| `name` | `string` | No |  |
+| `population` | `number` | No |  |
+| `surface` | `number` | No |  |
 
 ### Operations
 
@@ -520,14 +520,14 @@ const department = client.Department()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `city_capital` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `municipality` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `population` | ``$INTEGER`` | No |  |
-| `region_id` | ``$INTEGER`` | No |  |
-| `surface` | ``$NUMBER`` | No |  |
+| `city_capital` | `string` | No |  |
+| `description` | `string` | No |  |
+| `id` | `number` | No |  |
+| `municipality` | `number` | No |  |
+| `name` | `string` | No |  |
+| `population` | `number` | No |  |
+| `region_id` | `number` | No |  |
+| `surface` | `number` | No |  |
 
 ### Operations
 
@@ -544,7 +544,7 @@ const results = await client.Department().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Department().load({ id: 'department_id' })
+const result = await client.Department().load({ id: 1 })
 ```
 
 ### Common Methods
@@ -585,11 +585,11 @@ const holiday = client.Holiday()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `date` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `date` | `string` | No |  |
+| `description` | `string` | No |  |
+| `id` | `number` | No |  |
+| `name` | `string` | No |  |
+| `type` | `string` | No |  |
 
 ### Operations
 
@@ -606,7 +606,7 @@ const results = await client.Holiday().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Holiday().load({ id: 'holiday_id' })
+const result = await client.Holiday().load({ id: 1 })
 ```
 
 ### Common Methods
@@ -647,12 +647,12 @@ const invasive_specie = client.InvasiveSpecie()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | ``$INTEGER`` | No |  |
-| `impact` | ``$STRING`` | No |  |
-| `manage` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `scientific_name` | ``$STRING`` | No |  |
-| `url_image` | ``$STRING`` | No |  |
+| `id` | `number` | No |  |
+| `impact` | `string` | No |  |
+| `manage` | `string` | No |  |
+| `name` | `string` | No |  |
+| `scientific_name` | `string` | No |  |
+| `url_image` | `string` | No |  |
 
 ### Operations
 
@@ -669,7 +669,7 @@ const results = await client.InvasiveSpecie().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.InvasiveSpecie().load({ id: 'invasive_specie_id' })
+const result = await client.InvasiveSpecie().load({ id: 1 })
 ```
 
 ### Common Methods
@@ -710,11 +710,11 @@ const map = client.Map()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `department_id` | ``$INTEGER`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `url_image` | ``$ARRAY`` | No |  |
+| `department_id` | `number` | No |  |
+| `description` | `string` | No |  |
+| `id` | `number` | No |  |
+| `name` | `string` | No |  |
+| `url_image` | `any[]` | No |  |
 
 ### Operations
 
@@ -764,11 +764,11 @@ const native_community = client.NativeCommunity()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `department_id` | ``$INTEGER`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `population` | ``$INTEGER`` | No |  |
+| `department_id` | `number` | No |  |
+| `description` | `string` | No |  |
+| `id` | `number` | No |  |
+| `name` | `string` | No |  |
+| `population` | `number` | No |  |
 
 ### Operations
 
@@ -785,7 +785,7 @@ const results = await client.NativeCommunity().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.NativeCommunity().load({ id: 'native_community_id' })
+const result = await client.NativeCommunity().load({ id: 1 })
 ```
 
 ### Common Methods
@@ -826,14 +826,14 @@ const natural_area = client.NaturalArea()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `area_group_id` | ``$INTEGER`` | No |  |
-| `category_natural_area_id` | ``$INTEGER`` | No |  |
-| `department_id` | ``$INTEGER`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `land_area` | ``$NUMBER`` | No |  |
-| `maritime_area` | ``$NUMBER`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `area_group_id` | `number` | No |  |
+| `category_natural_area_id` | `number` | No |  |
+| `department_id` | `number` | No |  |
+| `description` | `string` | No |  |
+| `id` | `number` | No |  |
+| `land_area` | `number` | No |  |
+| `maritime_area` | `number` | No |  |
+| `name` | `string` | No |  |
 
 ### Operations
 
@@ -850,7 +850,7 @@ const results = await client.NaturalArea().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.NaturalArea().load({ id: 'natural_area_id' })
+const result = await client.NaturalArea().load({ id: 1 })
 ```
 
 ### Common Methods
@@ -891,13 +891,13 @@ const president = client.President()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `end_period_date` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `image` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `political_party` | ``$STRING`` | No |  |
-| `start_period_date` | ``$STRING`` | No |  |
+| `description` | `string` | No |  |
+| `end_period_date` | `string` | No |  |
+| `id` | `number` | No |  |
+| `image` | `string` | No |  |
+| `name` | `string` | No |  |
+| `political_party` | `string` | No |  |
+| `start_period_date` | `string` | No |  |
 
 ### Operations
 
@@ -914,7 +914,7 @@ const results = await client.President().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.President().load({ id: 'president_id' })
+const result = await client.President().load({ id: 1 })
 ```
 
 ### Common Methods
@@ -955,11 +955,11 @@ const radio = client.Radio()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `band` | ``$STRING`` | No |  |
-| `frequency` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `band` | `string` | No |  |
+| `frequency` | `string` | No |  |
+| `id` | `number` | No |  |
+| `name` | `string` | No |  |
+| `url` | `string` | No |  |
 
 ### Operations
 
@@ -976,7 +976,7 @@ const results = await client.Radio().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Radio().load({ id: 'radio_id' })
+const result = await client.Radio().load({ id: 1 })
 ```
 
 ### Common Methods
@@ -1017,10 +1017,10 @@ const region = client.Region()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `department` | ``$ARRAY`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `department` | `any[]` | No |  |
+| `description` | `string` | No |  |
+| `id` | `number` | No |  |
+| `name` | `string` | No |  |
 
 ### Operations
 
@@ -1037,7 +1037,7 @@ const results = await client.Region().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Region().load({ id: 'region_id' })
+const result = await client.Region().load({ id: 1 })
 ```
 
 ### Common Methods
@@ -1078,13 +1078,13 @@ const touristic_attraction = client.TouristicAttraction()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `city` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `image` | ``$ARRAY`` | No |  |
-| `latitude` | ``$NUMBER`` | No |  |
-| `longitude` | ``$NUMBER`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `city` | `string` | No |  |
+| `description` | `string` | No |  |
+| `id` | `number` | No |  |
+| `image` | `any[]` | No |  |
+| `latitude` | `number` | No |  |
+| `longitude` | `number` | No |  |
+| `name` | `string` | No |  |
 
 ### Operations
 
@@ -1101,7 +1101,7 @@ const results = await client.TouristicAttraction().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.TouristicAttraction().load({ id: 'touristic_attraction_id' })
+const result = await client.TouristicAttraction().load({ id: 1 })
 ```
 
 ### Common Methods
@@ -1142,12 +1142,12 @@ const typical_dish = client.TypicalDish()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `department_id` | ``$INTEGER`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `ingredient` | ``$ARRAY`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `url_image` | ``$STRING`` | No |  |
+| `department_id` | `number` | No |  |
+| `description` | `string` | No |  |
+| `id` | `number` | No |  |
+| `ingredient` | `any[]` | No |  |
+| `name` | `string` | No |  |
+| `url_image` | `string` | No |  |
 
 ### Operations
 
@@ -1164,7 +1164,7 @@ const results = await client.TypicalDish().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.TypicalDish().load({ id: 'typical_dish_id' })
+const result = await client.TypicalDish().load({ id: 1 })
 ```
 
 ### Common Methods

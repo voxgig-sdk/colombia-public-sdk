@@ -8,7 +8,7 @@ Complete API reference for the ColombiaPublic Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'colombia-public_sdk'
+require_relative 'ColombiaPublic_sdk'
 
 client = ColombiaPublicSDK.new(options)
 ```
@@ -149,23 +149,23 @@ airport = client.Airport
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `city_id` | ``$INTEGER`` | No |  |
-| `code` | ``$STRING`` | No |  |
-| `department_id` | ``$INTEGER`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `latitude` | ``$NUMBER`` | No |  |
-| `longitude` | ``$NUMBER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `city_id` | `Integer` | No |  |
+| `code` | `String` | No |  |
+| `department_id` | `Integer` | No |  |
+| `id` | `Integer` | No |  |
+| `latitude` | `Float` | No |  |
+| `longitude` | `Float` | No |  |
+| `name` | `String` | No |  |
+| `type` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Airport.list(nil)
+results = client.Airport.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -216,18 +216,18 @@ category_natural_area = client.CategoryNaturalArea
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `description` | `String` | No |  |
+| `id` | `Integer` | No |  |
+| `name` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.CategoryNaturalArea.list(nil)
+results = client.CategoryNaturalArea.list
 ```
 
 ### Common Methods
@@ -270,20 +270,20 @@ constitution_article = client.ConstitutionArticle
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `article_number` | ``$INTEGER`` | No |  |
-| `chapter` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `title` | ``$STRING`` | No |  |
+| `article_number` | `Integer` | No |  |
+| `chapter` | `String` | No |  |
+| `description` | `String` | No |  |
+| `id` | `Integer` | No |  |
+| `title` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.ConstitutionArticle.list(nil)
+results = client.ConstitutionArticle.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -334,23 +334,23 @@ country = client.Country
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `capital` | ``$STRING`` | No |  |
-| `currency` | ``$STRING`` | No |  |
-| `flag` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `language` | ``$ARRAY`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `population` | ``$INTEGER`` | No |  |
-| `surface` | ``$NUMBER`` | No |  |
+| `capital` | `String` | No |  |
+| `currency` | `String` | No |  |
+| `flag` | `String` | No |  |
+| `id` | `Integer` | No |  |
+| `language` | `Array` | No |  |
+| `name` | `String` | No |  |
+| `population` | `Integer` | No |  |
+| `surface` | `Float` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Country.list(nil)
+results = client.Country.list
 ```
 
 ### Common Methods
@@ -393,23 +393,23 @@ department = client.Department
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `city_capital` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `municipality` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `population` | ``$INTEGER`` | No |  |
-| `region_id` | ``$INTEGER`` | No |  |
-| `surface` | ``$NUMBER`` | No |  |
+| `city_capital` | `String` | No |  |
+| `description` | `String` | No |  |
+| `id` | `Integer` | No |  |
+| `municipality` | `Integer` | No |  |
+| `name` | `String` | No |  |
+| `population` | `Integer` | No |  |
+| `region_id` | `Integer` | No |  |
+| `surface` | `Float` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Department.list(nil)
+results = client.Department.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -460,20 +460,20 @@ holiday = client.Holiday
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `date` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `date` | `String` | No |  |
+| `description` | `String` | No |  |
+| `id` | `Integer` | No |  |
+| `name` | `String` | No |  |
+| `type` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Holiday.list(nil)
+results = client.Holiday.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -524,21 +524,21 @@ invasive_specie = client.InvasiveSpecie
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | ``$INTEGER`` | No |  |
-| `impact` | ``$STRING`` | No |  |
-| `manage` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `scientific_name` | ``$STRING`` | No |  |
-| `url_image` | ``$STRING`` | No |  |
+| `id` | `Integer` | No |  |
+| `impact` | `String` | No |  |
+| `manage` | `String` | No |  |
+| `name` | `String` | No |  |
+| `scientific_name` | `String` | No |  |
+| `url_image` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.InvasiveSpecie.list(nil)
+results = client.InvasiveSpecie.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -589,20 +589,20 @@ map = client.Map
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `department_id` | ``$INTEGER`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `url_image` | ``$ARRAY`` | No |  |
+| `department_id` | `Integer` | No |  |
+| `description` | `String` | No |  |
+| `id` | `Integer` | No |  |
+| `name` | `String` | No |  |
+| `url_image` | `Array` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Map.list(nil)
+results = client.Map.list
 ```
 
 ### Common Methods
@@ -645,20 +645,20 @@ native_community = client.NativeCommunity
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `department_id` | ``$INTEGER`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `population` | ``$INTEGER`` | No |  |
+| `department_id` | `Integer` | No |  |
+| `description` | `String` | No |  |
+| `id` | `Integer` | No |  |
+| `name` | `String` | No |  |
+| `population` | `Integer` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.NativeCommunity.list(nil)
+results = client.NativeCommunity.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -709,23 +709,23 @@ natural_area = client.NaturalArea
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `area_group_id` | ``$INTEGER`` | No |  |
-| `category_natural_area_id` | ``$INTEGER`` | No |  |
-| `department_id` | ``$INTEGER`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `land_area` | ``$NUMBER`` | No |  |
-| `maritime_area` | ``$NUMBER`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `area_group_id` | `Integer` | No |  |
+| `category_natural_area_id` | `Integer` | No |  |
+| `department_id` | `Integer` | No |  |
+| `description` | `String` | No |  |
+| `id` | `Integer` | No |  |
+| `land_area` | `Float` | No |  |
+| `maritime_area` | `Float` | No |  |
+| `name` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.NaturalArea.list(nil)
+results = client.NaturalArea.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -776,22 +776,22 @@ president = client.President
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `end_period_date` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `image` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `political_party` | ``$STRING`` | No |  |
-| `start_period_date` | ``$STRING`` | No |  |
+| `description` | `String` | No |  |
+| `end_period_date` | `String` | No |  |
+| `id` | `Integer` | No |  |
+| `image` | `String` | No |  |
+| `name` | `String` | No |  |
+| `political_party` | `String` | No |  |
+| `start_period_date` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.President.list(nil)
+results = client.President.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -842,20 +842,20 @@ radio = client.Radio
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `band` | ``$STRING`` | No |  |
-| `frequency` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `band` | `String` | No |  |
+| `frequency` | `String` | No |  |
+| `id` | `Integer` | No |  |
+| `name` | `String` | No |  |
+| `url` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Radio.list(nil)
+results = client.Radio.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -906,19 +906,19 @@ region = client.Region
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `department` | ``$ARRAY`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `department` | `Array` | No |  |
+| `description` | `String` | No |  |
+| `id` | `Integer` | No |  |
+| `name` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Region.list(nil)
+results = client.Region.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -969,22 +969,22 @@ touristic_attraction = client.TouristicAttraction
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `city` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `image` | ``$ARRAY`` | No |  |
-| `latitude` | ``$NUMBER`` | No |  |
-| `longitude` | ``$NUMBER`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `city` | `String` | No |  |
+| `description` | `String` | No |  |
+| `id` | `Integer` | No |  |
+| `image` | `Array` | No |  |
+| `latitude` | `Float` | No |  |
+| `longitude` | `Float` | No |  |
+| `name` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.TouristicAttraction.list(nil)
+results = client.TouristicAttraction.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -1035,21 +1035,21 @@ typical_dish = client.TypicalDish
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `department_id` | ``$INTEGER`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `ingredient` | ``$ARRAY`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `url_image` | ``$STRING`` | No |  |
+| `department_id` | `Integer` | No |  |
+| `description` | `String` | No |  |
+| `id` | `Integer` | No |  |
+| `ingredient` | `Array` | No |  |
+| `name` | `String` | No |  |
+| `url_image` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.TypicalDish.list(nil)
+results = client.TypicalDish.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`

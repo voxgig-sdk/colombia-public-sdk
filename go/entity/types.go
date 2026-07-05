@@ -25,8 +25,7 @@ type AirportLoadMatch struct {
 	Id int `json:"id"`
 }
 
-// AirportListMatch mirrors the airport fields as an all-optional match
-// filter (Go analog of Partial<Airport>).
+// AirportListMatch is the typed request payload for Airport.ListTyped.
 type AirportListMatch struct {
 	CityId *int `json:"city_id,omitempty"`
 	Code *string `json:"code,omitempty"`
@@ -45,8 +44,7 @@ type CategoryNaturalArea struct {
 	Name *string `json:"name,omitempty"`
 }
 
-// CategoryNaturalAreaListMatch mirrors the category_natural_area fields as an all-optional match
-// filter (Go analog of Partial<CategoryNaturalArea>).
+// CategoryNaturalAreaListMatch is the typed request payload for CategoryNaturalArea.ListTyped.
 type CategoryNaturalAreaListMatch struct {
 	Description *string `json:"description,omitempty"`
 	Id *int `json:"id,omitempty"`
@@ -67,8 +65,7 @@ type ConstitutionArticleLoadMatch struct {
 	Id int `json:"id"`
 }
 
-// ConstitutionArticleListMatch mirrors the constitution_article fields as an all-optional match
-// filter (Go analog of Partial<ConstitutionArticle>).
+// ConstitutionArticleListMatch is the typed request payload for ConstitutionArticle.ListTyped.
 type ConstitutionArticleListMatch struct {
 	ArticleNumber *int `json:"article_number,omitempty"`
 	Chapter *string `json:"chapter,omitempty"`
@@ -89,8 +86,7 @@ type Country struct {
 	Surface *float64 `json:"surface,omitempty"`
 }
 
-// CountryListMatch mirrors the country fields as an all-optional match
-// filter (Go analog of Partial<Country>).
+// CountryListMatch is the typed request payload for Country.ListTyped.
 type CountryListMatch struct {
 	Capital *string `json:"capital,omitempty"`
 	Currency *string `json:"currency,omitempty"`
@@ -119,8 +115,7 @@ type DepartmentLoadMatch struct {
 	Id int `json:"id"`
 }
 
-// DepartmentListMatch mirrors the department fields as an all-optional match
-// filter (Go analog of Partial<Department>).
+// DepartmentListMatch is the typed request payload for Department.ListTyped.
 type DepartmentListMatch struct {
 	CityCapital *string `json:"city_capital,omitempty"`
 	Description *string `json:"description,omitempty"`
@@ -146,8 +141,7 @@ type HolidayLoadMatch struct {
 	Id int `json:"id"`
 }
 
-// HolidayListMatch mirrors the holiday fields as an all-optional match
-// filter (Go analog of Partial<Holiday>).
+// HolidayListMatch is the typed request payload for Holiday.ListTyped.
 type HolidayListMatch struct {
 	Date *string `json:"date,omitempty"`
 	Description *string `json:"description,omitempty"`
@@ -171,8 +165,7 @@ type InvasiveSpecieLoadMatch struct {
 	Id int `json:"id"`
 }
 
-// InvasiveSpecieListMatch mirrors the invasive_specie fields as an all-optional match
-// filter (Go analog of Partial<InvasiveSpecie>).
+// InvasiveSpecieListMatch is the typed request payload for InvasiveSpecie.ListTyped.
 type InvasiveSpecieListMatch struct {
 	Id *int `json:"id,omitempty"`
 	Impact *string `json:"impact,omitempty"`
@@ -191,8 +184,7 @@ type Map struct {
 	UrlImage *[]any `json:"url_image,omitempty"`
 }
 
-// MapListMatch mirrors the map fields as an all-optional match
-// filter (Go analog of Partial<Map>).
+// MapListMatch is the typed request payload for Map.ListTyped.
 type MapListMatch struct {
 	DepartmentId *int `json:"department_id,omitempty"`
 	Description *string `json:"description,omitempty"`
@@ -215,8 +207,7 @@ type NativeCommunityLoadMatch struct {
 	Id int `json:"id"`
 }
 
-// NativeCommunityListMatch mirrors the native_community fields as an all-optional match
-// filter (Go analog of Partial<NativeCommunity>).
+// NativeCommunityListMatch is the typed request payload for NativeCommunity.ListTyped.
 type NativeCommunityListMatch struct {
 	DepartmentId *int `json:"department_id,omitempty"`
 	Description *string `json:"description,omitempty"`
@@ -242,8 +233,7 @@ type NaturalAreaLoadMatch struct {
 	Id int `json:"id"`
 }
 
-// NaturalAreaListMatch mirrors the natural_area fields as an all-optional match
-// filter (Go analog of Partial<NaturalArea>).
+// NaturalAreaListMatch is the typed request payload for NaturalArea.ListTyped.
 type NaturalAreaListMatch struct {
 	AreaGroupId *int `json:"area_group_id,omitempty"`
 	CategoryNaturalAreaId *int `json:"category_natural_area_id,omitempty"`
@@ -271,8 +261,7 @@ type PresidentLoadMatch struct {
 	Id int `json:"id"`
 }
 
-// PresidentListMatch mirrors the president fields as an all-optional match
-// filter (Go analog of Partial<President>).
+// PresidentListMatch is the typed request payload for President.ListTyped.
 type PresidentListMatch struct {
 	Description *string `json:"description,omitempty"`
 	EndPeriodDate *string `json:"end_period_date,omitempty"`
@@ -297,8 +286,7 @@ type RadioLoadMatch struct {
 	Id int `json:"id"`
 }
 
-// RadioListMatch mirrors the radio fields as an all-optional match
-// filter (Go analog of Partial<Radio>).
+// RadioListMatch is the typed request payload for Radio.ListTyped.
 type RadioListMatch struct {
 	Band *string `json:"band,omitempty"`
 	Frequency *string `json:"frequency,omitempty"`
@@ -320,8 +308,7 @@ type RegionLoadMatch struct {
 	Id int `json:"id"`
 }
 
-// RegionListMatch mirrors the region fields as an all-optional match
-// filter (Go analog of Partial<Region>).
+// RegionListMatch is the typed request payload for Region.ListTyped.
 type RegionListMatch struct {
 	Department *[]any `json:"department,omitempty"`
 	Description *string `json:"description,omitempty"`
@@ -345,8 +332,7 @@ type TouristicAttractionLoadMatch struct {
 	Id int `json:"id"`
 }
 
-// TouristicAttractionListMatch mirrors the touristic_attraction fields as an all-optional match
-// filter (Go analog of Partial<TouristicAttraction>).
+// TouristicAttractionListMatch is the typed request payload for TouristicAttraction.ListTyped.
 type TouristicAttractionListMatch struct {
 	City *string `json:"city,omitempty"`
 	Description *string `json:"description,omitempty"`
@@ -372,8 +358,7 @@ type TypicalDishLoadMatch struct {
 	Id int `json:"id"`
 }
 
-// TypicalDishListMatch mirrors the typical_dish fields as an all-optional match
-// filter (Go analog of Partial<TypicalDish>).
+// TypicalDishListMatch is the typed request payload for TypicalDish.ListTyped.
 type TypicalDishListMatch struct {
 	DepartmentId *int `json:"department_id,omitempty"`
 	Description *string `json:"description,omitempty"`
