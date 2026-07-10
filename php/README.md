@@ -50,7 +50,7 @@ try {
 ```php
 try {
     // load() returns the bare Airport record (throws on error).
-    $airport = $client->Airport()->load(["id" => "example_id"]);
+    $airport = $client->Airport()->load(["id" => 1]);
     print_r($airport);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -530,7 +530,7 @@ Create an instance: `$airport = $client->Airport();`
 
 ```php
 // load() returns the bare Airport record (throws on error).
-$airport = $client->Airport()->load(["id" => "airport_id"]);
+$airport = $client->Airport()->load(["id" => 1]);
 ```
 
 #### Example: List
@@ -592,7 +592,7 @@ Create an instance: `$constitution_article = $client->ConstitutionArticle();`
 
 ```php
 // load() returns the bare ConstitutionArticle record (throws on error).
-$constitution_article = $client->ConstitutionArticle()->load(["id" => "constitution_article_id"]);
+$constitution_article = $client->ConstitutionArticle()->load(["id" => 1]);
 ```
 
 #### Example: List
@@ -662,7 +662,7 @@ Create an instance: `$department = $client->Department();`
 
 ```php
 // load() returns the bare Department record (throws on error).
-$department = $client->Department()->load(["id" => "department_id"]);
+$department = $client->Department()->load(["id" => 1]);
 ```
 
 #### Example: List
@@ -698,7 +698,7 @@ Create an instance: `$holiday = $client->Holiday();`
 
 ```php
 // load() returns the bare Holiday record (throws on error).
-$holiday = $client->Holiday()->load(["id" => "holiday_id"]);
+$holiday = $client->Holiday()->load(["id" => 1]);
 ```
 
 #### Example: List
@@ -735,7 +735,7 @@ Create an instance: `$invasive_specie = $client->InvasiveSpecie();`
 
 ```php
 // load() returns the bare InvasiveSpecie record (throws on error).
-$invasive_specie = $client->InvasiveSpecie()->load(["id" => "invasive_specie_id"]);
+$invasive_specie = $client->InvasiveSpecie()->load(["id" => 1]);
 ```
 
 #### Example: List
@@ -799,7 +799,7 @@ Create an instance: `$native_community = $client->NativeCommunity();`
 
 ```php
 // load() returns the bare NativeCommunity record (throws on error).
-$native_community = $client->NativeCommunity()->load(["id" => "native_community_id"]);
+$native_community = $client->NativeCommunity()->load(["id" => 1]);
 ```
 
 #### Example: List
@@ -838,7 +838,7 @@ Create an instance: `$natural_area = $client->NaturalArea();`
 
 ```php
 // load() returns the bare NaturalArea record (throws on error).
-$natural_area = $client->NaturalArea()->load(["id" => "natural_area_id"]);
+$natural_area = $client->NaturalArea()->load(["id" => 1]);
 ```
 
 #### Example: List
@@ -876,7 +876,7 @@ Create an instance: `$president = $client->President();`
 
 ```php
 // load() returns the bare President record (throws on error).
-$president = $client->President()->load(["id" => "president_id"]);
+$president = $client->President()->load(["id" => 1]);
 ```
 
 #### Example: List
@@ -912,7 +912,7 @@ Create an instance: `$radio = $client->Radio();`
 
 ```php
 // load() returns the bare Radio record (throws on error).
-$radio = $client->Radio()->load(["id" => "radio_id"]);
+$radio = $client->Radio()->load(["id" => 1]);
 ```
 
 #### Example: List
@@ -947,7 +947,7 @@ Create an instance: `$region = $client->Region();`
 
 ```php
 // load() returns the bare Region record (throws on error).
-$region = $client->Region()->load(["id" => "region_id"]);
+$region = $client->Region()->load(["id" => 1]);
 ```
 
 #### Example: List
@@ -985,7 +985,7 @@ Create an instance: `$touristic_attraction = $client->TouristicAttraction();`
 
 ```php
 // load() returns the bare TouristicAttraction record (throws on error).
-$touristic_attraction = $client->TouristicAttraction()->load(["id" => "touristic_attraction_id"]);
+$touristic_attraction = $client->TouristicAttraction()->load(["id" => 1]);
 ```
 
 #### Example: List
@@ -1022,7 +1022,7 @@ Create an instance: `$typical_dish = $client->TypicalDish();`
 
 ```php
 // load() returns the bare TypicalDish record (throws on error).
-$typical_dish = $client->TypicalDish()->load(["id" => "typical_dish_id"]);
+$typical_dish = $client->TypicalDish()->load(["id" => 1]);
 ```
 
 #### Example: List

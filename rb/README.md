@@ -49,7 +49,7 @@ end
 ```ruby
 begin
   # load returns the bare Airport record (raises on error).
-  airport = client.Airport.load({ "id" => "example_id" })
+  airport = client.Airport.load({ "id" => 1 })
   puts airport
 rescue => err
   warn "load failed: #{err}"
@@ -520,7 +520,7 @@ Create an instance: `airport = client.Airport`
 
 ```ruby
 # load returns the bare Airport record (raises on error).
-airport = client.Airport.load({ "id" => "airport_id" })
+airport = client.Airport.load({ "id" => 1 })
 ```
 
 #### Example: List
@@ -582,7 +582,7 @@ Create an instance: `constitution_article = client.ConstitutionArticle`
 
 ```ruby
 # load returns the bare ConstitutionArticle record (raises on error).
-constitution_article = client.ConstitutionArticle.load({ "id" => "constitution_article_id" })
+constitution_article = client.ConstitutionArticle.load({ "id" => 1 })
 ```
 
 #### Example: List
@@ -652,7 +652,7 @@ Create an instance: `department = client.Department`
 
 ```ruby
 # load returns the bare Department record (raises on error).
-department = client.Department.load({ "id" => "department_id" })
+department = client.Department.load({ "id" => 1 })
 ```
 
 #### Example: List
@@ -688,7 +688,7 @@ Create an instance: `holiday = client.Holiday`
 
 ```ruby
 # load returns the bare Holiday record (raises on error).
-holiday = client.Holiday.load({ "id" => "holiday_id" })
+holiday = client.Holiday.load({ "id" => 1 })
 ```
 
 #### Example: List
@@ -725,7 +725,7 @@ Create an instance: `invasive_specie = client.InvasiveSpecie`
 
 ```ruby
 # load returns the bare InvasiveSpecie record (raises on error).
-invasive_specie = client.InvasiveSpecie.load({ "id" => "invasive_specie_id" })
+invasive_specie = client.InvasiveSpecie.load({ "id" => 1 })
 ```
 
 #### Example: List
@@ -789,7 +789,7 @@ Create an instance: `native_community = client.NativeCommunity`
 
 ```ruby
 # load returns the bare NativeCommunity record (raises on error).
-native_community = client.NativeCommunity.load({ "id" => "native_community_id" })
+native_community = client.NativeCommunity.load({ "id" => 1 })
 ```
 
 #### Example: List
@@ -828,7 +828,7 @@ Create an instance: `natural_area = client.NaturalArea`
 
 ```ruby
 # load returns the bare NaturalArea record (raises on error).
-natural_area = client.NaturalArea.load({ "id" => "natural_area_id" })
+natural_area = client.NaturalArea.load({ "id" => 1 })
 ```
 
 #### Example: List
@@ -866,7 +866,7 @@ Create an instance: `president = client.President`
 
 ```ruby
 # load returns the bare President record (raises on error).
-president = client.President.load({ "id" => "president_id" })
+president = client.President.load({ "id" => 1 })
 ```
 
 #### Example: List
@@ -902,7 +902,7 @@ Create an instance: `radio = client.Radio`
 
 ```ruby
 # load returns the bare Radio record (raises on error).
-radio = client.Radio.load({ "id" => "radio_id" })
+radio = client.Radio.load({ "id" => 1 })
 ```
 
 #### Example: List
@@ -937,7 +937,7 @@ Create an instance: `region = client.Region`
 
 ```ruby
 # load returns the bare Region record (raises on error).
-region = client.Region.load({ "id" => "region_id" })
+region = client.Region.load({ "id" => 1 })
 ```
 
 #### Example: List
@@ -975,7 +975,7 @@ Create an instance: `touristic_attraction = client.TouristicAttraction`
 
 ```ruby
 # load returns the bare TouristicAttraction record (raises on error).
-touristic_attraction = client.TouristicAttraction.load({ "id" => "touristic_attraction_id" })
+touristic_attraction = client.TouristicAttraction.load({ "id" => 1 })
 ```
 
 #### Example: List
@@ -1012,7 +1012,7 @@ Create an instance: `typical_dish = client.TypicalDish`
 
 ```ruby
 # load returns the bare TypicalDish record (raises on error).
-typical_dish = client.TypicalDish.load({ "id" => "typical_dish_id" })
+typical_dish = client.TypicalDish.load({ "id" => 1 })
 ```
 
 #### Example: List

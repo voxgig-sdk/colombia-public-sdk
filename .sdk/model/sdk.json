@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -2328,14 +2325,17 @@
           "name": "Open Source",
           "url": "https://api-colombia.com/"
         },
+        "meta_source": "https://www.freepublicapis.com",
         "servers": [
           {
             "description": "Production server",
             "url": "https://api-colombia.com/api/v1"
           }
         ],
+        "summary": "API-Colombia is a public RESTful API that provides access to a wide range of data about Colombia, including information on departments, regions, and tourist attractions.",
         "title": "Colombia Public API",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "website": "https://com"
       },
       "option": {},
       "target": {
@@ -2388,6 +2388,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -2438,6 +2441,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },

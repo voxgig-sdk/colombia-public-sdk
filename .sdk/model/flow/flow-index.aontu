@@ -1,0 +1,17 @@
+# Flows
+
+@"BasicAirportFlow.aontu"
+@"BasicCategoryNaturalAreaFlow.aontu"
+@"BasicConstitutionArticleFlow.aontu"
+@"BasicCountryFlow.aontu"
+@"BasicDepartmentFlow.aontu"
+@"BasicHolidayFlow.aontu"
+@"BasicInvasiveSpecieFlow.aontu"
+@"BasicMapFlow.aontu"
+@"BasicNativeCommunityFlow.aontu"
+@"BasicNaturalAreaFlow.aontu"
+@"BasicPresidentFlow.aontu"
+@"BasicRadioFlow.aontu"
+@"BasicRegionFlow.aontu"
+@"BasicTouristicAttractionFlow.aontu"
+@"BasicTypicalDishFlow.aontu"

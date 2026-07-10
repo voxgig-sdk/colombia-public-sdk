@@ -169,7 +169,7 @@ for airport in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Airport().load({"id": "airport_id"})
+result = client.Airport().load({"id": 1})
 ```
 
 ### Common Methods
@@ -289,7 +289,7 @@ for constitution_article in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.ConstitutionArticle().load({"id": "constitution_article_id"})
+result = client.ConstitutionArticle().load({"id": 1})
 ```
 
 ### Common Methods
@@ -417,7 +417,7 @@ for department in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Department().load({"id": "department_id"})
+result = client.Department().load({"id": 1})
 ```
 
 ### Common Methods
@@ -482,7 +482,7 @@ for holiday in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Holiday().load({"id": "holiday_id"})
+result = client.Holiday().load({"id": 1})
 ```
 
 ### Common Methods
@@ -548,7 +548,7 @@ for invasive_specie in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.InvasiveSpecie().load({"id": "invasive_specie_id"})
+result = client.InvasiveSpecie().load({"id": 1})
 ```
 
 ### Common Methods
@@ -670,7 +670,7 @@ for native_community in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.NativeCommunity().load({"id": "native_community_id"})
+result = client.NativeCommunity().load({"id": 1})
 ```
 
 ### Common Methods
@@ -738,7 +738,7 @@ for natural_area in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.NaturalArea().load({"id": "natural_area_id"})
+result = client.NaturalArea().load({"id": 1})
 ```
 
 ### Common Methods
@@ -805,7 +805,7 @@ for president in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.President().load({"id": "president_id"})
+result = client.President().load({"id": 1})
 ```
 
 ### Common Methods
@@ -870,7 +870,7 @@ for radio in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Radio().load({"id": "radio_id"})
+result = client.Radio().load({"id": 1})
 ```
 
 ### Common Methods
@@ -934,7 +934,7 @@ for region in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Region().load({"id": "region_id"})
+result = client.Region().load({"id": 1})
 ```
 
 ### Common Methods
@@ -1001,7 +1001,7 @@ for touristic_attraction in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.TouristicAttraction().load({"id": "touristic_attraction_id"})
+result = client.TouristicAttraction().load({"id": 1})
 ```
 
 ### Common Methods
@@ -1067,7 +1067,7 @@ for typical_dish in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.TypicalDish().load({"id": "typical_dish_id"})
+result = client.TypicalDish().load({"id": 1})
 ```
 
 ### Common Methods

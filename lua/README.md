@@ -50,7 +50,7 @@ end
 ### 3. Load an airport
 
 ```lua
-local airport, err = client:Airport():load({ id = "example_id" })
+local airport, err = client:Airport():load({ id = 1 })
 if err then error(err) end
 print(airport)
 ```
@@ -508,7 +508,7 @@ Create an instance: `local airport = client:Airport(nil)`
 #### Example: Load
 
 ```lua
-local airport, err = client:Airport():load({ id = "airport_id" })
+local airport, err = client:Airport():load({ id = 1 })
 ```
 
 #### Example: List
@@ -567,7 +567,7 @@ Create an instance: `local constitution_article = client:ConstitutionArticle(nil
 #### Example: Load
 
 ```lua
-local constitution_article, err = client:ConstitutionArticle():load({ id = "constitution_article_id" })
+local constitution_article, err = client:ConstitutionArticle():load({ id = 1 })
 ```
 
 #### Example: List
@@ -634,7 +634,7 @@ Create an instance: `local department = client:Department(nil)`
 #### Example: Load
 
 ```lua
-local department, err = client:Department():load({ id = "department_id" })
+local department, err = client:Department():load({ id = 1 })
 ```
 
 #### Example: List
@@ -668,7 +668,7 @@ Create an instance: `local holiday = client:Holiday(nil)`
 #### Example: Load
 
 ```lua
-local holiday, err = client:Holiday():load({ id = "holiday_id" })
+local holiday, err = client:Holiday():load({ id = 1 })
 ```
 
 #### Example: List
@@ -703,7 +703,7 @@ Create an instance: `local invasive_specie = client:InvasiveSpecie(nil)`
 #### Example: Load
 
 ```lua
-local invasive_specie, err = client:InvasiveSpecie():load({ id = "invasive_specie_id" })
+local invasive_specie, err = client:InvasiveSpecie():load({ id = 1 })
 ```
 
 #### Example: List
@@ -764,7 +764,7 @@ Create an instance: `local native_community = client:NativeCommunity(nil)`
 #### Example: Load
 
 ```lua
-local native_community, err = client:NativeCommunity():load({ id = "native_community_id" })
+local native_community, err = client:NativeCommunity():load({ id = 1 })
 ```
 
 #### Example: List
@@ -801,7 +801,7 @@ Create an instance: `local natural_area = client:NaturalArea(nil)`
 #### Example: Load
 
 ```lua
-local natural_area, err = client:NaturalArea():load({ id = "natural_area_id" })
+local natural_area, err = client:NaturalArea():load({ id = 1 })
 ```
 
 #### Example: List
@@ -837,7 +837,7 @@ Create an instance: `local president = client:President(nil)`
 #### Example: Load
 
 ```lua
-local president, err = client:President():load({ id = "president_id" })
+local president, err = client:President():load({ id = 1 })
 ```
 
 #### Example: List
@@ -871,7 +871,7 @@ Create an instance: `local radio = client:Radio(nil)`
 #### Example: Load
 
 ```lua
-local radio, err = client:Radio():load({ id = "radio_id" })
+local radio, err = client:Radio():load({ id = 1 })
 ```
 
 #### Example: List
@@ -904,7 +904,7 @@ Create an instance: `local region = client:Region(nil)`
 #### Example: Load
 
 ```lua
-local region, err = client:Region():load({ id = "region_id" })
+local region, err = client:Region():load({ id = 1 })
 ```
 
 #### Example: List
@@ -940,7 +940,7 @@ Create an instance: `local touristic_attraction = client:TouristicAttraction(nil
 #### Example: Load
 
 ```lua
-local touristic_attraction, err = client:TouristicAttraction():load({ id = "touristic_attraction_id" })
+local touristic_attraction, err = client:TouristicAttraction():load({ id = 1 })
 ```
 
 #### Example: List
@@ -975,7 +975,7 @@ Create an instance: `local typical_dish = client:TypicalDish(nil)`
 #### Example: Load
 
 ```lua
-local typical_dish, err = client:TypicalDish():load({ id = "typical_dish_id" })
+local typical_dish, err = client:TypicalDish():load({ id = 1 })
 ```
 
 #### Example: List

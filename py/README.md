@@ -56,7 +56,7 @@ except Exception as err:
 
 ```python
 try:
-    airport = client.Airport().load({"id": "example_id"})
+    airport = client.Airport().load({"id": 1})
     print(airport)
 except Exception as err:
     print(f"load failed: {err}")
@@ -522,7 +522,7 @@ Create an instance: `airport = client.Airport()`
 #### Example: Load
 
 ```python
-airport = client.Airport().load({"id": "airport_id"})
+airport = client.Airport().load({"id": 1})
 ```
 
 #### Example: List
@@ -581,7 +581,7 @@ Create an instance: `constitution_article = client.ConstitutionArticle()`
 #### Example: Load
 
 ```python
-constitution_article = client.ConstitutionArticle().load({"id": "constitution_article_id"})
+constitution_article = client.ConstitutionArticle().load({"id": 1})
 ```
 
 #### Example: List
@@ -648,7 +648,7 @@ Create an instance: `department = client.Department()`
 #### Example: Load
 
 ```python
-department = client.Department().load({"id": "department_id"})
+department = client.Department().load({"id": 1})
 ```
 
 #### Example: List
@@ -682,7 +682,7 @@ Create an instance: `holiday = client.Holiday()`
 #### Example: Load
 
 ```python
-holiday = client.Holiday().load({"id": "holiday_id"})
+holiday = client.Holiday().load({"id": 1})
 ```
 
 #### Example: List
@@ -717,7 +717,7 @@ Create an instance: `invasive_specie = client.InvasiveSpecie()`
 #### Example: Load
 
 ```python
-invasive_specie = client.InvasiveSpecie().load({"id": "invasive_specie_id"})
+invasive_specie = client.InvasiveSpecie().load({"id": 1})
 ```
 
 #### Example: List
@@ -778,7 +778,7 @@ Create an instance: `native_community = client.NativeCommunity()`
 #### Example: Load
 
 ```python
-native_community = client.NativeCommunity().load({"id": "native_community_id"})
+native_community = client.NativeCommunity().load({"id": 1})
 ```
 
 #### Example: List
@@ -815,7 +815,7 @@ Create an instance: `natural_area = client.NaturalArea()`
 #### Example: Load
 
 ```python
-natural_area = client.NaturalArea().load({"id": "natural_area_id"})
+natural_area = client.NaturalArea().load({"id": 1})
 ```
 
 #### Example: List
@@ -851,7 +851,7 @@ Create an instance: `president = client.President()`
 #### Example: Load
 
 ```python
-president = client.President().load({"id": "president_id"})
+president = client.President().load({"id": 1})
 ```
 
 #### Example: List
@@ -885,7 +885,7 @@ Create an instance: `radio = client.Radio()`
 #### Example: Load
 
 ```python
-radio = client.Radio().load({"id": "radio_id"})
+radio = client.Radio().load({"id": 1})
 ```
 
 #### Example: List
@@ -918,7 +918,7 @@ Create an instance: `region = client.Region()`
 #### Example: Load
 
 ```python
-region = client.Region().load({"id": "region_id"})
+region = client.Region().load({"id": 1})
 ```
 
 #### Example: List
@@ -954,7 +954,7 @@ Create an instance: `touristic_attraction = client.TouristicAttraction()`
 #### Example: Load
 
 ```python
-touristic_attraction = client.TouristicAttraction().load({"id": "touristic_attraction_id"})
+touristic_attraction = client.TouristicAttraction().load({"id": 1})
 ```
 
 #### Example: List
@@ -989,7 +989,7 @@ Create an instance: `typical_dish = client.TypicalDish()`
 #### Example: Load
 
 ```python
-typical_dish = client.TypicalDish().load({"id": "typical_dish_id"})
+typical_dish = client.TypicalDish().load({"id": 1})
 ```
 
 #### Example: List

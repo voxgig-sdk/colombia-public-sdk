@@ -170,7 +170,7 @@ local results, err = client:Airport():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Airport():load({ id = "airport_id" })
+local result, err = client:Airport():load({ id = 1 })
 ```
 
 ### Common Methods
@@ -288,7 +288,7 @@ local results, err = client:ConstitutionArticle():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:ConstitutionArticle():load({ id = "constitution_article_id" })
+local result, err = client:ConstitutionArticle():load({ id = 1 })
 ```
 
 ### Common Methods
@@ -414,7 +414,7 @@ local results, err = client:Department():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Department():load({ id = "department_id" })
+local result, err = client:Department():load({ id = 1 })
 ```
 
 ### Common Methods
@@ -478,7 +478,7 @@ local results, err = client:Holiday():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Holiday():load({ id = "holiday_id" })
+local result, err = client:Holiday():load({ id = 1 })
 ```
 
 ### Common Methods
@@ -543,7 +543,7 @@ local results, err = client:InvasiveSpecie():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:InvasiveSpecie():load({ id = "invasive_specie_id" })
+local result, err = client:InvasiveSpecie():load({ id = 1 })
 ```
 
 ### Common Methods
@@ -663,7 +663,7 @@ local results, err = client:NativeCommunity():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:NativeCommunity():load({ id = "native_community_id" })
+local result, err = client:NativeCommunity():load({ id = 1 })
 ```
 
 ### Common Methods
@@ -730,7 +730,7 @@ local results, err = client:NaturalArea():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:NaturalArea():load({ id = "natural_area_id" })
+local result, err = client:NaturalArea():load({ id = 1 })
 ```
 
 ### Common Methods
@@ -796,7 +796,7 @@ local results, err = client:President():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:President():load({ id = "president_id" })
+local result, err = client:President():load({ id = 1 })
 ```
 
 ### Common Methods
@@ -860,7 +860,7 @@ local results, err = client:Radio():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Radio():load({ id = "radio_id" })
+local result, err = client:Radio():load({ id = 1 })
 ```
 
 ### Common Methods
@@ -923,7 +923,7 @@ local results, err = client:Region():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Region():load({ id = "region_id" })
+local result, err = client:Region():load({ id = 1 })
 ```
 
 ### Common Methods
@@ -989,7 +989,7 @@ local results, err = client:TouristicAttraction():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:TouristicAttraction():load({ id = "touristic_attraction_id" })
+local result, err = client:TouristicAttraction():load({ id = 1 })
 ```
 
 ### Common Methods
@@ -1054,7 +1054,7 @@ local results, err = client:TypicalDish():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:TypicalDish():load({ id = "typical_dish_id" })
+local result, err = client:TypicalDish():load({ id = 1 })
 ```
 
 ### Common Methods

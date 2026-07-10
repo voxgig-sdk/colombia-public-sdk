@@ -20,9 +20,9 @@ main: {
           url: "https://api-colombia.com/api/v1"
         }
       ]
+      summary: "API-Colombia is a public RESTful API that provides access to a wide range of data about Colombia, including information on departments, regions, and tourist attractions."
       title: "Colombia Public API"
       version: "1.0.0"
+      website: "https://com"
     }
   }
-}
-

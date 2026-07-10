@@ -536,7 +536,7 @@ Create an instance: `airport := client.Airport(nil)`
 #### Example: Load
 
 ```go
-airport, err := client.Airport(nil).Load(map[string]any{"id": "airport_id"}, nil)
+airport, err := client.Airport(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
@@ -556,7 +556,7 @@ fmt.Println(airports) // the array of records
 
 ### CategoryNaturalArea
 
-Create an instance: `category_natural_area := client.CategoryNaturalArea(nil)`
+Create an instance: `categoryNaturalArea := client.CategoryNaturalArea(nil)`
 
 #### Operations
 
@@ -575,17 +575,17 @@ Create an instance: `category_natural_area := client.CategoryNaturalArea(nil)`
 #### Example: List
 
 ```go
-category_natural_areas, err := client.CategoryNaturalArea(nil).List(nil, nil)
+categoryNaturalAreas, err := client.CategoryNaturalArea(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(category_natural_areas) // the array of records
+fmt.Println(categoryNaturalAreas) // the array of records
 ```
 
 
 ### ConstitutionArticle
 
-Create an instance: `constitution_article := client.ConstitutionArticle(nil)`
+Create an instance: `constitutionArticle := client.ConstitutionArticle(nil)`
 
 #### Operations
 
@@ -607,21 +607,21 @@ Create an instance: `constitution_article := client.ConstitutionArticle(nil)`
 #### Example: Load
 
 ```go
-constitution_article, err := client.ConstitutionArticle(nil).Load(map[string]any{"id": "constitution_article_id"}, nil)
+constitutionArticle, err := client.ConstitutionArticle(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(constitution_article) // the loaded record
+fmt.Println(constitutionArticle) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-constitution_articles, err := client.ConstitutionArticle(nil).List(nil, nil)
+constitutionArticles, err := client.ConstitutionArticle(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(constitution_articles) // the array of records
+fmt.Println(constitutionArticles) // the array of records
 ```
 
 
@@ -686,7 +686,7 @@ Create an instance: `department := client.Department(nil)`
 #### Example: Load
 
 ```go
-department, err := client.Department(nil).Load(map[string]any{"id": "department_id"}, nil)
+department, err := client.Department(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
@@ -728,7 +728,7 @@ Create an instance: `holiday := client.Holiday(nil)`
 #### Example: Load
 
 ```go
-holiday, err := client.Holiday(nil).Load(map[string]any{"id": "holiday_id"}, nil)
+holiday, err := client.Holiday(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
@@ -748,7 +748,7 @@ fmt.Println(holidays) // the array of records
 
 ### InvasiveSpecie
 
-Create an instance: `invasive_specie := client.InvasiveSpecie(nil)`
+Create an instance: `invasiveSpecie := client.InvasiveSpecie(nil)`
 
 #### Operations
 
@@ -771,21 +771,21 @@ Create an instance: `invasive_specie := client.InvasiveSpecie(nil)`
 #### Example: Load
 
 ```go
-invasive_specie, err := client.InvasiveSpecie(nil).Load(map[string]any{"id": "invasive_specie_id"}, nil)
+invasiveSpecie, err := client.InvasiveSpecie(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(invasive_specie) // the loaded record
+fmt.Println(invasiveSpecie) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-invasive_species, err := client.InvasiveSpecie(nil).List(nil, nil)
+invasiveSpecies, err := client.InvasiveSpecie(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(invasive_species) // the array of records
+fmt.Println(invasiveSpecies) // the array of records
 ```
 
 
@@ -822,7 +822,7 @@ fmt.Println(map_s) // the array of records
 
 ### NativeCommunity
 
-Create an instance: `native_community := client.NativeCommunity(nil)`
+Create an instance: `nativeCommunity := client.NativeCommunity(nil)`
 
 #### Operations
 
@@ -844,27 +844,27 @@ Create an instance: `native_community := client.NativeCommunity(nil)`
 #### Example: Load
 
 ```go
-native_community, err := client.NativeCommunity(nil).Load(map[string]any{"id": "native_community_id"}, nil)
+nativeCommunity, err := client.NativeCommunity(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(native_community) // the loaded record
+fmt.Println(nativeCommunity) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-native_communitys, err := client.NativeCommunity(nil).List(nil, nil)
+nativeCommunitys, err := client.NativeCommunity(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(native_communitys) // the array of records
+fmt.Println(nativeCommunitys) // the array of records
 ```
 
 
 ### NaturalArea
 
-Create an instance: `natural_area := client.NaturalArea(nil)`
+Create an instance: `naturalArea := client.NaturalArea(nil)`
 
 #### Operations
 
@@ -889,21 +889,21 @@ Create an instance: `natural_area := client.NaturalArea(nil)`
 #### Example: Load
 
 ```go
-natural_area, err := client.NaturalArea(nil).Load(map[string]any{"id": "natural_area_id"}, nil)
+naturalArea, err := client.NaturalArea(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(natural_area) // the loaded record
+fmt.Println(naturalArea) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-natural_areas, err := client.NaturalArea(nil).List(nil, nil)
+naturalAreas, err := client.NaturalArea(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(natural_areas) // the array of records
+fmt.Println(naturalAreas) // the array of records
 ```
 
 
@@ -933,7 +933,7 @@ Create an instance: `president := client.President(nil)`
 #### Example: Load
 
 ```go
-president, err := client.President(nil).Load(map[string]any{"id": "president_id"}, nil)
+president, err := client.President(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
@@ -975,7 +975,7 @@ Create an instance: `radio := client.Radio(nil)`
 #### Example: Load
 
 ```go
-radio, err := client.Radio(nil).Load(map[string]any{"id": "radio_id"}, nil)
+radio, err := client.Radio(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
@@ -1016,7 +1016,7 @@ Create an instance: `region := client.Region(nil)`
 #### Example: Load
 
 ```go
-region, err := client.Region(nil).Load(map[string]any{"id": "region_id"}, nil)
+region, err := client.Region(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
@@ -1036,7 +1036,7 @@ fmt.Println(regions) // the array of records
 
 ### TouristicAttraction
 
-Create an instance: `touristic_attraction := client.TouristicAttraction(nil)`
+Create an instance: `touristicAttraction := client.TouristicAttraction(nil)`
 
 #### Operations
 
@@ -1060,27 +1060,27 @@ Create an instance: `touristic_attraction := client.TouristicAttraction(nil)`
 #### Example: Load
 
 ```go
-touristic_attraction, err := client.TouristicAttraction(nil).Load(map[string]any{"id": "touristic_attraction_id"}, nil)
+touristicAttraction, err := client.TouristicAttraction(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(touristic_attraction) // the loaded record
+fmt.Println(touristicAttraction) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-touristic_attractions, err := client.TouristicAttraction(nil).List(nil, nil)
+touristicAttractions, err := client.TouristicAttraction(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(touristic_attractions) // the array of records
+fmt.Println(touristicAttractions) // the array of records
 ```
 
 
 ### TypicalDish
 
-Create an instance: `typical_dish := client.TypicalDish(nil)`
+Create an instance: `typicalDish := client.TypicalDish(nil)`
 
 #### Operations
 
@@ -1103,21 +1103,21 @@ Create an instance: `typical_dish := client.TypicalDish(nil)`
 #### Example: Load
 
 ```go
-typical_dish, err := client.TypicalDish(nil).Load(map[string]any{"id": "typical_dish_id"}, nil)
+typicalDish, err := client.TypicalDish(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(typical_dish) // the loaded record
+fmt.Println(typicalDish) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-typical_dishs, err := client.TypicalDish(nil).List(nil, nil)
+typicalDishs, err := client.TypicalDish(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(typical_dishs) // the array of records
+fmt.Println(typicalDishs) // the array of records
 ```
 
 

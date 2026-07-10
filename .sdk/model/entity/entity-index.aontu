@@ -1,0 +1,17 @@
+# Entity Models
+
+@"airport.aontu"
+@"category_natural_area.aontu"
+@"constitution_article.aontu"
+@"country.aontu"
+@"department.aontu"
+@"holiday.aontu"
+@"invasive_specie.aontu"
+@"map.aontu"
+@"native_community.aontu"
+@"natural_area.aontu"
+@"president.aontu"
+@"radio.aontu"
+@"region.aontu"
+@"touristic_attraction.aontu"
+@"typical_dish.aontu"
