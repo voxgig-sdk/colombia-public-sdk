@@ -26,8 +26,8 @@ import {
 describe('MapEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when COLOMBIAPUBLIC_TEST_LIVE=TRUE.
-  afterEach(liveDelay('COLOMBIAPUBLIC_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when COLOMBIA_PUBLIC_TEST_LIVE=TRUE.
+  afterEach(liveDelay('COLOMBIA_PUBLIC_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = ColombiaPublicSDK.test()
@@ -63,7 +63,7 @@ describe('MapEntity', async () => {
     const map_ref01_ent = client.Map()
     const map_ref01_match: any = {}
 
-    const map_ref01_list = await map_ref01_ent.list(map_ref01_match)
+    const map_ref01_list = (await map_ref01_ent.list(map_ref01_match)).map((e: any) => e.data())
 
 
   })

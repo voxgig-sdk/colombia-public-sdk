@@ -26,8 +26,8 @@ import {
 describe('AirportEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when COLOMBIAPUBLIC_TEST_LIVE=TRUE.
-  afterEach(liveDelay('COLOMBIAPUBLIC_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when COLOMBIA_PUBLIC_TEST_LIVE=TRUE.
+  afterEach(liveDelay('COLOMBIA_PUBLIC_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = ColombiaPublicSDK.test()
@@ -63,13 +63,13 @@ describe('AirportEntity', async () => {
     const airport_ref01_ent = client.Airport()
     const airport_ref01_match: any = {}
 
-    const airport_ref01_list = await airport_ref01_ent.list(airport_ref01_match)
+    const airport_ref01_list = (await airport_ref01_ent.list(airport_ref01_match)).map((e: any) => e.data())
 
 
     // LOAD
     const airport_ref01_match_dt0: any = {}
     airport_ref01_match_dt0.id = airport_ref01_data.id
-    const airport_ref01_data_dt0 = await airport_ref01_ent.load(airport_ref01_match_dt0)
+    const airport_ref01_data_dt0 = (await airport_ref01_ent.load(airport_ref01_match_dt0)).data()
     assert(airport_ref01_data_dt0.id === airport_ref01_data.id)
 
 

@@ -52,7 +52,7 @@ except Exception as err:
 
 ### 3. Load an airport
 
-`load()` returns the bare record (a `dict`) and raises on error.
+`load()` returns the ENTITY — call data_get() for the record — and raises on error.
 
 ```python
 try:
@@ -69,8 +69,8 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 
 ```python
 try:
-    airports = client.Airport().list()
-    print(airports)
+    typicaldishs = client.TypicalDish().list()
+    print(typicaldishs)
 except Exception as err:
     print(f"list failed: {err}")
 ```
@@ -136,9 +136,10 @@ Create a mock client for unit testing — no server required:
 ```python
 client = ColombiaPublicSDK.test()
 
-# Entity ops return the bare record and raise on error.
-airport = client.Airport().list()
-# airport contains the mock response record
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
+typicaldish = client.TypicalDish().list()
+# typicaldish contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -247,7 +248,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -269,9 +270,9 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `city_id` |  |
+| `cityId` |  |
 | `code` |  |
-| `department_id` |  |
+| `departmentId` |  |
 | `id` |  |
 | `latitude` |  |
 | `longitude` |  |
@@ -298,7 +299,7 @@ API path: `/CategoryNaturalArea`
 
 | Field | Description |
 | --- | --- |
-| `article_number` |  |
+| `articleNumber` |  |
 | `chapter` |  |
 | `description` |  |
 | `id` |  |
@@ -316,7 +317,7 @@ API path: `/ConstitutionArticle`
 | `currency` |  |
 | `flag` |  |
 | `id` |  |
-| `language` |  |
+| `languages` |  |
 | `name` |  |
 | `population` |  |
 | `surface` |  |
@@ -329,13 +330,13 @@ API path: `/Country/Colombia`
 
 | Field | Description |
 | --- | --- |
-| `city_capital` |  |
+| `cityCapital` |  |
 | `description` |  |
 | `id` |  |
-| `municipality` |  |
+| `municipalities` |  |
 | `name` |  |
 | `population` |  |
-| `region_id` |  |
+| `regionId` |  |
 | `surface` |  |
 
 Operations: List, Load.
@@ -364,8 +365,8 @@ API path: `/Holiday`
 | `impact` |  |
 | `manage` |  |
 | `name` |  |
-| `scientific_name` |  |
-| `url_image` |  |
+| `scientificName` |  |
+| `urlImage` |  |
 
 Operations: List, Load.
 
@@ -375,11 +376,11 @@ API path: `/InvasiveSpecie`
 
 | Field | Description |
 | --- | --- |
-| `department_id` |  |
+| `departmentId` |  |
 | `description` |  |
 | `id` |  |
 | `name` |  |
-| `url_image` |  |
+| `urlImages` |  |
 
 Operations: List.
 
@@ -389,7 +390,7 @@ API path: `/Map`
 
 | Field | Description |
 | --- | --- |
-| `department_id` |  |
+| `departmentId` |  |
 | `description` |  |
 | `id` |  |
 | `name` |  |
@@ -403,13 +404,13 @@ API path: `/NativeCommunity`
 
 | Field | Description |
 | --- | --- |
-| `area_group_id` |  |
-| `category_natural_area_id` |  |
-| `department_id` |  |
+| `areaGroupId` |  |
+| `categoryNaturalAreaId` |  |
+| `departmentId` |  |
 | `description` |  |
 | `id` |  |
-| `land_area` |  |
-| `maritime_area` |  |
+| `landArea` |  |
+| `maritimeArea` |  |
 | `name` |  |
 
 Operations: List, Load.
@@ -421,12 +422,12 @@ API path: `/NaturalArea`
 | Field | Description |
 | --- | --- |
 | `description` |  |
-| `end_period_date` |  |
+| `endPeriodDate` |  |
 | `id` |  |
 | `image` |  |
 | `name` |  |
-| `political_party` |  |
-| `start_period_date` |  |
+| `politicalParty` |  |
+| `startPeriodDate` |  |
 
 Operations: List, Load.
 
@@ -450,7 +451,7 @@ API path: `/Radio`
 
 | Field | Description |
 | --- | --- |
-| `department` |  |
+| `departments` |  |
 | `description` |  |
 | `id` |  |
 | `name` |  |
@@ -466,7 +467,7 @@ API path: `/Region`
 | `city` |  |
 | `description` |  |
 | `id` |  |
-| `image` |  |
+| `images` |  |
 | `latitude` |  |
 | `longitude` |  |
 | `name` |  |
@@ -479,12 +480,12 @@ API path: `/TouristicAttraction`
 
 | Field | Description |
 | --- | --- |
-| `department_id` |  |
+| `departmentId` |  |
 | `description` |  |
 | `id` |  |
-| `ingredient` |  |
+| `ingredients` |  |
 | `name` |  |
-| `url_image` |  |
+| `urlImage` |  |
 
 Operations: List, Load.
 
@@ -510,9 +511,9 @@ Create an instance: `airport = client.Airport()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `city_id` | `int` |  |
+| `cityId` | `int` |  |
 | `code` | `str` |  |
-| `department_id` | `int` |  |
+| `departmentId` | `int` |  |
 | `id` | `int` |  |
 | `latitude` | `float` |  |
 | `longitude` | `float` |  |
@@ -572,7 +573,7 @@ Create an instance: `constitution_article = client.ConstitutionArticle()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `article_number` | `int` |  |
+| `articleNumber` | `int` |  |
 | `chapter` | `str` |  |
 | `description` | `str` |  |
 | `id` | `int` |  |
@@ -609,7 +610,7 @@ Create an instance: `country = client.Country()`
 | `currency` | `str` |  |
 | `flag` | `str` |  |
 | `id` | `int` |  |
-| `language` | `list` |  |
+| `languages` | `list` |  |
 | `name` | `str` |  |
 | `population` | `int` |  |
 | `surface` | `float` |  |
@@ -636,13 +637,13 @@ Create an instance: `department = client.Department()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `city_capital` | `str` |  |
+| `cityCapital` | `str` |  |
 | `description` | `str` |  |
 | `id` | `int` |  |
-| `municipality` | `int` |  |
+| `municipalities` | `int` |  |
 | `name` | `str` |  |
 | `population` | `int` |  |
-| `region_id` | `int` |  |
+| `regionId` | `int` |  |
 | `surface` | `float` |  |
 
 #### Example: Load
@@ -711,8 +712,8 @@ Create an instance: `invasive_specie = client.InvasiveSpecie()`
 | `impact` | `str` |  |
 | `manage` | `str` |  |
 | `name` | `str` |  |
-| `scientific_name` | `str` |  |
-| `url_image` | `str` |  |
+| `scientificName` | `str` |  |
+| `urlImage` | `str` |  |
 
 #### Example: Load
 
@@ -741,11 +742,11 @@ Create an instance: `map = client.Map()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `department_id` | `int` |  |
+| `departmentId` | `int` |  |
 | `description` | `str` |  |
 | `id` | `int` |  |
 | `name` | `str` |  |
-| `url_image` | `list` |  |
+| `urlImages` | `list` |  |
 
 #### Example: List
 
@@ -769,7 +770,7 @@ Create an instance: `native_community = client.NativeCommunity()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `department_id` | `int` |  |
+| `departmentId` | `int` |  |
 | `description` | `str` |  |
 | `id` | `int` |  |
 | `name` | `str` |  |
@@ -803,13 +804,13 @@ Create an instance: `natural_area = client.NaturalArea()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `area_group_id` | `int` |  |
-| `category_natural_area_id` | `int` |  |
-| `department_id` | `int` |  |
+| `areaGroupId` | `int` |  |
+| `categoryNaturalAreaId` | `int` |  |
+| `departmentId` | `int` |  |
 | `description` | `str` |  |
 | `id` | `int` |  |
-| `land_area` | `float` |  |
-| `maritime_area` | `float` |  |
+| `landArea` | `float` |  |
+| `maritimeArea` | `float` |  |
 | `name` | `str` |  |
 
 #### Example: Load
@@ -841,12 +842,12 @@ Create an instance: `president = client.President()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `description` | `str` |  |
-| `end_period_date` | `str` |  |
+| `endPeriodDate` | `str` |  |
 | `id` | `int` |  |
 | `image` | `str` |  |
 | `name` | `str` |  |
-| `political_party` | `str` |  |
-| `start_period_date` | `str` |  |
+| `politicalParty` | `str` |  |
+| `startPeriodDate` | `str` |  |
 
 #### Example: Load
 
@@ -910,7 +911,7 @@ Create an instance: `region = client.Region()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `department` | `list` |  |
+| `departments` | `list` |  |
 | `description` | `str` |  |
 | `id` | `int` |  |
 | `name` | `str` |  |
@@ -946,7 +947,7 @@ Create an instance: `touristic_attraction = client.TouristicAttraction()`
 | `city` | `str` |  |
 | `description` | `str` |  |
 | `id` | `int` |  |
-| `image` | `list` |  |
+| `images` | `list` |  |
 | `latitude` | `float` |  |
 | `longitude` | `float` |  |
 | `name` | `str` |  |
@@ -979,12 +980,12 @@ Create an instance: `typical_dish = client.TypicalDish()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `department_id` | `int` |  |
+| `departmentId` | `int` |  |
 | `description` | `str` |  |
 | `id` | `int` |  |
-| `ingredient` | `list` |  |
+| `ingredients` | `list` |  |
 | `name` | `str` |  |
-| `url_image` | `str` |  |
+| `urlImage` | `str` |  |
 
 #### Example: Load
 
@@ -1074,11 +1075,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-airport = client.Airport()
-airport.list()
+typicaldish = client.TypicalDish()
+typicaldish.list()
 
-# airport.data_get() now returns the airport data from the last list
-# airport.match_get() returns the last match criteria
+# typicaldish.data_get() now returns the typicaldish data from the last list
+# typicaldish.match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

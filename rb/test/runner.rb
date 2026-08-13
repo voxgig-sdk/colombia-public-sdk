@@ -23,8 +23,8 @@ module ColombiaPublicTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("COLOMBIAPUBLIC_TEST_LIVE")
-    override = getenv("COLOMBIAPUBLIC_TEST_OVERRIDE")
+    live = getenv("COLOMBIA_PUBLIC_TEST_LIVE")
+    override = getenv("COLOMBIA_PUBLIC_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module ColombiaPublicTestRunner
       end
     end
 
-    explain = getenv("COLOMBIAPUBLIC_TEST_EXPLAIN")
-    m["COLOMBIAPUBLIC_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("COLOMBIA_PUBLIC_TEST_EXPLAIN")
+    m["COLOMBIA_PUBLIC_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

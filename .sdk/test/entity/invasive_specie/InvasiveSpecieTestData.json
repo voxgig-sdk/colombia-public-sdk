@@ -6,24 +6,24 @@
         "impact": "s3d",
         "manage": "s3e",
         "name": "s3f",
-        "scientific_name": "s40",
-        "url_image": "s41"
+        "scientificName": "s40",
+        "urlImage": "s41"
       },
       "INVASIVE_SPECIE01": {
         "id": "INVASIVE_SPECIE01",
         "impact": "s79",
         "manage": "s7a",
         "name": "s7b",
-        "scientific_name": "s7c",
-        "url_image": "s7d"
+        "scientificName": "s7c",
+        "urlImage": "s7d"
       },
       "INVASIVE_SPECIE02": {
         "id": "INVASIVE_SPECIE02",
         "impact": "sb5",
         "manage": "sb6",
         "name": "sb7",
-        "scientific_name": "sb8",
-        "url_image": "sb9"
+        "scientificName": "sb8",
+        "urlImage": "sb9"
       }
     }
   },
@@ -33,8 +33,8 @@
         "impact": "sf1",
         "manage": "sf2",
         "name": "sf3",
-        "scientific_name": "sf4",
-        "url_image": "sf5"
+        "scientificName": "sf4",
+        "urlImage": "sf5"
       }
     }
   }

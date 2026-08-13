@@ -154,9 +154,9 @@ fmt.Println(airport.GetName()) // "airport"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `city_id` | `int` | No |  |
+| `cityId` | `int` | No |  |
 | `code` | `string` | No |  |
-| `department_id` | `int` | No |  |
+| `departmentId` | `int` | No |  |
 | `id` | `int` | No |  |
 | `latitude` | `float64` | No |  |
 | `longitude` | `float64` | No |  |
@@ -277,7 +277,7 @@ fmt.Println(constitutionArticle.GetName()) // "constitution_article"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `article_number` | `int` | No |  |
+| `articleNumber` | `int` | No |  |
 | `chapter` | `string` | No |  |
 | `description` | `string` | No |  |
 | `id` | `int` | No |  |
@@ -348,7 +348,7 @@ fmt.Println(country.GetName()) // "country"
 | `currency` | `string` | No |  |
 | `flag` | `string` | No |  |
 | `id` | `int` | No |  |
-| `language` | `[]any` | No |  |
+| `languages` | `[]any` | No |  |
 | `name` | `string` | No |  |
 | `population` | `int` | No |  |
 | `surface` | `float64` | No |  |
@@ -402,13 +402,13 @@ fmt.Println(department.GetName()) // "department"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `city_capital` | `string` | No |  |
+| `cityCapital` | `string` | No |  |
 | `description` | `string` | No |  |
 | `id` | `int` | No |  |
-| `municipality` | `int` | No |  |
+| `municipalities` | `int` | No |  |
 | `name` | `string` | No |  |
 | `population` | `int` | No |  |
-| `region_id` | `int` | No |  |
+| `regionId` | `int` | No |  |
 | `surface` | `float64` | No |  |
 
 ### Operations
@@ -543,8 +543,8 @@ fmt.Println(invasiveSpecie.GetName()) // "invasive_specie"
 | `impact` | `string` | No |  |
 | `manage` | `string` | No |  |
 | `name` | `string` | No |  |
-| `scientific_name` | `string` | No |  |
-| `url_image` | `string` | No |  |
+| `scientificName` | `string` | No |  |
+| `urlImage` | `string` | No |  |
 
 ### Operations
 
@@ -607,11 +607,11 @@ fmt.Println(map_.GetName()) // "map"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `department_id` | `int` | No |  |
+| `departmentId` | `int` | No |  |
 | `description` | `string` | No |  |
 | `id` | `int` | No |  |
 | `name` | `string` | No |  |
-| `url_image` | `[]any` | No |  |
+| `urlImages` | `[]any` | No |  |
 
 ### Operations
 
@@ -662,7 +662,7 @@ fmt.Println(nativeCommunity.GetName()) // "native_community"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `department_id` | `int` | No |  |
+| `departmentId` | `int` | No |  |
 | `description` | `string` | No |  |
 | `id` | `int` | No |  |
 | `name` | `string` | No |  |
@@ -729,13 +729,13 @@ fmt.Println(naturalArea.GetName()) // "natural_area"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `area_group_id` | `int` | No |  |
-| `category_natural_area_id` | `int` | No |  |
-| `department_id` | `int` | No |  |
+| `areaGroupId` | `int` | No |  |
+| `categoryNaturalAreaId` | `int` | No |  |
+| `departmentId` | `int` | No |  |
 | `description` | `string` | No |  |
 | `id` | `int` | No |  |
-| `land_area` | `float64` | No |  |
-| `maritime_area` | `float64` | No |  |
+| `landArea` | `float64` | No |  |
+| `maritimeArea` | `float64` | No |  |
 | `name` | `string` | No |  |
 
 ### Operations
@@ -800,12 +800,12 @@ fmt.Println(president.GetName()) // "president"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `description` | `string` | No |  |
-| `end_period_date` | `string` | No |  |
+| `endPeriodDate` | `string` | No |  |
 | `id` | `int` | No |  |
 | `image` | `string` | No |  |
 | `name` | `string` | No |  |
-| `political_party` | `string` | No |  |
-| `start_period_date` | `string` | No |  |
+| `politicalParty` | `string` | No |  |
+| `startPeriodDate` | `string` | No |  |
 
 ### Operations
 
@@ -935,7 +935,7 @@ fmt.Println(region.GetName()) // "region"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `department` | `[]any` | No |  |
+| `departments` | `[]any` | No |  |
 | `description` | `string` | No |  |
 | `id` | `int` | No |  |
 | `name` | `string` | No |  |
@@ -1004,7 +1004,7 @@ fmt.Println(touristicAttraction.GetName()) // "touristic_attraction"
 | `city` | `string` | No |  |
 | `description` | `string` | No |  |
 | `id` | `int` | No |  |
-| `image` | `[]any` | No |  |
+| `images` | `[]any` | No |  |
 | `latitude` | `float64` | No |  |
 | `longitude` | `float64` | No |  |
 | `name` | `string` | No |  |
@@ -1070,12 +1070,12 @@ fmt.Println(typicalDish.GetName()) // "typical_dish"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `department_id` | `int` | No |  |
+| `departmentId` | `int` | No |  |
 | `description` | `string` | No |  |
 | `id` | `int` | No |  |
-| `ingredient` | `[]any` | No |  |
+| `ingredients` | `[]any` | No |  |
 | `name` | `string` | No |  |
-| `url_image` | `string` | No |  |
+| `urlImage` | `string` | No |  |
 
 ### Operations
 

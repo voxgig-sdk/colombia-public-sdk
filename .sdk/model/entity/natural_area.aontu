@@ -6,17 +6,17 @@ main: kit: entity: natural_area: {
 
   fields: [
     {
-      name: "area_group_id"
+      name: "areaGroupId"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "category_natural_area_id"
+      name: "categoryNaturalAreaId"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "department_id"
+      name: "departmentId"
       req: false
       type: "`$INTEGER`"
     }
@@ -31,12 +31,12 @@ main: kit: entity: natural_area: {
       type: "`$INTEGER`"
     }
     {
-      name: "land_area"
+      name: "landArea"
       req: false
       type: "`$NUMBER`"
     }
     {
-      name: "maritime_area"
+      name: "maritimeArea"
       req: false
       type: "`$NUMBER`"
     }

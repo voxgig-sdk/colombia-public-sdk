@@ -37,7 +37,7 @@ class CategoryNaturalAreaEntity extends ColombiaPublicEntityBase<CategoryNatural
 
 
 
-  async list(this: any, reqmatch?: CategoryNaturalAreaListMatch, ctrl?: Control): Promise<CategoryNaturalArea[]> {
+  async list(this: any, reqmatch?: CategoryNaturalAreaListMatch, ctrl?: Control): Promise<CategoryNaturalAreaEntity[]> {
 
     const utility = this._utility
 

@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# ColombiaPublic SDK exists test
 
 import pytest
 from colombiapublic_sdk import ColombiaPublicSDK

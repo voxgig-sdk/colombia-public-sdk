@@ -6,7 +6,7 @@ main: kit: entity: map: {
 
   fields: [
     {
-      name: "department_id"
+      name: "departmentId"
       req: false
       type: "`$INTEGER`"
     }
@@ -26,7 +26,7 @@ main: kit: entity: map: {
       type: "`$STRING`"
     }
     {
-      name: "url_image"
+      name: "urlImages"
       req: false
       type: "`$ARRAY`"
     }

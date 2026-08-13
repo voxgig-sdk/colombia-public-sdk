@@ -6,7 +6,7 @@ main: kit: entity: department: {
 
   fields: [
     {
-      name: "city_capital"
+      name: "cityCapital"
       req: false
       type: "`$STRING`"
     }
@@ -21,7 +21,7 @@ main: kit: entity: department: {
       type: "`$INTEGER`"
     }
     {
-      name: "municipality"
+      name: "municipalities"
       req: false
       type: "`$INTEGER`"
     }
@@ -36,7 +36,7 @@ main: kit: entity: department: {
       type: "`$INTEGER`"
     }
     {
-      name: "region_id"
+      name: "regionId"
       req: false
       type: "`$INTEGER`"
     }

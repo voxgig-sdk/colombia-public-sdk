@@ -114,11 +114,11 @@ def constitution_article_direct_setup(mockres)
   calls = []
 
   env = Runner.env_override({
-    "COLOMBIAPUBLIC_TEST_CONSTITUTION_ARTICLE_ENTID" => {},
-    "COLOMBIAPUBLIC_TEST_LIVE" => "FALSE",
+    "COLOMBIA_PUBLIC_TEST_CONSTITUTION_ARTICLE_ENTID" => {},
+    "COLOMBIA_PUBLIC_TEST_LIVE" => "FALSE",
   })
 
-  live = env["COLOMBIAPUBLIC_TEST_LIVE"] == "TRUE"
+  live = env["COLOMBIA_PUBLIC_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {

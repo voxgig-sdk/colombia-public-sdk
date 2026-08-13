@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ ColombiaPublicUtility.registrar = ->(u) {
   u.prepare_params = ColombiaPublicUtilities::PrepareParams
   u.prepare_path = ColombiaPublicUtilities::PreparePath
   u.prepare_query = ColombiaPublicUtilities::PrepareQuery
+  u.graphql_body = ColombiaPublicUtilities::GraphqlBody
+  u.graphql_errors = ColombiaPublicUtilities::GraphqlErrors
   u.result_basic = ColombiaPublicUtilities::ResultBasic
   u.result_body = ColombiaPublicUtilities::ResultBody
   u.result_headers = ColombiaPublicUtilities::ResultHeaders

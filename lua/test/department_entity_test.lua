@@ -70,7 +70,7 @@ describe("DepartmentEntity", function()
     -- The basic flow consumes synthetic IDs from the fixture. In live mode
     -- without an *_ENTID env override, those IDs hit the live API and 4xx.
     if setup.synthetic_only then
-      pending("live entity test uses synthetic IDs from fixture — set COLOMBIAPUBLIC_TEST_DEPARTMENT_ENTID JSON to run live")
+      pending("live entity test uses synthetic IDs from fixture — set COLOMBIA_PUBLIC_TEST_DEPARTMENT_ENTID JSON to run live")
       return
     end
     local client = setup.client
@@ -97,7 +97,7 @@ describe("DepartmentEntity", function()
     }
     local department_ref01_data_dt0_loaded, err = department_ref01_ent:load(department_ref01_match_dt0, nil)
     assert.is_nil(err)
-    local department_ref01_data_dt0_load_result = helpers.to_map(department_ref01_data_dt0_loaded)
+    local department_ref01_data_dt0_load_result = helpers.to_map(type(department_ref01_data_dt0_loaded) == 'table' and department_ref01_data_dt0_loaded.data_get and department_ref01_data_dt0_loaded:data_get() or department_ref01_data_dt0_loaded)
     assert.is_not_nil(department_ref01_data_dt0_load_result)
     assert.are.equal(department_ref01_data_dt0_load_result["id"], department_ref01_data["id"])
 
@@ -136,22 +136,22 @@ function department_basic_setup(extra)
   -- Detect ENTID env override before envOverride consumes it. When live
   -- mode is on without a real override, the basic test runs against synthetic
   -- IDs from the fixture and 4xx's. Surface this so the test can skip.
-  local entid_env_raw = os.getenv("COLOMBIAPUBLIC_TEST_DEPARTMENT_ENTID")
+  local entid_env_raw = os.getenv("COLOMBIA_PUBLIC_TEST_DEPARTMENT_ENTID")
   local idmap_overridden = entid_env_raw ~= nil and entid_env_raw:match("^%s*{") ~= nil
 
   local env = runner.env_override({
-    ["COLOMBIAPUBLIC_TEST_DEPARTMENT_ENTID"] = idmap,
-    ["COLOMBIAPUBLIC_TEST_LIVE"] = "FALSE",
-    ["COLOMBIAPUBLIC_TEST_EXPLAIN"] = "FALSE",
+    ["COLOMBIA_PUBLIC_TEST_DEPARTMENT_ENTID"] = idmap,
+    ["COLOMBIA_PUBLIC_TEST_LIVE"] = "FALSE",
+    ["COLOMBIA_PUBLIC_TEST_EXPLAIN"] = "FALSE",
   })
 
   local idmap_resolved = helpers.to_map(
-    env["COLOMBIAPUBLIC_TEST_DEPARTMENT_ENTID"])
+    env["COLOMBIA_PUBLIC_TEST_DEPARTMENT_ENTID"])
   if idmap_resolved == nil then
     idmap_resolved = helpers.to_map(idmap)
   end
 
-  if env["COLOMBIAPUBLIC_TEST_LIVE"] == "TRUE" then
+  if env["COLOMBIA_PUBLIC_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
       },
@@ -160,13 +160,13 @@ function department_basic_setup(extra)
     client = sdk.new(helpers.to_map(merged_opts))
   end
 
-  local live = env["COLOMBIAPUBLIC_TEST_LIVE"] == "TRUE"
+  local live = env["COLOMBIA_PUBLIC_TEST_LIVE"] == "TRUE"
   return {
     client = client,
     data = entity_data,
     idmap = idmap_resolved,
     env = env,
-    explain = env["COLOMBIAPUBLIC_TEST_EXPLAIN"] == "TRUE",
+    explain = env["COLOMBIA_PUBLIC_TEST_EXPLAIN"] == "TRUE",
     live = live,
     synthetic_only = live and not idmap_overridden,
     now = os.time() * 1000,

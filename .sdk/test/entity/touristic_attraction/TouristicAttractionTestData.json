@@ -5,7 +5,7 @@
         "city": "s46",
         "description": "s47",
         "id": "TOURISTIC_ATTRACTION00",
-        "image": [],
+        "images": [],
         "latitude": 74,
         "longitude": 75,
         "name": "s4c"
@@ -14,7 +14,7 @@
         "city": "s8c",
         "description": "s8d",
         "id": "TOURISTIC_ATTRACTION01",
-        "image": [],
+        "images": [],
         "latitude": 144,
         "longitude": 145,
         "name": "s92"
@@ -23,7 +23,7 @@
         "city": "sd2",
         "description": "sd3",
         "id": "TOURISTIC_ATTRACTION02",
-        "image": [],
+        "images": [],
         "latitude": 214,
         "longitude": 215,
         "name": "sd8"
@@ -35,7 +35,7 @@
       "touristic_attraction_ref01": {
         "city": "s118",
         "description": "s119",
-        "image": [],
+        "images": [],
         "latitude": 284,
         "longitude": 285,
         "name": "s11e"

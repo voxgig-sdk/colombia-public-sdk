@@ -26,12 +26,12 @@ main: kit: entity: invasive_specie: {
       type: "`$STRING`"
     }
     {
-      name: "scientific_name"
+      name: "scientificName"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "url_image"
+      name: "urlImage"
       req: false
       type: "`$STRING`"
     }

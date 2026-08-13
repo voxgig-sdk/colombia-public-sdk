@@ -6,7 +6,7 @@ main: kit: entity: airport: {
 
   fields: [
     {
-      name: "city_id"
+      name: "cityId"
       req: false
       type: "`$INTEGER`"
     }
@@ -16,7 +16,7 @@ main: kit: entity: airport: {
       type: "`$STRING`"
     }
     {
-      name: "department_id"
+      name: "departmentId"
       req: false
       type: "`$INTEGER`"
     }

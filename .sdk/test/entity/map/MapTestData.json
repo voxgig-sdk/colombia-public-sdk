@@ -2,35 +2,35 @@
   "existing": {
     "map": {
       "MAP00": {
-        "department_id": "DEPARTMENT01",
+        "departmentId": "s32",
         "description": "s33",
         "id": "MAP00",
         "name": "s35",
-        "url_image": []
+        "urlImages": []
       },
       "MAP01": {
-        "department_id": "DEPARTMENT01",
+        "departmentId": "s64",
         "description": "s65",
         "id": "MAP01",
         "name": "s67",
-        "url_image": []
+        "urlImages": []
       },
       "MAP02": {
-        "department_id": "DEPARTMENT01",
+        "departmentId": "s96",
         "description": "s97",
         "id": "MAP02",
         "name": "s99",
-        "url_image": []
+        "urlImages": []
       }
     }
   },
   "new": {
     "map": {
       "map_ref01": {
-        "department_id": "DEPARTMENT01",
+        "departmentId": "sc8",
         "description": "sc9",
         "name": "scb",
-        "url_image": []
+        "urlImages": []
       }
     }
   }

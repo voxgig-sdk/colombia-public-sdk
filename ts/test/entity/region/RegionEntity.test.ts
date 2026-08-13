@@ -26,8 +26,8 @@ import {
 describe('RegionEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when COLOMBIAPUBLIC_TEST_LIVE=TRUE.
-  afterEach(liveDelay('COLOMBIAPUBLIC_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when COLOMBIA_PUBLIC_TEST_LIVE=TRUE.
+  afterEach(liveDelay('COLOMBIA_PUBLIC_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = ColombiaPublicSDK.test()
@@ -63,13 +63,13 @@ describe('RegionEntity', async () => {
     const region_ref01_ent = client.Region()
     const region_ref01_match: any = {}
 
-    const region_ref01_list = await region_ref01_ent.list(region_ref01_match)
+    const region_ref01_list = (await region_ref01_ent.list(region_ref01_match)).map((e: any) => e.data())
 
 
     // LOAD
     const region_ref01_match_dt0: any = {}
     region_ref01_match_dt0.id = region_ref01_data.id
-    const region_ref01_data_dt0 = await region_ref01_ent.load(region_ref01_match_dt0)
+    const region_ref01_data_dt0 = (await region_ref01_ent.load(region_ref01_match_dt0)).data()
     assert(region_ref01_data_dt0.id === region_ref01_data.id)
 
 

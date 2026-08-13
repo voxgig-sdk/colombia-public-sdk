@@ -6,7 +6,7 @@ main: kit: entity: typical_dish: {
 
   fields: [
     {
-      name: "department_id"
+      name: "departmentId"
       req: false
       type: "`$INTEGER`"
     }
@@ -21,7 +21,7 @@ main: kit: entity: typical_dish: {
       type: "`$INTEGER`"
     }
     {
-      name: "ingredient"
+      name: "ingredients"
       req: false
       type: "`$ARRAY`"
     }
@@ -31,7 +31,7 @@ main: kit: entity: typical_dish: {
       type: "`$STRING`"
     }
     {
-      name: "url_image"
+      name: "urlImage"
       req: false
       type: "`$STRING`"
     }

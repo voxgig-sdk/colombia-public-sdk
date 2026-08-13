@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import ColombiaPublicControl
-from core.error import ColombiaPublicError
-from core.result import ColombiaPublicResult
-from core.spec import ColombiaPublicSpec
+from projectname_sdk.config import make_config
+from projectname_sdk.features import _make_feature
+from projectname_sdk.core.control import ColombiaPublicControl
+from projectname_sdk.core.error import ColombiaPublicError
+from projectname_sdk.core.result import ColombiaPublicResult
+from projectname_sdk.core.spec import ColombiaPublicSpec
 
 
 # True when this SDK was generated with the named feature.

@@ -75,12 +75,12 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-airports, err := client.Airport(nil).List(nil, nil)
+typicaldishs, err := client.TypicalDish(nil).List(nil, nil)
 if err != nil {
     // handle err
     return
 }
-_ = airports
+_ = typicaldishs
 ```
 
 `Direct` follows the same `(value, error)` convention:
@@ -144,13 +144,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-airport, err := client.Airport(nil).List(
+typicalDish, err := client.TypicalDish(nil).List(
     nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(airport) // the returned mock data
+fmt.Println(typicalDish) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -283,9 +283,9 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"city_id"` |  |
+| `"cityId"` |  |
 | `"code"` |  |
-| `"department_id"` |  |
+| `"departmentId"` |  |
 | `"id"` |  |
 | `"latitude"` |  |
 | `"longitude"` |  |
@@ -312,7 +312,7 @@ API path: `/CategoryNaturalArea`
 
 | Field | Description |
 | --- | --- |
-| `"article_number"` |  |
+| `"articleNumber"` |  |
 | `"chapter"` |  |
 | `"description"` |  |
 | `"id"` |  |
@@ -330,7 +330,7 @@ API path: `/ConstitutionArticle`
 | `"currency"` |  |
 | `"flag"` |  |
 | `"id"` |  |
-| `"language"` |  |
+| `"languages"` |  |
 | `"name"` |  |
 | `"population"` |  |
 | `"surface"` |  |
@@ -343,13 +343,13 @@ API path: `/Country/Colombia`
 
 | Field | Description |
 | --- | --- |
-| `"city_capital"` |  |
+| `"cityCapital"` |  |
 | `"description"` |  |
 | `"id"` |  |
-| `"municipality"` |  |
+| `"municipalities"` |  |
 | `"name"` |  |
 | `"population"` |  |
-| `"region_id"` |  |
+| `"regionId"` |  |
 | `"surface"` |  |
 
 Operations: List, Load.
@@ -378,8 +378,8 @@ API path: `/Holiday`
 | `"impact"` |  |
 | `"manage"` |  |
 | `"name"` |  |
-| `"scientific_name"` |  |
-| `"url_image"` |  |
+| `"scientificName"` |  |
+| `"urlImage"` |  |
 
 Operations: List, Load.
 
@@ -389,11 +389,11 @@ API path: `/InvasiveSpecie`
 
 | Field | Description |
 | --- | --- |
-| `"department_id"` |  |
+| `"departmentId"` |  |
 | `"description"` |  |
 | `"id"` |  |
 | `"name"` |  |
-| `"url_image"` |  |
+| `"urlImages"` |  |
 
 Operations: List.
 
@@ -403,7 +403,7 @@ API path: `/Map`
 
 | Field | Description |
 | --- | --- |
-| `"department_id"` |  |
+| `"departmentId"` |  |
 | `"description"` |  |
 | `"id"` |  |
 | `"name"` |  |
@@ -417,13 +417,13 @@ API path: `/NativeCommunity`
 
 | Field | Description |
 | --- | --- |
-| `"area_group_id"` |  |
-| `"category_natural_area_id"` |  |
-| `"department_id"` |  |
+| `"areaGroupId"` |  |
+| `"categoryNaturalAreaId"` |  |
+| `"departmentId"` |  |
 | `"description"` |  |
 | `"id"` |  |
-| `"land_area"` |  |
-| `"maritime_area"` |  |
+| `"landArea"` |  |
+| `"maritimeArea"` |  |
 | `"name"` |  |
 
 Operations: List, Load.
@@ -435,12 +435,12 @@ API path: `/NaturalArea`
 | Field | Description |
 | --- | --- |
 | `"description"` |  |
-| `"end_period_date"` |  |
+| `"endPeriodDate"` |  |
 | `"id"` |  |
 | `"image"` |  |
 | `"name"` |  |
-| `"political_party"` |  |
-| `"start_period_date"` |  |
+| `"politicalParty"` |  |
+| `"startPeriodDate"` |  |
 
 Operations: List, Load.
 
@@ -464,7 +464,7 @@ API path: `/Radio`
 
 | Field | Description |
 | --- | --- |
-| `"department"` |  |
+| `"departments"` |  |
 | `"description"` |  |
 | `"id"` |  |
 | `"name"` |  |
@@ -480,7 +480,7 @@ API path: `/Region`
 | `"city"` |  |
 | `"description"` |  |
 | `"id"` |  |
-| `"image"` |  |
+| `"images"` |  |
 | `"latitude"` |  |
 | `"longitude"` |  |
 | `"name"` |  |
@@ -493,12 +493,12 @@ API path: `/TouristicAttraction`
 
 | Field | Description |
 | --- | --- |
-| `"department_id"` |  |
+| `"departmentId"` |  |
 | `"description"` |  |
 | `"id"` |  |
-| `"ingredient"` |  |
+| `"ingredients"` |  |
 | `"name"` |  |
-| `"url_image"` |  |
+| `"urlImage"` |  |
 
 Operations: List, Load.
 
@@ -524,9 +524,9 @@ Create an instance: `airport := client.Airport(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `city_id` | `int` |  |
+| `cityId` | `int` |  |
 | `code` | `string` |  |
-| `department_id` | `int` |  |
+| `departmentId` | `int` |  |
 | `id` | `int` |  |
 | `latitude` | `float64` |  |
 | `longitude` | `float64` |  |
@@ -598,7 +598,7 @@ Create an instance: `constitutionArticle := client.ConstitutionArticle(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `article_number` | `int` |  |
+| `articleNumber` | `int` |  |
 | `chapter` | `string` |  |
 | `description` | `string` |  |
 | `id` | `int` |  |
@@ -643,7 +643,7 @@ Create an instance: `country := client.Country(nil)`
 | `currency` | `string` |  |
 | `flag` | `string` |  |
 | `id` | `int` |  |
-| `language` | `[]any` |  |
+| `languages` | `[]any` |  |
 | `name` | `string` |  |
 | `population` | `int` |  |
 | `surface` | `float64` |  |
@@ -674,13 +674,13 @@ Create an instance: `department := client.Department(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `city_capital` | `string` |  |
+| `cityCapital` | `string` |  |
 | `description` | `string` |  |
 | `id` | `int` |  |
-| `municipality` | `int` |  |
+| `municipalities` | `int` |  |
 | `name` | `string` |  |
 | `population` | `int` |  |
-| `region_id` | `int` |  |
+| `regionId` | `int` |  |
 | `surface` | `float64` |  |
 
 #### Example: Load
@@ -765,8 +765,8 @@ Create an instance: `invasiveSpecie := client.InvasiveSpecie(nil)`
 | `impact` | `string` |  |
 | `manage` | `string` |  |
 | `name` | `string` |  |
-| `scientific_name` | `string` |  |
-| `url_image` | `string` |  |
+| `scientificName` | `string` |  |
+| `urlImage` | `string` |  |
 
 #### Example: Load
 
@@ -803,11 +803,11 @@ Create an instance: `map_ := client.Map(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `department_id` | `int` |  |
+| `departmentId` | `int` |  |
 | `description` | `string` |  |
 | `id` | `int` |  |
 | `name` | `string` |  |
-| `url_image` | `[]any` |  |
+| `urlImages` | `[]any` |  |
 
 #### Example: List
 
@@ -835,7 +835,7 @@ Create an instance: `nativeCommunity := client.NativeCommunity(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `department_id` | `int` |  |
+| `departmentId` | `int` |  |
 | `description` | `string` |  |
 | `id` | `int` |  |
 | `name` | `string` |  |
@@ -877,13 +877,13 @@ Create an instance: `naturalArea := client.NaturalArea(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `area_group_id` | `int` |  |
-| `category_natural_area_id` | `int` |  |
-| `department_id` | `int` |  |
+| `areaGroupId` | `int` |  |
+| `categoryNaturalAreaId` | `int` |  |
+| `departmentId` | `int` |  |
 | `description` | `string` |  |
 | `id` | `int` |  |
-| `land_area` | `float64` |  |
-| `maritime_area` | `float64` |  |
+| `landArea` | `float64` |  |
+| `maritimeArea` | `float64` |  |
 | `name` | `string` |  |
 
 #### Example: Load
@@ -923,12 +923,12 @@ Create an instance: `president := client.President(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `description` | `string` |  |
-| `end_period_date` | `string` |  |
+| `endPeriodDate` | `string` |  |
 | `id` | `int` |  |
 | `image` | `string` |  |
 | `name` | `string` |  |
-| `political_party` | `string` |  |
-| `start_period_date` | `string` |  |
+| `politicalParty` | `string` |  |
+| `startPeriodDate` | `string` |  |
 
 #### Example: Load
 
@@ -1008,7 +1008,7 @@ Create an instance: `region := client.Region(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `department` | `[]any` |  |
+| `departments` | `[]any` |  |
 | `description` | `string` |  |
 | `id` | `int` |  |
 | `name` | `string` |  |
@@ -1052,7 +1052,7 @@ Create an instance: `touristicAttraction := client.TouristicAttraction(nil)`
 | `city` | `string` |  |
 | `description` | `string` |  |
 | `id` | `int` |  |
-| `image` | `[]any` |  |
+| `images` | `[]any` |  |
 | `latitude` | `float64` |  |
 | `longitude` | `float64` |  |
 | `name` | `string` |  |
@@ -1093,12 +1093,12 @@ Create an instance: `typicalDish := client.TypicalDish(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `department_id` | `int` |  |
+| `departmentId` | `int` |  |
 | `description` | `string` |  |
 | `id` | `int` |  |
-| `ingredient` | `[]any` |  |
+| `ingredients` | `[]any` |  |
 | `name` | `string` |  |
-| `url_image` | `string` |  |
+| `urlImage` | `string` |  |
 
 #### Example: Load
 
@@ -1194,11 +1194,11 @@ Entity instances are stateful. After a successful `List`, the entity
 stores the returned data and match criteria internally.
 
 ```go
-airport := client.Airport(nil)
-airport.List(nil, nil)
+typicaldish := client.TypicalDish(nil)
+typicaldish.List(nil, nil)
 
-// airport.Data() now returns the airport data from the last list
-// airport.Match() returns the last match criteria
+// typicaldish.Data() now returns the typicaldish data from the last list
+// typicaldish.Match() returns the last match criteria
 ```
 
 Call `Make()` to create a fresh instance with the same configuration

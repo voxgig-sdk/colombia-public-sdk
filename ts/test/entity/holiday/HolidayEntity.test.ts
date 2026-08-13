@@ -26,8 +26,8 @@ import {
 describe('HolidayEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when COLOMBIAPUBLIC_TEST_LIVE=TRUE.
-  afterEach(liveDelay('COLOMBIAPUBLIC_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when COLOMBIA_PUBLIC_TEST_LIVE=TRUE.
+  afterEach(liveDelay('COLOMBIA_PUBLIC_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = ColombiaPublicSDK.test()
@@ -63,13 +63,13 @@ describe('HolidayEntity', async () => {
     const holiday_ref01_ent = client.Holiday()
     const holiday_ref01_match: any = {}
 
-    const holiday_ref01_list = await holiday_ref01_ent.list(holiday_ref01_match)
+    const holiday_ref01_list = (await holiday_ref01_ent.list(holiday_ref01_match)).map((e: any) => e.data())
 
 
     // LOAD
     const holiday_ref01_match_dt0: any = {}
     holiday_ref01_match_dt0.id = holiday_ref01_data.id
-    const holiday_ref01_data_dt0 = await holiday_ref01_ent.load(holiday_ref01_match_dt0)
+    const holiday_ref01_data_dt0 = (await holiday_ref01_ent.load(holiday_ref01_match_dt0)).data()
     assert(holiday_ref01_data_dt0.id === holiday_ref01_data.id)
 
 

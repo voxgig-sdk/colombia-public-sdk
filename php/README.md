@@ -38,7 +38,7 @@ try {
     // list() returns an array of Airport records — iterate directly.
     $airports = $client->Airport()->list();
     foreach ($airports as $item) {
-        echo $item["id"] . " " . $item["city_id"] . "\n";
+        echo $item["id"] . " " . $item["cityId"] . "\n";
     }
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -49,7 +49,7 @@ try {
 
 ```php
 try {
-    // load() returns the bare Airport record (throws on error).
+    // load() returns the ENTITY — call data_get() for the Airport record (throws on error).
     $airport = $client->Airport()->load(["id" => 1]);
     print_r($airport);
 } catch (\Throwable $err) {
@@ -65,7 +65,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $airports = $client->Airport()->list();
+    $typicaldishs = $client->TypicalDish()->list();
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -137,12 +137,13 @@ data via the `entity` option so offline calls resolve without a live server:
 
 ```php
 $client = ColombiaPublicSDK::test([
-    "entity" => ["airport" => ["test01" => ["id" => "test01"]]],
+    "entity" => ["typicaldish" => ["test01" => ["id" => "test01"]]],
 ]);
 
-// Entity ops return the bare mock record (throws on error).
-$airport = $client->Airport()->list();
-print_r($airport);
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
+$typicaldish = $client->TypicalDish()->list();
+print_r($typicaldish);
 ```
 
 ### Use a custom fetch function
@@ -254,7 +255,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -276,9 +277,9 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `city_id` |  |
+| `cityId` |  |
 | `code` |  |
-| `department_id` |  |
+| `departmentId` |  |
 | `id` |  |
 | `latitude` |  |
 | `longitude` |  |
@@ -305,7 +306,7 @@ API path: `/CategoryNaturalArea`
 
 | Field | Description |
 | --- | --- |
-| `article_number` |  |
+| `articleNumber` |  |
 | `chapter` |  |
 | `description` |  |
 | `id` |  |
@@ -323,7 +324,7 @@ API path: `/ConstitutionArticle`
 | `currency` |  |
 | `flag` |  |
 | `id` |  |
-| `language` |  |
+| `languages` |  |
 | `name` |  |
 | `population` |  |
 | `surface` |  |
@@ -336,13 +337,13 @@ API path: `/Country/Colombia`
 
 | Field | Description |
 | --- | --- |
-| `city_capital` |  |
+| `cityCapital` |  |
 | `description` |  |
 | `id` |  |
-| `municipality` |  |
+| `municipalities` |  |
 | `name` |  |
 | `population` |  |
-| `region_id` |  |
+| `regionId` |  |
 | `surface` |  |
 
 Operations: List, Load.
@@ -371,8 +372,8 @@ API path: `/Holiday`
 | `impact` |  |
 | `manage` |  |
 | `name` |  |
-| `scientific_name` |  |
-| `url_image` |  |
+| `scientificName` |  |
+| `urlImage` |  |
 
 Operations: List, Load.
 
@@ -382,11 +383,11 @@ API path: `/InvasiveSpecie`
 
 | Field | Description |
 | --- | --- |
-| `department_id` |  |
+| `departmentId` |  |
 | `description` |  |
 | `id` |  |
 | `name` |  |
-| `url_image` |  |
+| `urlImages` |  |
 
 Operations: List.
 
@@ -396,7 +397,7 @@ API path: `/Map`
 
 | Field | Description |
 | --- | --- |
-| `department_id` |  |
+| `departmentId` |  |
 | `description` |  |
 | `id` |  |
 | `name` |  |
@@ -410,13 +411,13 @@ API path: `/NativeCommunity`
 
 | Field | Description |
 | --- | --- |
-| `area_group_id` |  |
-| `category_natural_area_id` |  |
-| `department_id` |  |
+| `areaGroupId` |  |
+| `categoryNaturalAreaId` |  |
+| `departmentId` |  |
 | `description` |  |
 | `id` |  |
-| `land_area` |  |
-| `maritime_area` |  |
+| `landArea` |  |
+| `maritimeArea` |  |
 | `name` |  |
 
 Operations: List, Load.
@@ -428,12 +429,12 @@ API path: `/NaturalArea`
 | Field | Description |
 | --- | --- |
 | `description` |  |
-| `end_period_date` |  |
+| `endPeriodDate` |  |
 | `id` |  |
 | `image` |  |
 | `name` |  |
-| `political_party` |  |
-| `start_period_date` |  |
+| `politicalParty` |  |
+| `startPeriodDate` |  |
 
 Operations: List, Load.
 
@@ -457,7 +458,7 @@ API path: `/Radio`
 
 | Field | Description |
 | --- | --- |
-| `department` |  |
+| `departments` |  |
 | `description` |  |
 | `id` |  |
 | `name` |  |
@@ -473,7 +474,7 @@ API path: `/Region`
 | `city` |  |
 | `description` |  |
 | `id` |  |
-| `image` |  |
+| `images` |  |
 | `latitude` |  |
 | `longitude` |  |
 | `name` |  |
@@ -486,12 +487,12 @@ API path: `/TouristicAttraction`
 
 | Field | Description |
 | --- | --- |
-| `department_id` |  |
+| `departmentId` |  |
 | `description` |  |
 | `id` |  |
-| `ingredient` |  |
+| `ingredients` |  |
 | `name` |  |
-| `url_image` |  |
+| `urlImage` |  |
 
 Operations: List, Load.
 
@@ -517,9 +518,9 @@ Create an instance: `$airport = $client->Airport();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `city_id` | `int` |  |
+| `cityId` | `int` |  |
 | `code` | `string` |  |
-| `department_id` | `int` |  |
+| `departmentId` | `int` |  |
 | `id` | `int` |  |
 | `latitude` | `float` |  |
 | `longitude` | `float` |  |
@@ -529,7 +530,7 @@ Create an instance: `$airport = $client->Airport();`
 #### Example: Load
 
 ```php
-// load() returns the bare Airport record (throws on error).
+// load() returns the ENTITY — call data_get() for the Airport record (throws on error).
 $airport = $client->Airport()->load(["id" => 1]);
 ```
 
@@ -582,7 +583,7 @@ Create an instance: `$constitution_article = $client->ConstitutionArticle();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `article_number` | `int` |  |
+| `articleNumber` | `int` |  |
 | `chapter` | `string` |  |
 | `description` | `string` |  |
 | `id` | `int` |  |
@@ -591,7 +592,7 @@ Create an instance: `$constitution_article = $client->ConstitutionArticle();`
 #### Example: Load
 
 ```php
-// load() returns the bare ConstitutionArticle record (throws on error).
+// load() returns the ENTITY — call data_get() for the ConstitutionArticle record (throws on error).
 $constitution_article = $client->ConstitutionArticle()->load(["id" => 1]);
 ```
 
@@ -621,7 +622,7 @@ Create an instance: `$country = $client->Country();`
 | `currency` | `string` |  |
 | `flag` | `string` |  |
 | `id` | `int` |  |
-| `language` | `array` |  |
+| `languages` | `array` |  |
 | `name` | `string` |  |
 | `population` | `int` |  |
 | `surface` | `float` |  |
@@ -649,19 +650,19 @@ Create an instance: `$department = $client->Department();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `city_capital` | `string` |  |
+| `cityCapital` | `string` |  |
 | `description` | `string` |  |
 | `id` | `int` |  |
-| `municipality` | `int` |  |
+| `municipalities` | `int` |  |
 | `name` | `string` |  |
 | `population` | `int` |  |
-| `region_id` | `int` |  |
+| `regionId` | `int` |  |
 | `surface` | `float` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Department record (throws on error).
+// load() returns the ENTITY — call data_get() for the Department record (throws on error).
 $department = $client->Department()->load(["id" => 1]);
 ```
 
@@ -697,7 +698,7 @@ Create an instance: `$holiday = $client->Holiday();`
 #### Example: Load
 
 ```php
-// load() returns the bare Holiday record (throws on error).
+// load() returns the ENTITY — call data_get() for the Holiday record (throws on error).
 $holiday = $client->Holiday()->load(["id" => 1]);
 ```
 
@@ -728,13 +729,13 @@ Create an instance: `$invasive_specie = $client->InvasiveSpecie();`
 | `impact` | `string` |  |
 | `manage` | `string` |  |
 | `name` | `string` |  |
-| `scientific_name` | `string` |  |
-| `url_image` | `string` |  |
+| `scientificName` | `string` |  |
+| `urlImage` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare InvasiveSpecie record (throws on error).
+// load() returns the ENTITY — call data_get() for the InvasiveSpecie record (throws on error).
 $invasive_specie = $client->InvasiveSpecie()->load(["id" => 1]);
 ```
 
@@ -760,11 +761,11 @@ Create an instance: `$map = $client->Map();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `department_id` | `int` |  |
+| `departmentId` | `int` |  |
 | `description` | `string` |  |
 | `id` | `int` |  |
 | `name` | `string` |  |
-| `url_image` | `array` |  |
+| `urlImages` | `array` |  |
 
 #### Example: List
 
@@ -789,7 +790,7 @@ Create an instance: `$native_community = $client->NativeCommunity();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `department_id` | `int` |  |
+| `departmentId` | `int` |  |
 | `description` | `string` |  |
 | `id` | `int` |  |
 | `name` | `string` |  |
@@ -798,7 +799,7 @@ Create an instance: `$native_community = $client->NativeCommunity();`
 #### Example: Load
 
 ```php
-// load() returns the bare NativeCommunity record (throws on error).
+// load() returns the ENTITY — call data_get() for the NativeCommunity record (throws on error).
 $native_community = $client->NativeCommunity()->load(["id" => 1]);
 ```
 
@@ -825,19 +826,19 @@ Create an instance: `$natural_area = $client->NaturalArea();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `area_group_id` | `int` |  |
-| `category_natural_area_id` | `int` |  |
-| `department_id` | `int` |  |
+| `areaGroupId` | `int` |  |
+| `categoryNaturalAreaId` | `int` |  |
+| `departmentId` | `int` |  |
 | `description` | `string` |  |
 | `id` | `int` |  |
-| `land_area` | `float` |  |
-| `maritime_area` | `float` |  |
+| `landArea` | `float` |  |
+| `maritimeArea` | `float` |  |
 | `name` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare NaturalArea record (throws on error).
+// load() returns the ENTITY — call data_get() for the NaturalArea record (throws on error).
 $natural_area = $client->NaturalArea()->load(["id" => 1]);
 ```
 
@@ -865,17 +866,17 @@ Create an instance: `$president = $client->President();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `description` | `string` |  |
-| `end_period_date` | `string` |  |
+| `endPeriodDate` | `string` |  |
 | `id` | `int` |  |
 | `image` | `string` |  |
 | `name` | `string` |  |
-| `political_party` | `string` |  |
-| `start_period_date` | `string` |  |
+| `politicalParty` | `string` |  |
+| `startPeriodDate` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare President record (throws on error).
+// load() returns the ENTITY — call data_get() for the President record (throws on error).
 $president = $client->President()->load(["id" => 1]);
 ```
 
@@ -911,7 +912,7 @@ Create an instance: `$radio = $client->Radio();`
 #### Example: Load
 
 ```php
-// load() returns the bare Radio record (throws on error).
+// load() returns the ENTITY — call data_get() for the Radio record (throws on error).
 $radio = $client->Radio()->load(["id" => 1]);
 ```
 
@@ -938,7 +939,7 @@ Create an instance: `$region = $client->Region();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `department` | `array` |  |
+| `departments` | `array` |  |
 | `description` | `string` |  |
 | `id` | `int` |  |
 | `name` | `string` |  |
@@ -946,7 +947,7 @@ Create an instance: `$region = $client->Region();`
 #### Example: Load
 
 ```php
-// load() returns the bare Region record (throws on error).
+// load() returns the ENTITY — call data_get() for the Region record (throws on error).
 $region = $client->Region()->load(["id" => 1]);
 ```
 
@@ -976,7 +977,7 @@ Create an instance: `$touristic_attraction = $client->TouristicAttraction();`
 | `city` | `string` |  |
 | `description` | `string` |  |
 | `id` | `int` |  |
-| `image` | `array` |  |
+| `images` | `array` |  |
 | `latitude` | `float` |  |
 | `longitude` | `float` |  |
 | `name` | `string` |  |
@@ -984,7 +985,7 @@ Create an instance: `$touristic_attraction = $client->TouristicAttraction();`
 #### Example: Load
 
 ```php
-// load() returns the bare TouristicAttraction record (throws on error).
+// load() returns the ENTITY — call data_get() for the TouristicAttraction record (throws on error).
 $touristic_attraction = $client->TouristicAttraction()->load(["id" => 1]);
 ```
 
@@ -1011,17 +1012,17 @@ Create an instance: `$typical_dish = $client->TypicalDish();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `department_id` | `int` |  |
+| `departmentId` | `int` |  |
 | `description` | `string` |  |
 | `id` | `int` |  |
-| `ingredient` | `array` |  |
+| `ingredients` | `array` |  |
 | `name` | `string` |  |
-| `url_image` | `string` |  |
+| `urlImage` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare TypicalDish record (throws on error).
+// load() returns the ENTITY — call data_get() for the TypicalDish record (throws on error).
 $typical_dish = $client->TypicalDish()->load(["id" => 1]);
 ```
 
@@ -1109,11 +1110,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$airport = $client->Airport();
-$airport->list();
+$typicaldish = $client->TypicalDish();
+$typicaldish->list();
 
-// $airport->data_get() now returns the airport data from the last list
-// $airport->match_get() returns the last match criteria
+// $typicaldish->data_get() now returns the typicaldish data from the last list
+// $typicaldish->match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

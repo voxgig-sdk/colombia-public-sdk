@@ -43,8 +43,8 @@ class ColombiaPublicTestRunner
 
     public static function env_override(array $m): array
     {
-        $live = self::getenv('COLOMBIAPUBLIC_TEST_LIVE');
-        $override = self::getenv('COLOMBIAPUBLIC_TEST_OVERRIDE');
+        $live = self::getenv('COLOMBIA_PUBLIC_TEST_LIVE');
+        $override = self::getenv('COLOMBIA_PUBLIC_TEST_OVERRIDE');
 
         if ($live === 'TRUE' || $override === 'TRUE') {
             foreach (array_keys($m) as $key) {
@@ -63,9 +63,9 @@ class ColombiaPublicTestRunner
             }
         }
 
-        $explain = self::getenv('COLOMBIAPUBLIC_TEST_EXPLAIN');
+        $explain = self::getenv('COLOMBIA_PUBLIC_TEST_EXPLAIN');
         if ($explain !== null && $explain !== '') {
-            $m['COLOMBIAPUBLIC_TEST_EXPLAIN'] = $explain;
+            $m['COLOMBIA_PUBLIC_TEST_EXPLAIN'] = $explain;
         }
 
         return $m;

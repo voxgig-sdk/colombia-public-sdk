@@ -26,8 +26,8 @@ import {
 describe('TypicalDishEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when COLOMBIAPUBLIC_TEST_LIVE=TRUE.
-  afterEach(liveDelay('COLOMBIAPUBLIC_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when COLOMBIA_PUBLIC_TEST_LIVE=TRUE.
+  afterEach(liveDelay('COLOMBIA_PUBLIC_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = ColombiaPublicSDK.test()
@@ -63,13 +63,13 @@ describe('TypicalDishEntity', async () => {
     const typical_dish_ref01_ent = client.TypicalDish()
     const typical_dish_ref01_match: any = {}
 
-    const typical_dish_ref01_list = await typical_dish_ref01_ent.list(typical_dish_ref01_match)
+    const typical_dish_ref01_list = (await typical_dish_ref01_ent.list(typical_dish_ref01_match)).map((e: any) => e.data())
 
 
     // LOAD
     const typical_dish_ref01_match_dt0: any = {}
     typical_dish_ref01_match_dt0.id = typical_dish_ref01_data.id
-    const typical_dish_ref01_data_dt0 = await typical_dish_ref01_ent.load(typical_dish_ref01_match_dt0)
+    const typical_dish_ref01_data_dt0 = (await typical_dish_ref01_ent.load(typical_dish_ref01_match_dt0)).data()
     assert(typical_dish_ref01_data_dt0.id === typical_dish_ref01_data.id)
 
 

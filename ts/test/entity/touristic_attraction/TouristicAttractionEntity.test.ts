@@ -26,8 +26,8 @@ import {
 describe('TouristicAttractionEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when COLOMBIAPUBLIC_TEST_LIVE=TRUE.
-  afterEach(liveDelay('COLOMBIAPUBLIC_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when COLOMBIA_PUBLIC_TEST_LIVE=TRUE.
+  afterEach(liveDelay('COLOMBIA_PUBLIC_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = ColombiaPublicSDK.test()
@@ -63,13 +63,13 @@ describe('TouristicAttractionEntity', async () => {
     const touristic_attraction_ref01_ent = client.TouristicAttraction()
     const touristic_attraction_ref01_match: any = {}
 
-    const touristic_attraction_ref01_list = await touristic_attraction_ref01_ent.list(touristic_attraction_ref01_match)
+    const touristic_attraction_ref01_list = (await touristic_attraction_ref01_ent.list(touristic_attraction_ref01_match)).map((e: any) => e.data())
 
 
     // LOAD
     const touristic_attraction_ref01_match_dt0: any = {}
     touristic_attraction_ref01_match_dt0.id = touristic_attraction_ref01_data.id
-    const touristic_attraction_ref01_data_dt0 = await touristic_attraction_ref01_ent.load(touristic_attraction_ref01_match_dt0)
+    const touristic_attraction_ref01_data_dt0 = (await touristic_attraction_ref01_ent.load(touristic_attraction_ref01_match_dt0)).data()
     assert(touristic_attraction_ref01_data_dt0.id === touristic_attraction_ref01_data.id)
 
 

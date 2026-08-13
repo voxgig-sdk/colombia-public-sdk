@@ -7,9 +7,9 @@
 -- edit by hand.
 
 ---@class Airport
----@field city_id? number
+---@field cityId? number
 ---@field code? string
----@field department_id? number
+---@field departmentId? number
 ---@field id? number
 ---@field latitude? number
 ---@field longitude? number
@@ -20,9 +20,9 @@
 ---@field id number
 
 ---@class AirportListMatch
----@field city_id? number
+---@field cityId? number
 ---@field code? string
----@field department_id? number
+---@field departmentId? number
 ---@field id? number
 ---@field latitude? number
 ---@field longitude? number
@@ -40,7 +40,7 @@
 ---@field name? string
 
 ---@class ConstitutionArticle
----@field article_number? number
+---@field articleNumber? number
 ---@field chapter? string
 ---@field description? string
 ---@field id? number
@@ -50,7 +50,7 @@
 ---@field id number
 
 ---@class ConstitutionArticleListMatch
----@field article_number? number
+---@field articleNumber? number
 ---@field chapter? string
 ---@field description? string
 ---@field id? number
@@ -61,7 +61,7 @@
 ---@field currency? string
 ---@field flag? string
 ---@field id? number
----@field language? table
+---@field languages? table
 ---@field name? string
 ---@field population? number
 ---@field surface? number
@@ -71,32 +71,32 @@
 ---@field currency? string
 ---@field flag? string
 ---@field id? number
----@field language? table
+---@field languages? table
 ---@field name? string
 ---@field population? number
 ---@field surface? number
 
 ---@class Department
----@field city_capital? string
+---@field cityCapital? string
 ---@field description? string
 ---@field id? number
----@field municipality? number
+---@field municipalities? number
 ---@field name? string
 ---@field population? number
----@field region_id? number
+---@field regionId? number
 ---@field surface? number
 
 ---@class DepartmentLoadMatch
 ---@field id number
 
 ---@class DepartmentListMatch
----@field city_capital? string
+---@field cityCapital? string
 ---@field description? string
 ---@field id? number
----@field municipality? number
+---@field municipalities? number
 ---@field name? string
 ---@field population? number
----@field region_id? number
+---@field regionId? number
 ---@field surface? number
 
 ---@class Holiday
@@ -121,8 +121,8 @@
 ---@field impact? string
 ---@field manage? string
 ---@field name? string
----@field scientific_name? string
----@field url_image? string
+---@field scientificName? string
+---@field urlImage? string
 
 ---@class InvasiveSpecieLoadMatch
 ---@field id number
@@ -132,25 +132,25 @@
 ---@field impact? string
 ---@field manage? string
 ---@field name? string
----@field scientific_name? string
----@field url_image? string
+---@field scientificName? string
+---@field urlImage? string
 
 ---@class Map
----@field department_id? number
+---@field departmentId? number
 ---@field description? string
 ---@field id? number
 ---@field name? string
----@field url_image? table
+---@field urlImages? table
 
 ---@class MapListMatch
----@field department_id? number
+---@field departmentId? number
 ---@field description? string
 ---@field id? number
 ---@field name? string
----@field url_image? table
+---@field urlImages? table
 
 ---@class NativeCommunity
----@field department_id? number
+---@field departmentId? number
 ---@field description? string
 ---@field id? number
 ---@field name? string
@@ -160,55 +160,55 @@
 ---@field id number
 
 ---@class NativeCommunityListMatch
----@field department_id? number
+---@field departmentId? number
 ---@field description? string
 ---@field id? number
 ---@field name? string
 ---@field population? number
 
 ---@class NaturalArea
----@field area_group_id? number
----@field category_natural_area_id? number
----@field department_id? number
+---@field areaGroupId? number
+---@field categoryNaturalAreaId? number
+---@field departmentId? number
 ---@field description? string
 ---@field id? number
----@field land_area? number
----@field maritime_area? number
+---@field landArea? number
+---@field maritimeArea? number
 ---@field name? string
 
 ---@class NaturalAreaLoadMatch
 ---@field id number
 
 ---@class NaturalAreaListMatch
----@field area_group_id? number
----@field category_natural_area_id? number
----@field department_id? number
+---@field areaGroupId? number
+---@field categoryNaturalAreaId? number
+---@field departmentId? number
 ---@field description? string
 ---@field id? number
----@field land_area? number
----@field maritime_area? number
+---@field landArea? number
+---@field maritimeArea? number
 ---@field name? string
 
 ---@class President
 ---@field description? string
----@field end_period_date? string
+---@field endPeriodDate? string
 ---@field id? number
 ---@field image? string
 ---@field name? string
----@field political_party? string
----@field start_period_date? string
+---@field politicalParty? string
+---@field startPeriodDate? string
 
 ---@class PresidentLoadMatch
 ---@field id number
 
 ---@class PresidentListMatch
 ---@field description? string
----@field end_period_date? string
+---@field endPeriodDate? string
 ---@field id? number
 ---@field image? string
 ---@field name? string
----@field political_party? string
----@field start_period_date? string
+---@field politicalParty? string
+---@field startPeriodDate? string
 
 ---@class Radio
 ---@field band? string
@@ -228,7 +228,7 @@
 ---@field url? string
 
 ---@class Region
----@field department? table
+---@field departments? table
 ---@field description? string
 ---@field id? number
 ---@field name? string
@@ -237,7 +237,7 @@
 ---@field id number
 
 ---@class RegionListMatch
----@field department? table
+---@field departments? table
 ---@field description? string
 ---@field id? number
 ---@field name? string
@@ -246,7 +246,7 @@
 ---@field city? string
 ---@field description? string
 ---@field id? number
----@field image? table
+---@field images? table
 ---@field latitude? number
 ---@field longitude? number
 ---@field name? string
@@ -258,29 +258,29 @@
 ---@field city? string
 ---@field description? string
 ---@field id? number
----@field image? table
+---@field images? table
 ---@field latitude? number
 ---@field longitude? number
 ---@field name? string
 
 ---@class TypicalDish
----@field department_id? number
+---@field departmentId? number
 ---@field description? string
 ---@field id? number
----@field ingredient? table
+---@field ingredients? table
 ---@field name? string
----@field url_image? string
+---@field urlImage? string
 
 ---@class TypicalDishLoadMatch
 ---@field id number
 
 ---@class TypicalDishListMatch
----@field department_id? number
+---@field departmentId? number
 ---@field description? string
 ---@field id? number
----@field ingredient? table
+---@field ingredients? table
 ---@field name? string
----@field url_image? string
+---@field urlImage? string
 
 local M = {}
 

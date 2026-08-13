@@ -11,7 +11,7 @@ main: kit: entity: president: {
       type: "`$STRING`"
     }
     {
-      name: "end_period_date"
+      name: "endPeriodDate"
       req: false
       type: "`$STRING`"
     }
@@ -31,12 +31,12 @@ main: kit: entity: president: {
       type: "`$STRING`"
     }
     {
-      name: "political_party"
+      name: "politicalParty"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "start_period_date"
+      name: "startPeriodDate"
       req: false
       type: "`$STRING`"
     }

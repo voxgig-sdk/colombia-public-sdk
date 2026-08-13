@@ -26,8 +26,8 @@ import {
 describe('NativeCommunityEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when COLOMBIAPUBLIC_TEST_LIVE=TRUE.
-  afterEach(liveDelay('COLOMBIAPUBLIC_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when COLOMBIA_PUBLIC_TEST_LIVE=TRUE.
+  afterEach(liveDelay('COLOMBIA_PUBLIC_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = ColombiaPublicSDK.test()
@@ -63,13 +63,13 @@ describe('NativeCommunityEntity', async () => {
     const native_community_ref01_ent = client.NativeCommunity()
     const native_community_ref01_match: any = {}
 
-    const native_community_ref01_list = await native_community_ref01_ent.list(native_community_ref01_match)
+    const native_community_ref01_list = (await native_community_ref01_ent.list(native_community_ref01_match)).map((e: any) => e.data())
 
 
     // LOAD
     const native_community_ref01_match_dt0: any = {}
     native_community_ref01_match_dt0.id = native_community_ref01_data.id
-    const native_community_ref01_data_dt0 = await native_community_ref01_ent.load(native_community_ref01_match_dt0)
+    const native_community_ref01_data_dt0 = (await native_community_ref01_ent.load(native_community_ref01_match_dt0)).data()
     assert(native_community_ref01_data_dt0.id === native_community_ref01_data.id)
 
 

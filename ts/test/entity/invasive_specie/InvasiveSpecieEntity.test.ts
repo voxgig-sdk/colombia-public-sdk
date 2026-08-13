@@ -26,8 +26,8 @@ import {
 describe('InvasiveSpecieEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when COLOMBIAPUBLIC_TEST_LIVE=TRUE.
-  afterEach(liveDelay('COLOMBIAPUBLIC_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when COLOMBIA_PUBLIC_TEST_LIVE=TRUE.
+  afterEach(liveDelay('COLOMBIA_PUBLIC_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = ColombiaPublicSDK.test()
@@ -63,13 +63,13 @@ describe('InvasiveSpecieEntity', async () => {
     const invasive_specie_ref01_ent = client.InvasiveSpecie()
     const invasive_specie_ref01_match: any = {}
 
-    const invasive_specie_ref01_list = await invasive_specie_ref01_ent.list(invasive_specie_ref01_match)
+    const invasive_specie_ref01_list = (await invasive_specie_ref01_ent.list(invasive_specie_ref01_match)).map((e: any) => e.data())
 
 
     // LOAD
     const invasive_specie_ref01_match_dt0: any = {}
     invasive_specie_ref01_match_dt0.id = invasive_specie_ref01_data.id
-    const invasive_specie_ref01_data_dt0 = await invasive_specie_ref01_ent.load(invasive_specie_ref01_match_dt0)
+    const invasive_specie_ref01_data_dt0 = (await invasive_specie_ref01_ent.load(invasive_specie_ref01_match_dt0)).data()
     assert(invasive_specie_ref01_data_dt0.id === invasive_specie_ref01_data.id)
 
 

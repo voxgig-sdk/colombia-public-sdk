@@ -40,7 +40,7 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "city_id",
+            ["name"] = "cityId",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 0,
@@ -54,7 +54,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "department_id",
+            ["name"] = "departmentId",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 2,
@@ -104,6 +104,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/Airport",
                 ["parts"] = {
@@ -138,6 +139,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/Airport/{id}",
                 ["parts"] = {
@@ -196,6 +198,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/CategoryNaturalArea",
                 ["parts"] = {
@@ -220,7 +223,7 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "article_number",
+            ["name"] = "articleNumber",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 0,
@@ -263,6 +266,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/ConstitutionArticle",
                 ["parts"] = {
@@ -297,6 +301,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/ConstitutionArticle/{id}",
                 ["parts"] = {
@@ -354,7 +359,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "language",
+            ["name"] = "languages",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 4,
@@ -390,6 +395,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/Country/Colombia",
                 ["parts"] = {
@@ -401,7 +407,7 @@ local function make_config()
                 },
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.languages`",
                 },
                 ["index$"] = 0,
               },
@@ -417,7 +423,7 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "city_capital",
+            ["name"] = "cityCapital",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 0,
@@ -438,7 +444,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "municipality",
+            ["name"] = "municipalities",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 3,
@@ -459,7 +465,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "region_id",
+            ["name"] = "regionId",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 6,
@@ -481,6 +487,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/Department",
                 ["parts"] = {
@@ -515,6 +522,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/Department/{id}",
                 ["parts"] = {
@@ -587,6 +595,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/Holiday",
                 ["parts"] = {
@@ -621,6 +630,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/Holiday/{id}",
                 ["parts"] = {
@@ -678,14 +688,14 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "scientific_name",
+            ["name"] = "scientificName",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 4,
           },
           {
             ["active"] = true,
-            ["name"] = "url_image",
+            ["name"] = "urlImage",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 5,
@@ -700,6 +710,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/InvasiveSpecie",
                 ["parts"] = {
@@ -734,6 +745,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/InvasiveSpecie/{id}",
                 ["parts"] = {
@@ -763,7 +775,7 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "department_id",
+            ["name"] = "departmentId",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 0,
@@ -791,7 +803,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "url_image",
+            ["name"] = "urlImages",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 4,
@@ -806,6 +818,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/Map",
                 ["parts"] = {
@@ -830,7 +843,7 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "department_id",
+            ["name"] = "departmentId",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 0,
@@ -873,6 +886,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/NativeCommunity",
                 ["parts"] = {
@@ -907,6 +921,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/NativeCommunity/{id}",
                 ["parts"] = {
@@ -936,21 +951,21 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "area_group_id",
+            ["name"] = "areaGroupId",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 0,
           },
           {
             ["active"] = true,
-            ["name"] = "category_natural_area_id",
+            ["name"] = "categoryNaturalAreaId",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 1,
           },
           {
             ["active"] = true,
-            ["name"] = "department_id",
+            ["name"] = "departmentId",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 2,
@@ -971,14 +986,14 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "land_area",
+            ["name"] = "landArea",
             ["req"] = false,
             ["type"] = "`$NUMBER`",
             ["index$"] = 5,
           },
           {
             ["active"] = true,
-            ["name"] = "maritime_area",
+            ["name"] = "maritimeArea",
             ["req"] = false,
             ["type"] = "`$NUMBER`",
             ["index$"] = 6,
@@ -1000,6 +1015,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/NaturalArea",
                 ["parts"] = {
@@ -1034,6 +1050,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/NaturalArea/{id}",
                 ["parts"] = {
@@ -1070,7 +1087,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "end_period_date",
+            ["name"] = "endPeriodDate",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 1,
@@ -1098,14 +1115,14 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "political_party",
+            ["name"] = "politicalParty",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 5,
           },
           {
             ["active"] = true,
-            ["name"] = "start_period_date",
+            ["name"] = "startPeriodDate",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 6,
@@ -1120,6 +1137,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/President",
                 ["parts"] = {
@@ -1154,6 +1172,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/President/{id}",
                 ["parts"] = {
@@ -1226,6 +1245,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/Radio",
                 ["parts"] = {
@@ -1260,6 +1280,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/Radio/{id}",
                 ["parts"] = {
@@ -1289,7 +1310,7 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "department",
+            ["name"] = "departments",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 0,
@@ -1325,6 +1346,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/Region",
                 ["parts"] = {
@@ -1359,6 +1381,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/Region/{id}",
                 ["parts"] = {
@@ -1409,7 +1432,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "image",
+            ["name"] = "images",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 3,
@@ -1445,6 +1468,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/TouristicAttraction",
                 ["parts"] = {
@@ -1479,6 +1503,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/TouristicAttraction/{id}",
                 ["parts"] = {
@@ -1508,7 +1533,7 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "department_id",
+            ["name"] = "departmentId",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 0,
@@ -1529,7 +1554,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "ingredient",
+            ["name"] = "ingredients",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 3,
@@ -1543,7 +1568,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "url_image",
+            ["name"] = "urlImage",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 5,
@@ -1558,6 +1583,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/TypicalDish",
                 ["parts"] = {
@@ -1592,6 +1618,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/TypicalDish/{id}",
                 ["parts"] = {

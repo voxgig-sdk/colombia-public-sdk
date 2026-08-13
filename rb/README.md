@@ -37,7 +37,7 @@ begin
   # list returns an Array of Airport records — iterate directly.
   airports = client.Airport.list
   airports.each do |item|
-    puts "#{item["id"]} #{item["city_id"]}"
+    puts "#{item["id"]} #{item["cityId"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -48,7 +48,7 @@ end
 
 ```ruby
 begin
-  # load returns the bare Airport record (raises on error).
+  # load returns the ENTITY — call data_get for the Airport record (raises on error).
   airport = client.Airport.load({ "id" => 1 })
   puts airport
 rescue => err
@@ -63,7 +63,7 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  airports = client.Airport.list()
+  typicaldishs = client.TypicalDish.list()
 rescue => err
   warn "list failed: #{err}"
 end
@@ -131,12 +131,13 @@ data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
 client = ColombiaPublicSDK.test({
-  "entity" => { "airport" => { "test01" => { "id" => "test01" } } },
+  "entity" => { "typicaldish" => { "test01" => { "id" => "test01" } } },
 })
 
-# Entity ops return the bare mock record (raises on error).
-airport = client.Airport.list()
-puts airport
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
+typicaldish = client.TypicalDish.list()
+puts typicaldish
 ```
 
 ### Use a custom fetch function
@@ -266,9 +267,9 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `city_id` |  |
+| `cityId` |  |
 | `code` |  |
-| `department_id` |  |
+| `departmentId` |  |
 | `id` |  |
 | `latitude` |  |
 | `longitude` |  |
@@ -295,7 +296,7 @@ API path: `/CategoryNaturalArea`
 
 | Field | Description |
 | --- | --- |
-| `article_number` |  |
+| `articleNumber` |  |
 | `chapter` |  |
 | `description` |  |
 | `id` |  |
@@ -313,7 +314,7 @@ API path: `/ConstitutionArticle`
 | `currency` |  |
 | `flag` |  |
 | `id` |  |
-| `language` |  |
+| `languages` |  |
 | `name` |  |
 | `population` |  |
 | `surface` |  |
@@ -326,13 +327,13 @@ API path: `/Country/Colombia`
 
 | Field | Description |
 | --- | --- |
-| `city_capital` |  |
+| `cityCapital` |  |
 | `description` |  |
 | `id` |  |
-| `municipality` |  |
+| `municipalities` |  |
 | `name` |  |
 | `population` |  |
-| `region_id` |  |
+| `regionId` |  |
 | `surface` |  |
 
 Operations: List, Load.
@@ -361,8 +362,8 @@ API path: `/Holiday`
 | `impact` |  |
 | `manage` |  |
 | `name` |  |
-| `scientific_name` |  |
-| `url_image` |  |
+| `scientificName` |  |
+| `urlImage` |  |
 
 Operations: List, Load.
 
@@ -372,11 +373,11 @@ API path: `/InvasiveSpecie`
 
 | Field | Description |
 | --- | --- |
-| `department_id` |  |
+| `departmentId` |  |
 | `description` |  |
 | `id` |  |
 | `name` |  |
-| `url_image` |  |
+| `urlImages` |  |
 
 Operations: List.
 
@@ -386,7 +387,7 @@ API path: `/Map`
 
 | Field | Description |
 | --- | --- |
-| `department_id` |  |
+| `departmentId` |  |
 | `description` |  |
 | `id` |  |
 | `name` |  |
@@ -400,13 +401,13 @@ API path: `/NativeCommunity`
 
 | Field | Description |
 | --- | --- |
-| `area_group_id` |  |
-| `category_natural_area_id` |  |
-| `department_id` |  |
+| `areaGroupId` |  |
+| `categoryNaturalAreaId` |  |
+| `departmentId` |  |
 | `description` |  |
 | `id` |  |
-| `land_area` |  |
-| `maritime_area` |  |
+| `landArea` |  |
+| `maritimeArea` |  |
 | `name` |  |
 
 Operations: List, Load.
@@ -418,12 +419,12 @@ API path: `/NaturalArea`
 | Field | Description |
 | --- | --- |
 | `description` |  |
-| `end_period_date` |  |
+| `endPeriodDate` |  |
 | `id` |  |
 | `image` |  |
 | `name` |  |
-| `political_party` |  |
-| `start_period_date` |  |
+| `politicalParty` |  |
+| `startPeriodDate` |  |
 
 Operations: List, Load.
 
@@ -447,7 +448,7 @@ API path: `/Radio`
 
 | Field | Description |
 | --- | --- |
-| `department` |  |
+| `departments` |  |
 | `description` |  |
 | `id` |  |
 | `name` |  |
@@ -463,7 +464,7 @@ API path: `/Region`
 | `city` |  |
 | `description` |  |
 | `id` |  |
-| `image` |  |
+| `images` |  |
 | `latitude` |  |
 | `longitude` |  |
 | `name` |  |
@@ -476,12 +477,12 @@ API path: `/TouristicAttraction`
 
 | Field | Description |
 | --- | --- |
-| `department_id` |  |
+| `departmentId` |  |
 | `description` |  |
 | `id` |  |
-| `ingredient` |  |
+| `ingredients` |  |
 | `name` |  |
-| `url_image` |  |
+| `urlImage` |  |
 
 Operations: List, Load.
 
@@ -507,9 +508,9 @@ Create an instance: `airport = client.Airport`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `city_id` | `Integer` |  |
+| `cityId` | `Integer` |  |
 | `code` | `String` |  |
-| `department_id` | `Integer` |  |
+| `departmentId` | `Integer` |  |
 | `id` | `Integer` |  |
 | `latitude` | `Float` |  |
 | `longitude` | `Float` |  |
@@ -519,7 +520,7 @@ Create an instance: `airport = client.Airport`
 #### Example: Load
 
 ```ruby
-# load returns the bare Airport record (raises on error).
+# load returns the ENTITY — call data_get for the Airport record (raises on error).
 airport = client.Airport.load({ "id" => 1 })
 ```
 
@@ -572,7 +573,7 @@ Create an instance: `constitution_article = client.ConstitutionArticle`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `article_number` | `Integer` |  |
+| `articleNumber` | `Integer` |  |
 | `chapter` | `String` |  |
 | `description` | `String` |  |
 | `id` | `Integer` |  |
@@ -581,7 +582,7 @@ Create an instance: `constitution_article = client.ConstitutionArticle`
 #### Example: Load
 
 ```ruby
-# load returns the bare ConstitutionArticle record (raises on error).
+# load returns the ENTITY — call data_get for the ConstitutionArticle record (raises on error).
 constitution_article = client.ConstitutionArticle.load({ "id" => 1 })
 ```
 
@@ -611,7 +612,7 @@ Create an instance: `country = client.Country`
 | `currency` | `String` |  |
 | `flag` | `String` |  |
 | `id` | `Integer` |  |
-| `language` | `Array` |  |
+| `languages` | `Array` |  |
 | `name` | `String` |  |
 | `population` | `Integer` |  |
 | `surface` | `Float` |  |
@@ -639,19 +640,19 @@ Create an instance: `department = client.Department`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `city_capital` | `String` |  |
+| `cityCapital` | `String` |  |
 | `description` | `String` |  |
 | `id` | `Integer` |  |
-| `municipality` | `Integer` |  |
+| `municipalities` | `Integer` |  |
 | `name` | `String` |  |
 | `population` | `Integer` |  |
-| `region_id` | `Integer` |  |
+| `regionId` | `Integer` |  |
 | `surface` | `Float` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Department record (raises on error).
+# load returns the ENTITY — call data_get for the Department record (raises on error).
 department = client.Department.load({ "id" => 1 })
 ```
 
@@ -687,7 +688,7 @@ Create an instance: `holiday = client.Holiday`
 #### Example: Load
 
 ```ruby
-# load returns the bare Holiday record (raises on error).
+# load returns the ENTITY — call data_get for the Holiday record (raises on error).
 holiday = client.Holiday.load({ "id" => 1 })
 ```
 
@@ -718,13 +719,13 @@ Create an instance: `invasive_specie = client.InvasiveSpecie`
 | `impact` | `String` |  |
 | `manage` | `String` |  |
 | `name` | `String` |  |
-| `scientific_name` | `String` |  |
-| `url_image` | `String` |  |
+| `scientificName` | `String` |  |
+| `urlImage` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare InvasiveSpecie record (raises on error).
+# load returns the ENTITY — call data_get for the InvasiveSpecie record (raises on error).
 invasive_specie = client.InvasiveSpecie.load({ "id" => 1 })
 ```
 
@@ -750,11 +751,11 @@ Create an instance: `map = client.Map`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `department_id` | `Integer` |  |
+| `departmentId` | `Integer` |  |
 | `description` | `String` |  |
 | `id` | `Integer` |  |
 | `name` | `String` |  |
-| `url_image` | `Array` |  |
+| `urlImages` | `Array` |  |
 
 #### Example: List
 
@@ -779,7 +780,7 @@ Create an instance: `native_community = client.NativeCommunity`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `department_id` | `Integer` |  |
+| `departmentId` | `Integer` |  |
 | `description` | `String` |  |
 | `id` | `Integer` |  |
 | `name` | `String` |  |
@@ -788,7 +789,7 @@ Create an instance: `native_community = client.NativeCommunity`
 #### Example: Load
 
 ```ruby
-# load returns the bare NativeCommunity record (raises on error).
+# load returns the ENTITY — call data_get for the NativeCommunity record (raises on error).
 native_community = client.NativeCommunity.load({ "id" => 1 })
 ```
 
@@ -815,19 +816,19 @@ Create an instance: `natural_area = client.NaturalArea`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `area_group_id` | `Integer` |  |
-| `category_natural_area_id` | `Integer` |  |
-| `department_id` | `Integer` |  |
+| `areaGroupId` | `Integer` |  |
+| `categoryNaturalAreaId` | `Integer` |  |
+| `departmentId` | `Integer` |  |
 | `description` | `String` |  |
 | `id` | `Integer` |  |
-| `land_area` | `Float` |  |
-| `maritime_area` | `Float` |  |
+| `landArea` | `Float` |  |
+| `maritimeArea` | `Float` |  |
 | `name` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare NaturalArea record (raises on error).
+# load returns the ENTITY — call data_get for the NaturalArea record (raises on error).
 natural_area = client.NaturalArea.load({ "id" => 1 })
 ```
 
@@ -855,17 +856,17 @@ Create an instance: `president = client.President`
 | Field | Type | Description |
 | --- | --- | --- |
 | `description` | `String` |  |
-| `end_period_date` | `String` |  |
+| `endPeriodDate` | `String` |  |
 | `id` | `Integer` |  |
 | `image` | `String` |  |
 | `name` | `String` |  |
-| `political_party` | `String` |  |
-| `start_period_date` | `String` |  |
+| `politicalParty` | `String` |  |
+| `startPeriodDate` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare President record (raises on error).
+# load returns the ENTITY — call data_get for the President record (raises on error).
 president = client.President.load({ "id" => 1 })
 ```
 
@@ -901,7 +902,7 @@ Create an instance: `radio = client.Radio`
 #### Example: Load
 
 ```ruby
-# load returns the bare Radio record (raises on error).
+# load returns the ENTITY — call data_get for the Radio record (raises on error).
 radio = client.Radio.load({ "id" => 1 })
 ```
 
@@ -928,7 +929,7 @@ Create an instance: `region = client.Region`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `department` | `Array` |  |
+| `departments` | `Array` |  |
 | `description` | `String` |  |
 | `id` | `Integer` |  |
 | `name` | `String` |  |
@@ -936,7 +937,7 @@ Create an instance: `region = client.Region`
 #### Example: Load
 
 ```ruby
-# load returns the bare Region record (raises on error).
+# load returns the ENTITY — call data_get for the Region record (raises on error).
 region = client.Region.load({ "id" => 1 })
 ```
 
@@ -966,7 +967,7 @@ Create an instance: `touristic_attraction = client.TouristicAttraction`
 | `city` | `String` |  |
 | `description` | `String` |  |
 | `id` | `Integer` |  |
-| `image` | `Array` |  |
+| `images` | `Array` |  |
 | `latitude` | `Float` |  |
 | `longitude` | `Float` |  |
 | `name` | `String` |  |
@@ -974,7 +975,7 @@ Create an instance: `touristic_attraction = client.TouristicAttraction`
 #### Example: Load
 
 ```ruby
-# load returns the bare TouristicAttraction record (raises on error).
+# load returns the ENTITY — call data_get for the TouristicAttraction record (raises on error).
 touristic_attraction = client.TouristicAttraction.load({ "id" => 1 })
 ```
 
@@ -1001,17 +1002,17 @@ Create an instance: `typical_dish = client.TypicalDish`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `department_id` | `Integer` |  |
+| `departmentId` | `Integer` |  |
 | `description` | `String` |  |
 | `id` | `Integer` |  |
-| `ingredient` | `Array` |  |
+| `ingredients` | `Array` |  |
 | `name` | `String` |  |
-| `url_image` | `String` |  |
+| `urlImage` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare TypicalDish record (raises on error).
+# load returns the ENTITY — call data_get for the TypicalDish record (raises on error).
 typical_dish = client.TypicalDish.load({ "id" => 1 })
 ```
 
@@ -1099,11 +1100,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-airport = client.Airport
-airport.list()
+typicaldish = client.TypicalDish
+typicaldish.list()
 
-# airport.data_get now returns the airport data from the last list
-# airport.match_get returns the last match criteria
+# typicaldish.data_get now returns the typicaldish data from the last list
+# typicaldish.match_get returns the last match criteria
 ```
 
 Call `make` to create a fresh instance with the same configuration

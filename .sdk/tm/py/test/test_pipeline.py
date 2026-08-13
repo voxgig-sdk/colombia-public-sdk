@@ -16,11 +16,11 @@
 import pytest
 
 from projectname_sdk import ColombiaPublicSDK
-from core.error import ColombiaPublicError
-from core.result import ColombiaPublicResult
-from core.response import ColombiaPublicResponse
-from core.spec import ColombiaPublicSpec
-from feature.base_feature import ColombiaPublicBaseFeature
+from projectname_sdk.core.error import ColombiaPublicError
+from projectname_sdk.core.result import ColombiaPublicResult
+from projectname_sdk.core.response import ColombiaPublicResponse
+from projectname_sdk.core.spec import ColombiaPublicSpec
+from projectname_sdk.feature.base_feature import ColombiaPublicBaseFeature
 
 
 def _client():

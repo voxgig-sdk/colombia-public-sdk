@@ -10,13 +10,13 @@
 
 # Airport entity data model.
 #
-# @!attribute [rw] city_id
+# @!attribute [rw] cityId
 #   @return [Integer, nil]
 #
 # @!attribute [rw] code
 #   @return [String, nil]
 #
-# @!attribute [rw] department_id
+# @!attribute [rw] departmentId
 #   @return [Integer, nil]
 #
 # @!attribute [rw] id
@@ -34,9 +34,9 @@
 # @!attribute [rw] type
 #   @return [String, nil]
 Airport = Struct.new(
-  :city_id,
+  :cityId,
   :code,
-  :department_id,
+  :departmentId,
   :id,
   :latitude,
   :longitude,
@@ -56,13 +56,13 @@ AirportLoadMatch = Struct.new(
 
 # Request payload for Airport#list.
 #
-# @!attribute [rw] city_id
+# @!attribute [rw] cityId
 #   @return [Integer, nil]
 #
 # @!attribute [rw] code
 #   @return [String, nil]
 #
-# @!attribute [rw] department_id
+# @!attribute [rw] departmentId
 #   @return [Integer, nil]
 #
 # @!attribute [rw] id
@@ -80,9 +80,9 @@ AirportLoadMatch = Struct.new(
 # @!attribute [rw] type
 #   @return [String, nil]
 AirportListMatch = Struct.new(
-  :city_id,
+  :cityId,
   :code,
-  :department_id,
+  :departmentId,
   :id,
   :latitude,
   :longitude,
@@ -127,7 +127,7 @@ CategoryNaturalAreaListMatch = Struct.new(
 
 # ConstitutionArticle entity data model.
 #
-# @!attribute [rw] article_number
+# @!attribute [rw] articleNumber
 #   @return [Integer, nil]
 #
 # @!attribute [rw] chapter
@@ -142,7 +142,7 @@ CategoryNaturalAreaListMatch = Struct.new(
 # @!attribute [rw] title
 #   @return [String, nil]
 ConstitutionArticle = Struct.new(
-  :article_number,
+  :articleNumber,
   :chapter,
   :description,
   :id,
@@ -161,7 +161,7 @@ ConstitutionArticleLoadMatch = Struct.new(
 
 # Request payload for ConstitutionArticle#list.
 #
-# @!attribute [rw] article_number
+# @!attribute [rw] articleNumber
 #   @return [Integer, nil]
 #
 # @!attribute [rw] chapter
@@ -176,7 +176,7 @@ ConstitutionArticleLoadMatch = Struct.new(
 # @!attribute [rw] title
 #   @return [String, nil]
 ConstitutionArticleListMatch = Struct.new(
-  :article_number,
+  :articleNumber,
   :chapter,
   :description,
   :id,
@@ -198,7 +198,7 @@ ConstitutionArticleListMatch = Struct.new(
 # @!attribute [rw] id
 #   @return [Integer, nil]
 #
-# @!attribute [rw] language
+# @!attribute [rw] languages
 #   @return [Array, nil]
 #
 # @!attribute [rw] name
@@ -214,7 +214,7 @@ Country = Struct.new(
   :currency,
   :flag,
   :id,
-  :language,
+  :languages,
   :name,
   :population,
   :surface,
@@ -235,7 +235,7 @@ Country = Struct.new(
 # @!attribute [rw] id
 #   @return [Integer, nil]
 #
-# @!attribute [rw] language
+# @!attribute [rw] languages
 #   @return [Array, nil]
 #
 # @!attribute [rw] name
@@ -251,7 +251,7 @@ CountryListMatch = Struct.new(
   :currency,
   :flag,
   :id,
-  :language,
+  :languages,
   :name,
   :population,
   :surface,
@@ -260,7 +260,7 @@ CountryListMatch = Struct.new(
 
 # Department entity data model.
 #
-# @!attribute [rw] city_capital
+# @!attribute [rw] cityCapital
 #   @return [String, nil]
 #
 # @!attribute [rw] description
@@ -269,7 +269,7 @@ CountryListMatch = Struct.new(
 # @!attribute [rw] id
 #   @return [Integer, nil]
 #
-# @!attribute [rw] municipality
+# @!attribute [rw] municipalities
 #   @return [Integer, nil]
 #
 # @!attribute [rw] name
@@ -278,19 +278,19 @@ CountryListMatch = Struct.new(
 # @!attribute [rw] population
 #   @return [Integer, nil]
 #
-# @!attribute [rw] region_id
+# @!attribute [rw] regionId
 #   @return [Integer, nil]
 #
 # @!attribute [rw] surface
 #   @return [Float, nil]
 Department = Struct.new(
-  :city_capital,
+  :cityCapital,
   :description,
   :id,
-  :municipality,
+  :municipalities,
   :name,
   :population,
-  :region_id,
+  :regionId,
   :surface,
   keyword_init: true
 )
@@ -306,7 +306,7 @@ DepartmentLoadMatch = Struct.new(
 
 # Request payload for Department#list.
 #
-# @!attribute [rw] city_capital
+# @!attribute [rw] cityCapital
 #   @return [String, nil]
 #
 # @!attribute [rw] description
@@ -315,7 +315,7 @@ DepartmentLoadMatch = Struct.new(
 # @!attribute [rw] id
 #   @return [Integer, nil]
 #
-# @!attribute [rw] municipality
+# @!attribute [rw] municipalities
 #   @return [Integer, nil]
 #
 # @!attribute [rw] name
@@ -324,19 +324,19 @@ DepartmentLoadMatch = Struct.new(
 # @!attribute [rw] population
 #   @return [Integer, nil]
 #
-# @!attribute [rw] region_id
+# @!attribute [rw] regionId
 #   @return [Integer, nil]
 #
 # @!attribute [rw] surface
 #   @return [Float, nil]
 DepartmentListMatch = Struct.new(
-  :city_capital,
+  :cityCapital,
   :description,
   :id,
-  :municipality,
+  :municipalities,
   :name,
   :population,
-  :region_id,
+  :regionId,
   :surface,
   keyword_init: true
 )
@@ -414,18 +414,18 @@ HolidayListMatch = Struct.new(
 # @!attribute [rw] name
 #   @return [String, nil]
 #
-# @!attribute [rw] scientific_name
+# @!attribute [rw] scientificName
 #   @return [String, nil]
 #
-# @!attribute [rw] url_image
+# @!attribute [rw] urlImage
 #   @return [String, nil]
 InvasiveSpecie = Struct.new(
   :id,
   :impact,
   :manage,
   :name,
-  :scientific_name,
-  :url_image,
+  :scientificName,
+  :urlImage,
   keyword_init: true
 )
 
@@ -452,24 +452,24 @@ InvasiveSpecieLoadMatch = Struct.new(
 # @!attribute [rw] name
 #   @return [String, nil]
 #
-# @!attribute [rw] scientific_name
+# @!attribute [rw] scientificName
 #   @return [String, nil]
 #
-# @!attribute [rw] url_image
+# @!attribute [rw] urlImage
 #   @return [String, nil]
 InvasiveSpecieListMatch = Struct.new(
   :id,
   :impact,
   :manage,
   :name,
-  :scientific_name,
-  :url_image,
+  :scientificName,
+  :urlImage,
   keyword_init: true
 )
 
 # Map entity data model.
 #
-# @!attribute [rw] department_id
+# @!attribute [rw] departmentId
 #   @return [Integer, nil]
 #
 # @!attribute [rw] description
@@ -481,20 +481,20 @@ InvasiveSpecieListMatch = Struct.new(
 # @!attribute [rw] name
 #   @return [String, nil]
 #
-# @!attribute [rw] url_image
+# @!attribute [rw] urlImages
 #   @return [Array, nil]
 Map = Struct.new(
-  :department_id,
+  :departmentId,
   :description,
   :id,
   :name,
-  :url_image,
+  :urlImages,
   keyword_init: true
 )
 
 # Request payload for Map#list.
 #
-# @!attribute [rw] department_id
+# @!attribute [rw] departmentId
 #   @return [Integer, nil]
 #
 # @!attribute [rw] description
@@ -506,20 +506,20 @@ Map = Struct.new(
 # @!attribute [rw] name
 #   @return [String, nil]
 #
-# @!attribute [rw] url_image
+# @!attribute [rw] urlImages
 #   @return [Array, nil]
 MapListMatch = Struct.new(
-  :department_id,
+  :departmentId,
   :description,
   :id,
   :name,
-  :url_image,
+  :urlImages,
   keyword_init: true
 )
 
 # NativeCommunity entity data model.
 #
-# @!attribute [rw] department_id
+# @!attribute [rw] departmentId
 #   @return [Integer, nil]
 #
 # @!attribute [rw] description
@@ -534,7 +534,7 @@ MapListMatch = Struct.new(
 # @!attribute [rw] population
 #   @return [Integer, nil]
 NativeCommunity = Struct.new(
-  :department_id,
+  :departmentId,
   :description,
   :id,
   :name,
@@ -553,7 +553,7 @@ NativeCommunityLoadMatch = Struct.new(
 
 # Request payload for NativeCommunity#list.
 #
-# @!attribute [rw] department_id
+# @!attribute [rw] departmentId
 #   @return [Integer, nil]
 #
 # @!attribute [rw] description
@@ -568,7 +568,7 @@ NativeCommunityLoadMatch = Struct.new(
 # @!attribute [rw] population
 #   @return [Integer, nil]
 NativeCommunityListMatch = Struct.new(
-  :department_id,
+  :departmentId,
   :description,
   :id,
   :name,
@@ -578,13 +578,13 @@ NativeCommunityListMatch = Struct.new(
 
 # NaturalArea entity data model.
 #
-# @!attribute [rw] area_group_id
+# @!attribute [rw] areaGroupId
 #   @return [Integer, nil]
 #
-# @!attribute [rw] category_natural_area_id
+# @!attribute [rw] categoryNaturalAreaId
 #   @return [Integer, nil]
 #
-# @!attribute [rw] department_id
+# @!attribute [rw] departmentId
 #   @return [Integer, nil]
 #
 # @!attribute [rw] description
@@ -593,22 +593,22 @@ NativeCommunityListMatch = Struct.new(
 # @!attribute [rw] id
 #   @return [Integer, nil]
 #
-# @!attribute [rw] land_area
+# @!attribute [rw] landArea
 #   @return [Float, nil]
 #
-# @!attribute [rw] maritime_area
+# @!attribute [rw] maritimeArea
 #   @return [Float, nil]
 #
 # @!attribute [rw] name
 #   @return [String, nil]
 NaturalArea = Struct.new(
-  :area_group_id,
-  :category_natural_area_id,
-  :department_id,
+  :areaGroupId,
+  :categoryNaturalAreaId,
+  :departmentId,
   :description,
   :id,
-  :land_area,
-  :maritime_area,
+  :landArea,
+  :maritimeArea,
   :name,
   keyword_init: true
 )
@@ -624,13 +624,13 @@ NaturalAreaLoadMatch = Struct.new(
 
 # Request payload for NaturalArea#list.
 #
-# @!attribute [rw] area_group_id
+# @!attribute [rw] areaGroupId
 #   @return [Integer, nil]
 #
-# @!attribute [rw] category_natural_area_id
+# @!attribute [rw] categoryNaturalAreaId
 #   @return [Integer, nil]
 #
-# @!attribute [rw] department_id
+# @!attribute [rw] departmentId
 #   @return [Integer, nil]
 #
 # @!attribute [rw] description
@@ -639,22 +639,22 @@ NaturalAreaLoadMatch = Struct.new(
 # @!attribute [rw] id
 #   @return [Integer, nil]
 #
-# @!attribute [rw] land_area
+# @!attribute [rw] landArea
 #   @return [Float, nil]
 #
-# @!attribute [rw] maritime_area
+# @!attribute [rw] maritimeArea
 #   @return [Float, nil]
 #
 # @!attribute [rw] name
 #   @return [String, nil]
 NaturalAreaListMatch = Struct.new(
-  :area_group_id,
-  :category_natural_area_id,
-  :department_id,
+  :areaGroupId,
+  :categoryNaturalAreaId,
+  :departmentId,
   :description,
   :id,
-  :land_area,
-  :maritime_area,
+  :landArea,
+  :maritimeArea,
   :name,
   keyword_init: true
 )
@@ -664,7 +664,7 @@ NaturalAreaListMatch = Struct.new(
 # @!attribute [rw] description
 #   @return [String, nil]
 #
-# @!attribute [rw] end_period_date
+# @!attribute [rw] endPeriodDate
 #   @return [String, nil]
 #
 # @!attribute [rw] id
@@ -676,19 +676,19 @@ NaturalAreaListMatch = Struct.new(
 # @!attribute [rw] name
 #   @return [String, nil]
 #
-# @!attribute [rw] political_party
+# @!attribute [rw] politicalParty
 #   @return [String, nil]
 #
-# @!attribute [rw] start_period_date
+# @!attribute [rw] startPeriodDate
 #   @return [String, nil]
 President = Struct.new(
   :description,
-  :end_period_date,
+  :endPeriodDate,
   :id,
   :image,
   :name,
-  :political_party,
-  :start_period_date,
+  :politicalParty,
+  :startPeriodDate,
   keyword_init: true
 )
 
@@ -706,7 +706,7 @@ PresidentLoadMatch = Struct.new(
 # @!attribute [rw] description
 #   @return [String, nil]
 #
-# @!attribute [rw] end_period_date
+# @!attribute [rw] endPeriodDate
 #   @return [String, nil]
 #
 # @!attribute [rw] id
@@ -718,19 +718,19 @@ PresidentLoadMatch = Struct.new(
 # @!attribute [rw] name
 #   @return [String, nil]
 #
-# @!attribute [rw] political_party
+# @!attribute [rw] politicalParty
 #   @return [String, nil]
 #
-# @!attribute [rw] start_period_date
+# @!attribute [rw] startPeriodDate
 #   @return [String, nil]
 PresidentListMatch = Struct.new(
   :description,
-  :end_period_date,
+  :endPeriodDate,
   :id,
   :image,
   :name,
-  :political_party,
-  :start_period_date,
+  :politicalParty,
+  :startPeriodDate,
   keyword_init: true
 )
 
@@ -795,7 +795,7 @@ RadioListMatch = Struct.new(
 
 # Region entity data model.
 #
-# @!attribute [rw] department
+# @!attribute [rw] departments
 #   @return [Array, nil]
 #
 # @!attribute [rw] description
@@ -807,7 +807,7 @@ RadioListMatch = Struct.new(
 # @!attribute [rw] name
 #   @return [String, nil]
 Region = Struct.new(
-  :department,
+  :departments,
   :description,
   :id,
   :name,
@@ -825,7 +825,7 @@ RegionLoadMatch = Struct.new(
 
 # Request payload for Region#list.
 #
-# @!attribute [rw] department
+# @!attribute [rw] departments
 #   @return [Array, nil]
 #
 # @!attribute [rw] description
@@ -837,7 +837,7 @@ RegionLoadMatch = Struct.new(
 # @!attribute [rw] name
 #   @return [String, nil]
 RegionListMatch = Struct.new(
-  :department,
+  :departments,
   :description,
   :id,
   :name,
@@ -855,7 +855,7 @@ RegionListMatch = Struct.new(
 # @!attribute [rw] id
 #   @return [Integer, nil]
 #
-# @!attribute [rw] image
+# @!attribute [rw] images
 #   @return [Array, nil]
 #
 # @!attribute [rw] latitude
@@ -870,7 +870,7 @@ TouristicAttraction = Struct.new(
   :city,
   :description,
   :id,
-  :image,
+  :images,
   :latitude,
   :longitude,
   :name,
@@ -897,7 +897,7 @@ TouristicAttractionLoadMatch = Struct.new(
 # @!attribute [rw] id
 #   @return [Integer, nil]
 #
-# @!attribute [rw] image
+# @!attribute [rw] images
 #   @return [Array, nil]
 #
 # @!attribute [rw] latitude
@@ -912,7 +912,7 @@ TouristicAttractionListMatch = Struct.new(
   :city,
   :description,
   :id,
-  :image,
+  :images,
   :latitude,
   :longitude,
   :name,
@@ -921,7 +921,7 @@ TouristicAttractionListMatch = Struct.new(
 
 # TypicalDish entity data model.
 #
-# @!attribute [rw] department_id
+# @!attribute [rw] departmentId
 #   @return [Integer, nil]
 #
 # @!attribute [rw] description
@@ -930,21 +930,21 @@ TouristicAttractionListMatch = Struct.new(
 # @!attribute [rw] id
 #   @return [Integer, nil]
 #
-# @!attribute [rw] ingredient
+# @!attribute [rw] ingredients
 #   @return [Array, nil]
 #
 # @!attribute [rw] name
 #   @return [String, nil]
 #
-# @!attribute [rw] url_image
+# @!attribute [rw] urlImage
 #   @return [String, nil]
 TypicalDish = Struct.new(
-  :department_id,
+  :departmentId,
   :description,
   :id,
-  :ingredient,
+  :ingredients,
   :name,
-  :url_image,
+  :urlImage,
   keyword_init: true
 )
 
@@ -959,7 +959,7 @@ TypicalDishLoadMatch = Struct.new(
 
 # Request payload for TypicalDish#list.
 #
-# @!attribute [rw] department_id
+# @!attribute [rw] departmentId
 #   @return [Integer, nil]
 #
 # @!attribute [rw] description
@@ -968,21 +968,21 @@ TypicalDishLoadMatch = Struct.new(
 # @!attribute [rw] id
 #   @return [Integer, nil]
 #
-# @!attribute [rw] ingredient
+# @!attribute [rw] ingredients
 #   @return [Array, nil]
 #
 # @!attribute [rw] name
 #   @return [String, nil]
 #
-# @!attribute [rw] url_image
+# @!attribute [rw] urlImage
 #   @return [String, nil]
 TypicalDishListMatch = Struct.new(
-  :department_id,
+  :departmentId,
   :description,
   :id,
-  :ingredient,
+  :ingredients,
   :name,
-  :url_image,
+  :urlImage,
   keyword_init: true
 )
 

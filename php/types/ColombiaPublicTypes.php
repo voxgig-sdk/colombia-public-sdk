@@ -15,9 +15,9 @@ declare(strict_types=1);
 /** Airport entity data model. */
 class Airport
 {
-    public ?int $city_id = null;
+    public ?int $cityId = null;
     public ?string $code = null;
-    public ?int $department_id = null;
+    public ?int $departmentId = null;
     public ?int $id = null;
     public ?float $latitude = null;
     public ?float $longitude = null;
@@ -34,9 +34,9 @@ class AirportLoadMatch
 /** Request payload for Airport#list. */
 class AirportListMatch
 {
-    public ?int $city_id = null;
+    public ?int $cityId = null;
     public ?string $code = null;
-    public ?int $department_id = null;
+    public ?int $departmentId = null;
     public ?int $id = null;
     public ?float $latitude = null;
     public ?float $longitude = null;
@@ -63,7 +63,7 @@ class CategoryNaturalAreaListMatch
 /** ConstitutionArticle entity data model. */
 class ConstitutionArticle
 {
-    public ?int $article_number = null;
+    public ?int $articleNumber = null;
     public ?string $chapter = null;
     public ?string $description = null;
     public ?int $id = null;
@@ -79,7 +79,7 @@ class ConstitutionArticleLoadMatch
 /** Request payload for ConstitutionArticle#list. */
 class ConstitutionArticleListMatch
 {
-    public ?int $article_number = null;
+    public ?int $articleNumber = null;
     public ?string $chapter = null;
     public ?string $description = null;
     public ?int $id = null;
@@ -93,7 +93,7 @@ class Country
     public ?string $currency = null;
     public ?string $flag = null;
     public ?int $id = null;
-    public ?array $language = null;
+    public ?array $languages = null;
     public ?string $name = null;
     public ?int $population = null;
     public ?float $surface = null;
@@ -106,7 +106,7 @@ class CountryListMatch
     public ?string $currency = null;
     public ?string $flag = null;
     public ?int $id = null;
-    public ?array $language = null;
+    public ?array $languages = null;
     public ?string $name = null;
     public ?int $population = null;
     public ?float $surface = null;
@@ -115,13 +115,13 @@ class CountryListMatch
 /** Department entity data model. */
 class Department
 {
-    public ?string $city_capital = null;
+    public ?string $cityCapital = null;
     public ?string $description = null;
     public ?int $id = null;
-    public ?int $municipality = null;
+    public ?int $municipalities = null;
     public ?string $name = null;
     public ?int $population = null;
-    public ?int $region_id = null;
+    public ?int $regionId = null;
     public ?float $surface = null;
 }
 
@@ -134,13 +134,13 @@ class DepartmentLoadMatch
 /** Request payload for Department#list. */
 class DepartmentListMatch
 {
-    public ?string $city_capital = null;
+    public ?string $cityCapital = null;
     public ?string $description = null;
     public ?int $id = null;
-    public ?int $municipality = null;
+    public ?int $municipalities = null;
     public ?string $name = null;
     public ?int $population = null;
-    public ?int $region_id = null;
+    public ?int $regionId = null;
     public ?float $surface = null;
 }
 
@@ -177,8 +177,8 @@ class InvasiveSpecie
     public ?string $impact = null;
     public ?string $manage = null;
     public ?string $name = null;
-    public ?string $scientific_name = null;
-    public ?string $url_image = null;
+    public ?string $scientificName = null;
+    public ?string $urlImage = null;
 }
 
 /** Request payload for InvasiveSpecie#load. */
@@ -194,34 +194,34 @@ class InvasiveSpecieListMatch
     public ?string $impact = null;
     public ?string $manage = null;
     public ?string $name = null;
-    public ?string $scientific_name = null;
-    public ?string $url_image = null;
+    public ?string $scientificName = null;
+    public ?string $urlImage = null;
 }
 
 /** Map entity data model. */
 class Map
 {
-    public ?int $department_id = null;
+    public ?int $departmentId = null;
     public ?string $description = null;
     public ?int $id = null;
     public ?string $name = null;
-    public ?array $url_image = null;
+    public ?array $urlImages = null;
 }
 
 /** Request payload for Map#list. */
 class MapListMatch
 {
-    public ?int $department_id = null;
+    public ?int $departmentId = null;
     public ?string $description = null;
     public ?int $id = null;
     public ?string $name = null;
-    public ?array $url_image = null;
+    public ?array $urlImages = null;
 }
 
 /** NativeCommunity entity data model. */
 class NativeCommunity
 {
-    public ?int $department_id = null;
+    public ?int $departmentId = null;
     public ?string $description = null;
     public ?int $id = null;
     public ?string $name = null;
@@ -237,7 +237,7 @@ class NativeCommunityLoadMatch
 /** Request payload for NativeCommunity#list. */
 class NativeCommunityListMatch
 {
-    public ?int $department_id = null;
+    public ?int $departmentId = null;
     public ?string $description = null;
     public ?int $id = null;
     public ?string $name = null;
@@ -247,13 +247,13 @@ class NativeCommunityListMatch
 /** NaturalArea entity data model. */
 class NaturalArea
 {
-    public ?int $area_group_id = null;
-    public ?int $category_natural_area_id = null;
-    public ?int $department_id = null;
+    public ?int $areaGroupId = null;
+    public ?int $categoryNaturalAreaId = null;
+    public ?int $departmentId = null;
     public ?string $description = null;
     public ?int $id = null;
-    public ?float $land_area = null;
-    public ?float $maritime_area = null;
+    public ?float $landArea = null;
+    public ?float $maritimeArea = null;
     public ?string $name = null;
 }
 
@@ -266,13 +266,13 @@ class NaturalAreaLoadMatch
 /** Request payload for NaturalArea#list. */
 class NaturalAreaListMatch
 {
-    public ?int $area_group_id = null;
-    public ?int $category_natural_area_id = null;
-    public ?int $department_id = null;
+    public ?int $areaGroupId = null;
+    public ?int $categoryNaturalAreaId = null;
+    public ?int $departmentId = null;
     public ?string $description = null;
     public ?int $id = null;
-    public ?float $land_area = null;
-    public ?float $maritime_area = null;
+    public ?float $landArea = null;
+    public ?float $maritimeArea = null;
     public ?string $name = null;
 }
 
@@ -280,12 +280,12 @@ class NaturalAreaListMatch
 class President
 {
     public ?string $description = null;
-    public ?string $end_period_date = null;
+    public ?string $endPeriodDate = null;
     public ?int $id = null;
     public ?string $image = null;
     public ?string $name = null;
-    public ?string $political_party = null;
-    public ?string $start_period_date = null;
+    public ?string $politicalParty = null;
+    public ?string $startPeriodDate = null;
 }
 
 /** Request payload for President#load. */
@@ -298,12 +298,12 @@ class PresidentLoadMatch
 class PresidentListMatch
 {
     public ?string $description = null;
-    public ?string $end_period_date = null;
+    public ?string $endPeriodDate = null;
     public ?int $id = null;
     public ?string $image = null;
     public ?string $name = null;
-    public ?string $political_party = null;
-    public ?string $start_period_date = null;
+    public ?string $politicalParty = null;
+    public ?string $startPeriodDate = null;
 }
 
 /** Radio entity data model. */
@@ -335,7 +335,7 @@ class RadioListMatch
 /** Region entity data model. */
 class Region
 {
-    public ?array $department = null;
+    public ?array $departments = null;
     public ?string $description = null;
     public ?int $id = null;
     public ?string $name = null;
@@ -350,7 +350,7 @@ class RegionLoadMatch
 /** Request payload for Region#list. */
 class RegionListMatch
 {
-    public ?array $department = null;
+    public ?array $departments = null;
     public ?string $description = null;
     public ?int $id = null;
     public ?string $name = null;
@@ -362,7 +362,7 @@ class TouristicAttraction
     public ?string $city = null;
     public ?string $description = null;
     public ?int $id = null;
-    public ?array $image = null;
+    public ?array $images = null;
     public ?float $latitude = null;
     public ?float $longitude = null;
     public ?string $name = null;
@@ -380,7 +380,7 @@ class TouristicAttractionListMatch
     public ?string $city = null;
     public ?string $description = null;
     public ?int $id = null;
-    public ?array $image = null;
+    public ?array $images = null;
     public ?float $latitude = null;
     public ?float $longitude = null;
     public ?string $name = null;
@@ -389,12 +389,12 @@ class TouristicAttractionListMatch
 /** TypicalDish entity data model. */
 class TypicalDish
 {
-    public ?int $department_id = null;
+    public ?int $departmentId = null;
     public ?string $description = null;
     public ?int $id = null;
-    public ?array $ingredient = null;
+    public ?array $ingredients = null;
     public ?string $name = null;
-    public ?string $url_image = null;
+    public ?string $urlImage = null;
 }
 
 /** Request payload for TypicalDish#load. */
@@ -406,11 +406,11 @@ class TypicalDishLoadMatch
 /** Request payload for TypicalDish#list. */
 class TypicalDishListMatch
 {
-    public ?int $department_id = null;
+    public ?int $departmentId = null;
     public ?string $description = null;
     public ?int $id = null;
-    public ?array $ingredient = null;
+    public ?array $ingredients = null;
     public ?string $name = null;
-    public ?string $url_image = null;
+    public ?string $urlImage = null;
 }
 

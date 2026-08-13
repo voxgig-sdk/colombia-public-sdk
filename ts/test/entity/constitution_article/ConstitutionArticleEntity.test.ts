@@ -26,8 +26,8 @@ import {
 describe('ConstitutionArticleEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when COLOMBIAPUBLIC_TEST_LIVE=TRUE.
-  afterEach(liveDelay('COLOMBIAPUBLIC_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when COLOMBIA_PUBLIC_TEST_LIVE=TRUE.
+  afterEach(liveDelay('COLOMBIA_PUBLIC_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = ColombiaPublicSDK.test()
@@ -63,13 +63,13 @@ describe('ConstitutionArticleEntity', async () => {
     const constitution_article_ref01_ent = client.ConstitutionArticle()
     const constitution_article_ref01_match: any = {}
 
-    const constitution_article_ref01_list = await constitution_article_ref01_ent.list(constitution_article_ref01_match)
+    const constitution_article_ref01_list = (await constitution_article_ref01_ent.list(constitution_article_ref01_match)).map((e: any) => e.data())
 
 
     // LOAD
     const constitution_article_ref01_match_dt0: any = {}
     constitution_article_ref01_match_dt0.id = constitution_article_ref01_data.id
-    const constitution_article_ref01_data_dt0 = await constitution_article_ref01_ent.load(constitution_article_ref01_match_dt0)
+    const constitution_article_ref01_data_dt0 = (await constitution_article_ref01_ent.load(constitution_article_ref01_match_dt0)).data()
     assert(constitution_article_ref01_data_dt0.id === constitution_article_ref01_data.id)
 
 

@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from colombiapublic_sdk.utility.voxgig_struct import voxgig_struct as vs
 from colombiapublic_sdk import ColombiaPublicSDK
-from core import helpers
+from colombiapublic_sdk.core import helpers
 from test import runner
 
 
@@ -105,11 +105,11 @@ def _radio_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "COLOMBIAPUBLIC_TEST_RADIO_ENTID": {},
-        "COLOMBIAPUBLIC_TEST_LIVE": "FALSE",
+        "COLOMBIA_PUBLIC_TEST_RADIO_ENTID": {},
+        "COLOMBIA_PUBLIC_TEST_LIVE": "FALSE",
     })
 
-    live = env.get("COLOMBIAPUBLIC_TEST_LIVE") == "TRUE"
+    live = env.get("COLOMBIA_PUBLIC_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {

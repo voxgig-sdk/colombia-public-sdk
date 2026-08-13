@@ -148,9 +148,9 @@ $airport = $client->Airport();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `city_id` | `int` | No |  |
+| `cityId` | `int` | No |  |
 | `code` | `string` | No |  |
-| `department_id` | `int` | No |  |
+| `departmentId` | `int` | No |  |
 | `id` | `int` | No |  |
 | `latitude` | `float` | No |  |
 | `longitude` | `float` | No |  |
@@ -269,7 +269,7 @@ $constitution_article = $client->ConstitutionArticle();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `article_number` | `int` | No |  |
+| `articleNumber` | `int` | No |  |
 | `chapter` | `string` | No |  |
 | `description` | `string` | No |  |
 | `id` | `int` | No |  |
@@ -337,7 +337,7 @@ $country = $client->Country();
 | `currency` | `string` | No |  |
 | `flag` | `string` | No |  |
 | `id` | `int` | No |  |
-| `language` | `array` | No |  |
+| `languages` | `array` | No |  |
 | `name` | `string` | No |  |
 | `population` | `int` | No |  |
 | `surface` | `float` | No |  |
@@ -392,13 +392,13 @@ $department = $client->Department();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `city_capital` | `string` | No |  |
+| `cityCapital` | `string` | No |  |
 | `description` | `string` | No |  |
 | `id` | `int` | No |  |
-| `municipality` | `int` | No |  |
+| `municipalities` | `int` | No |  |
 | `name` | `string` | No |  |
 | `population` | `int` | No |  |
-| `region_id` | `int` | No |  |
+| `regionId` | `int` | No |  |
 | `surface` | `float` | No |  |
 
 ### Operations
@@ -527,8 +527,8 @@ $invasive_specie = $client->InvasiveSpecie();
 | `impact` | `string` | No |  |
 | `manage` | `string` | No |  |
 | `name` | `string` | No |  |
-| `scientific_name` | `string` | No |  |
-| `url_image` | `string` | No |  |
+| `scientificName` | `string` | No |  |
+| `urlImage` | `string` | No |  |
 
 ### Operations
 
@@ -588,11 +588,11 @@ $map = $client->Map();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `department_id` | `int` | No |  |
+| `departmentId` | `int` | No |  |
 | `description` | `string` | No |  |
 | `id` | `int` | No |  |
 | `name` | `string` | No |  |
-| `url_image` | `array` | No |  |
+| `urlImages` | `array` | No |  |
 
 ### Operations
 
@@ -644,7 +644,7 @@ $native_community = $client->NativeCommunity();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `department_id` | `int` | No |  |
+| `departmentId` | `int` | No |  |
 | `description` | `string` | No |  |
 | `id` | `int` | No |  |
 | `name` | `string` | No |  |
@@ -708,13 +708,13 @@ $natural_area = $client->NaturalArea();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `area_group_id` | `int` | No |  |
-| `category_natural_area_id` | `int` | No |  |
-| `department_id` | `int` | No |  |
+| `areaGroupId` | `int` | No |  |
+| `categoryNaturalAreaId` | `int` | No |  |
+| `departmentId` | `int` | No |  |
 | `description` | `string` | No |  |
 | `id` | `int` | No |  |
-| `land_area` | `float` | No |  |
-| `maritime_area` | `float` | No |  |
+| `landArea` | `float` | No |  |
+| `maritimeArea` | `float` | No |  |
 | `name` | `string` | No |  |
 
 ### Operations
@@ -776,12 +776,12 @@ $president = $client->President();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `description` | `string` | No |  |
-| `end_period_date` | `string` | No |  |
+| `endPeriodDate` | `string` | No |  |
 | `id` | `int` | No |  |
 | `image` | `string` | No |  |
 | `name` | `string` | No |  |
-| `political_party` | `string` | No |  |
-| `start_period_date` | `string` | No |  |
+| `politicalParty` | `string` | No |  |
+| `startPeriodDate` | `string` | No |  |
 
 ### Operations
 
@@ -905,7 +905,7 @@ $region = $client->Region();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `department` | `array` | No |  |
+| `departments` | `array` | No |  |
 | `description` | `string` | No |  |
 | `id` | `int` | No |  |
 | `name` | `string` | No |  |
@@ -971,7 +971,7 @@ $touristic_attraction = $client->TouristicAttraction();
 | `city` | `string` | No |  |
 | `description` | `string` | No |  |
 | `id` | `int` | No |  |
-| `image` | `array` | No |  |
+| `images` | `array` | No |  |
 | `latitude` | `float` | No |  |
 | `longitude` | `float` | No |  |
 | `name` | `string` | No |  |
@@ -1034,12 +1034,12 @@ $typical_dish = $client->TypicalDish();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `department_id` | `int` | No |  |
+| `departmentId` | `int` | No |  |
 | `description` | `string` | No |  |
 | `id` | `int` | No |  |
-| `ingredient` | `array` | No |  |
+| `ingredients` | `array` | No |  |
 | `name` | `string` | No |  |
-| `url_image` | `string` | No |  |
+| `urlImage` | `string` | No |  |
 
 ### Operations
 

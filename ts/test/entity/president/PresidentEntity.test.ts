@@ -26,8 +26,8 @@ import {
 describe('PresidentEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when COLOMBIAPUBLIC_TEST_LIVE=TRUE.
-  afterEach(liveDelay('COLOMBIAPUBLIC_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when COLOMBIA_PUBLIC_TEST_LIVE=TRUE.
+  afterEach(liveDelay('COLOMBIA_PUBLIC_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = ColombiaPublicSDK.test()
@@ -63,13 +63,13 @@ describe('PresidentEntity', async () => {
     const president_ref01_ent = client.President()
     const president_ref01_match: any = {}
 
-    const president_ref01_list = await president_ref01_ent.list(president_ref01_match)
+    const president_ref01_list = (await president_ref01_ent.list(president_ref01_match)).map((e: any) => e.data())
 
 
     // LOAD
     const president_ref01_match_dt0: any = {}
     president_ref01_match_dt0.id = president_ref01_data.id
-    const president_ref01_data_dt0 = await president_ref01_ent.load(president_ref01_match_dt0)
+    const president_ref01_data_dt0 = (await president_ref01_ent.load(president_ref01_match_dt0)).data()
     assert(president_ref01_data_dt0.id === president_ref01_data.id)
 
 

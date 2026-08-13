@@ -6,13 +6,17 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
 
-import "encoding/json"
+import (
+	"encoding/json"
+
+	"github.com/voxgig-sdk/colombia-public-sdk/go/core"
+)
 
 // Airport is the typed data model for the airport entity.
 type Airport struct {
-	CityId *int `json:"city_id,omitempty"`
+	CityId *int `json:"cityId,omitempty"`
 	Code *string `json:"code,omitempty"`
-	DepartmentId *int `json:"department_id,omitempty"`
+	DepartmentId *int `json:"departmentId,omitempty"`
 	Id *int `json:"id,omitempty"`
 	Latitude *float64 `json:"latitude,omitempty"`
 	Longitude *float64 `json:"longitude,omitempty"`
@@ -27,9 +31,9 @@ type AirportLoadMatch struct {
 
 // AirportListMatch is the typed request payload for Airport.ListTyped.
 type AirportListMatch struct {
-	CityId *int `json:"city_id,omitempty"`
+	CityId *int `json:"cityId,omitempty"`
 	Code *string `json:"code,omitempty"`
-	DepartmentId *int `json:"department_id,omitempty"`
+	DepartmentId *int `json:"departmentId,omitempty"`
 	Id *int `json:"id,omitempty"`
 	Latitude *float64 `json:"latitude,omitempty"`
 	Longitude *float64 `json:"longitude,omitempty"`
@@ -53,7 +57,7 @@ type CategoryNaturalAreaListMatch struct {
 
 // ConstitutionArticle is the typed data model for the constitution_article entity.
 type ConstitutionArticle struct {
-	ArticleNumber *int `json:"article_number,omitempty"`
+	ArticleNumber *int `json:"articleNumber,omitempty"`
 	Chapter *string `json:"chapter,omitempty"`
 	Description *string `json:"description,omitempty"`
 	Id *int `json:"id,omitempty"`
@@ -67,7 +71,7 @@ type ConstitutionArticleLoadMatch struct {
 
 // ConstitutionArticleListMatch is the typed request payload for ConstitutionArticle.ListTyped.
 type ConstitutionArticleListMatch struct {
-	ArticleNumber *int `json:"article_number,omitempty"`
+	ArticleNumber *int `json:"articleNumber,omitempty"`
 	Chapter *string `json:"chapter,omitempty"`
 	Description *string `json:"description,omitempty"`
 	Id *int `json:"id,omitempty"`
@@ -80,7 +84,7 @@ type Country struct {
 	Currency *string `json:"currency,omitempty"`
 	Flag *string `json:"flag,omitempty"`
 	Id *int `json:"id,omitempty"`
-	Language *[]any `json:"language,omitempty"`
+	Languages *[]any `json:"languages,omitempty"`
 	Name *string `json:"name,omitempty"`
 	Population *int `json:"population,omitempty"`
 	Surface *float64 `json:"surface,omitempty"`
@@ -92,7 +96,7 @@ type CountryListMatch struct {
 	Currency *string `json:"currency,omitempty"`
 	Flag *string `json:"flag,omitempty"`
 	Id *int `json:"id,omitempty"`
-	Language *[]any `json:"language,omitempty"`
+	Languages *[]any `json:"languages,omitempty"`
 	Name *string `json:"name,omitempty"`
 	Population *int `json:"population,omitempty"`
 	Surface *float64 `json:"surface,omitempty"`
@@ -100,13 +104,13 @@ type CountryListMatch struct {
 
 // Department is the typed data model for the department entity.
 type Department struct {
-	CityCapital *string `json:"city_capital,omitempty"`
+	CityCapital *string `json:"cityCapital,omitempty"`
 	Description *string `json:"description,omitempty"`
 	Id *int `json:"id,omitempty"`
-	Municipality *int `json:"municipality,omitempty"`
+	Municipalities *int `json:"municipalities,omitempty"`
 	Name *string `json:"name,omitempty"`
 	Population *int `json:"population,omitempty"`
-	RegionId *int `json:"region_id,omitempty"`
+	RegionId *int `json:"regionId,omitempty"`
 	Surface *float64 `json:"surface,omitempty"`
 }
 
@@ -117,13 +121,13 @@ type DepartmentLoadMatch struct {
 
 // DepartmentListMatch is the typed request payload for Department.ListTyped.
 type DepartmentListMatch struct {
-	CityCapital *string `json:"city_capital,omitempty"`
+	CityCapital *string `json:"cityCapital,omitempty"`
 	Description *string `json:"description,omitempty"`
 	Id *int `json:"id,omitempty"`
-	Municipality *int `json:"municipality,omitempty"`
+	Municipalities *int `json:"municipalities,omitempty"`
 	Name *string `json:"name,omitempty"`
 	Population *int `json:"population,omitempty"`
-	RegionId *int `json:"region_id,omitempty"`
+	RegionId *int `json:"regionId,omitempty"`
 	Surface *float64 `json:"surface,omitempty"`
 }
 
@@ -156,8 +160,8 @@ type InvasiveSpecie struct {
 	Impact *string `json:"impact,omitempty"`
 	Manage *string `json:"manage,omitempty"`
 	Name *string `json:"name,omitempty"`
-	ScientificName *string `json:"scientific_name,omitempty"`
-	UrlImage *string `json:"url_image,omitempty"`
+	ScientificName *string `json:"scientificName,omitempty"`
+	UrlImage *string `json:"urlImage,omitempty"`
 }
 
 // InvasiveSpecieLoadMatch is the typed request payload for InvasiveSpecie.LoadTyped.
@@ -171,31 +175,31 @@ type InvasiveSpecieListMatch struct {
 	Impact *string `json:"impact,omitempty"`
 	Manage *string `json:"manage,omitempty"`
 	Name *string `json:"name,omitempty"`
-	ScientificName *string `json:"scientific_name,omitempty"`
-	UrlImage *string `json:"url_image,omitempty"`
+	ScientificName *string `json:"scientificName,omitempty"`
+	UrlImage *string `json:"urlImage,omitempty"`
 }
 
 // Map is the typed data model for the map entity.
 type Map struct {
-	DepartmentId *int `json:"department_id,omitempty"`
+	DepartmentId *int `json:"departmentId,omitempty"`
 	Description *string `json:"description,omitempty"`
 	Id *int `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
-	UrlImage *[]any `json:"url_image,omitempty"`
+	UrlImages *[]any `json:"urlImages,omitempty"`
 }
 
 // MapListMatch is the typed request payload for Map.ListTyped.
 type MapListMatch struct {
-	DepartmentId *int `json:"department_id,omitempty"`
+	DepartmentId *int `json:"departmentId,omitempty"`
 	Description *string `json:"description,omitempty"`
 	Id *int `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
-	UrlImage *[]any `json:"url_image,omitempty"`
+	UrlImages *[]any `json:"urlImages,omitempty"`
 }
 
 // NativeCommunity is the typed data model for the native_community entity.
 type NativeCommunity struct {
-	DepartmentId *int `json:"department_id,omitempty"`
+	DepartmentId *int `json:"departmentId,omitempty"`
 	Description *string `json:"description,omitempty"`
 	Id *int `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
@@ -209,7 +213,7 @@ type NativeCommunityLoadMatch struct {
 
 // NativeCommunityListMatch is the typed request payload for NativeCommunity.ListTyped.
 type NativeCommunityListMatch struct {
-	DepartmentId *int `json:"department_id,omitempty"`
+	DepartmentId *int `json:"departmentId,omitempty"`
 	Description *string `json:"description,omitempty"`
 	Id *int `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
@@ -218,13 +222,13 @@ type NativeCommunityListMatch struct {
 
 // NaturalArea is the typed data model for the natural_area entity.
 type NaturalArea struct {
-	AreaGroupId *int `json:"area_group_id,omitempty"`
-	CategoryNaturalAreaId *int `json:"category_natural_area_id,omitempty"`
-	DepartmentId *int `json:"department_id,omitempty"`
+	AreaGroupId *int `json:"areaGroupId,omitempty"`
+	CategoryNaturalAreaId *int `json:"categoryNaturalAreaId,omitempty"`
+	DepartmentId *int `json:"departmentId,omitempty"`
 	Description *string `json:"description,omitempty"`
 	Id *int `json:"id,omitempty"`
-	LandArea *float64 `json:"land_area,omitempty"`
-	MaritimeArea *float64 `json:"maritime_area,omitempty"`
+	LandArea *float64 `json:"landArea,omitempty"`
+	MaritimeArea *float64 `json:"maritimeArea,omitempty"`
 	Name *string `json:"name,omitempty"`
 }
 
@@ -235,25 +239,25 @@ type NaturalAreaLoadMatch struct {
 
 // NaturalAreaListMatch is the typed request payload for NaturalArea.ListTyped.
 type NaturalAreaListMatch struct {
-	AreaGroupId *int `json:"area_group_id,omitempty"`
-	CategoryNaturalAreaId *int `json:"category_natural_area_id,omitempty"`
-	DepartmentId *int `json:"department_id,omitempty"`
+	AreaGroupId *int `json:"areaGroupId,omitempty"`
+	CategoryNaturalAreaId *int `json:"categoryNaturalAreaId,omitempty"`
+	DepartmentId *int `json:"departmentId,omitempty"`
 	Description *string `json:"description,omitempty"`
 	Id *int `json:"id,omitempty"`
-	LandArea *float64 `json:"land_area,omitempty"`
-	MaritimeArea *float64 `json:"maritime_area,omitempty"`
+	LandArea *float64 `json:"landArea,omitempty"`
+	MaritimeArea *float64 `json:"maritimeArea,omitempty"`
 	Name *string `json:"name,omitempty"`
 }
 
 // President is the typed data model for the president entity.
 type President struct {
 	Description *string `json:"description,omitempty"`
-	EndPeriodDate *string `json:"end_period_date,omitempty"`
+	EndPeriodDate *string `json:"endPeriodDate,omitempty"`
 	Id *int `json:"id,omitempty"`
 	Image *string `json:"image,omitempty"`
 	Name *string `json:"name,omitempty"`
-	PoliticalParty *string `json:"political_party,omitempty"`
-	StartPeriodDate *string `json:"start_period_date,omitempty"`
+	PoliticalParty *string `json:"politicalParty,omitempty"`
+	StartPeriodDate *string `json:"startPeriodDate,omitempty"`
 }
 
 // PresidentLoadMatch is the typed request payload for President.LoadTyped.
@@ -264,12 +268,12 @@ type PresidentLoadMatch struct {
 // PresidentListMatch is the typed request payload for President.ListTyped.
 type PresidentListMatch struct {
 	Description *string `json:"description,omitempty"`
-	EndPeriodDate *string `json:"end_period_date,omitempty"`
+	EndPeriodDate *string `json:"endPeriodDate,omitempty"`
 	Id *int `json:"id,omitempty"`
 	Image *string `json:"image,omitempty"`
 	Name *string `json:"name,omitempty"`
-	PoliticalParty *string `json:"political_party,omitempty"`
-	StartPeriodDate *string `json:"start_period_date,omitempty"`
+	PoliticalParty *string `json:"politicalParty,omitempty"`
+	StartPeriodDate *string `json:"startPeriodDate,omitempty"`
 }
 
 // Radio is the typed data model for the radio entity.
@@ -297,7 +301,7 @@ type RadioListMatch struct {
 
 // Region is the typed data model for the region entity.
 type Region struct {
-	Department *[]any `json:"department,omitempty"`
+	Departments *[]any `json:"departments,omitempty"`
 	Description *string `json:"description,omitempty"`
 	Id *int `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
@@ -310,7 +314,7 @@ type RegionLoadMatch struct {
 
 // RegionListMatch is the typed request payload for Region.ListTyped.
 type RegionListMatch struct {
-	Department *[]any `json:"department,omitempty"`
+	Departments *[]any `json:"departments,omitempty"`
 	Description *string `json:"description,omitempty"`
 	Id *int `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
@@ -321,7 +325,7 @@ type TouristicAttraction struct {
 	City *string `json:"city,omitempty"`
 	Description *string `json:"description,omitempty"`
 	Id *int `json:"id,omitempty"`
-	Image *[]any `json:"image,omitempty"`
+	Images *[]any `json:"images,omitempty"`
 	Latitude *float64 `json:"latitude,omitempty"`
 	Longitude *float64 `json:"longitude,omitempty"`
 	Name *string `json:"name,omitempty"`
@@ -337,7 +341,7 @@ type TouristicAttractionListMatch struct {
 	City *string `json:"city,omitempty"`
 	Description *string `json:"description,omitempty"`
 	Id *int `json:"id,omitempty"`
-	Image *[]any `json:"image,omitempty"`
+	Images *[]any `json:"images,omitempty"`
 	Latitude *float64 `json:"latitude,omitempty"`
 	Longitude *float64 `json:"longitude,omitempty"`
 	Name *string `json:"name,omitempty"`
@@ -345,12 +349,12 @@ type TouristicAttractionListMatch struct {
 
 // TypicalDish is the typed data model for the typical_dish entity.
 type TypicalDish struct {
-	DepartmentId *int `json:"department_id,omitempty"`
+	DepartmentId *int `json:"departmentId,omitempty"`
 	Description *string `json:"description,omitempty"`
 	Id *int `json:"id,omitempty"`
-	Ingredient *[]any `json:"ingredient,omitempty"`
+	Ingredients *[]any `json:"ingredients,omitempty"`
 	Name *string `json:"name,omitempty"`
-	UrlImage *string `json:"url_image,omitempty"`
+	UrlImage *string `json:"urlImage,omitempty"`
 }
 
 // TypicalDishLoadMatch is the typed request payload for TypicalDish.LoadTyped.
@@ -360,12 +364,12 @@ type TypicalDishLoadMatch struct {
 
 // TypicalDishListMatch is the typed request payload for TypicalDish.ListTyped.
 type TypicalDishListMatch struct {
-	DepartmentId *int `json:"department_id,omitempty"`
+	DepartmentId *int `json:"departmentId,omitempty"`
 	Description *string `json:"description,omitempty"`
 	Id *int `json:"id,omitempty"`
-	Ingredient *[]any `json:"ingredient,omitempty"`
+	Ingredients *[]any `json:"ingredients,omitempty"`
 	Name *string `json:"name,omitempty"`
-	UrlImage *string `json:"url_image,omitempty"`
+	UrlImage *string `json:"urlImage,omitempty"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the
@@ -380,12 +384,26 @@ func asMap(v any) map[string]any {
 	return out
 }
 
-// typedFrom decodes a runtime value (a map[string]any produced by the op
-// pipeline) into a typed model T via a JSON round-trip. On any error it
-// returns the zero value of T; the op's own (value, error) tuple carries the
-// real error.
+// entityData unwraps an entity to its data map.
+//
+// Operations resolve to the ENTITY, not the raw data (see AGENTS.md), and an
+// entity's fields are UNEXPORTED — marshalling one directly yields `{}`, so
+// every typed accessor would silently hand back a zero-valued struct. The
+// typed boundary therefore takes the data hop first.
+func entityData(v any) any {
+	if ent, ok := v.(core.Entity); ok {
+		return ent.Data()
+	}
+	return v
+}
+
+// typedFrom decodes a runtime value (an entity, or the map[string]any the op
+// pipeline produced) into a typed model T via a JSON round-trip. On any error
+// it returns the zero value of T; the op's own (value, error) tuple carries
+// the real error.
 func typedFrom[T any](v any) T {
 	var out T
+	v = entityData(v)
 	if v == nil {
 		return out
 	}
@@ -397,12 +415,20 @@ func typedFrom[T any](v any) T {
 	return out
 }
 
-// typedSliceFrom decodes a runtime list value ([]any of maps) into a typed
-// slice []T via a JSON round-trip, for list ops.
+// typedSliceFrom decodes a runtime list value into a typed slice []T via a
+// JSON round-trip, for list ops. `list` resolves to a slice of ENTITY
+// instances, so each element takes the data hop.
 func typedSliceFrom[T any](v any) []T {
 	var out []T
 	if v == nil {
 		return out
+	}
+	if list, ok := v.([]any); ok {
+		unwrapped := make([]any, 0, len(list))
+		for _, item := range list {
+			unwrapped = append(unwrapped, entityData(item))
+		}
+		v = unwrapped
 	}
 	b, err := json.Marshal(v)
 	if err != nil {

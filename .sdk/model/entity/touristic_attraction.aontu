@@ -21,7 +21,7 @@ main: kit: entity: touristic_attraction: {
       type: "`$INTEGER`"
     }
     {
-      name: "image"
+      name: "images"
       req: false
       type: "`$ARRAY`"
     }

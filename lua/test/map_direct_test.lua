@@ -61,11 +61,11 @@ function map_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["COLOMBIAPUBLIC_TEST_MAP_ENTID"] = {},
-    ["COLOMBIAPUBLIC_TEST_LIVE"] = "FALSE",
+    ["COLOMBIA_PUBLIC_TEST_MAP_ENTID"] = {},
+    ["COLOMBIA_PUBLIC_TEST_LIVE"] = "FALSE",
   })
 
-  local live = env["COLOMBIAPUBLIC_TEST_LIVE"] == "TRUE"
+  local live = env["COLOMBIA_PUBLIC_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {

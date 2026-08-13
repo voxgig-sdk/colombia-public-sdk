@@ -33,6 +33,7 @@ guide: {
     path: "/Country/Colombia": {
       action: "colombia": {}
       op: list: method: *GET
+      op: list: transform: res: *("`body.languages`")|top
     }
   }
 

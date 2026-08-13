@@ -6,7 +6,7 @@ main: kit: entity: native_community: {
 
   fields: [
     {
-      name: "department_id"
+      name: "departmentId"
       req: false
       type: "`$INTEGER`"
     }

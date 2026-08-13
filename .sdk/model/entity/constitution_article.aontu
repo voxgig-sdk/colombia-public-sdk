@@ -6,7 +6,7 @@ main: kit: entity: constitution_article: {
 
   fields: [
     {
-      name: "article_number"
+      name: "articleNumber"
       req: false
       type: "`$INTEGER`"
     }

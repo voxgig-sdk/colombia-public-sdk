@@ -143,9 +143,9 @@ airport = client.Airport()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `city_id` | `int` | No |  |
+| `cityId` | `int` | No |  |
 | `code` | `str` | No |  |
-| `department_id` | `int` | No |  |
+| `departmentId` | `int` | No |  |
 | `id` | `int` | No |  |
 | `latitude` | `float` | No |  |
 | `longitude` | `float` | No |  |
@@ -266,7 +266,7 @@ constitution_article = client.ConstitutionArticle()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `article_number` | `int` | No |  |
+| `articleNumber` | `int` | No |  |
 | `chapter` | `str` | No |  |
 | `description` | `str` | No |  |
 | `id` | `int` | No |  |
@@ -335,7 +335,7 @@ country = client.Country()
 | `currency` | `str` | No |  |
 | `flag` | `str` | No |  |
 | `id` | `int` | No |  |
-| `language` | `list` | No |  |
+| `languages` | `list` | No |  |
 | `name` | `str` | No |  |
 | `population` | `int` | No |  |
 | `surface` | `float` | No |  |
@@ -391,13 +391,13 @@ department = client.Department()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `city_capital` | `str` | No |  |
+| `cityCapital` | `str` | No |  |
 | `description` | `str` | No |  |
 | `id` | `int` | No |  |
-| `municipality` | `int` | No |  |
+| `municipalities` | `int` | No |  |
 | `name` | `str` | No |  |
 | `population` | `int` | No |  |
-| `region_id` | `int` | No |  |
+| `regionId` | `int` | No |  |
 | `surface` | `float` | No |  |
 
 ### Operations
@@ -528,8 +528,8 @@ invasive_specie = client.InvasiveSpecie()
 | `impact` | `str` | No |  |
 | `manage` | `str` | No |  |
 | `name` | `str` | No |  |
-| `scientific_name` | `str` | No |  |
-| `url_image` | `str` | No |  |
+| `scientificName` | `str` | No |  |
+| `urlImage` | `str` | No |  |
 
 ### Operations
 
@@ -590,11 +590,11 @@ map = client.Map()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `department_id` | `int` | No |  |
+| `departmentId` | `int` | No |  |
 | `description` | `str` | No |  |
 | `id` | `int` | No |  |
 | `name` | `str` | No |  |
-| `url_image` | `list` | No |  |
+| `urlImages` | `list` | No |  |
 
 ### Operations
 
@@ -647,7 +647,7 @@ native_community = client.NativeCommunity()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `department_id` | `int` | No |  |
+| `departmentId` | `int` | No |  |
 | `description` | `str` | No |  |
 | `id` | `int` | No |  |
 | `name` | `str` | No |  |
@@ -712,13 +712,13 @@ natural_area = client.NaturalArea()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `area_group_id` | `int` | No |  |
-| `category_natural_area_id` | `int` | No |  |
-| `department_id` | `int` | No |  |
+| `areaGroupId` | `int` | No |  |
+| `categoryNaturalAreaId` | `int` | No |  |
+| `departmentId` | `int` | No |  |
 | `description` | `str` | No |  |
 | `id` | `int` | No |  |
-| `land_area` | `float` | No |  |
-| `maritime_area` | `float` | No |  |
+| `landArea` | `float` | No |  |
+| `maritimeArea` | `float` | No |  |
 | `name` | `str` | No |  |
 
 ### Operations
@@ -781,12 +781,12 @@ president = client.President()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `description` | `str` | No |  |
-| `end_period_date` | `str` | No |  |
+| `endPeriodDate` | `str` | No |  |
 | `id` | `int` | No |  |
 | `image` | `str` | No |  |
 | `name` | `str` | No |  |
-| `political_party` | `str` | No |  |
-| `start_period_date` | `str` | No |  |
+| `politicalParty` | `str` | No |  |
+| `startPeriodDate` | `str` | No |  |
 
 ### Operations
 
@@ -912,7 +912,7 @@ region = client.Region()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `department` | `list` | No |  |
+| `departments` | `list` | No |  |
 | `description` | `str` | No |  |
 | `id` | `int` | No |  |
 | `name` | `str` | No |  |
@@ -979,7 +979,7 @@ touristic_attraction = client.TouristicAttraction()
 | `city` | `str` | No |  |
 | `description` | `str` | No |  |
 | `id` | `int` | No |  |
-| `image` | `list` | No |  |
+| `images` | `list` | No |  |
 | `latitude` | `float` | No |  |
 | `longitude` | `float` | No |  |
 | `name` | `str` | No |  |
@@ -1043,12 +1043,12 @@ typical_dish = client.TypicalDish()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `department_id` | `int` | No |  |
+| `departmentId` | `int` | No |  |
 | `description` | `str` | No |  |
 | `id` | `int` | No |  |
-| `ingredient` | `list` | No |  |
+| `ingredients` | `list` | No |  |
 | `name` | `str` | No |  |
-| `url_image` | `str` | No |  |
+| `urlImage` | `str` | No |  |
 
 ### Operations
 

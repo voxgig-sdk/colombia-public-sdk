@@ -35,7 +35,9 @@ const client = new ColombiaPublicSDK()
 
 ### 2. List airport records
 
-`list()` resolves to an array of Airport objects — iterate it directly:
+`list()` resolves to an array of Airport ENTITIES — every operation
+resolves to entities, not raw records. Iterate them directly, and call
+`.data()` on one for the record it holds:
 
 ```ts
 const airports = await client.Airport().list()
@@ -65,8 +67,8 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const airports = await client.Airport().list()
-  console.log(airports)
+  const typicaldishs = await client.TypicalDish().list()
+  console.log(typicaldishs)
 } catch (err) {
   console.error('list failed:', err)
 }
@@ -132,9 +134,10 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = ColombiaPublicSDK.test()
 
-const airport = await client.Airport().list()
-// airport is a bare entity populated with mock response data
-console.log(airport)
+const typicaldish = await client.TypicalDish().list()
+// typicaldish is the entity, populated with mock response data
+// — call typicaldish.data() for the record itself
+console.log(typicaldish)
 ```
 
 You can also use the instance method:
@@ -149,7 +152,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Airport()
+const entity = client.TypicalDish()
 
 // First call runs the operation and stores its result
 await entity.list()
@@ -313,9 +316,9 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `city_id` |  |
+| `cityId` |  |
 | `code` |  |
-| `department_id` |  |
+| `departmentId` |  |
 | `id` |  |
 | `latitude` |  |
 | `longitude` |  |
@@ -342,7 +345,7 @@ API path: `/CategoryNaturalArea`
 
 | Field | Description |
 | --- | --- |
-| `article_number` |  |
+| `articleNumber` |  |
 | `chapter` |  |
 | `description` |  |
 | `id` |  |
@@ -360,7 +363,7 @@ API path: `/ConstitutionArticle`
 | `currency` |  |
 | `flag` |  |
 | `id` |  |
-| `language` |  |
+| `languages` |  |
 | `name` |  |
 | `population` |  |
 | `surface` |  |
@@ -373,13 +376,13 @@ API path: `/Country/Colombia`
 
 | Field | Description |
 | --- | --- |
-| `city_capital` |  |
+| `cityCapital` |  |
 | `description` |  |
 | `id` |  |
-| `municipality` |  |
+| `municipalities` |  |
 | `name` |  |
 | `population` |  |
-| `region_id` |  |
+| `regionId` |  |
 | `surface` |  |
 
 Operations: list, load.
@@ -408,8 +411,8 @@ API path: `/Holiday`
 | `impact` |  |
 | `manage` |  |
 | `name` |  |
-| `scientific_name` |  |
-| `url_image` |  |
+| `scientificName` |  |
+| `urlImage` |  |
 
 Operations: list, load.
 
@@ -419,11 +422,11 @@ API path: `/InvasiveSpecie`
 
 | Field | Description |
 | --- | --- |
-| `department_id` |  |
+| `departmentId` |  |
 | `description` |  |
 | `id` |  |
 | `name` |  |
-| `url_image` |  |
+| `urlImages` |  |
 
 Operations: list.
 
@@ -433,7 +436,7 @@ API path: `/Map`
 
 | Field | Description |
 | --- | --- |
-| `department_id` |  |
+| `departmentId` |  |
 | `description` |  |
 | `id` |  |
 | `name` |  |
@@ -447,13 +450,13 @@ API path: `/NativeCommunity`
 
 | Field | Description |
 | --- | --- |
-| `area_group_id` |  |
-| `category_natural_area_id` |  |
-| `department_id` |  |
+| `areaGroupId` |  |
+| `categoryNaturalAreaId` |  |
+| `departmentId` |  |
 | `description` |  |
 | `id` |  |
-| `land_area` |  |
-| `maritime_area` |  |
+| `landArea` |  |
+| `maritimeArea` |  |
 | `name` |  |
 
 Operations: list, load.
@@ -465,12 +468,12 @@ API path: `/NaturalArea`
 | Field | Description |
 | --- | --- |
 | `description` |  |
-| `end_period_date` |  |
+| `endPeriodDate` |  |
 | `id` |  |
 | `image` |  |
 | `name` |  |
-| `political_party` |  |
-| `start_period_date` |  |
+| `politicalParty` |  |
+| `startPeriodDate` |  |
 
 Operations: list, load.
 
@@ -494,7 +497,7 @@ API path: `/Radio`
 
 | Field | Description |
 | --- | --- |
-| `department` |  |
+| `departments` |  |
 | `description` |  |
 | `id` |  |
 | `name` |  |
@@ -510,7 +513,7 @@ API path: `/Region`
 | `city` |  |
 | `description` |  |
 | `id` |  |
-| `image` |  |
+| `images` |  |
 | `latitude` |  |
 | `longitude` |  |
 | `name` |  |
@@ -523,12 +526,12 @@ API path: `/TouristicAttraction`
 
 | Field | Description |
 | --- | --- |
-| `department_id` |  |
+| `departmentId` |  |
 | `description` |  |
 | `id` |  |
-| `ingredient` |  |
+| `ingredients` |  |
 | `name` |  |
-| `url_image` |  |
+| `urlImage` |  |
 
 Operations: list, load.
 
@@ -554,9 +557,9 @@ Create an instance: `const airport = client.Airport()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `city_id` | `number` |  |
+| `cityId` | `number` |  |
 | `code` | `string` |  |
-| `department_id` | `number` |  |
+| `departmentId` | `number` |  |
 | `id` | `number` |  |
 | `latitude` | `number` |  |
 | `longitude` | `number` |  |
@@ -616,7 +619,7 @@ Create an instance: `const constitution_article = client.ConstitutionArticle()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `article_number` | `number` |  |
+| `articleNumber` | `number` |  |
 | `chapter` | `string` |  |
 | `description` | `string` |  |
 | `id` | `number` |  |
@@ -653,7 +656,7 @@ Create an instance: `const country = client.Country()`
 | `currency` | `string` |  |
 | `flag` | `string` |  |
 | `id` | `number` |  |
-| `language` | `any[]` |  |
+| `languages` | `any[]` |  |
 | `name` | `string` |  |
 | `population` | `number` |  |
 | `surface` | `number` |  |
@@ -680,13 +683,13 @@ Create an instance: `const department = client.Department()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `city_capital` | `string` |  |
+| `cityCapital` | `string` |  |
 | `description` | `string` |  |
 | `id` | `number` |  |
-| `municipality` | `number` |  |
+| `municipalities` | `number` |  |
 | `name` | `string` |  |
 | `population` | `number` |  |
-| `region_id` | `number` |  |
+| `regionId` | `number` |  |
 | `surface` | `number` |  |
 
 #### Example: Load
@@ -755,8 +758,8 @@ Create an instance: `const invasive_specie = client.InvasiveSpecie()`
 | `impact` | `string` |  |
 | `manage` | `string` |  |
 | `name` | `string` |  |
-| `scientific_name` | `string` |  |
-| `url_image` | `string` |  |
+| `scientificName` | `string` |  |
+| `urlImage` | `string` |  |
 
 #### Example: Load
 
@@ -785,11 +788,11 @@ Create an instance: `const map = client.Map()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `department_id` | `number` |  |
+| `departmentId` | `number` |  |
 | `description` | `string` |  |
 | `id` | `number` |  |
 | `name` | `string` |  |
-| `url_image` | `any[]` |  |
+| `urlImages` | `any[]` |  |
 
 #### Example: List
 
@@ -813,7 +816,7 @@ Create an instance: `const native_community = client.NativeCommunity()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `department_id` | `number` |  |
+| `departmentId` | `number` |  |
 | `description` | `string` |  |
 | `id` | `number` |  |
 | `name` | `string` |  |
@@ -847,13 +850,13 @@ Create an instance: `const natural_area = client.NaturalArea()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `area_group_id` | `number` |  |
-| `category_natural_area_id` | `number` |  |
-| `department_id` | `number` |  |
+| `areaGroupId` | `number` |  |
+| `categoryNaturalAreaId` | `number` |  |
+| `departmentId` | `number` |  |
 | `description` | `string` |  |
 | `id` | `number` |  |
-| `land_area` | `number` |  |
-| `maritime_area` | `number` |  |
+| `landArea` | `number` |  |
+| `maritimeArea` | `number` |  |
 | `name` | `string` |  |
 
 #### Example: Load
@@ -885,12 +888,12 @@ Create an instance: `const president = client.President()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `description` | `string` |  |
-| `end_period_date` | `string` |  |
+| `endPeriodDate` | `string` |  |
 | `id` | `number` |  |
 | `image` | `string` |  |
 | `name` | `string` |  |
-| `political_party` | `string` |  |
-| `start_period_date` | `string` |  |
+| `politicalParty` | `string` |  |
+| `startPeriodDate` | `string` |  |
 
 #### Example: Load
 
@@ -954,7 +957,7 @@ Create an instance: `const region = client.Region()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `department` | `any[]` |  |
+| `departments` | `any[]` |  |
 | `description` | `string` |  |
 | `id` | `number` |  |
 | `name` | `string` |  |
@@ -990,7 +993,7 @@ Create an instance: `const touristic_attraction = client.TouristicAttraction()`
 | `city` | `string` |  |
 | `description` | `string` |  |
 | `id` | `number` |  |
-| `image` | `any[]` |  |
+| `images` | `any[]` |  |
 | `latitude` | `number` |  |
 | `longitude` | `number` |  |
 | `name` | `string` |  |
@@ -1023,12 +1026,12 @@ Create an instance: `const typical_dish = client.TypicalDish()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `department_id` | `number` |  |
+| `departmentId` | `number` |  |
 | `description` | `string` |  |
 | `id` | `number` |  |
-| `ingredient` | `any[]` |  |
+| `ingredients` | `any[]` |  |
 | `name` | `string` |  |
-| `url_image` | `string` |  |
+| `urlImage` | `string` |  |
 
 #### Example: Load
 
@@ -1112,11 +1115,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const airport = client.Airport()
-await airport.list()
+const typicaldish = client.TypicalDish()
+await typicaldish.list()
 
-// airport.data() now returns the airport data from the last `list`
-// airport.match() returns the last match criteria
+// typicaldish.data() now returns the typicaldish data from the last `list`
+// typicaldish.match() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

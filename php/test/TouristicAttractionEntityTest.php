@@ -72,7 +72,7 @@ class TouristicAttractionEntityTest extends TestCase
         // The basic flow consumes synthetic IDs from the fixture. In live mode
         // without an *_ENTID env override, those IDs hit the live API and 4xx.
         if (!empty($setup["synthetic_only"])) {
-            $this->markTestSkipped("live entity test uses synthetic IDs from fixture — set COLOMBIAPUBLIC_TEST_TOURISTIC_ATTRACTION_ENTID JSON to run live");
+            $this->markTestSkipped("live entity test uses synthetic IDs from fixture — set COLOMBIA_PUBLIC_TEST_TOURISTIC_ATTRACTION_ENTID JSON to run live");
             return;
         }
         $client = $setup["client"];
@@ -97,7 +97,7 @@ class TouristicAttractionEntityTest extends TestCase
             "id" => $touristic_attraction_ref01_data["id"],
         ];
         $touristic_attraction_ref01_data_dt0_loaded = $touristic_attraction_ref01_ent->load($touristic_attraction_ref01_match_dt0, null);
-        $touristic_attraction_ref01_data_dt0_load_result = Helpers::to_map($touristic_attraction_ref01_data_dt0_loaded);
+        $touristic_attraction_ref01_data_dt0_load_result = Helpers::to_map(is_object($touristic_attraction_ref01_data_dt0_loaded) && method_exists($touristic_attraction_ref01_data_dt0_loaded, 'data_get') ? $touristic_attraction_ref01_data_dt0_loaded->data_get() : $touristic_attraction_ref01_data_dt0_loaded);
         $this->assertNotNull($touristic_attraction_ref01_data_dt0_load_result);
         $this->assertEquals($touristic_attraction_ref01_data_dt0_load_result["id"], $touristic_attraction_ref01_data["id"]);
 
@@ -126,22 +126,22 @@ function touristic_attraction_basic_setup($extra)
     // Detect ENTID env override before envOverride consumes it. When live
     // mode is on without a real override, the basic test runs against synthetic
     // IDs from the fixture and 4xx's. Surface this so the test can skip.
-    $entid_env_raw = getenv("COLOMBIAPUBLIC_TEST_TOURISTIC_ATTRACTION_ENTID");
+    $entid_env_raw = getenv("COLOMBIA_PUBLIC_TEST_TOURISTIC_ATTRACTION_ENTID");
     $idmap_overridden = $entid_env_raw !== false && str_starts_with(trim($entid_env_raw), "{");
 
     $env = Runner::env_override([
-        "COLOMBIAPUBLIC_TEST_TOURISTIC_ATTRACTION_ENTID" => $idmap,
-        "COLOMBIAPUBLIC_TEST_LIVE" => "FALSE",
-        "COLOMBIAPUBLIC_TEST_EXPLAIN" => "FALSE",
+        "COLOMBIA_PUBLIC_TEST_TOURISTIC_ATTRACTION_ENTID" => $idmap,
+        "COLOMBIA_PUBLIC_TEST_LIVE" => "FALSE",
+        "COLOMBIA_PUBLIC_TEST_EXPLAIN" => "FALSE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
-        $env["COLOMBIAPUBLIC_TEST_TOURISTIC_ATTRACTION_ENTID"]);
+        $env["COLOMBIA_PUBLIC_TEST_TOURISTIC_ATTRACTION_ENTID"]);
     if ($idmap_resolved === null) {
         $idmap_resolved = Helpers::to_map($idmap);
     }
 
-    if ($env["COLOMBIAPUBLIC_TEST_LIVE"] === "TRUE") {
+    if ($env["COLOMBIA_PUBLIC_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
             ],
@@ -150,13 +150,13 @@ function touristic_attraction_basic_setup($extra)
         $client = new ColombiaPublicSDK(Helpers::to_map($merged_opts));
     }
 
-    $live = $env["COLOMBIAPUBLIC_TEST_LIVE"] === "TRUE";
+    $live = $env["COLOMBIA_PUBLIC_TEST_LIVE"] === "TRUE";
     return [
         "client" => $client,
         "data" => $entity_data,
         "idmap" => $idmap_resolved,
         "env" => $env,
-        "explain" => $env["COLOMBIAPUBLIC_TEST_EXPLAIN"] === "TRUE",
+        "explain" => $env["COLOMBIA_PUBLIC_TEST_EXPLAIN"] === "TRUE",
         "live" => $live,
         "synthetic_only" => $live && !$idmap_overridden,
         "now" => (int)(microtime(true) * 1000),

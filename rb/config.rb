@@ -41,7 +41,7 @@ module ColombiaPublicConfig
           "fields" => [
             {
               "active" => true,
-              "name" => "city_id",
+              "name" => "cityId",
               "req" => false,
               "type" => "`$INTEGER`",
               "index$" => 0,
@@ -55,7 +55,7 @@ module ColombiaPublicConfig
             },
             {
               "active" => true,
-              "name" => "department_id",
+              "name" => "departmentId",
               "req" => false,
               "type" => "`$INTEGER`",
               "index$" => 2,
@@ -105,6 +105,7 @@ module ColombiaPublicConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/Airport",
                   "parts" => [
@@ -139,6 +140,7 @@ module ColombiaPublicConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/Airport/{id}",
                   "parts" => [
@@ -197,6 +199,7 @@ module ColombiaPublicConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/CategoryNaturalArea",
                   "parts" => [
@@ -221,7 +224,7 @@ module ColombiaPublicConfig
           "fields" => [
             {
               "active" => true,
-              "name" => "article_number",
+              "name" => "articleNumber",
               "req" => false,
               "type" => "`$INTEGER`",
               "index$" => 0,
@@ -264,6 +267,7 @@ module ColombiaPublicConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/ConstitutionArticle",
                   "parts" => [
@@ -298,6 +302,7 @@ module ColombiaPublicConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/ConstitutionArticle/{id}",
                   "parts" => [
@@ -355,7 +360,7 @@ module ColombiaPublicConfig
             },
             {
               "active" => true,
-              "name" => "language",
+              "name" => "languages",
               "req" => false,
               "type" => "`$ARRAY`",
               "index$" => 4,
@@ -391,6 +396,7 @@ module ColombiaPublicConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/Country/Colombia",
                   "parts" => [
@@ -402,7 +408,7 @@ module ColombiaPublicConfig
                   },
                   "transform" => {
                     "req" => "`reqdata`",
-                    "res" => "`body`",
+                    "res" => "`body.languages`",
                   },
                   "index$" => 0,
                 },
@@ -418,7 +424,7 @@ module ColombiaPublicConfig
           "fields" => [
             {
               "active" => true,
-              "name" => "city_capital",
+              "name" => "cityCapital",
               "req" => false,
               "type" => "`$STRING`",
               "index$" => 0,
@@ -439,7 +445,7 @@ module ColombiaPublicConfig
             },
             {
               "active" => true,
-              "name" => "municipality",
+              "name" => "municipalities",
               "req" => false,
               "type" => "`$INTEGER`",
               "index$" => 3,
@@ -460,7 +466,7 @@ module ColombiaPublicConfig
             },
             {
               "active" => true,
-              "name" => "region_id",
+              "name" => "regionId",
               "req" => false,
               "type" => "`$INTEGER`",
               "index$" => 6,
@@ -482,6 +488,7 @@ module ColombiaPublicConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/Department",
                   "parts" => [
@@ -516,6 +523,7 @@ module ColombiaPublicConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/Department/{id}",
                   "parts" => [
@@ -588,6 +596,7 @@ module ColombiaPublicConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/Holiday",
                   "parts" => [
@@ -622,6 +631,7 @@ module ColombiaPublicConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/Holiday/{id}",
                   "parts" => [
@@ -679,14 +689,14 @@ module ColombiaPublicConfig
             },
             {
               "active" => true,
-              "name" => "scientific_name",
+              "name" => "scientificName",
               "req" => false,
               "type" => "`$STRING`",
               "index$" => 4,
             },
             {
               "active" => true,
-              "name" => "url_image",
+              "name" => "urlImage",
               "req" => false,
               "type" => "`$STRING`",
               "index$" => 5,
@@ -701,6 +711,7 @@ module ColombiaPublicConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/InvasiveSpecie",
                   "parts" => [
@@ -735,6 +746,7 @@ module ColombiaPublicConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/InvasiveSpecie/{id}",
                   "parts" => [
@@ -764,7 +776,7 @@ module ColombiaPublicConfig
           "fields" => [
             {
               "active" => true,
-              "name" => "department_id",
+              "name" => "departmentId",
               "req" => false,
               "type" => "`$INTEGER`",
               "index$" => 0,
@@ -792,7 +804,7 @@ module ColombiaPublicConfig
             },
             {
               "active" => true,
-              "name" => "url_image",
+              "name" => "urlImages",
               "req" => false,
               "type" => "`$ARRAY`",
               "index$" => 4,
@@ -807,6 +819,7 @@ module ColombiaPublicConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/Map",
                   "parts" => [
@@ -831,7 +844,7 @@ module ColombiaPublicConfig
           "fields" => [
             {
               "active" => true,
-              "name" => "department_id",
+              "name" => "departmentId",
               "req" => false,
               "type" => "`$INTEGER`",
               "index$" => 0,
@@ -874,6 +887,7 @@ module ColombiaPublicConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/NativeCommunity",
                   "parts" => [
@@ -908,6 +922,7 @@ module ColombiaPublicConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/NativeCommunity/{id}",
                   "parts" => [
@@ -937,21 +952,21 @@ module ColombiaPublicConfig
           "fields" => [
             {
               "active" => true,
-              "name" => "area_group_id",
+              "name" => "areaGroupId",
               "req" => false,
               "type" => "`$INTEGER`",
               "index$" => 0,
             },
             {
               "active" => true,
-              "name" => "category_natural_area_id",
+              "name" => "categoryNaturalAreaId",
               "req" => false,
               "type" => "`$INTEGER`",
               "index$" => 1,
             },
             {
               "active" => true,
-              "name" => "department_id",
+              "name" => "departmentId",
               "req" => false,
               "type" => "`$INTEGER`",
               "index$" => 2,
@@ -972,14 +987,14 @@ module ColombiaPublicConfig
             },
             {
               "active" => true,
-              "name" => "land_area",
+              "name" => "landArea",
               "req" => false,
               "type" => "`$NUMBER`",
               "index$" => 5,
             },
             {
               "active" => true,
-              "name" => "maritime_area",
+              "name" => "maritimeArea",
               "req" => false,
               "type" => "`$NUMBER`",
               "index$" => 6,
@@ -1001,6 +1016,7 @@ module ColombiaPublicConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/NaturalArea",
                   "parts" => [
@@ -1035,6 +1051,7 @@ module ColombiaPublicConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/NaturalArea/{id}",
                   "parts" => [
@@ -1071,7 +1088,7 @@ module ColombiaPublicConfig
             },
             {
               "active" => true,
-              "name" => "end_period_date",
+              "name" => "endPeriodDate",
               "req" => false,
               "type" => "`$STRING`",
               "index$" => 1,
@@ -1099,14 +1116,14 @@ module ColombiaPublicConfig
             },
             {
               "active" => true,
-              "name" => "political_party",
+              "name" => "politicalParty",
               "req" => false,
               "type" => "`$STRING`",
               "index$" => 5,
             },
             {
               "active" => true,
-              "name" => "start_period_date",
+              "name" => "startPeriodDate",
               "req" => false,
               "type" => "`$STRING`",
               "index$" => 6,
@@ -1121,6 +1138,7 @@ module ColombiaPublicConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/President",
                   "parts" => [
@@ -1155,6 +1173,7 @@ module ColombiaPublicConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/President/{id}",
                   "parts" => [
@@ -1227,6 +1246,7 @@ module ColombiaPublicConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/Radio",
                   "parts" => [
@@ -1261,6 +1281,7 @@ module ColombiaPublicConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/Radio/{id}",
                   "parts" => [
@@ -1290,7 +1311,7 @@ module ColombiaPublicConfig
           "fields" => [
             {
               "active" => true,
-              "name" => "department",
+              "name" => "departments",
               "req" => false,
               "type" => "`$ARRAY`",
               "index$" => 0,
@@ -1326,6 +1347,7 @@ module ColombiaPublicConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/Region",
                   "parts" => [
@@ -1360,6 +1382,7 @@ module ColombiaPublicConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/Region/{id}",
                   "parts" => [
@@ -1410,7 +1433,7 @@ module ColombiaPublicConfig
             },
             {
               "active" => true,
-              "name" => "image",
+              "name" => "images",
               "req" => false,
               "type" => "`$ARRAY`",
               "index$" => 3,
@@ -1446,6 +1469,7 @@ module ColombiaPublicConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/TouristicAttraction",
                   "parts" => [
@@ -1480,6 +1504,7 @@ module ColombiaPublicConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/TouristicAttraction/{id}",
                   "parts" => [
@@ -1509,7 +1534,7 @@ module ColombiaPublicConfig
           "fields" => [
             {
               "active" => true,
-              "name" => "department_id",
+              "name" => "departmentId",
               "req" => false,
               "type" => "`$INTEGER`",
               "index$" => 0,
@@ -1530,7 +1555,7 @@ module ColombiaPublicConfig
             },
             {
               "active" => true,
-              "name" => "ingredient",
+              "name" => "ingredients",
               "req" => false,
               "type" => "`$ARRAY`",
               "index$" => 3,
@@ -1544,7 +1569,7 @@ module ColombiaPublicConfig
             },
             {
               "active" => true,
-              "name" => "url_image",
+              "name" => "urlImage",
               "req" => false,
               "type" => "`$STRING`",
               "index$" => 5,
@@ -1559,6 +1584,7 @@ module ColombiaPublicConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/TypicalDish",
                   "parts" => [
@@ -1593,6 +1619,7 @@ module ColombiaPublicConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/TypicalDish/{id}",
                   "parts" => [

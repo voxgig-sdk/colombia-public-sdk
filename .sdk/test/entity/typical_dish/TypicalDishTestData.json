@@ -2,39 +2,39 @@
   "existing": {
     "typical_dish": {
       "TYPICAL_DISH00": {
-        "department_id": "DEPARTMENT01",
+        "departmentId": "s3c",
         "description": "s3d",
         "id": "TYPICAL_DISH00",
-        "ingredient": [],
+        "ingredients": [],
         "name": "s40",
-        "url_image": "s41"
+        "urlImage": "s41"
       },
       "TYPICAL_DISH01": {
-        "department_id": "DEPARTMENT01",
+        "departmentId": "s78",
         "description": "s79",
         "id": "TYPICAL_DISH01",
-        "ingredient": [],
+        "ingredients": [],
         "name": "s7c",
-        "url_image": "s7d"
+        "urlImage": "s7d"
       },
       "TYPICAL_DISH02": {
-        "department_id": "DEPARTMENT01",
+        "departmentId": "sb4",
         "description": "sb5",
         "id": "TYPICAL_DISH02",
-        "ingredient": [],
+        "ingredients": [],
         "name": "sb8",
-        "url_image": "sb9"
+        "urlImage": "sb9"
       }
     }
   },
   "new": {
     "typical_dish": {
       "typical_dish_ref01": {
-        "department_id": "DEPARTMENT01",
+        "departmentId": "sf0",
         "description": "sf1",
-        "ingredient": [],
+        "ingredients": [],
         "name": "sf4",
-        "url_image": "sf5"
+        "urlImage": "sf5"
       }
     }
   }

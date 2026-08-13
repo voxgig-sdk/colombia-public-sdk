@@ -23,6 +23,7 @@ require_once __DIR__ . '/MakeUrl.php';
 require_once __DIR__ . '/Param.php';
 require_once __DIR__ . '/PrepareAuth.php';
 require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/Graphql.php';
 require_once __DIR__ . '/PrepareHeaders.php';
 require_once __DIR__ . '/PrepareMethod.php';
 require_once __DIR__ . '/PrepareParams.php';
@@ -59,6 +60,8 @@ ColombiaPublicUtility::setRegistrar(function (ColombiaPublicUtility $u): void {
     $u->prepare_params = [ColombiaPublicPrepareParams::class, 'call'];
     $u->prepare_path = [ColombiaPublicPreparePath::class, 'call'];
     $u->prepare_query = [ColombiaPublicPrepareQuery::class, 'call'];
+    $u->graphql_body = [ColombiaPublicGraphql::class, 'body'];
+    $u->graphql_errors = [ColombiaPublicGraphql::class, 'errors'];
     $u->result_basic = [ColombiaPublicResultBasic::class, 'call'];
     $u->result_body = [ColombiaPublicResultBody::class, 'call'];
     $u->result_headers = [ColombiaPublicResultHeaders::class, 'call'];

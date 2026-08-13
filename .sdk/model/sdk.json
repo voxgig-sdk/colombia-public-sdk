@@ -5,6 +5,10 @@
       "desc": ""
     },
     "kit": {
+      "author": {
+        "name": "",
+        "url": ""
+      },
       "config": {
         "docs_order": [
           "ts",
@@ -18,6 +22,7 @@
           "content-type": "application/json"
         }
       },
+      "contributor": {},
       "entity": {
         "airport": {
           "active": true,
@@ -27,7 +32,7 @@
           "fields": [
             {
               "active": true,
-              "name": "city_id",
+              "name": "cityId",
               "req": false,
               "type": "`$INTEGER`"
             },
@@ -39,7 +44,7 @@
             },
             {
               "active": true,
-              "name": "department_id",
+              "name": "departmentId",
               "req": false,
               "type": "`$INTEGER`"
             },
@@ -87,6 +92,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/Airport",
                   "parts": [
@@ -118,6 +124,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/Airport/{id}",
                   "parts": [
@@ -179,6 +186,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/CategoryNaturalArea",
                   "parts": [
@@ -205,7 +213,7 @@
           "fields": [
             {
               "active": true,
-              "name": "article_number",
+              "name": "articleNumber",
               "req": false,
               "type": "`$INTEGER`"
             },
@@ -247,6 +255,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/ConstitutionArticle",
                   "parts": [
@@ -278,6 +287,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/ConstitutionArticle/{id}",
                   "parts": [
@@ -333,7 +343,7 @@
             },
             {
               "active": true,
-              "name": "language",
+              "name": "languages",
               "req": false,
               "type": "`$ARRAY`"
             },
@@ -369,6 +379,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/Country/Colombia",
                   "parts": [
@@ -380,7 +391,7 @@
                   },
                   "transform": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.languages`"
                   }
                 }
               ]
@@ -398,7 +409,7 @@
           "fields": [
             {
               "active": true,
-              "name": "city_capital",
+              "name": "cityCapital",
               "req": false,
               "type": "`$STRING`"
             },
@@ -416,7 +427,7 @@
             },
             {
               "active": true,
-              "name": "municipality",
+              "name": "municipalities",
               "req": false,
               "type": "`$INTEGER`"
             },
@@ -434,7 +445,7 @@
             },
             {
               "active": true,
-              "name": "region_id",
+              "name": "regionId",
               "req": false,
               "type": "`$INTEGER`"
             },
@@ -458,6 +469,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/Department",
                   "parts": [
@@ -489,6 +501,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/Department/{id}",
                   "parts": [
@@ -562,6 +575,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/Holiday",
                   "parts": [
@@ -593,6 +607,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/Holiday/{id}",
                   "parts": [
@@ -648,13 +663,13 @@
             },
             {
               "active": true,
-              "name": "scientific_name",
+              "name": "scientificName",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "url_image",
+              "name": "urlImage",
               "req": false,
               "type": "`$STRING`"
             }
@@ -672,6 +687,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/InvasiveSpecie",
                   "parts": [
@@ -703,6 +719,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/InvasiveSpecie/{id}",
                   "parts": [
@@ -734,7 +751,7 @@
           "fields": [
             {
               "active": true,
-              "name": "department_id",
+              "name": "departmentId",
               "req": false,
               "type": "`$INTEGER`"
             },
@@ -758,7 +775,7 @@
             },
             {
               "active": true,
-              "name": "url_image",
+              "name": "urlImages",
               "req": false,
               "type": "`$ARRAY`"
             }
@@ -776,6 +793,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/Map",
                   "parts": [
@@ -802,7 +820,7 @@
           "fields": [
             {
               "active": true,
-              "name": "department_id",
+              "name": "departmentId",
               "req": false,
               "type": "`$INTEGER`"
             },
@@ -844,6 +862,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/NativeCommunity",
                   "parts": [
@@ -875,6 +894,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/NativeCommunity/{id}",
                   "parts": [
@@ -906,19 +926,19 @@
           "fields": [
             {
               "active": true,
-              "name": "area_group_id",
+              "name": "areaGroupId",
               "req": false,
               "type": "`$INTEGER`"
             },
             {
               "active": true,
-              "name": "category_natural_area_id",
+              "name": "categoryNaturalAreaId",
               "req": false,
               "type": "`$INTEGER`"
             },
             {
               "active": true,
-              "name": "department_id",
+              "name": "departmentId",
               "req": false,
               "type": "`$INTEGER`"
             },
@@ -936,13 +956,13 @@
             },
             {
               "active": true,
-              "name": "land_area",
+              "name": "landArea",
               "req": false,
               "type": "`$NUMBER`"
             },
             {
               "active": true,
-              "name": "maritime_area",
+              "name": "maritimeArea",
               "req": false,
               "type": "`$NUMBER`"
             },
@@ -966,6 +986,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/NaturalArea",
                   "parts": [
@@ -997,6 +1018,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/NaturalArea/{id}",
                   "parts": [
@@ -1034,7 +1056,7 @@
             },
             {
               "active": true,
-              "name": "end_period_date",
+              "name": "endPeriodDate",
               "req": false,
               "type": "`$STRING`"
             },
@@ -1058,13 +1080,13 @@
             },
             {
               "active": true,
-              "name": "political_party",
+              "name": "politicalParty",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "start_period_date",
+              "name": "startPeriodDate",
               "req": false,
               "type": "`$STRING`"
             }
@@ -1082,6 +1104,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/President",
                   "parts": [
@@ -1113,6 +1136,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/President/{id}",
                   "parts": [
@@ -1186,6 +1210,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/Radio",
                   "parts": [
@@ -1217,6 +1242,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/Radio/{id}",
                   "parts": [
@@ -1248,7 +1274,7 @@
           "fields": [
             {
               "active": true,
-              "name": "department",
+              "name": "departments",
               "req": false,
               "type": "`$ARRAY`"
             },
@@ -1284,6 +1310,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/Region",
                   "parts": [
@@ -1315,6 +1342,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/Region/{id}",
                   "parts": [
@@ -1364,7 +1392,7 @@
             },
             {
               "active": true,
-              "name": "image",
+              "name": "images",
               "req": false,
               "type": "`$ARRAY`"
             },
@@ -1400,6 +1428,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/TouristicAttraction",
                   "parts": [
@@ -1431,6 +1460,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/TouristicAttraction/{id}",
                   "parts": [
@@ -1462,7 +1492,7 @@
           "fields": [
             {
               "active": true,
-              "name": "department_id",
+              "name": "departmentId",
               "req": false,
               "type": "`$INTEGER`"
             },
@@ -1480,7 +1510,7 @@
             },
             {
               "active": true,
-              "name": "ingredient",
+              "name": "ingredients",
               "req": false,
               "type": "`$ARRAY`"
             },
@@ -1492,7 +1522,7 @@
             },
             {
               "active": true,
-              "name": "url_image",
+              "name": "urlImage",
               "req": false,
               "type": "`$STRING`"
             }
@@ -1510,6 +1540,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/TypicalDish",
                   "parts": [
@@ -1541,6 +1572,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/TypicalDish/{id}",
                   "parts": [
@@ -2338,18 +2370,41 @@
         "website": "https://com"
       },
       "option": {},
+      "repo": {
+        "host": "github.com",
+        "path": ""
+      },
       "target": {
         "go": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "//"
           },
           "deps": {},
           "ext": "go",
+          "feature": {
+            "fullset": [
+              "test/feature_test.go"
+            ],
+            "trim": true
+          },
           "module": {
-            "name": "colombia-public"
+            "goversion": "",
+            "name": "colombia-public",
+            "package": "",
+            "path": ""
           },
           "name": "go",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -2371,22 +2426,40 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "Golang"
         },
         "go-cli": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "//"
           },
           "deps": {},
           "ext": "go",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "colombia-public"
+            "goversion": "",
+            "name": "colombia-public",
+            "package": "",
+            "path": ""
           },
           "name": "go-cli",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "phase": {
             "agentguide": {
               "active": false
@@ -2425,21 +2498,39 @@
                 "recipe": "github"
               },
               "via": "root"
-            }
+            },
+            "version": "0.0.1"
           },
           "title": "Go CLI"
         },
         "go-mcp": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "//"
           },
           "deps": {},
           "ext": "go",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "colombia-public"
+            "goversion": "",
+            "name": "colombia-public",
+            "package": "",
+            "path": ""
           },
           "name": "go-mcp",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "phase": {
             "agentguide": {
               "active": false
@@ -2478,12 +2569,17 @@
                 "recipe": "github"
               },
               "via": "root"
-            }
+            },
+            "version": "0.0.1"
           },
           "title": "Go MCP server"
         },
         "lua": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "--"
           },
@@ -2495,10 +2591,23 @@
             }
           },
           "ext": "lua",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "colombia-public"
+            "goversion": "",
+            "name": "colombia-public",
+            "package": "",
+            "path": ""
           },
           "name": "lua",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -2520,22 +2629,40 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "Lua"
         },
         "php": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "//"
           },
           "deps": {},
           "ext": "php",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "colombia-public"
+            "goversion": "",
+            "name": "colombia-public",
+            "package": "",
+            "path": ""
           },
           "name": "php",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -2557,13 +2684,18 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "PHP"
         },
         "py": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "#"
           },
@@ -2575,10 +2707,23 @@
             }
           },
           "ext": "py",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "colombia-public"
+            "goversion": "",
+            "name": "colombia-public",
+            "package": "",
+            "path": ""
           },
           "name": "py",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -2600,13 +2745,18 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "Python"
         },
         "rb": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "#"
           },
@@ -2623,10 +2773,23 @@
             }
           },
           "ext": "rb",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "colombia-public"
+            "goversion": "",
+            "name": "colombia-public",
+            "package": "",
+            "path": ""
           },
           "name": "rb",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -2648,13 +2811,18 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "Ruby"
         },
         "ts": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "comment": {
             "line": "//"
@@ -2677,10 +2845,23 @@
             }
           },
           "ext": "ts",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "colombia-public"
+            "goversion": "",
+            "name": "colombia-public",
+            "package": "",
+            "path": ""
           },
           "name": "ts",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -2702,9 +2883,17 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "title": "TypeScript"
+        }
+      },
+      "test": {
+        "live": {
+          "app": false,
+          "base": "",
+          "strict": false
         }
       }
     }

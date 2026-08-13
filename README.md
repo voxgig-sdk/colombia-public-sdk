@@ -38,18 +38,27 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = ColombiaPublicSDK.test()
-const airports = await client.Airport().list()
-// airports is an array of bare Airport records populated with mock data
-console.log(airports)
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = ColombiaPublicSDK.test({
+  entity: {
+    typical_dish: {
+      test01: { id: 'test01' },
+    },
+  },
+})
+const typicaldishs = await client.TypicalDish().list()
+// typicaldishs is an array of TypicalDish entities, populated with mock data
+// — call typicaldishs[0].data() for the record itself
+console.log(typicaldishs)
 ```
 
 ### Python
 
 ```python
 client = ColombiaPublicSDK.test()
-airports = client.Airport().list()
-print(airports)
+typicaldishs = client.TypicalDish().list()
+print(typicaldishs)
 ```
 
 ### PHP
@@ -57,16 +66,16 @@ print(airports)
 ```php
 // Seed fixture data so offline calls resolve without a live server.
 $client = ColombiaPublicSDK::test([
-    "entity" => ["airport" => ["test01" => ["id" => "test01"]]],
+    "entity" => ["typicaldish" => ["test01" => ["id" => "test01"]]],
 ]);
-$airports = $client->Airport()->list();
+$typicaldishs = $client->TypicalDish()->list();
 ```
 
 ### Golang
 
 ```go
 client := sdk.Test()
-result, err := client.Airport(nil).List(
+result, err := client.TypicalDish(nil).List(
     nil, nil,
 )
 ```
@@ -76,16 +85,16 @@ result, err := client.Airport(nil).List(
 ```ruby
 # Seed fixture data so offline calls resolve without a live server.
 client = ColombiaPublicSDK.test({
-  "entity" => { "airport" => { "test01" => { "id" => "test01" } } },
+  "entity" => { "typicaldish" => { "test01" => { "id" => "test01" } } },
 })
-airports = client.Airport.list()
+typicaldishs = client.TypicalDish.list()
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local results, err = client:Airport():list()
+local results, err = client:TypicalDish():list()
 ```
 
 ## Packages
@@ -110,7 +119,7 @@ import { ColombiaPublicSDK } from '@voxgig-sdk/colombia-public'
 
 const client = new ColombiaPublicSDK()
 
-// List all airports (returns Airport[])
+// List all airports (returns AirportEntity[] — .data() for the record)
 const airports = await client.Airport().list()
 for (const airport of airports) {
   console.log(airport)
@@ -205,7 +214,7 @@ $client = new ColombiaPublicSDK();
 $airports = $client->Airport()->list();
 print_r($airports);
 
-// Load a specific airport (returns the bare record; throws on error)
+// Load a specific airport (returns the ENTITY; call data_get() for the record; throws on error)
 $airport = $client->Airport()->load(["id" => 1]);
 print_r($airport);
 ```
@@ -236,7 +245,7 @@ client = ColombiaPublicSDK.new
 airports = client.Airport.list
 puts airports
 
-# Load a specific airport (returns the bare record; raises on error)
+# Load a specific airport (returns the ENTITY; call data_get for the record)
 airport = client.Airport.load({ "id" => 1 })
 puts airport
 ```
@@ -373,6 +382,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://api-colombia.com/](https://api-colombia.com/)
 

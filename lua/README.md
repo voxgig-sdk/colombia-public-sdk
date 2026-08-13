@@ -62,7 +62,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local airports, err = client:Airport():list()
+local typicaldishs, err = client:TypicalDish():list()
 if err then error(err) end
 ```
 
@@ -120,7 +120,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:Airport():list()
+local result, err = client:TypicalDish():list()
 -- result is the returned data; err is set on failure
 ```
 
@@ -255,9 +255,9 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `city_id` |  |
+| `cityId` |  |
 | `code` |  |
-| `department_id` |  |
+| `departmentId` |  |
 | `id` |  |
 | `latitude` |  |
 | `longitude` |  |
@@ -284,7 +284,7 @@ API path: `/CategoryNaturalArea`
 
 | Field | Description |
 | --- | --- |
-| `article_number` |  |
+| `articleNumber` |  |
 | `chapter` |  |
 | `description` |  |
 | `id` |  |
@@ -302,7 +302,7 @@ API path: `/ConstitutionArticle`
 | `currency` |  |
 | `flag` |  |
 | `id` |  |
-| `language` |  |
+| `languages` |  |
 | `name` |  |
 | `population` |  |
 | `surface` |  |
@@ -315,13 +315,13 @@ API path: `/Country/Colombia`
 
 | Field | Description |
 | --- | --- |
-| `city_capital` |  |
+| `cityCapital` |  |
 | `description` |  |
 | `id` |  |
-| `municipality` |  |
+| `municipalities` |  |
 | `name` |  |
 | `population` |  |
-| `region_id` |  |
+| `regionId` |  |
 | `surface` |  |
 
 Operations: List, Load.
@@ -350,8 +350,8 @@ API path: `/Holiday`
 | `impact` |  |
 | `manage` |  |
 | `name` |  |
-| `scientific_name` |  |
-| `url_image` |  |
+| `scientificName` |  |
+| `urlImage` |  |
 
 Operations: List, Load.
 
@@ -361,11 +361,11 @@ API path: `/InvasiveSpecie`
 
 | Field | Description |
 | --- | --- |
-| `department_id` |  |
+| `departmentId` |  |
 | `description` |  |
 | `id` |  |
 | `name` |  |
-| `url_image` |  |
+| `urlImages` |  |
 
 Operations: List.
 
@@ -375,7 +375,7 @@ API path: `/Map`
 
 | Field | Description |
 | --- | --- |
-| `department_id` |  |
+| `departmentId` |  |
 | `description` |  |
 | `id` |  |
 | `name` |  |
@@ -389,13 +389,13 @@ API path: `/NativeCommunity`
 
 | Field | Description |
 | --- | --- |
-| `area_group_id` |  |
-| `category_natural_area_id` |  |
-| `department_id` |  |
+| `areaGroupId` |  |
+| `categoryNaturalAreaId` |  |
+| `departmentId` |  |
 | `description` |  |
 | `id` |  |
-| `land_area` |  |
-| `maritime_area` |  |
+| `landArea` |  |
+| `maritimeArea` |  |
 | `name` |  |
 
 Operations: List, Load.
@@ -407,12 +407,12 @@ API path: `/NaturalArea`
 | Field | Description |
 | --- | --- |
 | `description` |  |
-| `end_period_date` |  |
+| `endPeriodDate` |  |
 | `id` |  |
 | `image` |  |
 | `name` |  |
-| `political_party` |  |
-| `start_period_date` |  |
+| `politicalParty` |  |
+| `startPeriodDate` |  |
 
 Operations: List, Load.
 
@@ -436,7 +436,7 @@ API path: `/Radio`
 
 | Field | Description |
 | --- | --- |
-| `department` |  |
+| `departments` |  |
 | `description` |  |
 | `id` |  |
 | `name` |  |
@@ -452,7 +452,7 @@ API path: `/Region`
 | `city` |  |
 | `description` |  |
 | `id` |  |
-| `image` |  |
+| `images` |  |
 | `latitude` |  |
 | `longitude` |  |
 | `name` |  |
@@ -465,12 +465,12 @@ API path: `/TouristicAttraction`
 
 | Field | Description |
 | --- | --- |
-| `department_id` |  |
+| `departmentId` |  |
 | `description` |  |
 | `id` |  |
-| `ingredient` |  |
+| `ingredients` |  |
 | `name` |  |
-| `url_image` |  |
+| `urlImage` |  |
 
 Operations: List, Load.
 
@@ -496,9 +496,9 @@ Create an instance: `local airport = client:Airport(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `city_id` | `number` |  |
+| `cityId` | `number` |  |
 | `code` | `string` |  |
-| `department_id` | `number` |  |
+| `departmentId` | `number` |  |
 | `id` | `number` |  |
 | `latitude` | `number` |  |
 | `longitude` | `number` |  |
@@ -558,7 +558,7 @@ Create an instance: `local constitution_article = client:ConstitutionArticle(nil
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `article_number` | `number` |  |
+| `articleNumber` | `number` |  |
 | `chapter` | `string` |  |
 | `description` | `string` |  |
 | `id` | `number` |  |
@@ -595,7 +595,7 @@ Create an instance: `local country = client:Country(nil)`
 | `currency` | `string` |  |
 | `flag` | `string` |  |
 | `id` | `number` |  |
-| `language` | `table` |  |
+| `languages` | `table` |  |
 | `name` | `string` |  |
 | `population` | `number` |  |
 | `surface` | `number` |  |
@@ -622,13 +622,13 @@ Create an instance: `local department = client:Department(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `city_capital` | `string` |  |
+| `cityCapital` | `string` |  |
 | `description` | `string` |  |
 | `id` | `number` |  |
-| `municipality` | `number` |  |
+| `municipalities` | `number` |  |
 | `name` | `string` |  |
 | `population` | `number` |  |
-| `region_id` | `number` |  |
+| `regionId` | `number` |  |
 | `surface` | `number` |  |
 
 #### Example: Load
@@ -697,8 +697,8 @@ Create an instance: `local invasive_specie = client:InvasiveSpecie(nil)`
 | `impact` | `string` |  |
 | `manage` | `string` |  |
 | `name` | `string` |  |
-| `scientific_name` | `string` |  |
-| `url_image` | `string` |  |
+| `scientificName` | `string` |  |
+| `urlImage` | `string` |  |
 
 #### Example: Load
 
@@ -727,11 +727,11 @@ Create an instance: `local map = client:Map(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `department_id` | `number` |  |
+| `departmentId` | `number` |  |
 | `description` | `string` |  |
 | `id` | `number` |  |
 | `name` | `string` |  |
-| `url_image` | `table` |  |
+| `urlImages` | `table` |  |
 
 #### Example: List
 
@@ -755,7 +755,7 @@ Create an instance: `local native_community = client:NativeCommunity(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `department_id` | `number` |  |
+| `departmentId` | `number` |  |
 | `description` | `string` |  |
 | `id` | `number` |  |
 | `name` | `string` |  |
@@ -789,13 +789,13 @@ Create an instance: `local natural_area = client:NaturalArea(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `area_group_id` | `number` |  |
-| `category_natural_area_id` | `number` |  |
-| `department_id` | `number` |  |
+| `areaGroupId` | `number` |  |
+| `categoryNaturalAreaId` | `number` |  |
+| `departmentId` | `number` |  |
 | `description` | `string` |  |
 | `id` | `number` |  |
-| `land_area` | `number` |  |
-| `maritime_area` | `number` |  |
+| `landArea` | `number` |  |
+| `maritimeArea` | `number` |  |
 | `name` | `string` |  |
 
 #### Example: Load
@@ -827,12 +827,12 @@ Create an instance: `local president = client:President(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `description` | `string` |  |
-| `end_period_date` | `string` |  |
+| `endPeriodDate` | `string` |  |
 | `id` | `number` |  |
 | `image` | `string` |  |
 | `name` | `string` |  |
-| `political_party` | `string` |  |
-| `start_period_date` | `string` |  |
+| `politicalParty` | `string` |  |
+| `startPeriodDate` | `string` |  |
 
 #### Example: Load
 
@@ -896,7 +896,7 @@ Create an instance: `local region = client:Region(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `department` | `table` |  |
+| `departments` | `table` |  |
 | `description` | `string` |  |
 | `id` | `number` |  |
 | `name` | `string` |  |
@@ -932,7 +932,7 @@ Create an instance: `local touristic_attraction = client:TouristicAttraction(nil
 | `city` | `string` |  |
 | `description` | `string` |  |
 | `id` | `number` |  |
-| `image` | `table` |  |
+| `images` | `table` |  |
 | `latitude` | `number` |  |
 | `longitude` | `number` |  |
 | `name` | `string` |  |
@@ -965,12 +965,12 @@ Create an instance: `local typical_dish = client:TypicalDish(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `department_id` | `number` |  |
+| `departmentId` | `number` |  |
 | `description` | `string` |  |
 | `id` | `number` |  |
-| `ingredient` | `table` |  |
+| `ingredients` | `table` |  |
 | `name` | `string` |  |
-| `url_image` | `string` |  |
+| `urlImage` | `string` |  |
 
 #### Example: Load
 
@@ -1061,11 +1061,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local airport = client:Airport()
-airport:list()
+local typicaldish = client:TypicalDish()
+typicaldish:list()
 
--- airport:data_get() now returns the airport data from the last list
--- airport:match_get() returns the last match criteria
+-- typicaldish:data_get() now returns the typicaldish data from the last list
+-- typicaldish:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

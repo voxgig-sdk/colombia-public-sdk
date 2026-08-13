@@ -26,8 +26,8 @@ import {
 describe('NaturalAreaEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when COLOMBIAPUBLIC_TEST_LIVE=TRUE.
-  afterEach(liveDelay('COLOMBIAPUBLIC_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when COLOMBIA_PUBLIC_TEST_LIVE=TRUE.
+  afterEach(liveDelay('COLOMBIA_PUBLIC_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = ColombiaPublicSDK.test()
@@ -63,13 +63,13 @@ describe('NaturalAreaEntity', async () => {
     const natural_area_ref01_ent = client.NaturalArea()
     const natural_area_ref01_match: any = {}
 
-    const natural_area_ref01_list = await natural_area_ref01_ent.list(natural_area_ref01_match)
+    const natural_area_ref01_list = (await natural_area_ref01_ent.list(natural_area_ref01_match)).map((e: any) => e.data())
 
 
     // LOAD
     const natural_area_ref01_match_dt0: any = {}
     natural_area_ref01_match_dt0.id = natural_area_ref01_data.id
-    const natural_area_ref01_data_dt0 = await natural_area_ref01_ent.load(natural_area_ref01_match_dt0)
+    const natural_area_ref01_data_dt0 = (await natural_area_ref01_ent.load(natural_area_ref01_match_dt0)).data()
     assert(natural_area_ref01_data_dt0.id === natural_area_ref01_data.id)
 
 

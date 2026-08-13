@@ -6,9 +6,9 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 
 export interface Airport {
-  city_id?: number
+  cityId?: number
   code?: string
-  department_id?: number
+  departmentId?: number
   id?: number
   latitude?: number
   longitude?: number
@@ -21,9 +21,9 @@ export interface AirportLoadMatch {
 }
 
 export interface AirportListMatch {
-  city_id?: number
+  cityId?: number
   code?: string
-  department_id?: number
+  departmentId?: number
   id?: number
   latitude?: number
   longitude?: number
@@ -44,7 +44,7 @@ export interface CategoryNaturalAreaListMatch {
 }
 
 export interface ConstitutionArticle {
-  article_number?: number
+  articleNumber?: number
   chapter?: string
   description?: string
   id?: number
@@ -56,7 +56,7 @@ export interface ConstitutionArticleLoadMatch {
 }
 
 export interface ConstitutionArticleListMatch {
-  article_number?: number
+  articleNumber?: number
   chapter?: string
   description?: string
   id?: number
@@ -68,7 +68,7 @@ export interface Country {
   currency?: string
   flag?: string
   id?: number
-  language?: any[]
+  languages?: any[]
   name?: string
   population?: number
   surface?: number
@@ -79,20 +79,26 @@ export interface CountryListMatch {
   currency?: string
   flag?: string
   id?: number
-  language?: any[]
+  languages?: any[]
   name?: string
   population?: number
   surface?: number
+
+  // Selects a custom action instead of the plain list:
+  //   'colombia'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 
 export interface Department {
-  city_capital?: string
+  cityCapital?: string
   description?: string
   id?: number
-  municipality?: number
+  municipalities?: number
   name?: string
   population?: number
-  region_id?: number
+  regionId?: number
   surface?: number
 }
 
@@ -101,13 +107,13 @@ export interface DepartmentLoadMatch {
 }
 
 export interface DepartmentListMatch {
-  city_capital?: string
+  cityCapital?: string
   description?: string
   id?: number
-  municipality?: number
+  municipalities?: number
   name?: string
   population?: number
-  region_id?: number
+  regionId?: number
   surface?: number
 }
 
@@ -136,8 +142,8 @@ export interface InvasiveSpecie {
   impact?: string
   manage?: string
   name?: string
-  scientific_name?: string
-  url_image?: string
+  scientificName?: string
+  urlImage?: string
 }
 
 export interface InvasiveSpecieLoadMatch {
@@ -149,28 +155,28 @@ export interface InvasiveSpecieListMatch {
   impact?: string
   manage?: string
   name?: string
-  scientific_name?: string
-  url_image?: string
+  scientificName?: string
+  urlImage?: string
 }
 
 export interface Map {
-  department_id?: number
+  departmentId?: number
   description?: string
   id?: number
   name?: string
-  url_image?: any[]
+  urlImages?: any[]
 }
 
 export interface MapListMatch {
-  department_id?: number
+  departmentId?: number
   description?: string
   id?: number
   name?: string
-  url_image?: any[]
+  urlImages?: any[]
 }
 
 export interface NativeCommunity {
-  department_id?: number
+  departmentId?: number
   description?: string
   id?: number
   name?: string
@@ -182,7 +188,7 @@ export interface NativeCommunityLoadMatch {
 }
 
 export interface NativeCommunityListMatch {
-  department_id?: number
+  departmentId?: number
   description?: string
   id?: number
   name?: string
@@ -190,13 +196,13 @@ export interface NativeCommunityListMatch {
 }
 
 export interface NaturalArea {
-  area_group_id?: number
-  category_natural_area_id?: number
-  department_id?: number
+  areaGroupId?: number
+  categoryNaturalAreaId?: number
+  departmentId?: number
   description?: string
   id?: number
-  land_area?: number
-  maritime_area?: number
+  landArea?: number
+  maritimeArea?: number
   name?: string
 }
 
@@ -205,24 +211,24 @@ export interface NaturalAreaLoadMatch {
 }
 
 export interface NaturalAreaListMatch {
-  area_group_id?: number
-  category_natural_area_id?: number
-  department_id?: number
+  areaGroupId?: number
+  categoryNaturalAreaId?: number
+  departmentId?: number
   description?: string
   id?: number
-  land_area?: number
-  maritime_area?: number
+  landArea?: number
+  maritimeArea?: number
   name?: string
 }
 
 export interface President {
   description?: string
-  end_period_date?: string
+  endPeriodDate?: string
   id?: number
   image?: string
   name?: string
-  political_party?: string
-  start_period_date?: string
+  politicalParty?: string
+  startPeriodDate?: string
 }
 
 export interface PresidentLoadMatch {
@@ -231,12 +237,12 @@ export interface PresidentLoadMatch {
 
 export interface PresidentListMatch {
   description?: string
-  end_period_date?: string
+  endPeriodDate?: string
   id?: number
   image?: string
   name?: string
-  political_party?: string
-  start_period_date?: string
+  politicalParty?: string
+  startPeriodDate?: string
 }
 
 export interface Radio {
@@ -260,7 +266,7 @@ export interface RadioListMatch {
 }
 
 export interface Region {
-  department?: any[]
+  departments?: any[]
   description?: string
   id?: number
   name?: string
@@ -271,7 +277,7 @@ export interface RegionLoadMatch {
 }
 
 export interface RegionListMatch {
-  department?: any[]
+  departments?: any[]
   description?: string
   id?: number
   name?: string
@@ -281,7 +287,7 @@ export interface TouristicAttraction {
   city?: string
   description?: string
   id?: number
-  image?: any[]
+  images?: any[]
   latitude?: number
   longitude?: number
   name?: string
@@ -295,19 +301,19 @@ export interface TouristicAttractionListMatch {
   city?: string
   description?: string
   id?: number
-  image?: any[]
+  images?: any[]
   latitude?: number
   longitude?: number
   name?: string
 }
 
 export interface TypicalDish {
-  department_id?: number
+  departmentId?: number
   description?: string
   id?: number
-  ingredient?: any[]
+  ingredients?: any[]
   name?: string
-  url_image?: string
+  urlImage?: string
 }
 
 export interface TypicalDishLoadMatch {
@@ -315,11 +321,11 @@ export interface TypicalDishLoadMatch {
 }
 
 export interface TypicalDishListMatch {
-  department_id?: number
+  departmentId?: number
   description?: string
   id?: number
-  ingredient?: any[]
+  ingredients?: any[]
   name?: string
-  url_image?: string
+  urlImage?: string
 }
 

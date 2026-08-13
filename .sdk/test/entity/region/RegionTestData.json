@@ -2,19 +2,19 @@
   "existing": {
     "region": {
       "REGION00": {
-        "department": [],
+        "departments": [],
         "description": "s29",
         "id": "REGION00",
         "name": "s2b"
       },
       "REGION01": {
-        "department": [],
+        "departments": [],
         "description": "s51",
         "id": "REGION01",
         "name": "s53"
       },
       "REGION02": {
-        "department": [],
+        "departments": [],
         "description": "s79",
         "id": "REGION02",
         "name": "s7b"
@@ -24,7 +24,7 @@
   "new": {
     "region": {
       "region_ref01": {
-        "department": [],
+        "departments": [],
         "description": "sa1",
         "name": "sa3"
       }

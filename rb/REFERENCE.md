@@ -149,9 +149,9 @@ airport = client.Airport
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `city_id` | `Integer` | No |  |
+| `cityId` | `Integer` | No |  |
 | `code` | `String` | No |  |
-| `department_id` | `Integer` | No |  |
+| `departmentId` | `Integer` | No |  |
 | `id` | `Integer` | No |  |
 | `latitude` | `Float` | No |  |
 | `longitude` | `Float` | No |  |
@@ -270,7 +270,7 @@ constitution_article = client.ConstitutionArticle
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `article_number` | `Integer` | No |  |
+| `articleNumber` | `Integer` | No |  |
 | `chapter` | `String` | No |  |
 | `description` | `String` | No |  |
 | `id` | `Integer` | No |  |
@@ -338,7 +338,7 @@ country = client.Country
 | `currency` | `String` | No |  |
 | `flag` | `String` | No |  |
 | `id` | `Integer` | No |  |
-| `language` | `Array` | No |  |
+| `languages` | `Array` | No |  |
 | `name` | `String` | No |  |
 | `population` | `Integer` | No |  |
 | `surface` | `Float` | No |  |
@@ -393,13 +393,13 @@ department = client.Department
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `city_capital` | `String` | No |  |
+| `cityCapital` | `String` | No |  |
 | `description` | `String` | No |  |
 | `id` | `Integer` | No |  |
-| `municipality` | `Integer` | No |  |
+| `municipalities` | `Integer` | No |  |
 | `name` | `String` | No |  |
 | `population` | `Integer` | No |  |
-| `region_id` | `Integer` | No |  |
+| `regionId` | `Integer` | No |  |
 | `surface` | `Float` | No |  |
 
 ### Operations
@@ -528,8 +528,8 @@ invasive_specie = client.InvasiveSpecie
 | `impact` | `String` | No |  |
 | `manage` | `String` | No |  |
 | `name` | `String` | No |  |
-| `scientific_name` | `String` | No |  |
-| `url_image` | `String` | No |  |
+| `scientificName` | `String` | No |  |
+| `urlImage` | `String` | No |  |
 
 ### Operations
 
@@ -589,11 +589,11 @@ map = client.Map
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `department_id` | `Integer` | No |  |
+| `departmentId` | `Integer` | No |  |
 | `description` | `String` | No |  |
 | `id` | `Integer` | No |  |
 | `name` | `String` | No |  |
-| `url_image` | `Array` | No |  |
+| `urlImages` | `Array` | No |  |
 
 ### Operations
 
@@ -645,7 +645,7 @@ native_community = client.NativeCommunity
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `department_id` | `Integer` | No |  |
+| `departmentId` | `Integer` | No |  |
 | `description` | `String` | No |  |
 | `id` | `Integer` | No |  |
 | `name` | `String` | No |  |
@@ -709,13 +709,13 @@ natural_area = client.NaturalArea
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `area_group_id` | `Integer` | No |  |
-| `category_natural_area_id` | `Integer` | No |  |
-| `department_id` | `Integer` | No |  |
+| `areaGroupId` | `Integer` | No |  |
+| `categoryNaturalAreaId` | `Integer` | No |  |
+| `departmentId` | `Integer` | No |  |
 | `description` | `String` | No |  |
 | `id` | `Integer` | No |  |
-| `land_area` | `Float` | No |  |
-| `maritime_area` | `Float` | No |  |
+| `landArea` | `Float` | No |  |
+| `maritimeArea` | `Float` | No |  |
 | `name` | `String` | No |  |
 
 ### Operations
@@ -777,12 +777,12 @@ president = client.President
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `description` | `String` | No |  |
-| `end_period_date` | `String` | No |  |
+| `endPeriodDate` | `String` | No |  |
 | `id` | `Integer` | No |  |
 | `image` | `String` | No |  |
 | `name` | `String` | No |  |
-| `political_party` | `String` | No |  |
-| `start_period_date` | `String` | No |  |
+| `politicalParty` | `String` | No |  |
+| `startPeriodDate` | `String` | No |  |
 
 ### Operations
 
@@ -906,7 +906,7 @@ region = client.Region
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `department` | `Array` | No |  |
+| `departments` | `Array` | No |  |
 | `description` | `String` | No |  |
 | `id` | `Integer` | No |  |
 | `name` | `String` | No |  |
@@ -972,7 +972,7 @@ touristic_attraction = client.TouristicAttraction
 | `city` | `String` | No |  |
 | `description` | `String` | No |  |
 | `id` | `Integer` | No |  |
-| `image` | `Array` | No |  |
+| `images` | `Array` | No |  |
 | `latitude` | `Float` | No |  |
 | `longitude` | `Float` | No |  |
 | `name` | `String` | No |  |
@@ -1035,12 +1035,12 @@ typical_dish = client.TypicalDish
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `department_id` | `Integer` | No |  |
+| `departmentId` | `Integer` | No |  |
 | `description` | `String` | No |  |
 | `id` | `Integer` | No |  |
-| `ingredient` | `Array` | No |  |
+| `ingredients` | `Array` | No |  |
 | `name` | `String` | No |  |
-| `url_image` | `String` | No |  |
+| `urlImage` | `String` | No |  |
 
 ### Operations
 

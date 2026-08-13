@@ -72,7 +72,7 @@ class AirportEntityTest extends TestCase
         // The basic flow consumes synthetic IDs from the fixture. In live mode
         // without an *_ENTID env override, those IDs hit the live API and 4xx.
         if (!empty($setup["synthetic_only"])) {
-            $this->markTestSkipped("live entity test uses synthetic IDs from fixture — set COLOMBIAPUBLIC_TEST_AIRPORT_ENTID JSON to run live");
+            $this->markTestSkipped("live entity test uses synthetic IDs from fixture — set COLOMBIA_PUBLIC_TEST_AIRPORT_ENTID JSON to run live");
             return;
         }
         $client = $setup["client"];
@@ -97,7 +97,7 @@ class AirportEntityTest extends TestCase
             "id" => $airport_ref01_data["id"],
         ];
         $airport_ref01_data_dt0_loaded = $airport_ref01_ent->load($airport_ref01_match_dt0, null);
-        $airport_ref01_data_dt0_load_result = Helpers::to_map($airport_ref01_data_dt0_loaded);
+        $airport_ref01_data_dt0_load_result = Helpers::to_map(is_object($airport_ref01_data_dt0_loaded) && method_exists($airport_ref01_data_dt0_loaded, 'data_get') ? $airport_ref01_data_dt0_loaded->data_get() : $airport_ref01_data_dt0_loaded);
         $this->assertNotNull($airport_ref01_data_dt0_load_result);
         $this->assertEquals($airport_ref01_data_dt0_load_result["id"], $airport_ref01_data["id"]);
 
@@ -126,22 +126,22 @@ function airport_basic_setup($extra)
     // Detect ENTID env override before envOverride consumes it. When live
     // mode is on without a real override, the basic test runs against synthetic
     // IDs from the fixture and 4xx's. Surface this so the test can skip.
-    $entid_env_raw = getenv("COLOMBIAPUBLIC_TEST_AIRPORT_ENTID");
+    $entid_env_raw = getenv("COLOMBIA_PUBLIC_TEST_AIRPORT_ENTID");
     $idmap_overridden = $entid_env_raw !== false && str_starts_with(trim($entid_env_raw), "{");
 
     $env = Runner::env_override([
-        "COLOMBIAPUBLIC_TEST_AIRPORT_ENTID" => $idmap,
-        "COLOMBIAPUBLIC_TEST_LIVE" => "FALSE",
-        "COLOMBIAPUBLIC_TEST_EXPLAIN" => "FALSE",
+        "COLOMBIA_PUBLIC_TEST_AIRPORT_ENTID" => $idmap,
+        "COLOMBIA_PUBLIC_TEST_LIVE" => "FALSE",
+        "COLOMBIA_PUBLIC_TEST_EXPLAIN" => "FALSE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
-        $env["COLOMBIAPUBLIC_TEST_AIRPORT_ENTID"]);
+        $env["COLOMBIA_PUBLIC_TEST_AIRPORT_ENTID"]);
     if ($idmap_resolved === null) {
         $idmap_resolved = Helpers::to_map($idmap);
     }
 
-    if ($env["COLOMBIAPUBLIC_TEST_LIVE"] === "TRUE") {
+    if ($env["COLOMBIA_PUBLIC_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
             ],
@@ -150,13 +150,13 @@ function airport_basic_setup($extra)
         $client = new ColombiaPublicSDK(Helpers::to_map($merged_opts));
     }
 
-    $live = $env["COLOMBIAPUBLIC_TEST_LIVE"] === "TRUE";
+    $live = $env["COLOMBIA_PUBLIC_TEST_LIVE"] === "TRUE";
     return [
         "client" => $client,
         "data" => $entity_data,
         "idmap" => $idmap_resolved,
         "env" => $env,
-        "explain" => $env["COLOMBIAPUBLIC_TEST_EXPLAIN"] === "TRUE",
+        "explain" => $env["COLOMBIA_PUBLIC_TEST_EXPLAIN"] === "TRUE",
         "live" => $live,
         "synthetic_only" => $live && !$idmap_overridden,
         "now" => (int)(microtime(true) * 1000),

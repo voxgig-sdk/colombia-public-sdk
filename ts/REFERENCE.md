@@ -284,9 +284,9 @@ const airport = client.Airport()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `city_id` | `number` | No |  |
+| `cityId` | `number` | No |  |
 | `code` | `string` | No |  |
-| `department_id` | `number` | No |  |
+| `departmentId` | `number` | No |  |
 | `id` | `number` | No |  |
 | `latitude` | `number` | No |  |
 | `longitude` | `number` | No |  |
@@ -401,7 +401,7 @@ const constitution_article = client.ConstitutionArticle()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `article_number` | `number` | No |  |
+| `articleNumber` | `number` | No |  |
 | `chapter` | `string` | No |  |
 | `description` | `string` | No |  |
 | `id` | `number` | No |  |
@@ -467,10 +467,30 @@ const country = client.Country()
 | `currency` | `string` | No |  |
 | `flag` | `string` | No |  |
 | `id` | `number` | No |  |
-| `language` | `any[]` | No |  |
+| `languages` | `any[]` | No |  |
 | `name` | `string` | No |  |
 | `population` | `number` | No |  |
 | `surface` | `number` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `colombia` | `/Country/Colombia` | `client.Country().list({ $action: 'colombia', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+Country record — check the API definition for its shape.
+
+```ts
+const result = await client.Country().list({
+  $action: 'colombia',
+  /* ...the action's own arguments */
+})
+```
 
 ### Operations
 
@@ -520,13 +540,13 @@ const department = client.Department()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `city_capital` | `string` | No |  |
+| `cityCapital` | `string` | No |  |
 | `description` | `string` | No |  |
 | `id` | `number` | No |  |
-| `municipality` | `number` | No |  |
+| `municipalities` | `number` | No |  |
 | `name` | `string` | No |  |
 | `population` | `number` | No |  |
-| `region_id` | `number` | No |  |
+| `regionId` | `number` | No |  |
 | `surface` | `number` | No |  |
 
 ### Operations
@@ -651,8 +671,8 @@ const invasive_specie = client.InvasiveSpecie()
 | `impact` | `string` | No |  |
 | `manage` | `string` | No |  |
 | `name` | `string` | No |  |
-| `scientific_name` | `string` | No |  |
-| `url_image` | `string` | No |  |
+| `scientificName` | `string` | No |  |
+| `urlImage` | `string` | No |  |
 
 ### Operations
 
@@ -710,11 +730,11 @@ const map = client.Map()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `department_id` | `number` | No |  |
+| `departmentId` | `number` | No |  |
 | `description` | `string` | No |  |
 | `id` | `number` | No |  |
 | `name` | `string` | No |  |
-| `url_image` | `any[]` | No |  |
+| `urlImages` | `any[]` | No |  |
 
 ### Operations
 
@@ -764,7 +784,7 @@ const native_community = client.NativeCommunity()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `department_id` | `number` | No |  |
+| `departmentId` | `number` | No |  |
 | `description` | `string` | No |  |
 | `id` | `number` | No |  |
 | `name` | `string` | No |  |
@@ -826,13 +846,13 @@ const natural_area = client.NaturalArea()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `area_group_id` | `number` | No |  |
-| `category_natural_area_id` | `number` | No |  |
-| `department_id` | `number` | No |  |
+| `areaGroupId` | `number` | No |  |
+| `categoryNaturalAreaId` | `number` | No |  |
+| `departmentId` | `number` | No |  |
 | `description` | `string` | No |  |
 | `id` | `number` | No |  |
-| `land_area` | `number` | No |  |
-| `maritime_area` | `number` | No |  |
+| `landArea` | `number` | No |  |
+| `maritimeArea` | `number` | No |  |
 | `name` | `string` | No |  |
 
 ### Operations
@@ -892,12 +912,12 @@ const president = client.President()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `description` | `string` | No |  |
-| `end_period_date` | `string` | No |  |
+| `endPeriodDate` | `string` | No |  |
 | `id` | `number` | No |  |
 | `image` | `string` | No |  |
 | `name` | `string` | No |  |
-| `political_party` | `string` | No |  |
-| `start_period_date` | `string` | No |  |
+| `politicalParty` | `string` | No |  |
+| `startPeriodDate` | `string` | No |  |
 
 ### Operations
 
@@ -1017,7 +1037,7 @@ const region = client.Region()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `department` | `any[]` | No |  |
+| `departments` | `any[]` | No |  |
 | `description` | `string` | No |  |
 | `id` | `number` | No |  |
 | `name` | `string` | No |  |
@@ -1081,7 +1101,7 @@ const touristic_attraction = client.TouristicAttraction()
 | `city` | `string` | No |  |
 | `description` | `string` | No |  |
 | `id` | `number` | No |  |
-| `image` | `any[]` | No |  |
+| `images` | `any[]` | No |  |
 | `latitude` | `number` | No |  |
 | `longitude` | `number` | No |  |
 | `name` | `string` | No |  |
@@ -1142,12 +1162,12 @@ const typical_dish = client.TypicalDish()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `department_id` | `number` | No |  |
+| `departmentId` | `number` | No |  |
 | `description` | `string` | No |  |
 | `id` | `number` | No |  |
-| `ingredient` | `any[]` | No |  |
+| `ingredients` | `any[]` | No |  |
 | `name` | `string` | No |  |
-| `url_image` | `string` | No |  |
+| `urlImage` | `string` | No |  |
 
 ### Operations
 
