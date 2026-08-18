@@ -28,7 +28,7 @@ class ColombiaPublicSDK
     utility = ColombiaPublicUtility.new
     @_utility = utility
 
-    config = ColombiaPublicConfig.make_config
+    config = ColombiaPublicConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

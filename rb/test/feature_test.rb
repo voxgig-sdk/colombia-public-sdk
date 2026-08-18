@@ -15,7 +15,7 @@ require_relative "../ColombiaPublic_sdk"
 module ColombiaPublicFeatureHarness
   # True when this SDK was generated with the named feature.
   def self.has_feature?(name)
-    f = ColombiaPublicConfig.make_config["feature"]
+    f = ColombiaPublicConfig.shared_config["feature"]
     f.is_a?(Hash) && !f[name].nil?
   end
 

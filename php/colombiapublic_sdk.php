@@ -40,7 +40,7 @@ class ColombiaPublicSDK
         $utility = new ColombiaPublicUtility();
         $this->_utility = $utility;
 
-        $config = ColombiaPublicConfig::make_config();
+        $config = ColombiaPublicConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,
