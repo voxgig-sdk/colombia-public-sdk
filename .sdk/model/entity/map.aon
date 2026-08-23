@@ -1,0 +1,67 @@
+# Entity: map
+
+main: kit: entity: map: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "departmentId"
+      req: false
+      short: "Department ID"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "description"
+      req: false
+      short: "Map description"
+      type: "`$STRING`"
+    }
+    {
+      name: "id"
+      req: false
+      short: "Map ID"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "name"
+      req: false
+      short: "Map name"
+      type: "`$STRING`"
+    }
+    {
+      name: "urlImages"
+      req: false
+      short: "URLs to map images"
+      type: "`$ARRAY`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "map"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/Map"
+          parts: [
+            "Map"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

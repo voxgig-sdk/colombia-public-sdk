@@ -1,0 +1,118 @@
+# Entity: natural_area
+
+main: kit: entity: natural_area: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "areaGroupId"
+      req: false
+      short: "Area group ID"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "categoryNaturalAreaId"
+      req: false
+      short: "Category ID"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "departmentId"
+      req: false
+      short: "Department ID"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "description"
+      req: false
+      short: "Natural area description"
+      type: "`$STRING`"
+    }
+    {
+      name: "id"
+      req: false
+      short: "Natural area ID"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "landArea"
+      req: false
+      short: "Land area in hectares"
+      type: "`$NUMBER`"
+    }
+    {
+      name: "maritimeArea"
+      req: false
+      short: "Maritime area in hectares"
+      type: "`$NUMBER`"
+    }
+    {
+      name: "name"
+      req: false
+      short: "Natural area name"
+      type: "`$STRING`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "natural_area"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/NaturalArea"
+          parts: [
+            "NaturalArea"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/NaturalArea/{id}"
+          parts: [
+            "NaturalArea"
+            "{id}"
+          ]
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

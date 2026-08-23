@@ -1,0 +1,112 @@
+# Entity: president
+
+main: kit: entity: president: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "description"
+      req: false
+      short: "Biography and description"
+      type: "`$STRING`"
+    }
+    {
+      name: "endPeriodDate"
+      req: false
+      short: "End date of presidency"
+      type: "`$STRING`"
+    }
+    {
+      name: "id"
+      req: false
+      short: "President ID"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "image"
+      req: false
+      short: "URL to president image"
+      type: "`$STRING`"
+    }
+    {
+      name: "name"
+      req: false
+      short: "President name"
+      type: "`$STRING`"
+    }
+    {
+      name: "politicalParty"
+      req: false
+      short: "Political party"
+      type: "`$STRING`"
+    }
+    {
+      name: "startPeriodDate"
+      req: false
+      short: "Start date of presidency"
+      type: "`$STRING`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "president"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/President"
+          parts: [
+            "President"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/President/{id}"
+          parts: [
+            "President"
+            "{id}"
+          ]
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

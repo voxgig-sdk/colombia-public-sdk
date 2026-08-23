@@ -19,9 +19,20 @@ class Config {
     return fi
   }
 
+  // False for a feature added at runtime via options.extend (station's
+  // adopt path) - the constructor uses this to skip makeFeature for names
+  // no generated class backs.
+  hasFeature(this: any, fn: string) {
+    return null != FEATURE_CLASS[fn]
+  }
+
 
   main = {
     name: 'ColombiaPublic',
+        slug: "colombia-public",
+    version: "0.0.1",
+    target: "ts",
+
   }
 
 
@@ -98,34 +109,42 @@ class Config {
       "fields": [
         {
           "name": "cityId",
+          "short": "City ID",
           "type": "`$INTEGER`"
         },
         {
           "name": "code",
+          "short": "IATA code",
           "type": "`$STRING`"
         },
         {
           "name": "departmentId",
+          "short": "Department ID",
           "type": "`$INTEGER`"
         },
         {
           "name": "id",
+          "short": "Airport ID",
           "type": "`$INTEGER`"
         },
         {
           "name": "latitude",
+          "short": "Latitude coordinate",
           "type": "`$NUMBER`"
         },
         {
           "name": "longitude",
+          "short": "Longitude coordinate",
           "type": "`$NUMBER`"
         },
         {
           "name": "name",
+          "short": "Airport name",
           "type": "`$STRING`"
         },
         {
           "name": "type",
+          "short": "Airport type",
           "type": "`$STRING`"
         }
       ],
@@ -195,14 +214,17 @@ class Config {
       "fields": [
         {
           "name": "description",
+          "short": "Category description",
           "type": "`$STRING`"
         },
         {
           "name": "id",
+          "short": "Category ID",
           "type": "`$INTEGER`"
         },
         {
           "name": "name",
+          "short": "Category name",
           "type": "`$STRING`"
         }
       ],
@@ -237,22 +259,27 @@ class Config {
       "fields": [
         {
           "name": "articleNumber",
+          "short": "Article number",
           "type": "`$INTEGER`"
         },
         {
           "name": "chapter",
+          "short": "Constitution chapter",
           "type": "`$STRING`"
         },
         {
           "name": "description",
+          "short": "Article content",
           "type": "`$STRING`"
         },
         {
           "name": "id",
+          "short": "Article ID",
           "type": "`$INTEGER`"
         },
         {
           "name": "title",
+          "short": "Article title",
           "type": "`$STRING`"
         }
       ],
@@ -322,34 +349,42 @@ class Config {
       "fields": [
         {
           "name": "capital",
+          "short": "Capital city",
           "type": "`$STRING`"
         },
         {
           "name": "currency",
+          "short": "Currency",
           "type": "`$STRING`"
         },
         {
           "name": "flag",
+          "short": "URL to flag image",
           "type": "`$STRING`"
         },
         {
           "name": "id",
+          "short": "Country ID",
           "type": "`$INTEGER`"
         },
         {
           "name": "languages",
+          "short": "Official languages",
           "type": "`$ARRAY`"
         },
         {
           "name": "name",
+          "short": "Country name",
           "type": "`$STRING`"
         },
         {
           "name": "population",
+          "short": "Total population",
           "type": "`$INTEGER`"
         },
         {
           "name": "surface",
+          "short": "Surface area in square kilometers",
           "type": "`$NUMBER`"
         }
       ],
@@ -387,34 +422,42 @@ class Config {
       "fields": [
         {
           "name": "cityCapital",
+          "short": "Capital city of the department",
           "type": "`$STRING`"
         },
         {
           "name": "description",
+          "short": "Department description",
           "type": "`$STRING`"
         },
         {
           "name": "id",
+          "short": "Department ID",
           "type": "`$INTEGER`"
         },
         {
           "name": "municipalities",
+          "short": "Number of municipalities",
           "type": "`$INTEGER`"
         },
         {
           "name": "name",
+          "short": "Department name",
           "type": "`$STRING`"
         },
         {
           "name": "population",
+          "short": "Population",
           "type": "`$INTEGER`"
         },
         {
           "name": "regionId",
+          "short": "Region ID",
           "type": "`$INTEGER`"
         },
         {
           "name": "surface",
+          "short": "Surface area",
           "type": "`$NUMBER`"
         }
       ],
@@ -484,22 +527,27 @@ class Config {
       "fields": [
         {
           "name": "date",
+          "short": "Holiday date",
           "type": "`$STRING`"
         },
         {
           "name": "description",
+          "short": "Holiday description",
           "type": "`$STRING`"
         },
         {
           "name": "id",
+          "short": "Holiday ID",
           "type": "`$INTEGER`"
         },
         {
           "name": "name",
+          "short": "Holiday name",
           "type": "`$STRING`"
         },
         {
           "name": "type",
+          "short": "Holiday type (religious, civic, etc.)",
           "type": "`$STRING`"
         }
       ],
@@ -569,26 +617,32 @@ class Config {
       "fields": [
         {
           "name": "id",
+          "short": "Invasive species ID",
           "type": "`$INTEGER`"
         },
         {
           "name": "impact",
+          "short": "Environmental impact",
           "type": "`$STRING`"
         },
         {
           "name": "manage",
+          "short": "Management strategies",
           "type": "`$STRING`"
         },
         {
           "name": "name",
+          "short": "Species name",
           "type": "`$STRING`"
         },
         {
           "name": "scientificName",
+          "short": "Scientific name",
           "type": "`$STRING`"
         },
         {
           "name": "urlImage",
+          "short": "URL to species image",
           "type": "`$STRING`"
         }
       ],
@@ -658,22 +712,27 @@ class Config {
       "fields": [
         {
           "name": "departmentId",
+          "short": "Department ID",
           "type": "`$INTEGER`"
         },
         {
           "name": "description",
+          "short": "Map description",
           "type": "`$STRING`"
         },
         {
           "name": "id",
+          "short": "Map ID",
           "type": "`$INTEGER`"
         },
         {
           "name": "name",
+          "short": "Map name",
           "type": "`$STRING`"
         },
         {
           "name": "urlImages",
+          "short": "URLs to map images",
           "type": "`$ARRAY`"
         }
       ],
@@ -708,22 +767,27 @@ class Config {
       "fields": [
         {
           "name": "departmentId",
+          "short": "Department ID",
           "type": "`$INTEGER`"
         },
         {
           "name": "description",
+          "short": "Community description",
           "type": "`$STRING`"
         },
         {
           "name": "id",
+          "short": "Native community ID",
           "type": "`$INTEGER`"
         },
         {
           "name": "name",
+          "short": "Community name",
           "type": "`$STRING`"
         },
         {
           "name": "population",
+          "short": "Population",
           "type": "`$INTEGER`"
         }
       ],
@@ -793,34 +857,42 @@ class Config {
       "fields": [
         {
           "name": "areaGroupId",
+          "short": "Area group ID",
           "type": "`$INTEGER`"
         },
         {
           "name": "categoryNaturalAreaId",
+          "short": "Category ID",
           "type": "`$INTEGER`"
         },
         {
           "name": "departmentId",
+          "short": "Department ID",
           "type": "`$INTEGER`"
         },
         {
           "name": "description",
+          "short": "Natural area description",
           "type": "`$STRING`"
         },
         {
           "name": "id",
+          "short": "Natural area ID",
           "type": "`$INTEGER`"
         },
         {
           "name": "landArea",
+          "short": "Land area in hectares",
           "type": "`$NUMBER`"
         },
         {
           "name": "maritimeArea",
+          "short": "Maritime area in hectares",
           "type": "`$NUMBER`"
         },
         {
           "name": "name",
+          "short": "Natural area name",
           "type": "`$STRING`"
         }
       ],
@@ -890,30 +962,37 @@ class Config {
       "fields": [
         {
           "name": "description",
+          "short": "Biography and description",
           "type": "`$STRING`"
         },
         {
           "name": "endPeriodDate",
+          "short": "End date of presidency",
           "type": "`$STRING`"
         },
         {
           "name": "id",
+          "short": "President ID",
           "type": "`$INTEGER`"
         },
         {
           "name": "image",
+          "short": "URL to president image",
           "type": "`$STRING`"
         },
         {
           "name": "name",
+          "short": "President name",
           "type": "`$STRING`"
         },
         {
           "name": "politicalParty",
+          "short": "Political party",
           "type": "`$STRING`"
         },
         {
           "name": "startPeriodDate",
+          "short": "Start date of presidency",
           "type": "`$STRING`"
         }
       ],
@@ -983,22 +1062,27 @@ class Config {
       "fields": [
         {
           "name": "band",
+          "short": "Broadcasting band (AM/FM)",
           "type": "`$STRING`"
         },
         {
           "name": "frequency",
+          "short": "Broadcasting frequency",
           "type": "`$STRING`"
         },
         {
           "name": "id",
+          "short": "Radio station ID",
           "type": "`$INTEGER`"
         },
         {
           "name": "name",
+          "short": "Radio station name",
           "type": "`$STRING`"
         },
         {
           "name": "url",
+          "short": "Station URL",
           "type": "`$STRING`"
         }
       ],
@@ -1068,18 +1152,22 @@ class Config {
       "fields": [
         {
           "name": "departments",
+          "short": "List of departments in the region",
           "type": "`$ARRAY`"
         },
         {
           "name": "description",
+          "short": "Region description",
           "type": "`$STRING`"
         },
         {
           "name": "id",
+          "short": "Region ID",
           "type": "`$INTEGER`"
         },
         {
           "name": "name",
+          "short": "Region name",
           "type": "`$STRING`"
         }
       ],
@@ -1149,30 +1237,37 @@ class Config {
       "fields": [
         {
           "name": "city",
+          "short": "City where the attraction is located",
           "type": "`$STRING`"
         },
         {
           "name": "description",
+          "short": "Attraction description",
           "type": "`$STRING`"
         },
         {
           "name": "id",
+          "short": "Touristic attraction ID",
           "type": "`$INTEGER`"
         },
         {
           "name": "images",
+          "short": "List of image URLs",
           "type": "`$ARRAY`"
         },
         {
           "name": "latitude",
+          "short": "Latitude coordinate",
           "type": "`$NUMBER`"
         },
         {
           "name": "longitude",
+          "short": "Longitude coordinate",
           "type": "`$NUMBER`"
         },
         {
           "name": "name",
+          "short": "Attraction name",
           "type": "`$STRING`"
         }
       ],
@@ -1242,26 +1337,32 @@ class Config {
       "fields": [
         {
           "name": "departmentId",
+          "short": "Department ID",
           "type": "`$INTEGER`"
         },
         {
           "name": "description",
+          "short": "Dish description",
           "type": "`$STRING`"
         },
         {
           "name": "id",
+          "short": "Typical dish ID",
           "type": "`$INTEGER`"
         },
         {
           "name": "ingredients",
+          "short": "List of ingredients",
           "type": "`$ARRAY`"
         },
         {
           "name": "name",
+          "short": "Dish name",
           "type": "`$STRING`"
         },
         {
           "name": "urlImage",
+          "short": "URL to dish image",
           "type": "`$STRING`"
         }
       ],

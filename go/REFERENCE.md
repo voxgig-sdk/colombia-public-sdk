@@ -154,14 +154,14 @@ fmt.Println(airport.GetName()) // "airport"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `cityId` | `int` | No |  |
-| `code` | `string` | No |  |
-| `departmentId` | `int` | No |  |
-| `id` | `int` | No |  |
-| `latitude` | `float64` | No |  |
-| `longitude` | `float64` | No |  |
-| `name` | `string` | No |  |
-| `type` | `string` | No |  |
+| `cityId` | `int` | No | City ID |
+| `code` | `string` | No | IATA code |
+| `departmentId` | `int` | No | Department ID |
+| `id` | `int` | No | Airport ID |
+| `latitude` | `float64` | No | Latitude coordinate |
+| `longitude` | `float64` | No | Longitude coordinate |
+| `name` | `string` | No | Airport name |
+| `type` | `string` | No | Airport type |
 
 ### Operations
 
@@ -224,9 +224,9 @@ fmt.Println(categoryNaturalArea.GetName()) // "category_natural_area"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `string` | No |  |
-| `id` | `int` | No |  |
-| `name` | `string` | No |  |
+| `description` | `string` | No | Category description |
+| `id` | `int` | No | Category ID |
+| `name` | `string` | No | Category name |
 
 ### Operations
 
@@ -277,11 +277,11 @@ fmt.Println(constitutionArticle.GetName()) // "constitution_article"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `articleNumber` | `int` | No |  |
-| `chapter` | `string` | No |  |
-| `description` | `string` | No |  |
-| `id` | `int` | No |  |
-| `title` | `string` | No |  |
+| `articleNumber` | `int` | No | Article number |
+| `chapter` | `string` | No | Constitution chapter |
+| `description` | `string` | No | Article content |
+| `id` | `int` | No | Article ID |
+| `title` | `string` | No | Article title |
 
 ### Operations
 
@@ -344,14 +344,14 @@ fmt.Println(country.GetName()) // "country"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `capital` | `string` | No |  |
-| `currency` | `string` | No |  |
-| `flag` | `string` | No |  |
-| `id` | `int` | No |  |
-| `languages` | `[]any` | No |  |
-| `name` | `string` | No |  |
-| `population` | `int` | No |  |
-| `surface` | `float64` | No |  |
+| `capital` | `string` | No | Capital city |
+| `currency` | `string` | No | Currency |
+| `flag` | `string` | No | URL to flag image |
+| `id` | `int` | No | Country ID |
+| `languages` | `[]any` | No | Official languages |
+| `name` | `string` | No | Country name |
+| `population` | `int` | No | Total population |
+| `surface` | `float64` | No | Surface area in square kilometers |
 
 ### Operations
 
@@ -402,14 +402,14 @@ fmt.Println(department.GetName()) // "department"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `cityCapital` | `string` | No |  |
-| `description` | `string` | No |  |
-| `id` | `int` | No |  |
-| `municipalities` | `int` | No |  |
-| `name` | `string` | No |  |
-| `population` | `int` | No |  |
-| `regionId` | `int` | No |  |
-| `surface` | `float64` | No |  |
+| `cityCapital` | `string` | No | Capital city of the department |
+| `description` | `string` | No | Department description |
+| `id` | `int` | No | Department ID |
+| `municipalities` | `int` | No | Number of municipalities |
+| `name` | `string` | No | Department name |
+| `population` | `int` | No | Population |
+| `regionId` | `int` | No | Region ID |
+| `surface` | `float64` | No | Surface area |
 
 ### Operations
 
@@ -472,11 +472,11 @@ fmt.Println(holiday.GetName()) // "holiday"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `date` | `string` | No |  |
-| `description` | `string` | No |  |
-| `id` | `int` | No |  |
-| `name` | `string` | No |  |
-| `type` | `string` | No |  |
+| `date` | `string` | No | Holiday date |
+| `description` | `string` | No | Holiday description |
+| `id` | `int` | No | Holiday ID |
+| `name` | `string` | No | Holiday name |
+| `type` | `string` | No | Holiday type (religious, civic, etc.) |
 
 ### Operations
 
@@ -539,12 +539,12 @@ fmt.Println(invasiveSpecie.GetName()) // "invasive_specie"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | `int` | No |  |
-| `impact` | `string` | No |  |
-| `manage` | `string` | No |  |
-| `name` | `string` | No |  |
-| `scientificName` | `string` | No |  |
-| `urlImage` | `string` | No |  |
+| `id` | `int` | No | Invasive species ID |
+| `impact` | `string` | No | Environmental impact |
+| `manage` | `string` | No | Management strategies |
+| `name` | `string` | No | Species name |
+| `scientificName` | `string` | No | Scientific name |
+| `urlImage` | `string` | No | URL to species image |
 
 ### Operations
 
@@ -607,11 +607,11 @@ fmt.Println(map_.GetName()) // "map"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `departmentId` | `int` | No |  |
-| `description` | `string` | No |  |
-| `id` | `int` | No |  |
-| `name` | `string` | No |  |
-| `urlImages` | `[]any` | No |  |
+| `departmentId` | `int` | No | Department ID |
+| `description` | `string` | No | Map description |
+| `id` | `int` | No | Map ID |
+| `name` | `string` | No | Map name |
+| `urlImages` | `[]any` | No | URLs to map images |
 
 ### Operations
 
@@ -662,11 +662,11 @@ fmt.Println(nativeCommunity.GetName()) // "native_community"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `departmentId` | `int` | No |  |
-| `description` | `string` | No |  |
-| `id` | `int` | No |  |
-| `name` | `string` | No |  |
-| `population` | `int` | No |  |
+| `departmentId` | `int` | No | Department ID |
+| `description` | `string` | No | Community description |
+| `id` | `int` | No | Native community ID |
+| `name` | `string` | No | Community name |
+| `population` | `int` | No | Population |
 
 ### Operations
 
@@ -729,14 +729,14 @@ fmt.Println(naturalArea.GetName()) // "natural_area"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `areaGroupId` | `int` | No |  |
-| `categoryNaturalAreaId` | `int` | No |  |
-| `departmentId` | `int` | No |  |
-| `description` | `string` | No |  |
-| `id` | `int` | No |  |
-| `landArea` | `float64` | No |  |
-| `maritimeArea` | `float64` | No |  |
-| `name` | `string` | No |  |
+| `areaGroupId` | `int` | No | Area group ID |
+| `categoryNaturalAreaId` | `int` | No | Category ID |
+| `departmentId` | `int` | No | Department ID |
+| `description` | `string` | No | Natural area description |
+| `id` | `int` | No | Natural area ID |
+| `landArea` | `float64` | No | Land area in hectares |
+| `maritimeArea` | `float64` | No | Maritime area in hectares |
+| `name` | `string` | No | Natural area name |
 
 ### Operations
 
@@ -799,13 +799,13 @@ fmt.Println(president.GetName()) // "president"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `string` | No |  |
-| `endPeriodDate` | `string` | No |  |
-| `id` | `int` | No |  |
-| `image` | `string` | No |  |
-| `name` | `string` | No |  |
-| `politicalParty` | `string` | No |  |
-| `startPeriodDate` | `string` | No |  |
+| `description` | `string` | No | Biography and description |
+| `endPeriodDate` | `string` | No | End date of presidency |
+| `id` | `int` | No | President ID |
+| `image` | `string` | No | URL to president image |
+| `name` | `string` | No | President name |
+| `politicalParty` | `string` | No | Political party |
+| `startPeriodDate` | `string` | No | Start date of presidency |
 
 ### Operations
 
@@ -868,11 +868,11 @@ fmt.Println(radio.GetName()) // "radio"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `band` | `string` | No |  |
-| `frequency` | `string` | No |  |
-| `id` | `int` | No |  |
-| `name` | `string` | No |  |
-| `url` | `string` | No |  |
+| `band` | `string` | No | Broadcasting band (AM/FM) |
+| `frequency` | `string` | No | Broadcasting frequency |
+| `id` | `int` | No | Radio station ID |
+| `name` | `string` | No | Radio station name |
+| `url` | `string` | No | Station URL |
 
 ### Operations
 
@@ -935,10 +935,10 @@ fmt.Println(region.GetName()) // "region"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `departments` | `[]any` | No |  |
-| `description` | `string` | No |  |
-| `id` | `int` | No |  |
-| `name` | `string` | No |  |
+| `departments` | `[]any` | No | List of departments in the region |
+| `description` | `string` | No | Region description |
+| `id` | `int` | No | Region ID |
+| `name` | `string` | No | Region name |
 
 ### Operations
 
@@ -1001,13 +1001,13 @@ fmt.Println(touristicAttraction.GetName()) // "touristic_attraction"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `city` | `string` | No |  |
-| `description` | `string` | No |  |
-| `id` | `int` | No |  |
-| `images` | `[]any` | No |  |
-| `latitude` | `float64` | No |  |
-| `longitude` | `float64` | No |  |
-| `name` | `string` | No |  |
+| `city` | `string` | No | City where the attraction is located |
+| `description` | `string` | No | Attraction description |
+| `id` | `int` | No | Touristic attraction ID |
+| `images` | `[]any` | No | List of image URLs |
+| `latitude` | `float64` | No | Latitude coordinate |
+| `longitude` | `float64` | No | Longitude coordinate |
+| `name` | `string` | No | Attraction name |
 
 ### Operations
 
@@ -1070,12 +1070,12 @@ fmt.Println(typicalDish.GetName()) // "typical_dish"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `departmentId` | `int` | No |  |
-| `description` | `string` | No |  |
-| `id` | `int` | No |  |
-| `ingredients` | `[]any` | No |  |
-| `name` | `string` | No |  |
-| `urlImage` | `string` | No |  |
+| `departmentId` | `int` | No | Department ID |
+| `description` | `string` | No | Dish description |
+| `id` | `int` | No | Typical dish ID |
+| `ingredients` | `[]any` | No | List of ingredients |
+| `name` | `string` | No | Dish name |
+| `urlImage` | `string` | No | URL to dish image |
 
 ### Operations
 

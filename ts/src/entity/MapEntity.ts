@@ -15,12 +15,12 @@ import type {
 } from '../types'
 
 import type {
-  Map,
+  MapType,
   MapListMatch,
 } from '../ColombiaPublicTypes'
 
 // TODO: needs Entity superclass
-class MapEntity extends ColombiaPublicEntityBase<Map> {
+class MapEntity extends ColombiaPublicEntityBase<MapType> {
 
   constructor(client: ColombiaPublicSDK, entopts: any) {
     super(client, entopts)

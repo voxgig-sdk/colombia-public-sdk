@@ -1,0 +1,100 @@
+# Entity: holiday
+
+main: kit: entity: holiday: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "date"
+      req: false
+      short: "Holiday date"
+      type: "`$STRING`"
+    }
+    {
+      name: "description"
+      req: false
+      short: "Holiday description"
+      type: "`$STRING`"
+    }
+    {
+      name: "id"
+      req: false
+      short: "Holiday ID"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "name"
+      req: false
+      short: "Holiday name"
+      type: "`$STRING`"
+    }
+    {
+      name: "type"
+      req: false
+      short: "Holiday type (religious, civic, etc.)"
+      type: "`$STRING`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "holiday"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/Holiday"
+          parts: [
+            "Holiday"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/Holiday/{id}"
+          parts: [
+            "Holiday"
+            "{id}"
+          ]
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

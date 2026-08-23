@@ -148,14 +148,14 @@ $airport = $client->Airport();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `cityId` | `int` | No |  |
-| `code` | `string` | No |  |
-| `departmentId` | `int` | No |  |
-| `id` | `int` | No |  |
-| `latitude` | `float` | No |  |
-| `longitude` | `float` | No |  |
-| `name` | `string` | No |  |
-| `type` | `string` | No |  |
+| `cityId` | `int` | No | City ID |
+| `code` | `string` | No | IATA code |
+| `departmentId` | `int` | No | Department ID |
+| `id` | `int` | No | Airport ID |
+| `latitude` | `float` | No | Latitude coordinate |
+| `longitude` | `float` | No | Longitude coordinate |
+| `name` | `string` | No | Airport name |
+| `type` | `string` | No | Airport type |
 
 ### Operations
 
@@ -215,9 +215,9 @@ $category_natural_area = $client->CategoryNaturalArea();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `string` | No |  |
-| `id` | `int` | No |  |
-| `name` | `string` | No |  |
+| `description` | `string` | No | Category description |
+| `id` | `int` | No | Category ID |
+| `name` | `string` | No | Category name |
 
 ### Operations
 
@@ -269,11 +269,11 @@ $constitution_article = $client->ConstitutionArticle();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `articleNumber` | `int` | No |  |
-| `chapter` | `string` | No |  |
-| `description` | `string` | No |  |
-| `id` | `int` | No |  |
-| `title` | `string` | No |  |
+| `articleNumber` | `int` | No | Article number |
+| `chapter` | `string` | No | Constitution chapter |
+| `description` | `string` | No | Article content |
+| `id` | `int` | No | Article ID |
+| `title` | `string` | No | Article title |
 
 ### Operations
 
@@ -333,14 +333,14 @@ $country = $client->Country();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `capital` | `string` | No |  |
-| `currency` | `string` | No |  |
-| `flag` | `string` | No |  |
-| `id` | `int` | No |  |
-| `languages` | `array` | No |  |
-| `name` | `string` | No |  |
-| `population` | `int` | No |  |
-| `surface` | `float` | No |  |
+| `capital` | `string` | No | Capital city |
+| `currency` | `string` | No | Currency |
+| `flag` | `string` | No | URL to flag image |
+| `id` | `int` | No | Country ID |
+| `languages` | `array` | No | Official languages |
+| `name` | `string` | No | Country name |
+| `population` | `int` | No | Total population |
+| `surface` | `float` | No | Surface area in square kilometers |
 
 ### Operations
 
@@ -392,14 +392,14 @@ $department = $client->Department();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `cityCapital` | `string` | No |  |
-| `description` | `string` | No |  |
-| `id` | `int` | No |  |
-| `municipalities` | `int` | No |  |
-| `name` | `string` | No |  |
-| `population` | `int` | No |  |
-| `regionId` | `int` | No |  |
-| `surface` | `float` | No |  |
+| `cityCapital` | `string` | No | Capital city of the department |
+| `description` | `string` | No | Department description |
+| `id` | `int` | No | Department ID |
+| `municipalities` | `int` | No | Number of municipalities |
+| `name` | `string` | No | Department name |
+| `population` | `int` | No | Population |
+| `regionId` | `int` | No | Region ID |
+| `surface` | `float` | No | Surface area |
 
 ### Operations
 
@@ -459,11 +459,11 @@ $holiday = $client->Holiday();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `date` | `string` | No |  |
-| `description` | `string` | No |  |
-| `id` | `int` | No |  |
-| `name` | `string` | No |  |
-| `type` | `string` | No |  |
+| `date` | `string` | No | Holiday date |
+| `description` | `string` | No | Holiday description |
+| `id` | `int` | No | Holiday ID |
+| `name` | `string` | No | Holiday name |
+| `type` | `string` | No | Holiday type (religious, civic, etc.) |
 
 ### Operations
 
@@ -523,12 +523,12 @@ $invasive_specie = $client->InvasiveSpecie();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | `int` | No |  |
-| `impact` | `string` | No |  |
-| `manage` | `string` | No |  |
-| `name` | `string` | No |  |
-| `scientificName` | `string` | No |  |
-| `urlImage` | `string` | No |  |
+| `id` | `int` | No | Invasive species ID |
+| `impact` | `string` | No | Environmental impact |
+| `manage` | `string` | No | Management strategies |
+| `name` | `string` | No | Species name |
+| `scientificName` | `string` | No | Scientific name |
+| `urlImage` | `string` | No | URL to species image |
 
 ### Operations
 
@@ -588,11 +588,11 @@ $map = $client->Map();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `departmentId` | `int` | No |  |
-| `description` | `string` | No |  |
-| `id` | `int` | No |  |
-| `name` | `string` | No |  |
-| `urlImages` | `array` | No |  |
+| `departmentId` | `int` | No | Department ID |
+| `description` | `string` | No | Map description |
+| `id` | `int` | No | Map ID |
+| `name` | `string` | No | Map name |
+| `urlImages` | `array` | No | URLs to map images |
 
 ### Operations
 
@@ -644,11 +644,11 @@ $native_community = $client->NativeCommunity();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `departmentId` | `int` | No |  |
-| `description` | `string` | No |  |
-| `id` | `int` | No |  |
-| `name` | `string` | No |  |
-| `population` | `int` | No |  |
+| `departmentId` | `int` | No | Department ID |
+| `description` | `string` | No | Community description |
+| `id` | `int` | No | Native community ID |
+| `name` | `string` | No | Community name |
+| `population` | `int` | No | Population |
 
 ### Operations
 
@@ -708,14 +708,14 @@ $natural_area = $client->NaturalArea();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `areaGroupId` | `int` | No |  |
-| `categoryNaturalAreaId` | `int` | No |  |
-| `departmentId` | `int` | No |  |
-| `description` | `string` | No |  |
-| `id` | `int` | No |  |
-| `landArea` | `float` | No |  |
-| `maritimeArea` | `float` | No |  |
-| `name` | `string` | No |  |
+| `areaGroupId` | `int` | No | Area group ID |
+| `categoryNaturalAreaId` | `int` | No | Category ID |
+| `departmentId` | `int` | No | Department ID |
+| `description` | `string` | No | Natural area description |
+| `id` | `int` | No | Natural area ID |
+| `landArea` | `float` | No | Land area in hectares |
+| `maritimeArea` | `float` | No | Maritime area in hectares |
+| `name` | `string` | No | Natural area name |
 
 ### Operations
 
@@ -775,13 +775,13 @@ $president = $client->President();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `string` | No |  |
-| `endPeriodDate` | `string` | No |  |
-| `id` | `int` | No |  |
-| `image` | `string` | No |  |
-| `name` | `string` | No |  |
-| `politicalParty` | `string` | No |  |
-| `startPeriodDate` | `string` | No |  |
+| `description` | `string` | No | Biography and description |
+| `endPeriodDate` | `string` | No | End date of presidency |
+| `id` | `int` | No | President ID |
+| `image` | `string` | No | URL to president image |
+| `name` | `string` | No | President name |
+| `politicalParty` | `string` | No | Political party |
+| `startPeriodDate` | `string` | No | Start date of presidency |
 
 ### Operations
 
@@ -841,11 +841,11 @@ $radio = $client->Radio();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `band` | `string` | No |  |
-| `frequency` | `string` | No |  |
-| `id` | `int` | No |  |
-| `name` | `string` | No |  |
-| `url` | `string` | No |  |
+| `band` | `string` | No | Broadcasting band (AM/FM) |
+| `frequency` | `string` | No | Broadcasting frequency |
+| `id` | `int` | No | Radio station ID |
+| `name` | `string` | No | Radio station name |
+| `url` | `string` | No | Station URL |
 
 ### Operations
 
@@ -905,10 +905,10 @@ $region = $client->Region();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `departments` | `array` | No |  |
-| `description` | `string` | No |  |
-| `id` | `int` | No |  |
-| `name` | `string` | No |  |
+| `departments` | `array` | No | List of departments in the region |
+| `description` | `string` | No | Region description |
+| `id` | `int` | No | Region ID |
+| `name` | `string` | No | Region name |
 
 ### Operations
 
@@ -968,13 +968,13 @@ $touristic_attraction = $client->TouristicAttraction();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `city` | `string` | No |  |
-| `description` | `string` | No |  |
-| `id` | `int` | No |  |
-| `images` | `array` | No |  |
-| `latitude` | `float` | No |  |
-| `longitude` | `float` | No |  |
-| `name` | `string` | No |  |
+| `city` | `string` | No | City where the attraction is located |
+| `description` | `string` | No | Attraction description |
+| `id` | `int` | No | Touristic attraction ID |
+| `images` | `array` | No | List of image URLs |
+| `latitude` | `float` | No | Latitude coordinate |
+| `longitude` | `float` | No | Longitude coordinate |
+| `name` | `string` | No | Attraction name |
 
 ### Operations
 
@@ -1034,12 +1034,12 @@ $typical_dish = $client->TypicalDish();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `departmentId` | `int` | No |  |
-| `description` | `string` | No |  |
-| `id` | `int` | No |  |
-| `ingredients` | `array` | No |  |
-| `name` | `string` | No |  |
-| `urlImage` | `string` | No |  |
+| `departmentId` | `int` | No | Department ID |
+| `description` | `string` | No | Dish description |
+| `id` | `int` | No | Typical dish ID |
+| `ingredients` | `array` | No | List of ingredients |
+| `name` | `string` | No | Dish name |
+| `urlImage` | `string` | No | URL to dish image |
 
 ### Operations
 

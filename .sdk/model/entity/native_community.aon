@@ -1,0 +1,100 @@
+# Entity: native_community
+
+main: kit: entity: native_community: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "departmentId"
+      req: false
+      short: "Department ID"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "description"
+      req: false
+      short: "Community description"
+      type: "`$STRING`"
+    }
+    {
+      name: "id"
+      req: false
+      short: "Native community ID"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "name"
+      req: false
+      short: "Community name"
+      type: "`$STRING`"
+    }
+    {
+      name: "population"
+      req: false
+      short: "Population"
+      type: "`$INTEGER`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "native_community"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/NativeCommunity"
+          parts: [
+            "NativeCommunity"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/NativeCommunity/{id}"
+          parts: [
+            "NativeCommunity"
+            "{id}"
+          ]
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

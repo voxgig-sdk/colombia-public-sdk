@@ -143,14 +143,14 @@ airport = client.Airport()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `cityId` | `int` | No |  |
-| `code` | `str` | No |  |
-| `departmentId` | `int` | No |  |
-| `id` | `int` | No |  |
-| `latitude` | `float` | No |  |
-| `longitude` | `float` | No |  |
-| `name` | `str` | No |  |
-| `type` | `str` | No |  |
+| `cityId` | `int` | No | City ID |
+| `code` | `str` | No | IATA code |
+| `departmentId` | `int` | No | Department ID |
+| `id` | `int` | No | Airport ID |
+| `latitude` | `float` | No | Latitude coordinate |
+| `longitude` | `float` | No | Longitude coordinate |
+| `name` | `str` | No | Airport name |
+| `type` | `str` | No | Airport type |
 
 ### Operations
 
@@ -211,9 +211,9 @@ category_natural_area = client.CategoryNaturalArea()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `str` | No |  |
-| `id` | `int` | No |  |
-| `name` | `str` | No |  |
+| `description` | `str` | No | Category description |
+| `id` | `int` | No | Category ID |
+| `name` | `str` | No | Category name |
 
 ### Operations
 
@@ -266,11 +266,11 @@ constitution_article = client.ConstitutionArticle()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `articleNumber` | `int` | No |  |
-| `chapter` | `str` | No |  |
-| `description` | `str` | No |  |
-| `id` | `int` | No |  |
-| `title` | `str` | No |  |
+| `articleNumber` | `int` | No | Article number |
+| `chapter` | `str` | No | Constitution chapter |
+| `description` | `str` | No | Article content |
+| `id` | `int` | No | Article ID |
+| `title` | `str` | No | Article title |
 
 ### Operations
 
@@ -331,14 +331,14 @@ country = client.Country()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `capital` | `str` | No |  |
-| `currency` | `str` | No |  |
-| `flag` | `str` | No |  |
-| `id` | `int` | No |  |
-| `languages` | `list` | No |  |
-| `name` | `str` | No |  |
-| `population` | `int` | No |  |
-| `surface` | `float` | No |  |
+| `capital` | `str` | No | Capital city |
+| `currency` | `str` | No | Currency |
+| `flag` | `str` | No | URL to flag image |
+| `id` | `int` | No | Country ID |
+| `languages` | `list` | No | Official languages |
+| `name` | `str` | No | Country name |
+| `population` | `int` | No | Total population |
+| `surface` | `float` | No | Surface area in square kilometers |
 
 ### Operations
 
@@ -391,14 +391,14 @@ department = client.Department()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `cityCapital` | `str` | No |  |
-| `description` | `str` | No |  |
-| `id` | `int` | No |  |
-| `municipalities` | `int` | No |  |
-| `name` | `str` | No |  |
-| `population` | `int` | No |  |
-| `regionId` | `int` | No |  |
-| `surface` | `float` | No |  |
+| `cityCapital` | `str` | No | Capital city of the department |
+| `description` | `str` | No | Department description |
+| `id` | `int` | No | Department ID |
+| `municipalities` | `int` | No | Number of municipalities |
+| `name` | `str` | No | Department name |
+| `population` | `int` | No | Population |
+| `regionId` | `int` | No | Region ID |
+| `surface` | `float` | No | Surface area |
 
 ### Operations
 
@@ -459,11 +459,11 @@ holiday = client.Holiday()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `date` | `str` | No |  |
-| `description` | `str` | No |  |
-| `id` | `int` | No |  |
-| `name` | `str` | No |  |
-| `type` | `str` | No |  |
+| `date` | `str` | No | Holiday date |
+| `description` | `str` | No | Holiday description |
+| `id` | `int` | No | Holiday ID |
+| `name` | `str` | No | Holiday name |
+| `type` | `str` | No | Holiday type (religious, civic, etc.) |
 
 ### Operations
 
@@ -524,12 +524,12 @@ invasive_specie = client.InvasiveSpecie()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | `int` | No |  |
-| `impact` | `str` | No |  |
-| `manage` | `str` | No |  |
-| `name` | `str` | No |  |
-| `scientificName` | `str` | No |  |
-| `urlImage` | `str` | No |  |
+| `id` | `int` | No | Invasive species ID |
+| `impact` | `str` | No | Environmental impact |
+| `manage` | `str` | No | Management strategies |
+| `name` | `str` | No | Species name |
+| `scientificName` | `str` | No | Scientific name |
+| `urlImage` | `str` | No | URL to species image |
 
 ### Operations
 
@@ -590,11 +590,11 @@ map = client.Map()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `departmentId` | `int` | No |  |
-| `description` | `str` | No |  |
-| `id` | `int` | No |  |
-| `name` | `str` | No |  |
-| `urlImages` | `list` | No |  |
+| `departmentId` | `int` | No | Department ID |
+| `description` | `str` | No | Map description |
+| `id` | `int` | No | Map ID |
+| `name` | `str` | No | Map name |
+| `urlImages` | `list` | No | URLs to map images |
 
 ### Operations
 
@@ -647,11 +647,11 @@ native_community = client.NativeCommunity()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `departmentId` | `int` | No |  |
-| `description` | `str` | No |  |
-| `id` | `int` | No |  |
-| `name` | `str` | No |  |
-| `population` | `int` | No |  |
+| `departmentId` | `int` | No | Department ID |
+| `description` | `str` | No | Community description |
+| `id` | `int` | No | Native community ID |
+| `name` | `str` | No | Community name |
+| `population` | `int` | No | Population |
 
 ### Operations
 
@@ -712,14 +712,14 @@ natural_area = client.NaturalArea()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `areaGroupId` | `int` | No |  |
-| `categoryNaturalAreaId` | `int` | No |  |
-| `departmentId` | `int` | No |  |
-| `description` | `str` | No |  |
-| `id` | `int` | No |  |
-| `landArea` | `float` | No |  |
-| `maritimeArea` | `float` | No |  |
-| `name` | `str` | No |  |
+| `areaGroupId` | `int` | No | Area group ID |
+| `categoryNaturalAreaId` | `int` | No | Category ID |
+| `departmentId` | `int` | No | Department ID |
+| `description` | `str` | No | Natural area description |
+| `id` | `int` | No | Natural area ID |
+| `landArea` | `float` | No | Land area in hectares |
+| `maritimeArea` | `float` | No | Maritime area in hectares |
+| `name` | `str` | No | Natural area name |
 
 ### Operations
 
@@ -780,13 +780,13 @@ president = client.President()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `str` | No |  |
-| `endPeriodDate` | `str` | No |  |
-| `id` | `int` | No |  |
-| `image` | `str` | No |  |
-| `name` | `str` | No |  |
-| `politicalParty` | `str` | No |  |
-| `startPeriodDate` | `str` | No |  |
+| `description` | `str` | No | Biography and description |
+| `endPeriodDate` | `str` | No | End date of presidency |
+| `id` | `int` | No | President ID |
+| `image` | `str` | No | URL to president image |
+| `name` | `str` | No | President name |
+| `politicalParty` | `str` | No | Political party |
+| `startPeriodDate` | `str` | No | Start date of presidency |
 
 ### Operations
 
@@ -847,11 +847,11 @@ radio = client.Radio()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `band` | `str` | No |  |
-| `frequency` | `str` | No |  |
-| `id` | `int` | No |  |
-| `name` | `str` | No |  |
-| `url` | `str` | No |  |
+| `band` | `str` | No | Broadcasting band (AM/FM) |
+| `frequency` | `str` | No | Broadcasting frequency |
+| `id` | `int` | No | Radio station ID |
+| `name` | `str` | No | Radio station name |
+| `url` | `str` | No | Station URL |
 
 ### Operations
 
@@ -912,10 +912,10 @@ region = client.Region()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `departments` | `list` | No |  |
-| `description` | `str` | No |  |
-| `id` | `int` | No |  |
-| `name` | `str` | No |  |
+| `departments` | `list` | No | List of departments in the region |
+| `description` | `str` | No | Region description |
+| `id` | `int` | No | Region ID |
+| `name` | `str` | No | Region name |
 
 ### Operations
 
@@ -976,13 +976,13 @@ touristic_attraction = client.TouristicAttraction()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `city` | `str` | No |  |
-| `description` | `str` | No |  |
-| `id` | `int` | No |  |
-| `images` | `list` | No |  |
-| `latitude` | `float` | No |  |
-| `longitude` | `float` | No |  |
-| `name` | `str` | No |  |
+| `city` | `str` | No | City where the attraction is located |
+| `description` | `str` | No | Attraction description |
+| `id` | `int` | No | Touristic attraction ID |
+| `images` | `list` | No | List of image URLs |
+| `latitude` | `float` | No | Latitude coordinate |
+| `longitude` | `float` | No | Longitude coordinate |
+| `name` | `str` | No | Attraction name |
 
 ### Operations
 
@@ -1043,12 +1043,12 @@ typical_dish = client.TypicalDish()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `departmentId` | `int` | No |  |
-| `description` | `str` | No |  |
-| `id` | `int` | No |  |
-| `ingredients` | `list` | No |  |
-| `name` | `str` | No |  |
-| `urlImage` | `str` | No |  |
+| `departmentId` | `int` | No | Department ID |
+| `description` | `str` | No | Dish description |
+| `id` | `int` | No | Typical dish ID |
+| `ingredients` | `list` | No | List of ingredients |
+| `name` | `str` | No | Dish name |
+| `urlImage` | `str` | No | URL to dish image |
 
 ### Operations
 

@@ -1,0 +1,89 @@
+# Entity: country
+
+main: kit: entity: country: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "capital"
+      req: false
+      short: "Capital city"
+      type: "`$STRING`"
+    }
+    {
+      name: "currency"
+      req: false
+      short: "Currency"
+      type: "`$STRING`"
+    }
+    {
+      name: "flag"
+      req: false
+      short: "URL to flag image"
+      type: "`$STRING`"
+    }
+    {
+      name: "id"
+      req: false
+      short: "Country ID"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "languages"
+      req: false
+      short: "Official languages"
+      type: "`$ARRAY`"
+    }
+    {
+      name: "name"
+      req: false
+      short: "Country name"
+      type: "`$STRING`"
+    }
+    {
+      name: "population"
+      req: false
+      short: "Total population"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "surface"
+      req: false
+      short: "Surface area in square kilometers"
+      type: "`$NUMBER`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "country"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/Country/Colombia"
+          parts: [
+            "Country"
+            "Colombia"
+          ]
+          select: {
+            "$action": "colombia"
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body.languages`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,100 @@
+# Entity: constitution_article
+
+main: kit: entity: constitution_article: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "articleNumber"
+      req: false
+      short: "Article number"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "chapter"
+      req: false
+      short: "Constitution chapter"
+      type: "`$STRING`"
+    }
+    {
+      name: "description"
+      req: false
+      short: "Article content"
+      type: "`$STRING`"
+    }
+    {
+      name: "id"
+      req: false
+      short: "Article ID"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "title"
+      req: false
+      short: "Article title"
+      type: "`$STRING`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "constitution_article"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/ConstitutionArticle"
+          parts: [
+            "ConstitutionArticle"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/ConstitutionArticle/{id}"
+          parts: [
+            "ConstitutionArticle"
+            "{id}"
+          ]
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

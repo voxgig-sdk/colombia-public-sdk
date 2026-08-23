@@ -36,48 +36,56 @@
               "active": true,
               "name": "cityId",
               "req": false,
+              "short": "City ID",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "code",
               "req": false,
+              "short": "IATA code",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "departmentId",
               "req": false,
+              "short": "Department ID",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Airport ID",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "latitude",
               "req": false,
+              "short": "Latitude coordinate",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "longitude",
               "req": false,
+              "short": "Longitude coordinate",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "Airport name",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "type",
               "req": false,
+              "short": "Airport type",
               "type": "`$STRING`"
             }
           ],
@@ -160,18 +168,21 @@
               "active": true,
               "name": "description",
               "req": false,
+              "short": "Category description",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Category ID",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "Category name",
               "type": "`$STRING`"
             }
           ],
@@ -217,30 +228,35 @@
               "active": true,
               "name": "articleNumber",
               "req": false,
+              "short": "Article number",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "chapter",
               "req": false,
+              "short": "Constitution chapter",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "description",
               "req": false,
+              "short": "Article content",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Article ID",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "title",
               "req": false,
+              "short": "Article title",
               "type": "`$STRING`"
             }
           ],
@@ -323,48 +339,56 @@
               "active": true,
               "name": "capital",
               "req": false,
+              "short": "Capital city",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "currency",
               "req": false,
+              "short": "Currency",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "flag",
               "req": false,
+              "short": "URL to flag image",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Country ID",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "languages",
               "req": false,
+              "short": "Official languages",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "Country name",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "population",
               "req": false,
+              "short": "Total population",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "surface",
               "req": false,
+              "short": "Surface area in square kilometers",
               "type": "`$NUMBER`"
             }
           ],
@@ -413,48 +437,56 @@
               "active": true,
               "name": "cityCapital",
               "req": false,
+              "short": "Capital city of the department",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "description",
               "req": false,
+              "short": "Department description",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Department ID",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "municipalities",
               "req": false,
+              "short": "Number of municipalities",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "Department name",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "population",
               "req": false,
+              "short": "Population",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "regionId",
               "req": false,
+              "short": "Region ID",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "surface",
               "req": false,
+              "short": "Surface area",
               "type": "`$NUMBER`"
             }
           ],
@@ -537,30 +569,35 @@
               "active": true,
               "name": "date",
               "req": false,
+              "short": "Holiday date",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "description",
               "req": false,
+              "short": "Holiday description",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Holiday ID",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "Holiday name",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "type",
               "req": false,
+              "short": "Holiday type (religious, civic, etc.)",
               "type": "`$STRING`"
             }
           ],
@@ -643,36 +680,42 @@
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Invasive species ID",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "impact",
               "req": false,
+              "short": "Environmental impact",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "manage",
               "req": false,
+              "short": "Management strategies",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "Species name",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "scientificName",
               "req": false,
+              "short": "Scientific name",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "urlImage",
               "req": false,
+              "short": "URL to species image",
               "type": "`$STRING`"
             }
           ],
@@ -755,30 +798,35 @@
               "active": true,
               "name": "departmentId",
               "req": false,
+              "short": "Department ID",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "description",
               "req": false,
+              "short": "Map description",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Map ID",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "Map name",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "urlImages",
               "req": false,
+              "short": "URLs to map images",
               "type": "`$ARRAY`"
             }
           ],
@@ -824,30 +872,35 @@
               "active": true,
               "name": "departmentId",
               "req": false,
+              "short": "Department ID",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "description",
               "req": false,
+              "short": "Community description",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Native community ID",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "Community name",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "population",
               "req": false,
+              "short": "Population",
               "type": "`$INTEGER`"
             }
           ],
@@ -930,48 +983,56 @@
               "active": true,
               "name": "areaGroupId",
               "req": false,
+              "short": "Area group ID",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "categoryNaturalAreaId",
               "req": false,
+              "short": "Category ID",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "departmentId",
               "req": false,
+              "short": "Department ID",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "description",
               "req": false,
+              "short": "Natural area description",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Natural area ID",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "landArea",
               "req": false,
+              "short": "Land area in hectares",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "maritimeArea",
               "req": false,
+              "short": "Maritime area in hectares",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "Natural area name",
               "type": "`$STRING`"
             }
           ],
@@ -1054,42 +1115,49 @@
               "active": true,
               "name": "description",
               "req": false,
+              "short": "Biography and description",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "endPeriodDate",
               "req": false,
+              "short": "End date of presidency",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "President ID",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "image",
               "req": false,
+              "short": "URL to president image",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "President name",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "politicalParty",
               "req": false,
+              "short": "Political party",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "startPeriodDate",
               "req": false,
+              "short": "Start date of presidency",
               "type": "`$STRING`"
             }
           ],
@@ -1172,30 +1240,35 @@
               "active": true,
               "name": "band",
               "req": false,
+              "short": "Broadcasting band (AM/FM)",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "frequency",
               "req": false,
+              "short": "Broadcasting frequency",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Radio station ID",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "Radio station name",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "url",
               "req": false,
+              "short": "Station URL",
               "type": "`$STRING`"
             }
           ],
@@ -1278,24 +1351,28 @@
               "active": true,
               "name": "departments",
               "req": false,
+              "short": "List of departments in the region",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "description",
               "req": false,
+              "short": "Region description",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Region ID",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "Region name",
               "type": "`$STRING`"
             }
           ],
@@ -1378,42 +1455,49 @@
               "active": true,
               "name": "city",
               "req": false,
+              "short": "City where the attraction is located",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "description",
               "req": false,
+              "short": "Attraction description",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Touristic attraction ID",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "images",
               "req": false,
+              "short": "List of image URLs",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "latitude",
               "req": false,
+              "short": "Latitude coordinate",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "longitude",
               "req": false,
+              "short": "Longitude coordinate",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "Attraction name",
               "type": "`$STRING`"
             }
           ],
@@ -1496,36 +1580,42 @@
               "active": true,
               "name": "departmentId",
               "req": false,
+              "short": "Department ID",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "description",
               "req": false,
+              "short": "Dish description",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Typical dish ID",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "ingredients",
               "req": false,
+              "short": "List of ingredients",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "Dish name",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "urlImage",
               "req": false,
+              "short": "URL to dish image",
               "type": "`$STRING`"
             }
           ],

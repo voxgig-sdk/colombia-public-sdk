@@ -146,14 +146,14 @@ local airport = client:Airport(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `cityId` | `number` | No |  |
-| `code` | `string` | No |  |
-| `departmentId` | `number` | No |  |
-| `id` | `number` | No |  |
-| `latitude` | `number` | No |  |
-| `longitude` | `number` | No |  |
-| `name` | `string` | No |  |
-| `type` | `string` | No |  |
+| `cityId` | `number` | No | City ID |
+| `code` | `string` | No | IATA code |
+| `departmentId` | `number` | No | Department ID |
+| `id` | `number` | No | Airport ID |
+| `latitude` | `number` | No | Latitude coordinate |
+| `longitude` | `number` | No | Longitude coordinate |
+| `name` | `string` | No | Airport name |
+| `type` | `string` | No | Airport type |
 
 ### Operations
 
@@ -213,9 +213,9 @@ local category_natural_area = client:CategoryNaturalArea(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `string` | No |  |
-| `id` | `number` | No |  |
-| `name` | `string` | No |  |
+| `description` | `string` | No | Category description |
+| `id` | `number` | No | Category ID |
+| `name` | `string` | No | Category name |
 
 ### Operations
 
@@ -267,11 +267,11 @@ local constitution_article = client:ConstitutionArticle(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `articleNumber` | `number` | No |  |
-| `chapter` | `string` | No |  |
-| `description` | `string` | No |  |
-| `id` | `number` | No |  |
-| `title` | `string` | No |  |
+| `articleNumber` | `number` | No | Article number |
+| `chapter` | `string` | No | Constitution chapter |
+| `description` | `string` | No | Article content |
+| `id` | `number` | No | Article ID |
+| `title` | `string` | No | Article title |
 
 ### Operations
 
@@ -331,14 +331,14 @@ local country = client:Country(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `capital` | `string` | No |  |
-| `currency` | `string` | No |  |
-| `flag` | `string` | No |  |
-| `id` | `number` | No |  |
-| `languages` | `table` | No |  |
-| `name` | `string` | No |  |
-| `population` | `number` | No |  |
-| `surface` | `number` | No |  |
+| `capital` | `string` | No | Capital city |
+| `currency` | `string` | No | Currency |
+| `flag` | `string` | No | URL to flag image |
+| `id` | `number` | No | Country ID |
+| `languages` | `table` | No | Official languages |
+| `name` | `string` | No | Country name |
+| `population` | `number` | No | Total population |
+| `surface` | `number` | No | Surface area in square kilometers |
 
 ### Operations
 
@@ -390,14 +390,14 @@ local department = client:Department(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `cityCapital` | `string` | No |  |
-| `description` | `string` | No |  |
-| `id` | `number` | No |  |
-| `municipalities` | `number` | No |  |
-| `name` | `string` | No |  |
-| `population` | `number` | No |  |
-| `regionId` | `number` | No |  |
-| `surface` | `number` | No |  |
+| `cityCapital` | `string` | No | Capital city of the department |
+| `description` | `string` | No | Department description |
+| `id` | `number` | No | Department ID |
+| `municipalities` | `number` | No | Number of municipalities |
+| `name` | `string` | No | Department name |
+| `population` | `number` | No | Population |
+| `regionId` | `number` | No | Region ID |
+| `surface` | `number` | No | Surface area |
 
 ### Operations
 
@@ -457,11 +457,11 @@ local holiday = client:Holiday(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `date` | `string` | No |  |
-| `description` | `string` | No |  |
-| `id` | `number` | No |  |
-| `name` | `string` | No |  |
-| `type` | `string` | No |  |
+| `date` | `string` | No | Holiday date |
+| `description` | `string` | No | Holiday description |
+| `id` | `number` | No | Holiday ID |
+| `name` | `string` | No | Holiday name |
+| `type` | `string` | No | Holiday type (religious, civic, etc.) |
 
 ### Operations
 
@@ -521,12 +521,12 @@ local invasive_specie = client:InvasiveSpecie(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | `number` | No |  |
-| `impact` | `string` | No |  |
-| `manage` | `string` | No |  |
-| `name` | `string` | No |  |
-| `scientificName` | `string` | No |  |
-| `urlImage` | `string` | No |  |
+| `id` | `number` | No | Invasive species ID |
+| `impact` | `string` | No | Environmental impact |
+| `manage` | `string` | No | Management strategies |
+| `name` | `string` | No | Species name |
+| `scientificName` | `string` | No | Scientific name |
+| `urlImage` | `string` | No | URL to species image |
 
 ### Operations
 
@@ -586,11 +586,11 @@ local map = client:Map(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `departmentId` | `number` | No |  |
-| `description` | `string` | No |  |
-| `id` | `number` | No |  |
-| `name` | `string` | No |  |
-| `urlImages` | `table` | No |  |
+| `departmentId` | `number` | No | Department ID |
+| `description` | `string` | No | Map description |
+| `id` | `number` | No | Map ID |
+| `name` | `string` | No | Map name |
+| `urlImages` | `table` | No | URLs to map images |
 
 ### Operations
 
@@ -642,11 +642,11 @@ local native_community = client:NativeCommunity(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `departmentId` | `number` | No |  |
-| `description` | `string` | No |  |
-| `id` | `number` | No |  |
-| `name` | `string` | No |  |
-| `population` | `number` | No |  |
+| `departmentId` | `number` | No | Department ID |
+| `description` | `string` | No | Community description |
+| `id` | `number` | No | Native community ID |
+| `name` | `string` | No | Community name |
+| `population` | `number` | No | Population |
 
 ### Operations
 
@@ -706,14 +706,14 @@ local natural_area = client:NaturalArea(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `areaGroupId` | `number` | No |  |
-| `categoryNaturalAreaId` | `number` | No |  |
-| `departmentId` | `number` | No |  |
-| `description` | `string` | No |  |
-| `id` | `number` | No |  |
-| `landArea` | `number` | No |  |
-| `maritimeArea` | `number` | No |  |
-| `name` | `string` | No |  |
+| `areaGroupId` | `number` | No | Area group ID |
+| `categoryNaturalAreaId` | `number` | No | Category ID |
+| `departmentId` | `number` | No | Department ID |
+| `description` | `string` | No | Natural area description |
+| `id` | `number` | No | Natural area ID |
+| `landArea` | `number` | No | Land area in hectares |
+| `maritimeArea` | `number` | No | Maritime area in hectares |
+| `name` | `string` | No | Natural area name |
 
 ### Operations
 
@@ -773,13 +773,13 @@ local president = client:President(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `string` | No |  |
-| `endPeriodDate` | `string` | No |  |
-| `id` | `number` | No |  |
-| `image` | `string` | No |  |
-| `name` | `string` | No |  |
-| `politicalParty` | `string` | No |  |
-| `startPeriodDate` | `string` | No |  |
+| `description` | `string` | No | Biography and description |
+| `endPeriodDate` | `string` | No | End date of presidency |
+| `id` | `number` | No | President ID |
+| `image` | `string` | No | URL to president image |
+| `name` | `string` | No | President name |
+| `politicalParty` | `string` | No | Political party |
+| `startPeriodDate` | `string` | No | Start date of presidency |
 
 ### Operations
 
@@ -839,11 +839,11 @@ local radio = client:Radio(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `band` | `string` | No |  |
-| `frequency` | `string` | No |  |
-| `id` | `number` | No |  |
-| `name` | `string` | No |  |
-| `url` | `string` | No |  |
+| `band` | `string` | No | Broadcasting band (AM/FM) |
+| `frequency` | `string` | No | Broadcasting frequency |
+| `id` | `number` | No | Radio station ID |
+| `name` | `string` | No | Radio station name |
+| `url` | `string` | No | Station URL |
 
 ### Operations
 
@@ -903,10 +903,10 @@ local region = client:Region(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `departments` | `table` | No |  |
-| `description` | `string` | No |  |
-| `id` | `number` | No |  |
-| `name` | `string` | No |  |
+| `departments` | `table` | No | List of departments in the region |
+| `description` | `string` | No | Region description |
+| `id` | `number` | No | Region ID |
+| `name` | `string` | No | Region name |
 
 ### Operations
 
@@ -966,13 +966,13 @@ local touristic_attraction = client:TouristicAttraction(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `city` | `string` | No |  |
-| `description` | `string` | No |  |
-| `id` | `number` | No |  |
-| `images` | `table` | No |  |
-| `latitude` | `number` | No |  |
-| `longitude` | `number` | No |  |
-| `name` | `string` | No |  |
+| `city` | `string` | No | City where the attraction is located |
+| `description` | `string` | No | Attraction description |
+| `id` | `number` | No | Touristic attraction ID |
+| `images` | `table` | No | List of image URLs |
+| `latitude` | `number` | No | Latitude coordinate |
+| `longitude` | `number` | No | Longitude coordinate |
+| `name` | `string` | No | Attraction name |
 
 ### Operations
 
@@ -1032,12 +1032,12 @@ local typical_dish = client:TypicalDish(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `departmentId` | `number` | No |  |
-| `description` | `string` | No |  |
-| `id` | `number` | No |  |
-| `ingredients` | `table` | No |  |
-| `name` | `string` | No |  |
-| `urlImage` | `string` | No |  |
+| `departmentId` | `number` | No | Department ID |
+| `description` | `string` | No | Dish description |
+| `id` | `number` | No | Typical dish ID |
+| `ingredients` | `table` | No | List of ingredients |
+| `name` | `string` | No | Dish name |
+| `urlImage` | `string` | No | URL to dish image |
 
 ### Operations
 

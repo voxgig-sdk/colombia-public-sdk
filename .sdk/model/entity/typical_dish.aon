@@ -1,0 +1,106 @@
+# Entity: typical_dish
+
+main: kit: entity: typical_dish: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "departmentId"
+      req: false
+      short: "Department ID"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "description"
+      req: false
+      short: "Dish description"
+      type: "`$STRING`"
+    }
+    {
+      name: "id"
+      req: false
+      short: "Typical dish ID"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "ingredients"
+      req: false
+      short: "List of ingredients"
+      type: "`$ARRAY`"
+    }
+    {
+      name: "name"
+      req: false
+      short: "Dish name"
+      type: "`$STRING`"
+    }
+    {
+      name: "urlImage"
+      req: false
+      short: "URL to dish image"
+      type: "`$STRING`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "typical_dish"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/TypicalDish"
+          parts: [
+            "TypicalDish"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/TypicalDish/{id}"
+          parts: [
+            "TypicalDish"
+            "{id}"
+          ]
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

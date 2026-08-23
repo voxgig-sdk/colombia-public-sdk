@@ -1,0 +1,106 @@
+# Entity: invasive_specie
+
+main: kit: entity: invasive_specie: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "id"
+      req: false
+      short: "Invasive species ID"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "impact"
+      req: false
+      short: "Environmental impact"
+      type: "`$STRING`"
+    }
+    {
+      name: "manage"
+      req: false
+      short: "Management strategies"
+      type: "`$STRING`"
+    }
+    {
+      name: "name"
+      req: false
+      short: "Species name"
+      type: "`$STRING`"
+    }
+    {
+      name: "scientificName"
+      req: false
+      short: "Scientific name"
+      type: "`$STRING`"
+    }
+    {
+      name: "urlImage"
+      req: false
+      short: "URL to species image"
+      type: "`$STRING`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "invasive_specie"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/InvasiveSpecie"
+          parts: [
+            "InvasiveSpecie"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/InvasiveSpecie/{id}"
+          parts: [
+            "InvasiveSpecie"
+            "{id}"
+          ]
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

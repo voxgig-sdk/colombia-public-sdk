@@ -1,0 +1,118 @@
+# Entity: department
+
+main: kit: entity: department: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "cityCapital"
+      req: false
+      short: "Capital city of the department"
+      type: "`$STRING`"
+    }
+    {
+      name: "description"
+      req: false
+      short: "Department description"
+      type: "`$STRING`"
+    }
+    {
+      name: "id"
+      req: false
+      short: "Department ID"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "municipalities"
+      req: false
+      short: "Number of municipalities"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "name"
+      req: false
+      short: "Department name"
+      type: "`$STRING`"
+    }
+    {
+      name: "population"
+      req: false
+      short: "Population"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "regionId"
+      req: false
+      short: "Region ID"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "surface"
+      req: false
+      short: "Surface area"
+      type: "`$NUMBER`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "department"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/Department"
+          parts: [
+            "Department"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/Department/{id}"
+          parts: [
+            "Department"
+            "{id}"
+          ]
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

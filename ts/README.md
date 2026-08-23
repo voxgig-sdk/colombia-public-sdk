@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -316,14 +316,14 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `cityId` |  |
-| `code` |  |
-| `departmentId` |  |
-| `id` |  |
-| `latitude` |  |
-| `longitude` |  |
-| `name` |  |
-| `type` |  |
+| `cityId` | City ID |
+| `code` | IATA code |
+| `departmentId` | Department ID |
+| `id` | Airport ID |
+| `latitude` | Latitude coordinate |
+| `longitude` | Longitude coordinate |
+| `name` | Airport name |
+| `type` | Airport type |
 
 Operations: list, load.
 
@@ -333,9 +333,9 @@ API path: `/Airport`
 
 | Field | Description |
 | --- | --- |
-| `description` |  |
-| `id` |  |
-| `name` |  |
+| `description` | Category description |
+| `id` | Category ID |
+| `name` | Category name |
 
 Operations: list.
 
@@ -345,11 +345,11 @@ API path: `/CategoryNaturalArea`
 
 | Field | Description |
 | --- | --- |
-| `articleNumber` |  |
-| `chapter` |  |
-| `description` |  |
-| `id` |  |
-| `title` |  |
+| `articleNumber` | Article number |
+| `chapter` | Constitution chapter |
+| `description` | Article content |
+| `id` | Article ID |
+| `title` | Article title |
 
 Operations: list, load.
 
@@ -359,14 +359,14 @@ API path: `/ConstitutionArticle`
 
 | Field | Description |
 | --- | --- |
-| `capital` |  |
-| `currency` |  |
-| `flag` |  |
-| `id` |  |
-| `languages` |  |
-| `name` |  |
-| `population` |  |
-| `surface` |  |
+| `capital` | Capital city |
+| `currency` | Currency |
+| `flag` | URL to flag image |
+| `id` | Country ID |
+| `languages` | Official languages |
+| `name` | Country name |
+| `population` | Total population |
+| `surface` | Surface area in square kilometers |
 
 Operations: list.
 
@@ -376,14 +376,14 @@ API path: `/Country/Colombia`
 
 | Field | Description |
 | --- | --- |
-| `cityCapital` |  |
-| `description` |  |
-| `id` |  |
-| `municipalities` |  |
-| `name` |  |
-| `population` |  |
-| `regionId` |  |
-| `surface` |  |
+| `cityCapital` | Capital city of the department |
+| `description` | Department description |
+| `id` | Department ID |
+| `municipalities` | Number of municipalities |
+| `name` | Department name |
+| `population` | Population |
+| `regionId` | Region ID |
+| `surface` | Surface area |
 
 Operations: list, load.
 
@@ -393,11 +393,11 @@ API path: `/Department`
 
 | Field | Description |
 | --- | --- |
-| `date` |  |
-| `description` |  |
-| `id` |  |
-| `name` |  |
-| `type` |  |
+| `date` | Holiday date |
+| `description` | Holiday description |
+| `id` | Holiday ID |
+| `name` | Holiday name |
+| `type` | Holiday type (religious, civic, etc.) |
 
 Operations: list, load.
 
@@ -407,12 +407,12 @@ API path: `/Holiday`
 
 | Field | Description |
 | --- | --- |
-| `id` |  |
-| `impact` |  |
-| `manage` |  |
-| `name` |  |
-| `scientificName` |  |
-| `urlImage` |  |
+| `id` | Invasive species ID |
+| `impact` | Environmental impact |
+| `manage` | Management strategies |
+| `name` | Species name |
+| `scientificName` | Scientific name |
+| `urlImage` | URL to species image |
 
 Operations: list, load.
 
@@ -422,11 +422,11 @@ API path: `/InvasiveSpecie`
 
 | Field | Description |
 | --- | --- |
-| `departmentId` |  |
-| `description` |  |
-| `id` |  |
-| `name` |  |
-| `urlImages` |  |
+| `departmentId` | Department ID |
+| `description` | Map description |
+| `id` | Map ID |
+| `name` | Map name |
+| `urlImages` | URLs to map images |
 
 Operations: list.
 
@@ -436,11 +436,11 @@ API path: `/Map`
 
 | Field | Description |
 | --- | --- |
-| `departmentId` |  |
-| `description` |  |
-| `id` |  |
-| `name` |  |
-| `population` |  |
+| `departmentId` | Department ID |
+| `description` | Community description |
+| `id` | Native community ID |
+| `name` | Community name |
+| `population` | Population |
 
 Operations: list, load.
 
@@ -450,14 +450,14 @@ API path: `/NativeCommunity`
 
 | Field | Description |
 | --- | --- |
-| `areaGroupId` |  |
-| `categoryNaturalAreaId` |  |
-| `departmentId` |  |
-| `description` |  |
-| `id` |  |
-| `landArea` |  |
-| `maritimeArea` |  |
-| `name` |  |
+| `areaGroupId` | Area group ID |
+| `categoryNaturalAreaId` | Category ID |
+| `departmentId` | Department ID |
+| `description` | Natural area description |
+| `id` | Natural area ID |
+| `landArea` | Land area in hectares |
+| `maritimeArea` | Maritime area in hectares |
+| `name` | Natural area name |
 
 Operations: list, load.
 
@@ -467,13 +467,13 @@ API path: `/NaturalArea`
 
 | Field | Description |
 | --- | --- |
-| `description` |  |
-| `endPeriodDate` |  |
-| `id` |  |
-| `image` |  |
-| `name` |  |
-| `politicalParty` |  |
-| `startPeriodDate` |  |
+| `description` | Biography and description |
+| `endPeriodDate` | End date of presidency |
+| `id` | President ID |
+| `image` | URL to president image |
+| `name` | President name |
+| `politicalParty` | Political party |
+| `startPeriodDate` | Start date of presidency |
 
 Operations: list, load.
 
@@ -483,11 +483,11 @@ API path: `/President`
 
 | Field | Description |
 | --- | --- |
-| `band` |  |
-| `frequency` |  |
-| `id` |  |
-| `name` |  |
-| `url` |  |
+| `band` | Broadcasting band (AM/FM) |
+| `frequency` | Broadcasting frequency |
+| `id` | Radio station ID |
+| `name` | Radio station name |
+| `url` | Station URL |
 
 Operations: list, load.
 
@@ -497,10 +497,10 @@ API path: `/Radio`
 
 | Field | Description |
 | --- | --- |
-| `departments` |  |
-| `description` |  |
-| `id` |  |
-| `name` |  |
+| `departments` | List of departments in the region |
+| `description` | Region description |
+| `id` | Region ID |
+| `name` | Region name |
 
 Operations: list, load.
 
@@ -510,13 +510,13 @@ API path: `/Region`
 
 | Field | Description |
 | --- | --- |
-| `city` |  |
-| `description` |  |
-| `id` |  |
-| `images` |  |
-| `latitude` |  |
-| `longitude` |  |
-| `name` |  |
+| `city` | City where the attraction is located |
+| `description` | Attraction description |
+| `id` | Touristic attraction ID |
+| `images` | List of image URLs |
+| `latitude` | Latitude coordinate |
+| `longitude` | Longitude coordinate |
+| `name` | Attraction name |
 
 Operations: list, load.
 
@@ -526,12 +526,12 @@ API path: `/TouristicAttraction`
 
 | Field | Description |
 | --- | --- |
-| `departmentId` |  |
-| `description` |  |
-| `id` |  |
-| `ingredients` |  |
-| `name` |  |
-| `urlImage` |  |
+| `departmentId` | Department ID |
+| `description` | Dish description |
+| `id` | Typical dish ID |
+| `ingredients` | List of ingredients |
+| `name` | Dish name |
+| `urlImage` | URL to dish image |
 
 Operations: list, load.
 
@@ -557,14 +557,14 @@ Create an instance: `const airport = client.Airport()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `cityId` | `number` |  |
-| `code` | `string` |  |
-| `departmentId` | `number` |  |
-| `id` | `number` |  |
-| `latitude` | `number` |  |
-| `longitude` | `number` |  |
-| `name` | `string` |  |
-| `type` | `string` |  |
+| `cityId` | `number` | City ID |
+| `code` | `string` | IATA code |
+| `departmentId` | `number` | Department ID |
+| `id` | `number` | Airport ID |
+| `latitude` | `number` | Latitude coordinate |
+| `longitude` | `number` | Longitude coordinate |
+| `name` | `string` | Airport name |
+| `type` | `string` | Airport type |
 
 #### Example: Load
 
@@ -593,9 +593,9 @@ Create an instance: `const category_natural_area = client.CategoryNaturalArea()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | `string` |  |
-| `id` | `number` |  |
-| `name` | `string` |  |
+| `description` | `string` | Category description |
+| `id` | `number` | Category ID |
+| `name` | `string` | Category name |
 
 #### Example: List
 
@@ -619,11 +619,11 @@ Create an instance: `const constitution_article = client.ConstitutionArticle()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `articleNumber` | `number` |  |
-| `chapter` | `string` |  |
-| `description` | `string` |  |
-| `id` | `number` |  |
-| `title` | `string` |  |
+| `articleNumber` | `number` | Article number |
+| `chapter` | `string` | Constitution chapter |
+| `description` | `string` | Article content |
+| `id` | `number` | Article ID |
+| `title` | `string` | Article title |
 
 #### Example: Load
 
@@ -652,14 +652,14 @@ Create an instance: `const country = client.Country()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `capital` | `string` |  |
-| `currency` | `string` |  |
-| `flag` | `string` |  |
-| `id` | `number` |  |
-| `languages` | `any[]` |  |
-| `name` | `string` |  |
-| `population` | `number` |  |
-| `surface` | `number` |  |
+| `capital` | `string` | Capital city |
+| `currency` | `string` | Currency |
+| `flag` | `string` | URL to flag image |
+| `id` | `number` | Country ID |
+| `languages` | `any[]` | Official languages |
+| `name` | `string` | Country name |
+| `population` | `number` | Total population |
+| `surface` | `number` | Surface area in square kilometers |
 
 #### Example: List
 
@@ -683,14 +683,14 @@ Create an instance: `const department = client.Department()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `cityCapital` | `string` |  |
-| `description` | `string` |  |
-| `id` | `number` |  |
-| `municipalities` | `number` |  |
-| `name` | `string` |  |
-| `population` | `number` |  |
-| `regionId` | `number` |  |
-| `surface` | `number` |  |
+| `cityCapital` | `string` | Capital city of the department |
+| `description` | `string` | Department description |
+| `id` | `number` | Department ID |
+| `municipalities` | `number` | Number of municipalities |
+| `name` | `string` | Department name |
+| `population` | `number` | Population |
+| `regionId` | `number` | Region ID |
+| `surface` | `number` | Surface area |
 
 #### Example: Load
 
@@ -720,11 +720,11 @@ Create an instance: `const holiday = client.Holiday()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `date` | `string` |  |
-| `description` | `string` |  |
-| `id` | `number` |  |
-| `name` | `string` |  |
-| `type` | `string` |  |
+| `date` | `string` | Holiday date |
+| `description` | `string` | Holiday description |
+| `id` | `number` | Holiday ID |
+| `name` | `string` | Holiday name |
+| `type` | `string` | Holiday type (religious, civic, etc.) |
 
 #### Example: Load
 
@@ -754,12 +754,12 @@ Create an instance: `const invasive_specie = client.InvasiveSpecie()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id` | `number` |  |
-| `impact` | `string` |  |
-| `manage` | `string` |  |
-| `name` | `string` |  |
-| `scientificName` | `string` |  |
-| `urlImage` | `string` |  |
+| `id` | `number` | Invasive species ID |
+| `impact` | `string` | Environmental impact |
+| `manage` | `string` | Management strategies |
+| `name` | `string` | Species name |
+| `scientificName` | `string` | Scientific name |
+| `urlImage` | `string` | URL to species image |
 
 #### Example: Load
 
@@ -788,11 +788,11 @@ Create an instance: `const map = client.Map()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `departmentId` | `number` |  |
-| `description` | `string` |  |
-| `id` | `number` |  |
-| `name` | `string` |  |
-| `urlImages` | `any[]` |  |
+| `departmentId` | `number` | Department ID |
+| `description` | `string` | Map description |
+| `id` | `number` | Map ID |
+| `name` | `string` | Map name |
+| `urlImages` | `any[]` | URLs to map images |
 
 #### Example: List
 
@@ -816,11 +816,11 @@ Create an instance: `const native_community = client.NativeCommunity()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `departmentId` | `number` |  |
-| `description` | `string` |  |
-| `id` | `number` |  |
-| `name` | `string` |  |
-| `population` | `number` |  |
+| `departmentId` | `number` | Department ID |
+| `description` | `string` | Community description |
+| `id` | `number` | Native community ID |
+| `name` | `string` | Community name |
+| `population` | `number` | Population |
 
 #### Example: Load
 
@@ -850,14 +850,14 @@ Create an instance: `const natural_area = client.NaturalArea()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `areaGroupId` | `number` |  |
-| `categoryNaturalAreaId` | `number` |  |
-| `departmentId` | `number` |  |
-| `description` | `string` |  |
-| `id` | `number` |  |
-| `landArea` | `number` |  |
-| `maritimeArea` | `number` |  |
-| `name` | `string` |  |
+| `areaGroupId` | `number` | Area group ID |
+| `categoryNaturalAreaId` | `number` | Category ID |
+| `departmentId` | `number` | Department ID |
+| `description` | `string` | Natural area description |
+| `id` | `number` | Natural area ID |
+| `landArea` | `number` | Land area in hectares |
+| `maritimeArea` | `number` | Maritime area in hectares |
+| `name` | `string` | Natural area name |
 
 #### Example: Load
 
@@ -887,13 +887,13 @@ Create an instance: `const president = client.President()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | `string` |  |
-| `endPeriodDate` | `string` |  |
-| `id` | `number` |  |
-| `image` | `string` |  |
-| `name` | `string` |  |
-| `politicalParty` | `string` |  |
-| `startPeriodDate` | `string` |  |
+| `description` | `string` | Biography and description |
+| `endPeriodDate` | `string` | End date of presidency |
+| `id` | `number` | President ID |
+| `image` | `string` | URL to president image |
+| `name` | `string` | President name |
+| `politicalParty` | `string` | Political party |
+| `startPeriodDate` | `string` | Start date of presidency |
 
 #### Example: Load
 
@@ -923,11 +923,11 @@ Create an instance: `const radio = client.Radio()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `band` | `string` |  |
-| `frequency` | `string` |  |
-| `id` | `number` |  |
-| `name` | `string` |  |
-| `url` | `string` |  |
+| `band` | `string` | Broadcasting band (AM/FM) |
+| `frequency` | `string` | Broadcasting frequency |
+| `id` | `number` | Radio station ID |
+| `name` | `string` | Radio station name |
+| `url` | `string` | Station URL |
 
 #### Example: Load
 
@@ -957,10 +957,10 @@ Create an instance: `const region = client.Region()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `departments` | `any[]` |  |
-| `description` | `string` |  |
-| `id` | `number` |  |
-| `name` | `string` |  |
+| `departments` | `any[]` | List of departments in the region |
+| `description` | `string` | Region description |
+| `id` | `number` | Region ID |
+| `name` | `string` | Region name |
 
 #### Example: Load
 
@@ -990,13 +990,13 @@ Create an instance: `const touristic_attraction = client.TouristicAttraction()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `city` | `string` |  |
-| `description` | `string` |  |
-| `id` | `number` |  |
-| `images` | `any[]` |  |
-| `latitude` | `number` |  |
-| `longitude` | `number` |  |
-| `name` | `string` |  |
+| `city` | `string` | City where the attraction is located |
+| `description` | `string` | Attraction description |
+| `id` | `number` | Touristic attraction ID |
+| `images` | `any[]` | List of image URLs |
+| `latitude` | `number` | Latitude coordinate |
+| `longitude` | `number` | Longitude coordinate |
+| `name` | `string` | Attraction name |
 
 #### Example: Load
 
@@ -1026,12 +1026,12 @@ Create an instance: `const typical_dish = client.TypicalDish()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `departmentId` | `number` |  |
-| `description` | `string` |  |
-| `id` | `number` |  |
-| `ingredients` | `any[]` |  |
-| `name` | `string` |  |
-| `urlImage` | `string` |  |
+| `departmentId` | `number` | Department ID |
+| `description` | `string` | Dish description |
+| `id` | `number` | Typical dish ID |
+| `ingredients` | `any[]` | List of ingredients |
+| `name` | `string` | Dish name |
+| `urlImage` | `string` | URL to dish image |
 
 #### Example: Load
 

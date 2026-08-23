@@ -159,7 +159,7 @@ export interface InvasiveSpecieListMatch {
   urlImage?: string
 }
 
-export interface Map {
+export interface MapType {
   departmentId?: number
   description?: string
   id?: number

@@ -267,14 +267,14 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `cityId` |  |
-| `code` |  |
-| `departmentId` |  |
-| `id` |  |
-| `latitude` |  |
-| `longitude` |  |
-| `name` |  |
-| `type` |  |
+| `cityId` | City ID |
+| `code` | IATA code |
+| `departmentId` | Department ID |
+| `id` | Airport ID |
+| `latitude` | Latitude coordinate |
+| `longitude` | Longitude coordinate |
+| `name` | Airport name |
+| `type` | Airport type |
 
 Operations: List, Load.
 
@@ -284,9 +284,9 @@ API path: `/Airport`
 
 | Field | Description |
 | --- | --- |
-| `description` |  |
-| `id` |  |
-| `name` |  |
+| `description` | Category description |
+| `id` | Category ID |
+| `name` | Category name |
 
 Operations: List.
 
@@ -296,11 +296,11 @@ API path: `/CategoryNaturalArea`
 
 | Field | Description |
 | --- | --- |
-| `articleNumber` |  |
-| `chapter` |  |
-| `description` |  |
-| `id` |  |
-| `title` |  |
+| `articleNumber` | Article number |
+| `chapter` | Constitution chapter |
+| `description` | Article content |
+| `id` | Article ID |
+| `title` | Article title |
 
 Operations: List, Load.
 
@@ -310,14 +310,14 @@ API path: `/ConstitutionArticle`
 
 | Field | Description |
 | --- | --- |
-| `capital` |  |
-| `currency` |  |
-| `flag` |  |
-| `id` |  |
-| `languages` |  |
-| `name` |  |
-| `population` |  |
-| `surface` |  |
+| `capital` | Capital city |
+| `currency` | Currency |
+| `flag` | URL to flag image |
+| `id` | Country ID |
+| `languages` | Official languages |
+| `name` | Country name |
+| `population` | Total population |
+| `surface` | Surface area in square kilometers |
 
 Operations: List.
 
@@ -327,14 +327,14 @@ API path: `/Country/Colombia`
 
 | Field | Description |
 | --- | --- |
-| `cityCapital` |  |
-| `description` |  |
-| `id` |  |
-| `municipalities` |  |
-| `name` |  |
-| `population` |  |
-| `regionId` |  |
-| `surface` |  |
+| `cityCapital` | Capital city of the department |
+| `description` | Department description |
+| `id` | Department ID |
+| `municipalities` | Number of municipalities |
+| `name` | Department name |
+| `population` | Population |
+| `regionId` | Region ID |
+| `surface` | Surface area |
 
 Operations: List, Load.
 
@@ -344,11 +344,11 @@ API path: `/Department`
 
 | Field | Description |
 | --- | --- |
-| `date` |  |
-| `description` |  |
-| `id` |  |
-| `name` |  |
-| `type` |  |
+| `date` | Holiday date |
+| `description` | Holiday description |
+| `id` | Holiday ID |
+| `name` | Holiday name |
+| `type` | Holiday type (religious, civic, etc.) |
 
 Operations: List, Load.
 
@@ -358,12 +358,12 @@ API path: `/Holiday`
 
 | Field | Description |
 | --- | --- |
-| `id` |  |
-| `impact` |  |
-| `manage` |  |
-| `name` |  |
-| `scientificName` |  |
-| `urlImage` |  |
+| `id` | Invasive species ID |
+| `impact` | Environmental impact |
+| `manage` | Management strategies |
+| `name` | Species name |
+| `scientificName` | Scientific name |
+| `urlImage` | URL to species image |
 
 Operations: List, Load.
 
@@ -373,11 +373,11 @@ API path: `/InvasiveSpecie`
 
 | Field | Description |
 | --- | --- |
-| `departmentId` |  |
-| `description` |  |
-| `id` |  |
-| `name` |  |
-| `urlImages` |  |
+| `departmentId` | Department ID |
+| `description` | Map description |
+| `id` | Map ID |
+| `name` | Map name |
+| `urlImages` | URLs to map images |
 
 Operations: List.
 
@@ -387,11 +387,11 @@ API path: `/Map`
 
 | Field | Description |
 | --- | --- |
-| `departmentId` |  |
-| `description` |  |
-| `id` |  |
-| `name` |  |
-| `population` |  |
+| `departmentId` | Department ID |
+| `description` | Community description |
+| `id` | Native community ID |
+| `name` | Community name |
+| `population` | Population |
 
 Operations: List, Load.
 
@@ -401,14 +401,14 @@ API path: `/NativeCommunity`
 
 | Field | Description |
 | --- | --- |
-| `areaGroupId` |  |
-| `categoryNaturalAreaId` |  |
-| `departmentId` |  |
-| `description` |  |
-| `id` |  |
-| `landArea` |  |
-| `maritimeArea` |  |
-| `name` |  |
+| `areaGroupId` | Area group ID |
+| `categoryNaturalAreaId` | Category ID |
+| `departmentId` | Department ID |
+| `description` | Natural area description |
+| `id` | Natural area ID |
+| `landArea` | Land area in hectares |
+| `maritimeArea` | Maritime area in hectares |
+| `name` | Natural area name |
 
 Operations: List, Load.
 
@@ -418,13 +418,13 @@ API path: `/NaturalArea`
 
 | Field | Description |
 | --- | --- |
-| `description` |  |
-| `endPeriodDate` |  |
-| `id` |  |
-| `image` |  |
-| `name` |  |
-| `politicalParty` |  |
-| `startPeriodDate` |  |
+| `description` | Biography and description |
+| `endPeriodDate` | End date of presidency |
+| `id` | President ID |
+| `image` | URL to president image |
+| `name` | President name |
+| `politicalParty` | Political party |
+| `startPeriodDate` | Start date of presidency |
 
 Operations: List, Load.
 
@@ -434,11 +434,11 @@ API path: `/President`
 
 | Field | Description |
 | --- | --- |
-| `band` |  |
-| `frequency` |  |
-| `id` |  |
-| `name` |  |
-| `url` |  |
+| `band` | Broadcasting band (AM/FM) |
+| `frequency` | Broadcasting frequency |
+| `id` | Radio station ID |
+| `name` | Radio station name |
+| `url` | Station URL |
 
 Operations: List, Load.
 
@@ -448,10 +448,10 @@ API path: `/Radio`
 
 | Field | Description |
 | --- | --- |
-| `departments` |  |
-| `description` |  |
-| `id` |  |
-| `name` |  |
+| `departments` | List of departments in the region |
+| `description` | Region description |
+| `id` | Region ID |
+| `name` | Region name |
 
 Operations: List, Load.
 
@@ -461,13 +461,13 @@ API path: `/Region`
 
 | Field | Description |
 | --- | --- |
-| `city` |  |
-| `description` |  |
-| `id` |  |
-| `images` |  |
-| `latitude` |  |
-| `longitude` |  |
-| `name` |  |
+| `city` | City where the attraction is located |
+| `description` | Attraction description |
+| `id` | Touristic attraction ID |
+| `images` | List of image URLs |
+| `latitude` | Latitude coordinate |
+| `longitude` | Longitude coordinate |
+| `name` | Attraction name |
 
 Operations: List, Load.
 
@@ -477,12 +477,12 @@ API path: `/TouristicAttraction`
 
 | Field | Description |
 | --- | --- |
-| `departmentId` |  |
-| `description` |  |
-| `id` |  |
-| `ingredients` |  |
-| `name` |  |
-| `urlImage` |  |
+| `departmentId` | Department ID |
+| `description` | Dish description |
+| `id` | Typical dish ID |
+| `ingredients` | List of ingredients |
+| `name` | Dish name |
+| `urlImage` | URL to dish image |
 
 Operations: List, Load.
 
@@ -508,14 +508,14 @@ Create an instance: `airport = client.Airport`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `cityId` | `Integer` |  |
-| `code` | `String` |  |
-| `departmentId` | `Integer` |  |
-| `id` | `Integer` |  |
-| `latitude` | `Float` |  |
-| `longitude` | `Float` |  |
-| `name` | `String` |  |
-| `type` | `String` |  |
+| `cityId` | `Integer` | City ID |
+| `code` | `String` | IATA code |
+| `departmentId` | `Integer` | Department ID |
+| `id` | `Integer` | Airport ID |
+| `latitude` | `Float` | Latitude coordinate |
+| `longitude` | `Float` | Longitude coordinate |
+| `name` | `String` | Airport name |
+| `type` | `String` | Airport type |
 
 #### Example: Load
 
@@ -546,9 +546,9 @@ Create an instance: `category_natural_area = client.CategoryNaturalArea`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | `String` |  |
-| `id` | `Integer` |  |
-| `name` | `String` |  |
+| `description` | `String` | Category description |
+| `id` | `Integer` | Category ID |
+| `name` | `String` | Category name |
 
 #### Example: List
 
@@ -573,11 +573,11 @@ Create an instance: `constitution_article = client.ConstitutionArticle`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `articleNumber` | `Integer` |  |
-| `chapter` | `String` |  |
-| `description` | `String` |  |
-| `id` | `Integer` |  |
-| `title` | `String` |  |
+| `articleNumber` | `Integer` | Article number |
+| `chapter` | `String` | Constitution chapter |
+| `description` | `String` | Article content |
+| `id` | `Integer` | Article ID |
+| `title` | `String` | Article title |
 
 #### Example: Load
 
@@ -608,14 +608,14 @@ Create an instance: `country = client.Country`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `capital` | `String` |  |
-| `currency` | `String` |  |
-| `flag` | `String` |  |
-| `id` | `Integer` |  |
-| `languages` | `Array` |  |
-| `name` | `String` |  |
-| `population` | `Integer` |  |
-| `surface` | `Float` |  |
+| `capital` | `String` | Capital city |
+| `currency` | `String` | Currency |
+| `flag` | `String` | URL to flag image |
+| `id` | `Integer` | Country ID |
+| `languages` | `Array` | Official languages |
+| `name` | `String` | Country name |
+| `population` | `Integer` | Total population |
+| `surface` | `Float` | Surface area in square kilometers |
 
 #### Example: List
 
@@ -640,14 +640,14 @@ Create an instance: `department = client.Department`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `cityCapital` | `String` |  |
-| `description` | `String` |  |
-| `id` | `Integer` |  |
-| `municipalities` | `Integer` |  |
-| `name` | `String` |  |
-| `population` | `Integer` |  |
-| `regionId` | `Integer` |  |
-| `surface` | `Float` |  |
+| `cityCapital` | `String` | Capital city of the department |
+| `description` | `String` | Department description |
+| `id` | `Integer` | Department ID |
+| `municipalities` | `Integer` | Number of municipalities |
+| `name` | `String` | Department name |
+| `population` | `Integer` | Population |
+| `regionId` | `Integer` | Region ID |
+| `surface` | `Float` | Surface area |
 
 #### Example: Load
 
@@ -679,11 +679,11 @@ Create an instance: `holiday = client.Holiday`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `date` | `String` |  |
-| `description` | `String` |  |
-| `id` | `Integer` |  |
-| `name` | `String` |  |
-| `type` | `String` |  |
+| `date` | `String` | Holiday date |
+| `description` | `String` | Holiday description |
+| `id` | `Integer` | Holiday ID |
+| `name` | `String` | Holiday name |
+| `type` | `String` | Holiday type (religious, civic, etc.) |
 
 #### Example: Load
 
@@ -715,12 +715,12 @@ Create an instance: `invasive_specie = client.InvasiveSpecie`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id` | `Integer` |  |
-| `impact` | `String` |  |
-| `manage` | `String` |  |
-| `name` | `String` |  |
-| `scientificName` | `String` |  |
-| `urlImage` | `String` |  |
+| `id` | `Integer` | Invasive species ID |
+| `impact` | `String` | Environmental impact |
+| `manage` | `String` | Management strategies |
+| `name` | `String` | Species name |
+| `scientificName` | `String` | Scientific name |
+| `urlImage` | `String` | URL to species image |
 
 #### Example: Load
 
@@ -751,11 +751,11 @@ Create an instance: `map = client.Map`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `departmentId` | `Integer` |  |
-| `description` | `String` |  |
-| `id` | `Integer` |  |
-| `name` | `String` |  |
-| `urlImages` | `Array` |  |
+| `departmentId` | `Integer` | Department ID |
+| `description` | `String` | Map description |
+| `id` | `Integer` | Map ID |
+| `name` | `String` | Map name |
+| `urlImages` | `Array` | URLs to map images |
 
 #### Example: List
 
@@ -780,11 +780,11 @@ Create an instance: `native_community = client.NativeCommunity`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `departmentId` | `Integer` |  |
-| `description` | `String` |  |
-| `id` | `Integer` |  |
-| `name` | `String` |  |
-| `population` | `Integer` |  |
+| `departmentId` | `Integer` | Department ID |
+| `description` | `String` | Community description |
+| `id` | `Integer` | Native community ID |
+| `name` | `String` | Community name |
+| `population` | `Integer` | Population |
 
 #### Example: Load
 
@@ -816,14 +816,14 @@ Create an instance: `natural_area = client.NaturalArea`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `areaGroupId` | `Integer` |  |
-| `categoryNaturalAreaId` | `Integer` |  |
-| `departmentId` | `Integer` |  |
-| `description` | `String` |  |
-| `id` | `Integer` |  |
-| `landArea` | `Float` |  |
-| `maritimeArea` | `Float` |  |
-| `name` | `String` |  |
+| `areaGroupId` | `Integer` | Area group ID |
+| `categoryNaturalAreaId` | `Integer` | Category ID |
+| `departmentId` | `Integer` | Department ID |
+| `description` | `String` | Natural area description |
+| `id` | `Integer` | Natural area ID |
+| `landArea` | `Float` | Land area in hectares |
+| `maritimeArea` | `Float` | Maritime area in hectares |
+| `name` | `String` | Natural area name |
 
 #### Example: Load
 
@@ -855,13 +855,13 @@ Create an instance: `president = client.President`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | `String` |  |
-| `endPeriodDate` | `String` |  |
-| `id` | `Integer` |  |
-| `image` | `String` |  |
-| `name` | `String` |  |
-| `politicalParty` | `String` |  |
-| `startPeriodDate` | `String` |  |
+| `description` | `String` | Biography and description |
+| `endPeriodDate` | `String` | End date of presidency |
+| `id` | `Integer` | President ID |
+| `image` | `String` | URL to president image |
+| `name` | `String` | President name |
+| `politicalParty` | `String` | Political party |
+| `startPeriodDate` | `String` | Start date of presidency |
 
 #### Example: Load
 
@@ -893,11 +893,11 @@ Create an instance: `radio = client.Radio`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `band` | `String` |  |
-| `frequency` | `String` |  |
-| `id` | `Integer` |  |
-| `name` | `String` |  |
-| `url` | `String` |  |
+| `band` | `String` | Broadcasting band (AM/FM) |
+| `frequency` | `String` | Broadcasting frequency |
+| `id` | `Integer` | Radio station ID |
+| `name` | `String` | Radio station name |
+| `url` | `String` | Station URL |
 
 #### Example: Load
 
@@ -929,10 +929,10 @@ Create an instance: `region = client.Region`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `departments` | `Array` |  |
-| `description` | `String` |  |
-| `id` | `Integer` |  |
-| `name` | `String` |  |
+| `departments` | `Array` | List of departments in the region |
+| `description` | `String` | Region description |
+| `id` | `Integer` | Region ID |
+| `name` | `String` | Region name |
 
 #### Example: Load
 
@@ -964,13 +964,13 @@ Create an instance: `touristic_attraction = client.TouristicAttraction`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `city` | `String` |  |
-| `description` | `String` |  |
-| `id` | `Integer` |  |
-| `images` | `Array` |  |
-| `latitude` | `Float` |  |
-| `longitude` | `Float` |  |
-| `name` | `String` |  |
+| `city` | `String` | City where the attraction is located |
+| `description` | `String` | Attraction description |
+| `id` | `Integer` | Touristic attraction ID |
+| `images` | `Array` | List of image URLs |
+| `latitude` | `Float` | Latitude coordinate |
+| `longitude` | `Float` | Longitude coordinate |
+| `name` | `String` | Attraction name |
 
 #### Example: Load
 
@@ -1002,12 +1002,12 @@ Create an instance: `typical_dish = client.TypicalDish`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `departmentId` | `Integer` |  |
-| `description` | `String` |  |
-| `id` | `Integer` |  |
-| `ingredients` | `Array` |  |
-| `name` | `String` |  |
-| `urlImage` | `String` |  |
+| `departmentId` | `Integer` | Department ID |
+| `description` | `String` | Dish description |
+| `id` | `Integer` | Typical dish ID |
+| `ingredients` | `Array` | List of ingredients |
+| `name` | `String` | Dish name |
+| `urlImage` | `String` | URL to dish image |
 
 #### Example: Load
 

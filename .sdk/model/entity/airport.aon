@@ -1,0 +1,118 @@
+# Entity: airport
+
+main: kit: entity: airport: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "cityId"
+      req: false
+      short: "City ID"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "code"
+      req: false
+      short: "IATA code"
+      type: "`$STRING`"
+    }
+    {
+      name: "departmentId"
+      req: false
+      short: "Department ID"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "id"
+      req: false
+      short: "Airport ID"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "latitude"
+      req: false
+      short: "Latitude coordinate"
+      type: "`$NUMBER`"
+    }
+    {
+      name: "longitude"
+      req: false
+      short: "Longitude coordinate"
+      type: "`$NUMBER`"
+    }
+    {
+      name: "name"
+      req: false
+      short: "Airport name"
+      type: "`$STRING`"
+    }
+    {
+      name: "type"
+      req: false
+      short: "Airport type"
+      type: "`$STRING`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "airport"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/Airport"
+          parts: [
+            "Airport"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/Airport/{id}"
+          parts: [
+            "Airport"
+            "{id}"
+          ]
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

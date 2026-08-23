@@ -1,0 +1,100 @@
+# Entity: radio
+
+main: kit: entity: radio: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "band"
+      req: false
+      short: "Broadcasting band (AM/FM)"
+      type: "`$STRING`"
+    }
+    {
+      name: "frequency"
+      req: false
+      short: "Broadcasting frequency"
+      type: "`$STRING`"
+    }
+    {
+      name: "id"
+      req: false
+      short: "Radio station ID"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "name"
+      req: false
+      short: "Radio station name"
+      type: "`$STRING`"
+    }
+    {
+      name: "url"
+      req: false
+      short: "Station URL"
+      type: "`$STRING`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "radio"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/Radio"
+          parts: [
+            "Radio"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/Radio/{id}"
+          parts: [
+            "Radio"
+            "{id}"
+          ]
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}
