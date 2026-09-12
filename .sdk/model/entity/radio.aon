@@ -50,8 +50,10 @@ main: kit: entity: radio: {
         {
           method: "GET"
           orig: "/Radio"
-          parts: [
-            "Radio"
+          segments: [
+            {
+              lit: "Radio"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -77,9 +79,13 @@ main: kit: entity: radio: {
           }
           method: "GET"
           orig: "/Radio/{id}"
-          parts: [
-            "Radio"
-            "{id}"
+          segments: [
+            {
+              lit: "Radio"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

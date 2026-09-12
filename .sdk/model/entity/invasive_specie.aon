@@ -56,8 +56,10 @@ main: kit: entity: invasive_specie: {
         {
           method: "GET"
           orig: "/InvasiveSpecie"
-          parts: [
-            "InvasiveSpecie"
+          segments: [
+            {
+              lit: "InvasiveSpecie"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -83,9 +85,13 @@ main: kit: entity: invasive_specie: {
           }
           method: "GET"
           orig: "/InvasiveSpecie/{id}"
-          parts: [
-            "InvasiveSpecie"
-            "{id}"
+          segments: [
+            {
+              lit: "InvasiveSpecie"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

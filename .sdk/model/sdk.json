@@ -105,8 +105,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/Airport",
-                  "parts": [
-                    "Airport"
+                  "segments": [
+                    {
+                      "lit": "Airport"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -137,9 +139,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/Airport/{id}",
-                  "parts": [
-                    "Airport",
-                    "{id}"
+                  "segments": [
+                    {
+                      "lit": "Airport"
+                    },
+                    {
+                      "var": "id"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -202,8 +208,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/CategoryNaturalArea",
-                  "parts": [
-                    "CategoryNaturalArea"
+                  "segments": [
+                    {
+                      "lit": "CategoryNaturalArea"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -276,8 +284,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/ConstitutionArticle",
-                  "parts": [
-                    "ConstitutionArticle"
+                  "segments": [
+                    {
+                      "lit": "ConstitutionArticle"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -308,9 +318,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/ConstitutionArticle/{id}",
-                  "parts": [
-                    "ConstitutionArticle",
-                    "{id}"
+                  "segments": [
+                    {
+                      "lit": "ConstitutionArticle"
+                    },
+                    {
+                      "var": "id"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -408,9 +422,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/Country/Colombia",
-                  "parts": [
-                    "Country",
-                    "Colombia"
+                  "segments": [
+                    {
+                      "lit": "Country"
+                    },
+                    {
+                      "lit": "Colombia"
+                    }
                   ],
                   "select": {
                     "$action": "colombia"
@@ -506,8 +524,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/Department",
-                  "parts": [
-                    "Department"
+                  "segments": [
+                    {
+                      "lit": "Department"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -538,9 +558,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/Department/{id}",
-                  "parts": [
-                    "Department",
-                    "{id}"
+                  "segments": [
+                    {
+                      "lit": "Department"
+                    },
+                    {
+                      "var": "id"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -567,6 +591,7 @@
           "fields": [
             {
               "active": true,
+              "format": "date",
               "name": "date",
               "req": false,
               "short": "Holiday date",
@@ -617,8 +642,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/Holiday",
-                  "parts": [
-                    "Holiday"
+                  "segments": [
+                    {
+                      "lit": "Holiday"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -649,9 +676,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/Holiday/{id}",
-                  "parts": [
-                    "Holiday",
-                    "{id}"
+                  "segments": [
+                    {
+                      "lit": "Holiday"
+                    },
+                    {
+                      "var": "id"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -735,8 +766,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/InvasiveSpecie",
-                  "parts": [
-                    "InvasiveSpecie"
+                  "segments": [
+                    {
+                      "lit": "InvasiveSpecie"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -767,9 +800,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/InvasiveSpecie/{id}",
-                  "parts": [
-                    "InvasiveSpecie",
-                    "{id}"
+                  "segments": [
+                    {
+                      "lit": "InvasiveSpecie"
+                    },
+                    {
+                      "var": "id"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -846,8 +883,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/Map",
-                  "parts": [
-                    "Map"
+                  "segments": [
+                    {
+                      "lit": "Map"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -920,8 +959,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/NativeCommunity",
-                  "parts": [
-                    "NativeCommunity"
+                  "segments": [
+                    {
+                      "lit": "NativeCommunity"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -952,9 +993,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/NativeCommunity/{id}",
-                  "parts": [
-                    "NativeCommunity",
-                    "{id}"
+                  "segments": [
+                    {
+                      "lit": "NativeCommunity"
+                    },
+                    {
+                      "var": "id"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -1052,8 +1097,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/NaturalArea",
-                  "parts": [
-                    "NaturalArea"
+                  "segments": [
+                    {
+                      "lit": "NaturalArea"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -1084,9 +1131,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/NaturalArea/{id}",
-                  "parts": [
-                    "NaturalArea",
-                    "{id}"
+                  "segments": [
+                    {
+                      "lit": "NaturalArea"
+                    },
+                    {
+                      "var": "id"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -1120,6 +1171,7 @@
             },
             {
               "active": true,
+              "format": "date",
               "name": "endPeriodDate",
               "req": false,
               "short": "End date of presidency",
@@ -1155,6 +1207,7 @@
             },
             {
               "active": true,
+              "format": "date",
               "name": "startPeriodDate",
               "req": false,
               "short": "Start date of presidency",
@@ -1177,8 +1230,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/President",
-                  "parts": [
-                    "President"
+                  "segments": [
+                    {
+                      "lit": "President"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -1209,9 +1264,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/President/{id}",
-                  "parts": [
-                    "President",
-                    "{id}"
+                  "segments": [
+                    {
+                      "lit": "President"
+                    },
+                    {
+                      "var": "id"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -1288,8 +1347,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/Radio",
-                  "parts": [
-                    "Radio"
+                  "segments": [
+                    {
+                      "lit": "Radio"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -1320,9 +1381,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/Radio/{id}",
-                  "parts": [
-                    "Radio",
-                    "{id}"
+                  "segments": [
+                    {
+                      "lit": "Radio"
+                    },
+                    {
+                      "var": "id"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -1392,8 +1457,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/Region",
-                  "parts": [
-                    "Region"
+                  "segments": [
+                    {
+                      "lit": "Region"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -1424,9 +1491,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/Region/{id}",
-                  "parts": [
-                    "Region",
-                    "{id}"
+                  "segments": [
+                    {
+                      "lit": "Region"
+                    },
+                    {
+                      "var": "id"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -1517,8 +1588,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/TouristicAttraction",
-                  "parts": [
-                    "TouristicAttraction"
+                  "segments": [
+                    {
+                      "lit": "TouristicAttraction"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -1549,9 +1622,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/TouristicAttraction/{id}",
-                  "parts": [
-                    "TouristicAttraction",
-                    "{id}"
+                  "segments": [
+                    {
+                      "lit": "TouristicAttraction"
+                    },
+                    {
+                      "var": "id"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -1635,8 +1712,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/TypicalDish",
-                  "parts": [
-                    "TypicalDish"
+                  "segments": [
+                    {
+                      "lit": "TypicalDish"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -1667,9 +1746,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/TypicalDish/{id}",
-                  "parts": [
-                    "TypicalDish",
-                    "{id}"
+                  "segments": [
+                    {
+                      "lit": "TypicalDish"
+                    },
+                    {
+                      "var": "id"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -1753,8 +1836,11 @@
             }
           },
           "name": "test",
+          "needs": {},
           "origname": "",
           "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
           "target": {
             "go": {
               "deps": {}
@@ -2505,6 +2591,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -2530,6 +2619,10 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/runner_test.go",
+            "test/struct_runner_test.go"
+          ],
           "title": "Golang"
         },
         "go-cli": {
@@ -2581,6 +2674,7 @@
               "active": false
             }
           },
+          "provides": {},
           "publish": {
             "registry": {
               "active": false,
@@ -2605,6 +2699,7 @@
             },
             "version": "0.0.1"
           },
+          "superseded": [],
           "title": "Go CLI"
         },
         "go-mcp": {
@@ -2656,6 +2751,7 @@
               "active": false
             }
           },
+          "provides": {},
           "publish": {
             "registry": {
               "active": false,
@@ -2680,6 +2776,7 @@
             },
             "version": "0.0.1"
           },
+          "superseded": [],
           "title": "Go MCP server"
         },
         "lua": {
@@ -2720,6 +2817,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -2745,6 +2845,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/struct_runner.lua"
+          ],
           "title": "Lua"
         },
         "php": {
@@ -2779,6 +2882,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -2804,6 +2910,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/StructRunner.php"
+          ],
           "title": "PHP"
         },
         "py": {
@@ -2844,6 +2953,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -2869,6 +2981,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/struct_runner.py"
+          ],
           "title": "Python"
         },
         "rb": {
@@ -2914,6 +3029,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -2939,6 +3057,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/struct_runner.rb"
+          ],
           "title": "Ruby"
         },
         "ts": {
@@ -2956,11 +3077,6 @@
               "active": true,
               "kind": "dev",
               "version": "^25.6.0"
-            },
-            "dotenv": {
-              "active": true,
-              "kind": "dev",
-              "version": "^17.4.2"
             },
             "typescript": {
               "active": true,
@@ -2989,6 +3105,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -3013,6 +3132,14 @@
             },
             "version": "0.0.1"
           },
+          "superseded": [
+            "test/runner.ts",
+            "test/vendor/omni/compat.ts",
+            "src/feature/secrets/sekreto/Providers.ts",
+            "src/feature/secrets/sekreto/Sigv4.ts",
+            "src/feature/secrets/sekreto/provider/Registry.ts",
+            "src/feature/secrets/sekreto/provider/http.ts"
+          ],
           "title": "TypeScript"
         }
       },

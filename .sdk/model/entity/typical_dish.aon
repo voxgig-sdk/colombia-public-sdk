@@ -56,8 +56,10 @@ main: kit: entity: typical_dish: {
         {
           method: "GET"
           orig: "/TypicalDish"
-          parts: [
-            "TypicalDish"
+          segments: [
+            {
+              lit: "TypicalDish"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -83,9 +85,13 @@ main: kit: entity: typical_dish: {
           }
           method: "GET"
           orig: "/TypicalDish/{id}"
-          parts: [
-            "TypicalDish"
-            "{id}"
+          segments: [
+            {
+              lit: "TypicalDish"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

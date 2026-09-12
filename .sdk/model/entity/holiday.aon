@@ -6,6 +6,7 @@ main: kit: entity: holiday: {
 
   fields: [
     {
+      format: "date"
       name: "date"
       req: false
       short: "Holiday date"
@@ -50,8 +51,10 @@ main: kit: entity: holiday: {
         {
           method: "GET"
           orig: "/Holiday"
-          parts: [
-            "Holiday"
+          segments: [
+            {
+              lit: "Holiday"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -77,9 +80,13 @@ main: kit: entity: holiday: {
           }
           method: "GET"
           orig: "/Holiday/{id}"
-          parts: [
-            "Holiday"
-            "{id}"
+          segments: [
+            {
+              lit: "Holiday"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

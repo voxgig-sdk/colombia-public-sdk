@@ -98,7 +98,7 @@ func TestConstitutionArticleEntity(t *testing.T) {
 		client := setup.client
 
 		// Bootstrap entity data from existing test data (no create step in flow).
-		constitutionArticleRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath("existing.constitution_article", setup.data)))
+		constitutionArticleRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.constitution_article")))
 		var constitutionArticleRef01Data map[string]any
 		if len(constitutionArticleRef01DataRaw) > 0 {
 			constitutionArticleRef01Data = core.ToMapAny(constitutionArticleRef01DataRaw[0][1])
@@ -163,7 +163,7 @@ func constitution_articleBasicSetup(extra map[string]any) *entityTestSetup {
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
+	idmap, _ := vs.Transform(
 		[]any{"constitution_article01", "constitution_article02", "constitution_article03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
@@ -191,10 +191,22 @@ func constitution_articleBasicSetup(extra map[string]any) *entityTestSetup {
 	}
 
 	if env["COLOMBIA_PUBLIC_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewColombiaPublicSDK(core.ToMapAny(mergedOpts))
 	}

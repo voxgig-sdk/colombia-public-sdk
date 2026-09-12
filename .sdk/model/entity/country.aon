@@ -68,9 +68,13 @@ main: kit: entity: country: {
         {
           method: "GET"
           orig: "/Country/Colombia"
-          parts: [
-            "Country"
-            "Colombia"
+          segments: [
+            {
+              lit: "Country"
+            }
+            {
+              lit: "Colombia"
+            }
           ]
           select: {
             "$action": "colombia"

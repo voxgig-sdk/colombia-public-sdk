@@ -68,8 +68,10 @@ main: kit: entity: airport: {
         {
           method: "GET"
           orig: "/Airport"
-          parts: [
-            "Airport"
+          segments: [
+            {
+              lit: "Airport"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -95,9 +97,13 @@ main: kit: entity: airport: {
           }
           method: "GET"
           orig: "/Airport/{id}"
-          parts: [
-            "Airport"
-            "{id}"
+          segments: [
+            {
+              lit: "Airport"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

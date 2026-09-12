@@ -50,8 +50,10 @@ main: kit: entity: constitution_article: {
         {
           method: "GET"
           orig: "/ConstitutionArticle"
-          parts: [
-            "ConstitutionArticle"
+          segments: [
+            {
+              lit: "ConstitutionArticle"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -77,9 +79,13 @@ main: kit: entity: constitution_article: {
           }
           method: "GET"
           orig: "/ConstitutionArticle/{id}"
-          parts: [
-            "ConstitutionArticle"
-            "{id}"
+          segments: [
+            {
+              lit: "ConstitutionArticle"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

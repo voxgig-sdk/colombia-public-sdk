@@ -1,6 +1,14 @@
 # ColombiaPublic SDK configuration
 
 
+# The sekreto plugin DEFINITIONS the model selected per feature, imported
+# above by name from the modules the catalogue's active `plugin.def`
+# entries declare. Handed to each feature (secrets builds its Sekreto
+# with them): a provider kind not listed here is unknown to that SDK.
+FEATURE_PLUGINS = {
+}
+
+
 _shared_config = None
 
 
@@ -107,6 +115,10 @@ def make_config():
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "airport",
         "op": {
           "list": {
@@ -118,14 +130,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/Airport",
-                "parts": [
-                  "Airport",
+                "segments": [
+                  {
+                    "lit": "Airport",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "Airport",
+                ],
               },
             ],
           },
@@ -148,9 +165,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/Airport/{id}",
-                "parts": [
-                  "Airport",
-                  "{id}",
+                "segments": [
+                  {
+                    "lit": "Airport",
+                  },
+                  {
+                    "var": "id",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -161,6 +182,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "Airport",
+                  "{id}",
+                ],
               },
             ],
           },
@@ -187,6 +212,10 @@ def make_config():
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "category_natural_area",
         "op": {
           "list": {
@@ -198,14 +227,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/CategoryNaturalArea",
-                "parts": [
-                  "CategoryNaturalArea",
+                "segments": [
+                  {
+                    "lit": "CategoryNaturalArea",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "CategoryNaturalArea",
+                ],
               },
             ],
           },
@@ -242,6 +276,10 @@ def make_config():
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "constitution_article",
         "op": {
           "list": {
@@ -253,14 +291,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/ConstitutionArticle",
-                "parts": [
-                  "ConstitutionArticle",
+                "segments": [
+                  {
+                    "lit": "ConstitutionArticle",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "ConstitutionArticle",
+                ],
               },
             ],
           },
@@ -283,9 +326,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/ConstitutionArticle/{id}",
-                "parts": [
-                  "ConstitutionArticle",
-                  "{id}",
+                "segments": [
+                  {
+                    "lit": "ConstitutionArticle",
+                  },
+                  {
+                    "var": "id",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -296,6 +343,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "ConstitutionArticle",
+                  "{id}",
+                ],
               },
             ],
           },
@@ -347,6 +398,10 @@ def make_config():
             "type": "`$NUMBER`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "country",
         "op": {
           "list": {
@@ -358,9 +413,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/Country/Colombia",
-                "parts": [
-                  "Country",
-                  "Colombia",
+                "segments": [
+                  {
+                    "lit": "Country",
+                  },
+                  {
+                    "lit": "Colombia",
+                  },
                 ],
                 "select": {
                   "$action": "colombia",
@@ -369,6 +428,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.languages`",
                 },
+                "parts": [
+                  "Country",
+                  "Colombia",
+                ],
               },
             ],
           },
@@ -420,6 +483,10 @@ def make_config():
             "type": "`$NUMBER`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "department",
         "op": {
           "list": {
@@ -431,14 +498,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/Department",
-                "parts": [
-                  "Department",
+                "segments": [
+                  {
+                    "lit": "Department",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "Department",
+                ],
               },
             ],
           },
@@ -461,9 +533,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/Department/{id}",
-                "parts": [
-                  "Department",
-                  "{id}",
+                "segments": [
+                  {
+                    "lit": "Department",
+                  },
+                  {
+                    "var": "id",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -474,6 +550,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "Department",
+                  "{id}",
+                ],
               },
             ],
           },
@@ -485,6 +565,7 @@ def make_config():
       "holiday": {
         "fields": [
           {
+            "format": "date",
             "name": "date",
             "short": "Holiday date",
             "type": "`$STRING`",
@@ -510,6 +591,10 @@ def make_config():
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "holiday",
         "op": {
           "list": {
@@ -521,14 +606,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/Holiday",
-                "parts": [
-                  "Holiday",
+                "segments": [
+                  {
+                    "lit": "Holiday",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "Holiday",
+                ],
               },
             ],
           },
@@ -551,9 +641,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/Holiday/{id}",
-                "parts": [
-                  "Holiday",
-                  "{id}",
+                "segments": [
+                  {
+                    "lit": "Holiday",
+                  },
+                  {
+                    "var": "id",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -564,6 +658,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "Holiday",
+                  "{id}",
+                ],
               },
             ],
           },
@@ -605,6 +703,10 @@ def make_config():
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "invasive_specie",
         "op": {
           "list": {
@@ -616,14 +718,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/InvasiveSpecie",
-                "parts": [
-                  "InvasiveSpecie",
+                "segments": [
+                  {
+                    "lit": "InvasiveSpecie",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "InvasiveSpecie",
+                ],
               },
             ],
           },
@@ -646,9 +753,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/InvasiveSpecie/{id}",
-                "parts": [
-                  "InvasiveSpecie",
-                  "{id}",
+                "segments": [
+                  {
+                    "lit": "InvasiveSpecie",
+                  },
+                  {
+                    "var": "id",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -659,6 +770,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "InvasiveSpecie",
+                  "{id}",
+                ],
               },
             ],
           },
@@ -695,6 +810,10 @@ def make_config():
             "type": "`$ARRAY`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "map",
         "op": {
           "list": {
@@ -706,14 +825,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/Map",
-                "parts": [
-                  "Map",
+                "segments": [
+                  {
+                    "lit": "Map",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "Map",
+                ],
               },
             ],
           },
@@ -750,6 +874,10 @@ def make_config():
             "type": "`$INTEGER`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "native_community",
         "op": {
           "list": {
@@ -761,14 +889,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/NativeCommunity",
-                "parts": [
-                  "NativeCommunity",
+                "segments": [
+                  {
+                    "lit": "NativeCommunity",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "NativeCommunity",
+                ],
               },
             ],
           },
@@ -791,9 +924,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/NativeCommunity/{id}",
-                "parts": [
-                  "NativeCommunity",
-                  "{id}",
+                "segments": [
+                  {
+                    "lit": "NativeCommunity",
+                  },
+                  {
+                    "var": "id",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -804,6 +941,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "NativeCommunity",
+                  "{id}",
+                ],
               },
             ],
           },
@@ -855,6 +996,10 @@ def make_config():
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "natural_area",
         "op": {
           "list": {
@@ -866,14 +1011,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/NaturalArea",
-                "parts": [
-                  "NaturalArea",
+                "segments": [
+                  {
+                    "lit": "NaturalArea",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "NaturalArea",
+                ],
               },
             ],
           },
@@ -896,9 +1046,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/NaturalArea/{id}",
-                "parts": [
-                  "NaturalArea",
-                  "{id}",
+                "segments": [
+                  {
+                    "lit": "NaturalArea",
+                  },
+                  {
+                    "var": "id",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -909,6 +1063,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "NaturalArea",
+                  "{id}",
+                ],
               },
             ],
           },
@@ -925,6 +1083,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "date",
             "name": "endPeriodDate",
             "short": "End date of presidency",
             "type": "`$STRING`",
@@ -950,11 +1109,16 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "date",
             "name": "startPeriodDate",
             "short": "Start date of presidency",
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "president",
         "op": {
           "list": {
@@ -966,14 +1130,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/President",
-                "parts": [
-                  "President",
+                "segments": [
+                  {
+                    "lit": "President",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "President",
+                ],
               },
             ],
           },
@@ -996,9 +1165,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/President/{id}",
-                "parts": [
-                  "President",
-                  "{id}",
+                "segments": [
+                  {
+                    "lit": "President",
+                  },
+                  {
+                    "var": "id",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -1009,6 +1182,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "President",
+                  "{id}",
+                ],
               },
             ],
           },
@@ -1045,6 +1222,10 @@ def make_config():
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "radio",
         "op": {
           "list": {
@@ -1056,14 +1237,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/Radio",
-                "parts": [
-                  "Radio",
+                "segments": [
+                  {
+                    "lit": "Radio",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "Radio",
+                ],
               },
             ],
           },
@@ -1086,9 +1272,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/Radio/{id}",
-                "parts": [
-                  "Radio",
-                  "{id}",
+                "segments": [
+                  {
+                    "lit": "Radio",
+                  },
+                  {
+                    "var": "id",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -1099,6 +1289,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "Radio",
+                  "{id}",
+                ],
               },
             ],
           },
@@ -1130,6 +1324,10 @@ def make_config():
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "region",
         "op": {
           "list": {
@@ -1141,14 +1339,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/Region",
-                "parts": [
-                  "Region",
+                "segments": [
+                  {
+                    "lit": "Region",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "Region",
+                ],
               },
             ],
           },
@@ -1171,9 +1374,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/Region/{id}",
-                "parts": [
-                  "Region",
-                  "{id}",
+                "segments": [
+                  {
+                    "lit": "Region",
+                  },
+                  {
+                    "var": "id",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -1184,6 +1391,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "Region",
+                  "{id}",
+                ],
               },
             ],
           },
@@ -1230,6 +1441,10 @@ def make_config():
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "touristic_attraction",
         "op": {
           "list": {
@@ -1241,14 +1456,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/TouristicAttraction",
-                "parts": [
-                  "TouristicAttraction",
+                "segments": [
+                  {
+                    "lit": "TouristicAttraction",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "TouristicAttraction",
+                ],
               },
             ],
           },
@@ -1271,9 +1491,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/TouristicAttraction/{id}",
-                "parts": [
-                  "TouristicAttraction",
-                  "{id}",
+                "segments": [
+                  {
+                    "lit": "TouristicAttraction",
+                  },
+                  {
+                    "var": "id",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -1284,6 +1508,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "TouristicAttraction",
+                  "{id}",
+                ],
               },
             ],
           },
@@ -1325,6 +1553,10 @@ def make_config():
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "typical_dish",
         "op": {
           "list": {
@@ -1336,14 +1568,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/TypicalDish",
-                "parts": [
-                  "TypicalDish",
+                "segments": [
+                  {
+                    "lit": "TypicalDish",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "TypicalDish",
+                ],
               },
             ],
           },
@@ -1366,9 +1603,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/TypicalDish/{id}",
-                "parts": [
-                  "TypicalDish",
-                  "{id}",
+                "segments": [
+                  {
+                    "lit": "TypicalDish",
+                  },
+                  {
+                    "var": "id",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -1379,6 +1620,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "TypicalDish",
+                  "{id}",
+                ],
               },
             ],
           },

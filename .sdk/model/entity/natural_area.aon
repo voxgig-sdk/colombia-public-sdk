@@ -68,8 +68,10 @@ main: kit: entity: natural_area: {
         {
           method: "GET"
           orig: "/NaturalArea"
-          parts: [
-            "NaturalArea"
+          segments: [
+            {
+              lit: "NaturalArea"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -95,9 +97,13 @@ main: kit: entity: natural_area: {
           }
           method: "GET"
           orig: "/NaturalArea/{id}"
-          parts: [
-            "NaturalArea"
-            "{id}"
+          segments: [
+            {
+              lit: "NaturalArea"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

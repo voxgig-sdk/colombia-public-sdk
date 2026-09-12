@@ -1,0 +1,85 @@
+import { AirportEntity } from './entity/AirportEntity';
+import { CategoryNaturalAreaEntity } from './entity/CategoryNaturalAreaEntity';
+import { ConstitutionArticleEntity } from './entity/ConstitutionArticleEntity';
+import { CountryEntity } from './entity/CountryEntity';
+import { DepartmentEntity } from './entity/DepartmentEntity';
+import { HolidayEntity } from './entity/HolidayEntity';
+import { InvasiveSpecieEntity } from './entity/InvasiveSpecieEntity';
+import { MapEntity } from './entity/MapEntity';
+import { NativeCommunityEntity } from './entity/NativeCommunityEntity';
+import { NaturalAreaEntity } from './entity/NaturalAreaEntity';
+import { PresidentEntity } from './entity/PresidentEntity';
+import { RadioEntity } from './entity/RadioEntity';
+import { RegionEntity } from './entity/RegionEntity';
+import { TouristicAttractionEntity } from './entity/TouristicAttractionEntity';
+import { TypicalDishEntity } from './entity/TypicalDishEntity';
+export type * from './ColombiaPublicTypes';
+import { inspect } from 'node:util';
+import type { Context, Feature } from './types';
+import { config } from './Config';
+import { ColombiaPublicEntityBase } from './ColombiaPublicEntityBase';
+import { Utility } from './utility/Utility';
+import { BaseFeature } from './feature/base/BaseFeature';
+declare const stdutil: Utility;
+declare class ColombiaPublicSDK {
+    _mode: string;
+    _options: any;
+    _utility: Utility;
+    _features: Feature[];
+    _rootctx: Context;
+    constructor(options?: any);
+    options(): any;
+    utility(): any;
+    prepare(fetchargs?: any): Promise<any>;
+    direct(fetchargs?: any): Promise<Error | {
+        ok: boolean;
+        status: number;
+        headers: any;
+        data: any;
+        err?: undefined;
+    } | {
+        ok: boolean;
+        err: any;
+        status?: undefined;
+        headers?: undefined;
+        data?: undefined;
+    }>;
+    _rawRequest(fetchargs?: any): Promise<Error | {
+        ok: boolean;
+        status: number;
+        headers: any;
+        data: any;
+        err?: undefined;
+    } | {
+        ok: boolean;
+        err: any;
+        status?: undefined;
+        headers?: undefined;
+        data?: undefined;
+    }>;
+    graphql(query: string, variables?: any, ctrl?: any): Promise<any>;
+    Airport(entopts?: Record<string, any>): AirportEntity;
+    CategoryNaturalArea(entopts?: Record<string, any>): CategoryNaturalAreaEntity;
+    ConstitutionArticle(entopts?: Record<string, any>): ConstitutionArticleEntity;
+    Country(entopts?: Record<string, any>): CountryEntity;
+    Department(entopts?: Record<string, any>): DepartmentEntity;
+    Holiday(entopts?: Record<string, any>): HolidayEntity;
+    InvasiveSpecie(entopts?: Record<string, any>): InvasiveSpecieEntity;
+    Map(entopts?: Record<string, any>): MapEntity;
+    NativeCommunity(entopts?: Record<string, any>): NativeCommunityEntity;
+    NaturalArea(entopts?: Record<string, any>): NaturalAreaEntity;
+    President(entopts?: Record<string, any>): PresidentEntity;
+    Radio(entopts?: Record<string, any>): RadioEntity;
+    Region(entopts?: Record<string, any>): RegionEntity;
+    TouristicAttraction(entopts?: Record<string, any>): TouristicAttractionEntity;
+    TypicalDish(entopts?: Record<string, any>): TypicalDishEntity;
+    static test(testoptsarg?: any, sdkoptsarg?: any): ColombiaPublicSDK;
+    tester(testopts?: any, sdkopts?: any): ColombiaPublicSDK;
+    toJSON(): {
+        name: string;
+    };
+    toString(): string;
+    [inspect.custom](): string;
+}
+declare const SDK: typeof ColombiaPublicSDK;
+export { stdutil, config, BaseFeature, ColombiaPublicEntityBase, ColombiaPublicSDK, SDK, };

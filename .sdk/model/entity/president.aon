@@ -12,6 +12,7 @@ main: kit: entity: president: {
       type: "`$STRING`"
     }
     {
+      format: "date"
       name: "endPeriodDate"
       req: false
       short: "End date of presidency"
@@ -42,6 +43,7 @@ main: kit: entity: president: {
       type: "`$STRING`"
     }
     {
+      format: "date"
       name: "startPeriodDate"
       req: false
       short: "Start date of presidency"
@@ -62,8 +64,10 @@ main: kit: entity: president: {
         {
           method: "GET"
           orig: "/President"
-          parts: [
-            "President"
+          segments: [
+            {
+              lit: "President"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -89,9 +93,13 @@ main: kit: entity: president: {
           }
           method: "GET"
           orig: "/President/{id}"
-          parts: [
-            "President"
-            "{id}"
+          segments: [
+            {
+              lit: "President"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

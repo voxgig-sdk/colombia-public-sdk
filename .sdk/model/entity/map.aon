@@ -50,8 +50,10 @@ main: kit: entity: map: {
         {
           method: "GET"
           orig: "/Map"
-          parts: [
-            "Map"
+          segments: [
+            {
+              lit: "Map"
+            }
           ]
           transform: {
             req: "`reqdata`"

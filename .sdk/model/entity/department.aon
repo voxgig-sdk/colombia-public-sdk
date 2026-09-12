@@ -68,8 +68,10 @@ main: kit: entity: department: {
         {
           method: "GET"
           orig: "/Department"
-          parts: [
-            "Department"
+          segments: [
+            {
+              lit: "Department"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -95,9 +97,13 @@ main: kit: entity: department: {
           }
           method: "GET"
           orig: "/Department/{id}"
-          parts: [
-            "Department"
-            "{id}"
+          segments: [
+            {
+              lit: "Department"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

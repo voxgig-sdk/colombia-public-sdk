@@ -50,8 +50,10 @@ main: kit: entity: native_community: {
         {
           method: "GET"
           orig: "/NativeCommunity"
-          parts: [
-            "NativeCommunity"
+          segments: [
+            {
+              lit: "NativeCommunity"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -77,9 +79,13 @@ main: kit: entity: native_community: {
           }
           method: "GET"
           orig: "/NativeCommunity/{id}"
-          parts: [
-            "NativeCommunity"
-            "{id}"
+          segments: [
+            {
+              lit: "NativeCommunity"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

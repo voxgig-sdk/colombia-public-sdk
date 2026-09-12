@@ -62,8 +62,10 @@ main: kit: entity: touristic_attraction: {
         {
           method: "GET"
           orig: "/TouristicAttraction"
-          parts: [
-            "TouristicAttraction"
+          segments: [
+            {
+              lit: "TouristicAttraction"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -89,9 +91,13 @@ main: kit: entity: touristic_attraction: {
           }
           method: "GET"
           orig: "/TouristicAttraction/{id}"
-          parts: [
-            "TouristicAttraction"
-            "{id}"
+          segments: [
+            {
+              lit: "TouristicAttraction"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

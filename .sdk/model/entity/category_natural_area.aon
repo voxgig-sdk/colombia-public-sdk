@@ -38,8 +38,10 @@ main: kit: entity: category_natural_area: {
         {
           method: "GET"
           orig: "/CategoryNaturalArea"
-          parts: [
-            "CategoryNaturalArea"
+          segments: [
+            {
+              lit: "CategoryNaturalArea"
+            }
           ]
           transform: {
             req: "`reqdata`"
