@@ -105,7 +105,7 @@ local results, err = client:TypicalDish():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/colombia-public` | publish pending — [install from git tag](https://github.com/voxgig-sdk/colombia-public-sdk/releases) |
+| TypeScript | `@voxgig-sdk/colombia-public-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/colombia-public-sdk/releases) |
 | Python | `voxgig-sdk-colombia-public` | publish pending — [install from git tag](https://github.com/voxgig-sdk/colombia-public-sdk/releases) |
 | PHP | `voxgig-sdk/colombia-public` | publish pending — [install from git tag](https://github.com/voxgig-sdk/colombia-public-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/colombia-public-sdk/go` | `go get github.com/voxgig-sdk/colombia-public-sdk/go@latest` |
@@ -119,7 +119,7 @@ local results, err = client:TypicalDish():list()
 ### TypeScript
 
 ```ts
-import { ColombiaPublicSDK } from '@voxgig-sdk/colombia-public'
+import { ColombiaPublicSDK } from '@voxgig-sdk/colombia-public-sdk'
 
 const client = new ColombiaPublicSDK()
 
