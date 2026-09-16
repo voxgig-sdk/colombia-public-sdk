@@ -24,7 +24,71 @@
         "repr": "auto"
       },
       "contributor": {},
-      "docs": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
         "airport": {
           "active": true,
@@ -102,6 +166,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /Airport",
+                    "json": "{\"operationId\":\"getAirports\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"cityId\":{\"description\":\"City ID\",\"type\":\"integer\"},\"code\":{\"description\":\"IATA code\",\"type\":\"string\"},\"departmentId\":{\"description\":\"Department ID\",\"type\":\"integer\"},\"id\":{\"description\":\"Airport ID\",\"type\":\"integer\"},\"latitude\":{\"description\":\"Latitude coordinate\",\"type\":\"number\"},\"longitude\":{\"description\":\"Longitude coordinate\",\"type\":\"number\"},\"name\":{\"description\":\"Airport name\",\"type\":\"string\"},\"type\":{\"description\":\"Airport type\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response with list of airports\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[],\"securitySchemes\":{},\"securitySource\":\"definition\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/Airport",
@@ -135,6 +205,12 @@
                         "type": "`$INTEGER`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /Airport/{id}",
+                    "json": "{\"operationId\":\"getAirportById\",\"parameters\":[{\"description\":\"Airport ID\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"cityId\":{\"description\":\"City ID\",\"type\":\"integer\"},\"code\":{\"description\":\"IATA code\",\"type\":\"string\"},\"departmentId\":{\"description\":\"Department ID\",\"type\":\"integer\"},\"id\":{\"description\":\"Airport ID\",\"type\":\"integer\"},\"latitude\":{\"description\":\"Latitude coordinate\",\"type\":\"number\"},\"longitude\":{\"description\":\"Longitude coordinate\",\"type\":\"number\"},\"name\":{\"description\":\"Airport name\",\"type\":\"string\"},\"type\":{\"description\":\"Airport type\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response with airport information\"},\"404\":{\"description\":\"Airport not found\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[],\"securitySchemes\":{},\"securitySource\":\"definition\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -205,6 +281,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /CategoryNaturalArea",
+                    "json": "{\"operationId\":\"getCategoryNaturalAreas\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"description\":{\"description\":\"Category description\",\"type\":\"string\"},\"id\":{\"description\":\"Category ID\",\"type\":\"integer\"},\"name\":{\"description\":\"Category name\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response with list of natural area categories\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[],\"securitySchemes\":{},\"securitySource\":\"definition\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/CategoryNaturalArea",
@@ -281,6 +363,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /ConstitutionArticle",
+                    "json": "{\"operationId\":\"getConstitutionArticles\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"articleNumber\":{\"description\":\"Article number\",\"type\":\"integer\"},\"chapter\":{\"description\":\"Constitution chapter\",\"type\":\"string\"},\"description\":{\"description\":\"Article content\",\"type\":\"string\"},\"id\":{\"description\":\"Article ID\",\"type\":\"integer\"},\"title\":{\"description\":\"Article title\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response with list of constitution articles\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[],\"securitySchemes\":{},\"securitySource\":\"definition\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/ConstitutionArticle",
@@ -314,6 +402,12 @@
                         "type": "`$INTEGER`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /ConstitutionArticle/{id}",
+                    "json": "{\"operationId\":\"getConstitutionArticleById\",\"parameters\":[{\"description\":\"Constitution article ID\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"articleNumber\":{\"description\":\"Article number\",\"type\":\"integer\"},\"chapter\":{\"description\":\"Constitution chapter\",\"type\":\"string\"},\"description\":{\"description\":\"Article content\",\"type\":\"string\"},\"id\":{\"description\":\"Article ID\",\"type\":\"integer\"},\"title\":{\"description\":\"Article title\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response with constitution article information\"},\"404\":{\"description\":\"Constitution article not found\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[],\"securitySchemes\":{},\"securitySource\":\"definition\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -419,6 +513,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /Country/Colombia",
+                    "json": "{\"operationId\":\"getColombiaInfo\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"capital\":{\"description\":\"Capital city\",\"type\":\"string\"},\"currency\":{\"description\":\"Currency\",\"type\":\"string\"},\"flag\":{\"description\":\"URL to flag image\",\"type\":\"string\"},\"id\":{\"description\":\"Country ID\",\"type\":\"integer\"},\"languages\":{\"description\":\"Official languages\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"name\":{\"description\":\"Country name\",\"type\":\"string\"},\"population\":{\"description\":\"Total population\",\"type\":\"integer\"},\"surface\":{\"description\":\"Surface area in square kilometers\",\"type\":\"number\"}},\"type\":\"object\"}}},\"description\":\"Successful response with Colombia information\"},\"404\":{\"description\":\"Country information not found\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[],\"securitySchemes\":{},\"securitySource\":\"definition\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/Country/Colombia",
@@ -521,6 +621,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /Department",
+                    "json": "{\"operationId\":\"getDepartments\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"cityCapital\":{\"description\":\"Capital city of the department\",\"type\":\"string\"},\"description\":{\"description\":\"Department description\",\"type\":\"string\"},\"id\":{\"description\":\"Department ID\",\"type\":\"integer\"},\"municipalities\":{\"description\":\"Number of municipalities\",\"type\":\"integer\"},\"name\":{\"description\":\"Department name\",\"type\":\"string\"},\"population\":{\"description\":\"Population\",\"type\":\"integer\"},\"regionId\":{\"description\":\"Region ID\",\"type\":\"integer\"},\"surface\":{\"description\":\"Surface area\",\"type\":\"number\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response with list of departments\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[],\"securitySchemes\":{},\"securitySource\":\"definition\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/Department",
@@ -554,6 +660,12 @@
                         "type": "`$INTEGER`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /Department/{id}",
+                    "json": "{\"operationId\":\"getDepartmentById\",\"parameters\":[{\"description\":\"Department ID\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"cityCapital\":{\"description\":\"Capital city of the department\",\"type\":\"string\"},\"description\":{\"description\":\"Department description\",\"type\":\"string\"},\"id\":{\"description\":\"Department ID\",\"type\":\"integer\"},\"municipalities\":{\"description\":\"Number of municipalities\",\"type\":\"integer\"},\"name\":{\"description\":\"Department name\",\"type\":\"string\"},\"population\":{\"description\":\"Population\",\"type\":\"integer\"},\"regionId\":{\"description\":\"Region ID\",\"type\":\"integer\"},\"surface\":{\"description\":\"Surface area\",\"type\":\"number\"}},\"type\":\"object\"}}},\"description\":\"Successful response with department information\"},\"404\":{\"description\":\"Department not found\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[],\"securitySchemes\":{},\"securitySource\":\"definition\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -639,6 +751,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /Holiday",
+                    "json": "{\"operationId\":\"getHolidays\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"date\":{\"description\":\"Holiday date\",\"format\":\"date\",\"type\":\"string\"},\"description\":{\"description\":\"Holiday description\",\"type\":\"string\"},\"id\":{\"description\":\"Holiday ID\",\"type\":\"integer\"},\"name\":{\"description\":\"Holiday name\",\"type\":\"string\"},\"type\":{\"description\":\"Holiday type (religious, civic, etc.)\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response with list of holidays\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[],\"securitySchemes\":{},\"securitySource\":\"definition\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/Holiday",
@@ -672,6 +790,12 @@
                         "type": "`$INTEGER`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /Holiday/{id}",
+                    "json": "{\"operationId\":\"getHolidayById\",\"parameters\":[{\"description\":\"Holiday ID\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"date\":{\"description\":\"Holiday date\",\"format\":\"date\",\"type\":\"string\"},\"description\":{\"description\":\"Holiday description\",\"type\":\"string\"},\"id\":{\"description\":\"Holiday ID\",\"type\":\"integer\"},\"name\":{\"description\":\"Holiday name\",\"type\":\"string\"},\"type\":{\"description\":\"Holiday type (religious, civic, etc.)\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response with holiday information\"},\"404\":{\"description\":\"Holiday not found\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[],\"securitySchemes\":{},\"securitySource\":\"definition\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -763,6 +887,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /InvasiveSpecie",
+                    "json": "{\"operationId\":\"getInvasiveSpecies\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"id\":{\"description\":\"Invasive species ID\",\"type\":\"integer\"},\"impact\":{\"description\":\"Environmental impact\",\"type\":\"string\"},\"manage\":{\"description\":\"Management strategies\",\"type\":\"string\"},\"name\":{\"description\":\"Species name\",\"type\":\"string\"},\"scientificName\":{\"description\":\"Scientific name\",\"type\":\"string\"},\"urlImage\":{\"description\":\"URL to species image\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response with list of invasive species\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[],\"securitySchemes\":{},\"securitySource\":\"definition\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/InvasiveSpecie",
@@ -796,6 +926,12 @@
                         "type": "`$INTEGER`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /InvasiveSpecie/{id}",
+                    "json": "{\"operationId\":\"getInvasiveSpecieById\",\"parameters\":[{\"description\":\"Invasive species ID\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"id\":{\"description\":\"Invasive species ID\",\"type\":\"integer\"},\"impact\":{\"description\":\"Environmental impact\",\"type\":\"string\"},\"manage\":{\"description\":\"Management strategies\",\"type\":\"string\"},\"name\":{\"description\":\"Species name\",\"type\":\"string\"},\"scientificName\":{\"description\":\"Scientific name\",\"type\":\"string\"},\"urlImage\":{\"description\":\"URL to species image\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response with invasive species information\"},\"404\":{\"description\":\"Invasive species not found\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[],\"securitySchemes\":{},\"securitySource\":\"definition\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -880,6 +1016,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /Map",
+                    "json": "{\"operationId\":\"getMaps\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"departmentId\":{\"description\":\"Department ID\",\"type\":\"integer\"},\"description\":{\"description\":\"Map description\",\"type\":\"string\"},\"id\":{\"description\":\"Map ID\",\"type\":\"integer\"},\"name\":{\"description\":\"Map name\",\"type\":\"string\"},\"urlImages\":{\"description\":\"URLs to map images\",\"items\":{\"type\":\"string\"},\"type\":\"array\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response with map information\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[],\"securitySchemes\":{},\"securitySource\":\"definition\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/Map",
@@ -956,6 +1098,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /NativeCommunity",
+                    "json": "{\"operationId\":\"getNativeCommunities\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"departmentId\":{\"description\":\"Department ID\",\"type\":\"integer\"},\"description\":{\"description\":\"Community description\",\"type\":\"string\"},\"id\":{\"description\":\"Native community ID\",\"type\":\"integer\"},\"name\":{\"description\":\"Community name\",\"type\":\"string\"},\"population\":{\"description\":\"Population\",\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response with list of native communities\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[],\"securitySchemes\":{},\"securitySource\":\"definition\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/NativeCommunity",
@@ -989,6 +1137,12 @@
                         "type": "`$INTEGER`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /NativeCommunity/{id}",
+                    "json": "{\"operationId\":\"getNativeCommunityById\",\"parameters\":[{\"description\":\"Native community ID\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"departmentId\":{\"description\":\"Department ID\",\"type\":\"integer\"},\"description\":{\"description\":\"Community description\",\"type\":\"string\"},\"id\":{\"description\":\"Native community ID\",\"type\":\"integer\"},\"name\":{\"description\":\"Community name\",\"type\":\"string\"},\"population\":{\"description\":\"Population\",\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Successful response with native community information\"},\"404\":{\"description\":\"Native community not found\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[],\"securitySchemes\":{},\"securitySource\":\"definition\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -1094,6 +1248,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /NaturalArea",
+                    "json": "{\"operationId\":\"getNaturalAreas\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"areaGroupId\":{\"description\":\"Area group ID\",\"type\":\"integer\"},\"categoryNaturalAreaId\":{\"description\":\"Category ID\",\"type\":\"integer\"},\"departmentId\":{\"description\":\"Department ID\",\"type\":\"integer\"},\"description\":{\"description\":\"Natural area description\",\"type\":\"string\"},\"id\":{\"description\":\"Natural area ID\",\"type\":\"integer\"},\"landArea\":{\"description\":\"Land area in hectares\",\"type\":\"number\"},\"maritimeArea\":{\"description\":\"Maritime area in hectares\",\"type\":\"number\"},\"name\":{\"description\":\"Natural area name\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response with list of natural areas\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[],\"securitySchemes\":{},\"securitySource\":\"definition\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/NaturalArea",
@@ -1127,6 +1287,12 @@
                         "type": "`$INTEGER`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /NaturalArea/{id}",
+                    "json": "{\"operationId\":\"getNaturalAreaById\",\"parameters\":[{\"description\":\"Natural area ID\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"areaGroupId\":{\"description\":\"Area group ID\",\"type\":\"integer\"},\"categoryNaturalAreaId\":{\"description\":\"Category ID\",\"type\":\"integer\"},\"departmentId\":{\"description\":\"Department ID\",\"type\":\"integer\"},\"description\":{\"description\":\"Natural area description\",\"type\":\"string\"},\"id\":{\"description\":\"Natural area ID\",\"type\":\"integer\"},\"landArea\":{\"description\":\"Land area in hectares\",\"type\":\"number\"},\"maritimeArea\":{\"description\":\"Maritime area in hectares\",\"type\":\"number\"},\"name\":{\"description\":\"Natural area name\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response with natural area information\"},\"404\":{\"description\":\"Natural area not found\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[],\"securitySchemes\":{},\"securitySource\":\"definition\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -1227,6 +1393,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /President",
+                    "json": "{\"operationId\":\"getPresidents\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"description\":{\"description\":\"Biography and description\",\"type\":\"string\"},\"endPeriodDate\":{\"description\":\"End date of presidency\",\"format\":\"date\",\"type\":\"string\"},\"id\":{\"description\":\"President ID\",\"type\":\"integer\"},\"image\":{\"description\":\"URL to president image\",\"type\":\"string\"},\"name\":{\"description\":\"President name\",\"type\":\"string\"},\"politicalParty\":{\"description\":\"Political party\",\"type\":\"string\"},\"startPeriodDate\":{\"description\":\"Start date of presidency\",\"format\":\"date\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response with list of presidents\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[],\"securitySchemes\":{},\"securitySource\":\"definition\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/President",
@@ -1260,6 +1432,12 @@
                         "type": "`$INTEGER`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /President/{id}",
+                    "json": "{\"operationId\":\"getPresidentById\",\"parameters\":[{\"description\":\"President ID\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"description\":{\"description\":\"Biography and description\",\"type\":\"string\"},\"endPeriodDate\":{\"description\":\"End date of presidency\",\"format\":\"date\",\"type\":\"string\"},\"id\":{\"description\":\"President ID\",\"type\":\"integer\"},\"image\":{\"description\":\"URL to president image\",\"type\":\"string\"},\"name\":{\"description\":\"President name\",\"type\":\"string\"},\"politicalParty\":{\"description\":\"Political party\",\"type\":\"string\"},\"startPeriodDate\":{\"description\":\"Start date of presidency\",\"format\":\"date\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response with president information\"},\"404\":{\"description\":\"President not found\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[],\"securitySchemes\":{},\"securitySource\":\"definition\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -1344,6 +1522,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /Radio",
+                    "json": "{\"operationId\":\"getRadioStations\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"band\":{\"description\":\"Broadcasting band (AM/FM)\",\"type\":\"string\"},\"frequency\":{\"description\":\"Broadcasting frequency\",\"type\":\"string\"},\"id\":{\"description\":\"Radio station ID\",\"type\":\"integer\"},\"name\":{\"description\":\"Radio station name\",\"type\":\"string\"},\"url\":{\"description\":\"Station URL\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response with list of radio stations\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[],\"securitySchemes\":{},\"securitySource\":\"definition\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/Radio",
@@ -1377,6 +1561,12 @@
                         "type": "`$INTEGER`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /Radio/{id}",
+                    "json": "{\"operationId\":\"getRadioById\",\"parameters\":[{\"description\":\"Radio station ID\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"band\":{\"description\":\"Broadcasting band (AM/FM)\",\"type\":\"string\"},\"frequency\":{\"description\":\"Broadcasting frequency\",\"type\":\"string\"},\"id\":{\"description\":\"Radio station ID\",\"type\":\"integer\"},\"name\":{\"description\":\"Radio station name\",\"type\":\"string\"},\"url\":{\"description\":\"Station URL\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response with radio station information\"},\"404\":{\"description\":\"Radio station not found\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[],\"securitySchemes\":{},\"securitySource\":\"definition\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -1454,6 +1644,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /Region",
+                    "json": "{\"operationId\":\"getRegions\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"departments\":{\"description\":\"List of departments in the region\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"description\":{\"description\":\"Region description\",\"type\":\"string\"},\"id\":{\"description\":\"Region ID\",\"type\":\"integer\"},\"name\":{\"description\":\"Region name\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response with list of regions\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[],\"securitySchemes\":{},\"securitySource\":\"definition\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/Region",
@@ -1487,6 +1683,12 @@
                         "type": "`$INTEGER`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /Region/{id}",
+                    "json": "{\"operationId\":\"getRegionById\",\"parameters\":[{\"description\":\"Region ID\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"departments\":{\"description\":\"List of departments in the region\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"description\":{\"description\":\"Region description\",\"type\":\"string\"},\"id\":{\"description\":\"Region ID\",\"type\":\"integer\"},\"name\":{\"description\":\"Region name\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response with region information\"},\"404\":{\"description\":\"Region not found\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[],\"securitySchemes\":{},\"securitySource\":\"definition\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -1585,6 +1787,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /TouristicAttraction",
+                    "json": "{\"operationId\":\"getTouristicAttractions\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"city\":{\"description\":\"City where the attraction is located\",\"type\":\"string\"},\"description\":{\"description\":\"Attraction description\",\"type\":\"string\"},\"id\":{\"description\":\"Touristic attraction ID\",\"type\":\"integer\"},\"images\":{\"description\":\"List of image URLs\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"latitude\":{\"description\":\"Latitude coordinate\",\"type\":\"number\"},\"longitude\":{\"description\":\"Longitude coordinate\",\"type\":\"number\"},\"name\":{\"description\":\"Attraction name\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response with list of touristic attractions\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[],\"securitySchemes\":{},\"securitySource\":\"definition\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/TouristicAttraction",
@@ -1618,6 +1826,12 @@
                         "type": "`$INTEGER`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /TouristicAttraction/{id}",
+                    "json": "{\"operationId\":\"getTouristicAttractionById\",\"parameters\":[{\"description\":\"Touristic attraction ID\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"city\":{\"description\":\"City where the attraction is located\",\"type\":\"string\"},\"description\":{\"description\":\"Attraction description\",\"type\":\"string\"},\"id\":{\"description\":\"Touristic attraction ID\",\"type\":\"integer\"},\"images\":{\"description\":\"List of image URLs\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"latitude\":{\"description\":\"Latitude coordinate\",\"type\":\"number\"},\"longitude\":{\"description\":\"Longitude coordinate\",\"type\":\"number\"},\"name\":{\"description\":\"Attraction name\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response with touristic attraction information\"},\"404\":{\"description\":\"Touristic attraction not found\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[],\"securitySchemes\":{},\"securitySource\":\"definition\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -1709,6 +1923,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /TypicalDish",
+                    "json": "{\"operationId\":\"getTypicalDishes\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"departmentId\":{\"description\":\"Department ID\",\"type\":\"integer\"},\"description\":{\"description\":\"Dish description\",\"type\":\"string\"},\"id\":{\"description\":\"Typical dish ID\",\"type\":\"integer\"},\"ingredients\":{\"description\":\"List of ingredients\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"name\":{\"description\":\"Dish name\",\"type\":\"string\"},\"urlImage\":{\"description\":\"URL to dish image\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response with list of typical dishes\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[],\"securitySchemes\":{},\"securitySource\":\"definition\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/TypicalDish",
@@ -1743,6 +1963,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /TypicalDish/{id}",
+                    "json": "{\"operationId\":\"getTypicalDishById\",\"parameters\":[{\"description\":\"Typical dish ID\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"departmentId\":{\"description\":\"Department ID\",\"type\":\"integer\"},\"description\":{\"description\":\"Dish description\",\"type\":\"string\"},\"id\":{\"description\":\"Typical dish ID\",\"type\":\"integer\"},\"ingredients\":{\"description\":\"List of ingredients\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"name\":{\"description\":\"Dish name\",\"type\":\"string\"},\"urlImage\":{\"description\":\"URL to dish image\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response with typical dish information\"},\"404\":{\"description\":\"Typical dish not found\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[],\"securitySchemes\":{},\"securitySource\":\"definition\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/TypicalDish/{id}",
@@ -1773,13 +1999,223 @@
         }
       },
       "feature": {
+        "ratelimit": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "burst": 5,
+              "rate": 5
+            },
+            "optspec": {
+              "now": "`$FUNCTION`",
+              "sleep": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "ratelimit",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Client-side rate limiting via a token bucket",
+          "transport": "wrap",
+          "version": "0.0.1"
+        },
+        "retry": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "factor": 2,
+              "maxDelay": 2000,
+              "minDelay": 50,
+              "retries": 2,
+              "statuses": [
+                408,
+                425,
+                429,
+                500,
+                502,
+                503,
+                504
+              ]
+            },
+            "optspec": {
+              "jitter": "`$BOOLEAN`",
+              "sleep": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "retry",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Automatic retry of transient failures with exponential backoff",
+          "transport": "wrap",
+          "version": "0.0.1"
+        },
         "test": {
           "active": true,
           "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "config": {
             "options": {
               "active": false
-            }
+            },
+            "optspec": {
+              "entity": "`$MAP`",
+              "net": "`$MAP`"
+            },
+            "strict": false
           },
           "hook": {
             "GetData": {
@@ -1869,6 +2305,102 @@
           },
           "title": "In-memory mock transport for testing without a live server",
           "transport": "base",
+          "version": "0.0.1"
+        },
+        "timeout": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "ms": 30000
+            },
+            "optspec": {
+              "clearTimer": "`$FUNCTION`",
+              "setTimer": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "timeout",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Per-request timeout with transport abort",
+          "transport": "wrap",
           "version": "0.0.1"
         }
       },
@@ -2552,6 +3084,48 @@
         "website": "https://com"
       },
       "option": {},
+      "optspec": {
+        "allow": {
+          "method": "GET,PUT,POST,PATCH,DELETE,OPTIONS",
+          "op": "create,update,load,list,remove,command,direct,graphql"
+        },
+        "apikey": "",
+        "auth": {
+          "basic": false,
+          "prefix": ""
+        },
+        "base": "http://localhost:8000",
+        "clean": {
+          "keys": "key,token,id"
+        },
+        "entity": {
+          "`$CHILD`": {
+            "`$OPEN`": true,
+            "active": false,
+            "alias": {}
+          }
+        },
+        "extend": "`$ANY`",
+        "headers": {
+          "`$CHILD`": "`$STRING`"
+        },
+        "prefix": "",
+        "secret": "",
+        "server": {
+          "`$CHILD`": ""
+        },
+        "suffix": "",
+        "system": {
+          "fetch": "`$ANY`"
+        },
+        "test": {
+          "active": false,
+          "entity": {
+            "`$OPEN`": true
+          }
+        },
+        "utility": {}
+      },
       "repo": {
         "host": "github.com",
         "path": ""
@@ -3106,6 +3680,7 @@
           },
           "package": "@voxgig/sdkgen",
           "provides": {
+            "schema": true,
             "sekreto": true
           },
           "publish": {
@@ -3147,7 +3722,7 @@
         "live": {
           "app": false,
           "base": "",
-          "strict": false
+          "strict": true
         }
       }
     }

@@ -2,21 +2,21 @@
   "existing": {
     "map": {
       "MAP00": {
-        "departmentId": "s32",
+        "departmentId": 50,
         "description": "s33",
         "id": "MAP00",
         "name": "s35",
         "urlImages": []
       },
       "MAP01": {
-        "departmentId": "s64",
+        "departmentId": 100,
         "description": "s65",
         "id": "MAP01",
         "name": "s67",
         "urlImages": []
       },
       "MAP02": {
-        "departmentId": "s96",
+        "departmentId": 150,
         "description": "s97",
         "id": "MAP02",
         "name": "s99",
@@ -27,10 +27,66 @@
   "new": {
     "map": {
       "map_ref01": {
-        "departmentId": "sc8",
+        "departmentId": 200,
         "description": "sc9",
         "name": "scb",
         "urlImages": []
+      }
+    }
+  },
+  "requests": {
+    "GET /Map": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getMaps",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "departmentId": {
+                        "description": "Department ID",
+                        "type": "integer"
+                      },
+                      "description": {
+                        "description": "Map description",
+                        "type": "string"
+                      },
+                      "id": {
+                        "description": "Map ID",
+                        "type": "integer"
+                      },
+                      "name": {
+                        "description": "Map name",
+                        "type": "string"
+                      },
+                      "urlImages": {
+                        "description": "URLs to map images",
+                        "items": {
+                          "type": "string"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful response with map information"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "security": [],
+        "securitySchemes": {},
+        "securitySource": "definition"
       }
     }
   }

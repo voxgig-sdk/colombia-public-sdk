@@ -33,5 +33,121 @@
         "type": "scc"
       }
     }
+  },
+  "requests": {
+    "GET /Holiday": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getHolidays",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "date": {
+                        "description": "Holiday date",
+                        "format": "date",
+                        "type": "string"
+                      },
+                      "description": {
+                        "description": "Holiday description",
+                        "type": "string"
+                      },
+                      "id": {
+                        "description": "Holiday ID",
+                        "type": "integer"
+                      },
+                      "name": {
+                        "description": "Holiday name",
+                        "type": "string"
+                      },
+                      "type": {
+                        "description": "Holiday type (religious, civic, etc.)",
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful response with list of holidays"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "security": [],
+        "securitySchemes": {},
+        "securitySource": "definition"
+      }
+    },
+    "GET /Holiday/{id}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getHolidayById",
+        "parameters": [
+          {
+            "description": "Holiday ID",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "date": {
+                      "description": "Holiday date",
+                      "format": "date",
+                      "type": "string"
+                    },
+                    "description": {
+                      "description": "Holiday description",
+                      "type": "string"
+                    },
+                    "id": {
+                      "description": "Holiday ID",
+                      "type": "integer"
+                    },
+                    "name": {
+                      "description": "Holiday name",
+                      "type": "string"
+                    },
+                    "type": {
+                      "description": "Holiday type (religious, civic, etc.)",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response with holiday information"
+          },
+          "404": {
+            "description": "Holiday not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "security": [],
+        "securitySchemes": {},
+        "securitySource": "definition"
+      }
+    }
   }
 }

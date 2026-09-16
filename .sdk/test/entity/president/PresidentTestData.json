@@ -41,5 +41,139 @@
         "startPeriodDate": "s11e"
       }
     }
+  },
+  "requests": {
+    "GET /President": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getPresidents",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "description": {
+                        "description": "Biography and description",
+                        "type": "string"
+                      },
+                      "endPeriodDate": {
+                        "description": "End date of presidency",
+                        "format": "date",
+                        "type": "string"
+                      },
+                      "id": {
+                        "description": "President ID",
+                        "type": "integer"
+                      },
+                      "image": {
+                        "description": "URL to president image",
+                        "type": "string"
+                      },
+                      "name": {
+                        "description": "President name",
+                        "type": "string"
+                      },
+                      "politicalParty": {
+                        "description": "Political party",
+                        "type": "string"
+                      },
+                      "startPeriodDate": {
+                        "description": "Start date of presidency",
+                        "format": "date",
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful response with list of presidents"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "security": [],
+        "securitySchemes": {},
+        "securitySource": "definition"
+      }
+    },
+    "GET /President/{id}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getPresidentById",
+        "parameters": [
+          {
+            "description": "President ID",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "description": {
+                      "description": "Biography and description",
+                      "type": "string"
+                    },
+                    "endPeriodDate": {
+                      "description": "End date of presidency",
+                      "format": "date",
+                      "type": "string"
+                    },
+                    "id": {
+                      "description": "President ID",
+                      "type": "integer"
+                    },
+                    "image": {
+                      "description": "URL to president image",
+                      "type": "string"
+                    },
+                    "name": {
+                      "description": "President name",
+                      "type": "string"
+                    },
+                    "politicalParty": {
+                      "description": "Political party",
+                      "type": "string"
+                    },
+                    "startPeriodDate": {
+                      "description": "Start date of presidency",
+                      "format": "date",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response with president information"
+          },
+          "404": {
+            "description": "President not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "security": [],
+        "securitySchemes": {},
+        "securitySource": "definition"
+      }
+    }
   }
 }

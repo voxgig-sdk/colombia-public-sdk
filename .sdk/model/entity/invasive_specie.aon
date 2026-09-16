@@ -54,6 +54,12 @@ main: kit: entity: invasive_specie: {
       name: "list"
       points: [
         {
+          contract: {
+            id: "GET /InvasiveSpecie"
+            json: "{\"operationId\":\"getInvasiveSpecies\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"id\":{\"description\":\"Invasive species ID\",\"type\":\"integer\"},\"impact\":{\"description\":\"Environmental impact\",\"type\":\"string\"},\"manage\":{\"description\":\"Management strategies\",\"type\":\"string\"},\"name\":{\"description\":\"Species name\",\"type\":\"string\"},\"scientificName\":{\"description\":\"Scientific name\",\"type\":\"string\"},\"urlImage\":{\"description\":\"URL to species image\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response with list of invasive species\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[],\"securitySchemes\":{},\"securitySource\":\"definition\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/InvasiveSpecie"
           segments: [
@@ -82,6 +88,12 @@ main: kit: entity: invasive_specie: {
                 type: "`$INTEGER`"
               }
             ]
+          }
+          contract: {
+            id: "GET /InvasiveSpecie/{id}"
+            json: "{\"operationId\":\"getInvasiveSpecieById\",\"parameters\":[{\"description\":\"Invasive species ID\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"id\":{\"description\":\"Invasive species ID\",\"type\":\"integer\"},\"impact\":{\"description\":\"Environmental impact\",\"type\":\"string\"},\"manage\":{\"description\":\"Management strategies\",\"type\":\"string\"},\"name\":{\"description\":\"Species name\",\"type\":\"string\"},\"scientificName\":{\"description\":\"Scientific name\",\"type\":\"string\"},\"urlImage\":{\"description\":\"URL to species image\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response with invasive species information\"},\"404\":{\"description\":\"Invasive species not found\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[],\"securitySchemes\":{},\"securitySource\":\"definition\"}"
+            source: "openapi3"
+            version: 1
           }
           method: "GET"
           orig: "/InvasiveSpecie/{id}"

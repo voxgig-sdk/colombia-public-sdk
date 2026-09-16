@@ -5,30 +5,30 @@
         "cityCapital": "s50",
         "description": "s51",
         "id": "DEPARTMENT00",
-        "municipalities": "s53",
+        "municipalities": 83,
         "name": "s54",
-        "population": "s55",
-        "regionId": "s56",
+        "population": 85,
+        "regionId": 86,
         "surface": 87
       },
       "DEPARTMENT01": {
         "cityCapital": "sa0",
         "description": "sa1",
         "id": "DEPARTMENT01",
-        "municipalities": "sa3",
+        "municipalities": 163,
         "name": "sa4",
-        "population": "sa5",
-        "regionId": "sa6",
+        "population": 165,
+        "regionId": 166,
         "surface": 167
       },
       "DEPARTMENT02": {
         "cityCapital": "sf0",
         "description": "sf1",
         "id": "DEPARTMENT02",
-        "municipalities": "sf3",
+        "municipalities": 243,
         "name": "sf4",
-        "population": "sf5",
-        "regionId": "sf6",
+        "population": 245,
+        "regionId": 246,
         "surface": 247
       }
     }
@@ -38,11 +38,149 @@
       "department_ref01": {
         "cityCapital": "s140",
         "description": "s141",
-        "municipalities": "s143",
+        "municipalities": 323,
         "name": "s144",
-        "population": "s145",
-        "regionId": "s146",
+        "population": 325,
+        "regionId": 326,
         "surface": 327
+      }
+    }
+  },
+  "requests": {
+    "GET /Department": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getDepartments",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "cityCapital": {
+                        "description": "Capital city of the department",
+                        "type": "string"
+                      },
+                      "description": {
+                        "description": "Department description",
+                        "type": "string"
+                      },
+                      "id": {
+                        "description": "Department ID",
+                        "type": "integer"
+                      },
+                      "municipalities": {
+                        "description": "Number of municipalities",
+                        "type": "integer"
+                      },
+                      "name": {
+                        "description": "Department name",
+                        "type": "string"
+                      },
+                      "population": {
+                        "description": "Population",
+                        "type": "integer"
+                      },
+                      "regionId": {
+                        "description": "Region ID",
+                        "type": "integer"
+                      },
+                      "surface": {
+                        "description": "Surface area",
+                        "type": "number"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful response with list of departments"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "security": [],
+        "securitySchemes": {},
+        "securitySource": "definition"
+      }
+    },
+    "GET /Department/{id}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getDepartmentById",
+        "parameters": [
+          {
+            "description": "Department ID",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "cityCapital": {
+                      "description": "Capital city of the department",
+                      "type": "string"
+                    },
+                    "description": {
+                      "description": "Department description",
+                      "type": "string"
+                    },
+                    "id": {
+                      "description": "Department ID",
+                      "type": "integer"
+                    },
+                    "municipalities": {
+                      "description": "Number of municipalities",
+                      "type": "integer"
+                    },
+                    "name": {
+                      "description": "Department name",
+                      "type": "string"
+                    },
+                    "population": {
+                      "description": "Population",
+                      "type": "integer"
+                    },
+                    "regionId": {
+                      "description": "Region ID",
+                      "type": "integer"
+                    },
+                    "surface": {
+                      "description": "Surface area",
+                      "type": "number"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response with department information"
+          },
+          "404": {
+            "description": "Department not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "security": [],
+        "securitySchemes": {},
+        "securitySource": "definition"
       }
     }
   }

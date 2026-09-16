@@ -66,6 +66,12 @@ main: kit: entity: natural_area: {
       name: "list"
       points: [
         {
+          contract: {
+            id: "GET /NaturalArea"
+            json: "{\"operationId\":\"getNaturalAreas\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"areaGroupId\":{\"description\":\"Area group ID\",\"type\":\"integer\"},\"categoryNaturalAreaId\":{\"description\":\"Category ID\",\"type\":\"integer\"},\"departmentId\":{\"description\":\"Department ID\",\"type\":\"integer\"},\"description\":{\"description\":\"Natural area description\",\"type\":\"string\"},\"id\":{\"description\":\"Natural area ID\",\"type\":\"integer\"},\"landArea\":{\"description\":\"Land area in hectares\",\"type\":\"number\"},\"maritimeArea\":{\"description\":\"Maritime area in hectares\",\"type\":\"number\"},\"name\":{\"description\":\"Natural area name\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response with list of natural areas\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[],\"securitySchemes\":{},\"securitySource\":\"definition\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/NaturalArea"
           segments: [
@@ -94,6 +100,12 @@ main: kit: entity: natural_area: {
                 type: "`$INTEGER`"
               }
             ]
+          }
+          contract: {
+            id: "GET /NaturalArea/{id}"
+            json: "{\"operationId\":\"getNaturalAreaById\",\"parameters\":[{\"description\":\"Natural area ID\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"areaGroupId\":{\"description\":\"Area group ID\",\"type\":\"integer\"},\"categoryNaturalAreaId\":{\"description\":\"Category ID\",\"type\":\"integer\"},\"departmentId\":{\"description\":\"Department ID\",\"type\":\"integer\"},\"description\":{\"description\":\"Natural area description\",\"type\":\"string\"},\"id\":{\"description\":\"Natural area ID\",\"type\":\"integer\"},\"landArea\":{\"description\":\"Land area in hectares\",\"type\":\"number\"},\"maritimeArea\":{\"description\":\"Maritime area in hectares\",\"type\":\"number\"},\"name\":{\"description\":\"Natural area name\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response with natural area information\"},\"404\":{\"description\":\"Natural area not found\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[],\"securitySchemes\":{},\"securitySource\":\"definition\"}"
+            source: "openapi3"
+            version: 1
           }
           method: "GET"
           orig: "/NaturalArea/{id}"

@@ -5,6 +5,8 @@ import * as Fs from 'node:fs'
 
 import { test, describe, afterEach } from 'node:test'
 import assert from 'node:assert'
+import { createLiveTransport } from '../../live-runner'
+import { runLiveEntity } from '../../live-entity'
 
 
 import { ColombiaPublicSDK, BaseFeature, stdutil } from '../../..'
@@ -47,16 +49,13 @@ describe('TypicalDishEntity', async () => {
 
     const live = 'TRUE' === process.env.COLOMBIA_PUBLIC_TEST_LIVE
     for (const op of ['list', 'load']) {
-      if (maybeSkipControl(t, 'entityOp', 'typical_dish.' + op, live)) return
+      if (!live && maybeSkipControl(t, 'entityOp', 'typical_dish.' + op, live)) return
     }
 
+    
     const setup = basicSetup()
-    // The basic flow consumes synthetic IDs and field values from the
-    // fixture (entity TestData.json). Those don't exist on the live API.
-    // Skip live runs unless the user provided a real ENTID env override.
-    if (setup.syntheticOnly) {
-      t.skip('live entity test uses synthetic IDs from fixture — set COLOMBIA_PUBLIC_TEST_TYPICAL_DISH_ENTID JSON to run live')
-      return
+    if (setup.live) {
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":[{"active":true,"name":"departmentId","req":false,"short":"Department ID","type":"`$INTEGER`","index$":0},{"active":true,"name":"description","req":false,"short":"Dish description","type":"`$STRING`","index$":1},{"active":true,"name":"id","req":false,"short":"Typical dish ID","type":"`$INTEGER`","index$":2},{"active":true,"name":"ingredients","req":false,"short":"List of ingredients","type":"`$ARRAY`","index$":3},{"active":true,"name":"name","req":false,"short":"Dish name","type":"`$STRING`","index$":4},{"active":true,"name":"urlImage","req":false,"short":"URL to dish image","type":"`$STRING`","index$":5}],"id":{"field":"id","name":"id"},"name":"typical_dish","op":{"list":{"input":"data","name":"list","points":[{"active":true,"args":{},"contract":{"id":"GET /TypicalDish","json":"{\"operationId\":\"getTypicalDishes\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"departmentId\":{\"description\":\"Department ID\",\"type\":\"integer\"},\"description\":{\"description\":\"Dish description\",\"type\":\"string\"},\"id\":{\"description\":\"Typical dish ID\",\"type\":\"integer\"},\"ingredients\":{\"description\":\"List of ingredients\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"name\":{\"description\":\"Dish name\",\"type\":\"string\"},\"urlImage\":{\"description\":\"URL to dish image\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response with list of typical dishes\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[],\"securitySchemes\":{},\"securitySource\":\"definition\"}","source":"openapi3","version":1},"kind":"http","method":"GET","orig":"/TypicalDish","segments":[{"lit":"TypicalDish"}],"select":{},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"list"},"load":{"input":"data","name":"load","points":[{"active":true,"args":{"params":[{"active":true,"kind":"param","name":"id","orig":"id","reqd":true,"type":"`$INTEGER`","index$":0}]},"contract":{"id":"GET /TypicalDish/{id}","json":"{\"operationId\":\"getTypicalDishById\",\"parameters\":[{\"description\":\"Typical dish ID\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"departmentId\":{\"description\":\"Department ID\",\"type\":\"integer\"},\"description\":{\"description\":\"Dish description\",\"type\":\"string\"},\"id\":{\"description\":\"Typical dish ID\",\"type\":\"integer\"},\"ingredients\":{\"description\":\"List of ingredients\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"name\":{\"description\":\"Dish name\",\"type\":\"string\"},\"urlImage\":{\"description\":\"URL to dish image\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response with typical dish information\"},\"404\":{\"description\":\"Typical dish not found\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[],\"securitySchemes\":{},\"securitySource\":\"definition\"}","source":"openapi3","version":1},"kind":"http","method":"GET","orig":"/TypicalDish/{id}","segments":[{"lit":"TypicalDish"},{"var":"id"}],"select":{"exist":["id"]},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"typical_dish","name__orig":"typical_dish","Name":"TypicalDish","name_":"typical_dish","name-":"typical-dish","NAME":"TYPICAL_DISH","index$":14}, {"active":true,"entity":"typical_dish","key$":"BasicTypicalDishFlow","kind":"basic","name":"BasicTypicalDishFlow","param":{},"step":[{"active":true,"data":{},"input":{},"match":{},"op":"list","spec":[],"valid":[{"apply":"ItemExists","def":{"ref":"typical_dish_ref01"}}],"index$":0},{"active":true,"data":{},"input":{"ref":"typical_dish_ref01","srcdatavar":"typical_dish_ref01_data","suffix":"_dt0"},"match":{"id":"typical_dish01"},"op":"load","spec":[],"valid":[{"apply":"TextFieldMark","def":{"mark":"Mark01-typical_dish_ref01"}}],"index$":1}]}, 'TypicalDish')
     }
     const client = setup.client
     const struct = setup.struct
@@ -116,13 +115,6 @@ function basicSetup(extra?: any) {
       }]
     })
 
-  // Detect whether the user provided a real ENTID JSON via env var. The
-  // basic flow consumes synthetic IDs from the fixture file; without an
-  // override those synthetic IDs reach the live API and 4xx. Surface this
-  // to the test so it can skip rather than fail.
-  const idmapEnvVal = process.env['COLOMBIA_PUBLIC_TEST_TYPICAL_DISH_ENTID']
-  const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{')
-
   const env = envOverride({
     'COLOMBIA_PUBLIC_TEST_TYPICAL_DISH_ENTID': idmap,
     'COLOMBIA_PUBLIC_TEST_LIVE': 'FALSE',
@@ -133,7 +125,13 @@ function basicSetup(extra?: any) {
 
   const live = 'TRUE' === env.COLOMBIA_PUBLIC_TEST_LIVE
 
+  const transport = createLiveTransport()
   if (live) {
+    const rawIds = process.env['COLOMBIA_PUBLIC_TEST_TYPICAL_DISH_ENTID']
+    idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {}
+    if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+      throw new Error('Live ENTID must be a JSON object')
+    }
     client = new ColombiaPublicSDK(merge([
       // FIRST, so the generated fields below win: sdk-test-control.json's
       // test.client.options adds to the live client, it does not redirect it.
@@ -145,7 +143,8 @@ function basicSetup(extra?: any) {
       // argument at all - so a bare 'extra' silently discarded the apikey
       // and server values above and handed the SDK undefined. Harmless
       // while there was nothing in that object; not harmless now.
-      extra || {}
+      extra || {},
+      { system: { fetch: transport.fetch } }
     ]))
   }
 
@@ -158,7 +157,7 @@ function basicSetup(extra?: any) {
     data: entityData,
     explain: 'TRUE' === env.COLOMBIA_PUBLIC_TEST_EXPLAIN,
     live,
-    syntheticOnly: live && !idmapOverridden,
+    transport,
     now: Date.now(),
   }
 

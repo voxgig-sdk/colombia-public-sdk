@@ -2,9 +2,9 @@
   "existing": {
     "natural_area": {
       "NATURAL_AREA00": {
-        "areaGroupId": "s50",
-        "categoryNaturalAreaId": "s51",
-        "departmentId": "s52",
+        "areaGroupId": 80,
+        "categoryNaturalAreaId": 81,
+        "departmentId": 82,
         "description": "s53",
         "id": "NATURAL_AREA00",
         "landArea": 85,
@@ -12,9 +12,9 @@
         "name": "s57"
       },
       "NATURAL_AREA01": {
-        "areaGroupId": "sa0",
-        "categoryNaturalAreaId": "sa1",
-        "departmentId": "sa2",
+        "areaGroupId": 160,
+        "categoryNaturalAreaId": 161,
+        "departmentId": 162,
         "description": "sa3",
         "id": "NATURAL_AREA01",
         "landArea": 165,
@@ -22,9 +22,9 @@
         "name": "sa7"
       },
       "NATURAL_AREA02": {
-        "areaGroupId": "sf0",
-        "categoryNaturalAreaId": "sf1",
-        "departmentId": "sf2",
+        "areaGroupId": 240,
+        "categoryNaturalAreaId": 241,
+        "departmentId": 242,
         "description": "sf3",
         "id": "NATURAL_AREA02",
         "landArea": 245,
@@ -36,13 +36,151 @@
   "new": {
     "natural_area": {
       "natural_area_ref01": {
-        "areaGroupId": "s140",
-        "categoryNaturalAreaId": "s141",
-        "departmentId": "s142",
+        "areaGroupId": 320,
+        "categoryNaturalAreaId": 321,
+        "departmentId": 322,
         "description": "s143",
         "landArea": 325,
         "maritimeArea": 326,
         "name": "s147"
+      }
+    }
+  },
+  "requests": {
+    "GET /NaturalArea": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getNaturalAreas",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "areaGroupId": {
+                        "description": "Area group ID",
+                        "type": "integer"
+                      },
+                      "categoryNaturalAreaId": {
+                        "description": "Category ID",
+                        "type": "integer"
+                      },
+                      "departmentId": {
+                        "description": "Department ID",
+                        "type": "integer"
+                      },
+                      "description": {
+                        "description": "Natural area description",
+                        "type": "string"
+                      },
+                      "id": {
+                        "description": "Natural area ID",
+                        "type": "integer"
+                      },
+                      "landArea": {
+                        "description": "Land area in hectares",
+                        "type": "number"
+                      },
+                      "maritimeArea": {
+                        "description": "Maritime area in hectares",
+                        "type": "number"
+                      },
+                      "name": {
+                        "description": "Natural area name",
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful response with list of natural areas"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "security": [],
+        "securitySchemes": {},
+        "securitySource": "definition"
+      }
+    },
+    "GET /NaturalArea/{id}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getNaturalAreaById",
+        "parameters": [
+          {
+            "description": "Natural area ID",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "areaGroupId": {
+                      "description": "Area group ID",
+                      "type": "integer"
+                    },
+                    "categoryNaturalAreaId": {
+                      "description": "Category ID",
+                      "type": "integer"
+                    },
+                    "departmentId": {
+                      "description": "Department ID",
+                      "type": "integer"
+                    },
+                    "description": {
+                      "description": "Natural area description",
+                      "type": "string"
+                    },
+                    "id": {
+                      "description": "Natural area ID",
+                      "type": "integer"
+                    },
+                    "landArea": {
+                      "description": "Land area in hectares",
+                      "type": "number"
+                    },
+                    "maritimeArea": {
+                      "description": "Maritime area in hectares",
+                      "type": "number"
+                    },
+                    "name": {
+                      "description": "Natural area name",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response with natural area information"
+          },
+          "404": {
+            "description": "Natural area not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "security": [],
+        "securitySchemes": {},
+        "securitySource": "definition"
       }
     }
   }

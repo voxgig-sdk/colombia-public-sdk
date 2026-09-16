@@ -2,9 +2,9 @@
   "existing": {
     "airport": {
       "AIRPORT00": {
-        "cityId": "s50",
+        "cityId": 80,
         "code": "s51",
-        "departmentId": "s52",
+        "departmentId": 82,
         "id": "AIRPORT00",
         "latitude": 84,
         "longitude": 85,
@@ -12,9 +12,9 @@
         "type": "s57"
       },
       "AIRPORT01": {
-        "cityId": "sa0",
+        "cityId": 160,
         "code": "sa1",
-        "departmentId": "sa2",
+        "departmentId": 162,
         "id": "AIRPORT01",
         "latitude": 164,
         "longitude": 165,
@@ -22,9 +22,9 @@
         "type": "sa7"
       },
       "AIRPORT02": {
-        "cityId": "sf0",
+        "cityId": 240,
         "code": "sf1",
-        "departmentId": "sf2",
+        "departmentId": 242,
         "id": "AIRPORT02",
         "latitude": 244,
         "longitude": 245,
@@ -36,13 +36,151 @@
   "new": {
     "airport": {
       "airport_ref01": {
-        "cityId": "s140",
+        "cityId": 320,
         "code": "s141",
-        "departmentId": "s142",
+        "departmentId": 322,
         "latitude": 324,
         "longitude": 325,
         "name": "s146",
         "type": "s147"
+      }
+    }
+  },
+  "requests": {
+    "GET /Airport": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getAirports",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "cityId": {
+                        "description": "City ID",
+                        "type": "integer"
+                      },
+                      "code": {
+                        "description": "IATA code",
+                        "type": "string"
+                      },
+                      "departmentId": {
+                        "description": "Department ID",
+                        "type": "integer"
+                      },
+                      "id": {
+                        "description": "Airport ID",
+                        "type": "integer"
+                      },
+                      "latitude": {
+                        "description": "Latitude coordinate",
+                        "type": "number"
+                      },
+                      "longitude": {
+                        "description": "Longitude coordinate",
+                        "type": "number"
+                      },
+                      "name": {
+                        "description": "Airport name",
+                        "type": "string"
+                      },
+                      "type": {
+                        "description": "Airport type",
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful response with list of airports"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "security": [],
+        "securitySchemes": {},
+        "securitySource": "definition"
+      }
+    },
+    "GET /Airport/{id}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getAirportById",
+        "parameters": [
+          {
+            "description": "Airport ID",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "cityId": {
+                      "description": "City ID",
+                      "type": "integer"
+                    },
+                    "code": {
+                      "description": "IATA code",
+                      "type": "string"
+                    },
+                    "departmentId": {
+                      "description": "Department ID",
+                      "type": "integer"
+                    },
+                    "id": {
+                      "description": "Airport ID",
+                      "type": "integer"
+                    },
+                    "latitude": {
+                      "description": "Latitude coordinate",
+                      "type": "number"
+                    },
+                    "longitude": {
+                      "description": "Longitude coordinate",
+                      "type": "number"
+                    },
+                    "name": {
+                      "description": "Airport name",
+                      "type": "string"
+                    },
+                    "type": {
+                      "description": "Airport type",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response with airport information"
+          },
+          "404": {
+            "description": "Airport not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "security": [],
+        "securitySchemes": {},
+        "securitySource": "definition"
       }
     }
   }

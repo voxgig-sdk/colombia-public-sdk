@@ -54,6 +54,12 @@ main: kit: entity: typical_dish: {
       name: "list"
       points: [
         {
+          contract: {
+            id: "GET /TypicalDish"
+            json: "{\"operationId\":\"getTypicalDishes\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"departmentId\":{\"description\":\"Department ID\",\"type\":\"integer\"},\"description\":{\"description\":\"Dish description\",\"type\":\"string\"},\"id\":{\"description\":\"Typical dish ID\",\"type\":\"integer\"},\"ingredients\":{\"description\":\"List of ingredients\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"name\":{\"description\":\"Dish name\",\"type\":\"string\"},\"urlImage\":{\"description\":\"URL to dish image\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response with list of typical dishes\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[],\"securitySchemes\":{},\"securitySource\":\"definition\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/TypicalDish"
           segments: [
@@ -82,6 +88,12 @@ main: kit: entity: typical_dish: {
                 type: "`$INTEGER`"
               }
             ]
+          }
+          contract: {
+            id: "GET /TypicalDish/{id}"
+            json: "{\"operationId\":\"getTypicalDishById\",\"parameters\":[{\"description\":\"Typical dish ID\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"departmentId\":{\"description\":\"Department ID\",\"type\":\"integer\"},\"description\":{\"description\":\"Dish description\",\"type\":\"string\"},\"id\":{\"description\":\"Typical dish ID\",\"type\":\"integer\"},\"ingredients\":{\"description\":\"List of ingredients\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"name\":{\"description\":\"Dish name\",\"type\":\"string\"},\"urlImage\":{\"description\":\"URL to dish image\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response with typical dish information\"},\"404\":{\"description\":\"Typical dish not found\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[],\"securitySchemes\":{},\"securitySource\":\"definition\"}"
+            source: "openapi3"
+            version: 1
           }
           method: "GET"
           orig: "/TypicalDish/{id}"

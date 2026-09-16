@@ -2,35 +2,149 @@
   "existing": {
     "native_community": {
       "NATIVE_COMMUNITY00": {
-        "departmentId": "s32",
+        "departmentId": 50,
         "description": "s33",
         "id": "NATIVE_COMMUNITY00",
         "name": "s35",
-        "population": "s36"
+        "population": 54
       },
       "NATIVE_COMMUNITY01": {
-        "departmentId": "s64",
+        "departmentId": 100,
         "description": "s65",
         "id": "NATIVE_COMMUNITY01",
         "name": "s67",
-        "population": "s68"
+        "population": 104
       },
       "NATIVE_COMMUNITY02": {
-        "departmentId": "s96",
+        "departmentId": 150,
         "description": "s97",
         "id": "NATIVE_COMMUNITY02",
         "name": "s99",
-        "population": "s9a"
+        "population": 154
       }
     }
   },
   "new": {
     "native_community": {
       "native_community_ref01": {
-        "departmentId": "sc8",
+        "departmentId": 200,
         "description": "sc9",
         "name": "scb",
-        "population": "scc"
+        "population": 204
+      }
+    }
+  },
+  "requests": {
+    "GET /NativeCommunity": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getNativeCommunities",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "departmentId": {
+                        "description": "Department ID",
+                        "type": "integer"
+                      },
+                      "description": {
+                        "description": "Community description",
+                        "type": "string"
+                      },
+                      "id": {
+                        "description": "Native community ID",
+                        "type": "integer"
+                      },
+                      "name": {
+                        "description": "Community name",
+                        "type": "string"
+                      },
+                      "population": {
+                        "description": "Population",
+                        "type": "integer"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful response with list of native communities"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "security": [],
+        "securitySchemes": {},
+        "securitySource": "definition"
+      }
+    },
+    "GET /NativeCommunity/{id}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getNativeCommunityById",
+        "parameters": [
+          {
+            "description": "Native community ID",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "departmentId": {
+                      "description": "Department ID",
+                      "type": "integer"
+                    },
+                    "description": {
+                      "description": "Community description",
+                      "type": "string"
+                    },
+                    "id": {
+                      "description": "Native community ID",
+                      "type": "integer"
+                    },
+                    "name": {
+                      "description": "Community name",
+                      "type": "string"
+                    },
+                    "population": {
+                      "description": "Population",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response with native community information"
+          },
+          "404": {
+            "description": "Native community not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "security": [],
+        "securitySchemes": {},
+        "securitySource": "definition"
       }
     }
   }

@@ -25,5 +25,50 @@
         "name": "s7a"
       }
     }
+  },
+  "requests": {
+    "GET /CategoryNaturalArea": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getCategoryNaturalAreas",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "description": {
+                        "description": "Category description",
+                        "type": "string"
+                      },
+                      "id": {
+                        "description": "Category ID",
+                        "type": "integer"
+                      },
+                      "name": {
+                        "description": "Category name",
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful response with list of natural area categories"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "security": [],
+        "securitySchemes": {},
+        "securitySource": "definition"
+      }
+    }
   }
 }

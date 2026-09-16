@@ -33,5 +33,119 @@
         "url": "scc"
       }
     }
+  },
+  "requests": {
+    "GET /Radio": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getRadioStations",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "band": {
+                        "description": "Broadcasting band (AM/FM)",
+                        "type": "string"
+                      },
+                      "frequency": {
+                        "description": "Broadcasting frequency",
+                        "type": "string"
+                      },
+                      "id": {
+                        "description": "Radio station ID",
+                        "type": "integer"
+                      },
+                      "name": {
+                        "description": "Radio station name",
+                        "type": "string"
+                      },
+                      "url": {
+                        "description": "Station URL",
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful response with list of radio stations"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "security": [],
+        "securitySchemes": {},
+        "securitySource": "definition"
+      }
+    },
+    "GET /Radio/{id}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getRadioById",
+        "parameters": [
+          {
+            "description": "Radio station ID",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "band": {
+                      "description": "Broadcasting band (AM/FM)",
+                      "type": "string"
+                    },
+                    "frequency": {
+                      "description": "Broadcasting frequency",
+                      "type": "string"
+                    },
+                    "id": {
+                      "description": "Radio station ID",
+                      "type": "integer"
+                    },
+                    "name": {
+                      "description": "Radio station name",
+                      "type": "string"
+                    },
+                    "url": {
+                      "description": "Station URL",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response with radio station information"
+          },
+          "404": {
+            "description": "Radio station not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "security": [],
+        "securitySchemes": {},
+        "securitySource": "definition"
+      }
+    }
   }
 }

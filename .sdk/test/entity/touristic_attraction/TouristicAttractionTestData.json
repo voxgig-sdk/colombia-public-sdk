@@ -41,5 +41,141 @@
         "name": "s11e"
       }
     }
+  },
+  "requests": {
+    "GET /TouristicAttraction": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getTouristicAttractions",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "city": {
+                        "description": "City where the attraction is located",
+                        "type": "string"
+                      },
+                      "description": {
+                        "description": "Attraction description",
+                        "type": "string"
+                      },
+                      "id": {
+                        "description": "Touristic attraction ID",
+                        "type": "integer"
+                      },
+                      "images": {
+                        "description": "List of image URLs",
+                        "items": {
+                          "type": "string"
+                        },
+                        "type": "array"
+                      },
+                      "latitude": {
+                        "description": "Latitude coordinate",
+                        "type": "number"
+                      },
+                      "longitude": {
+                        "description": "Longitude coordinate",
+                        "type": "number"
+                      },
+                      "name": {
+                        "description": "Attraction name",
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful response with list of touristic attractions"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "security": [],
+        "securitySchemes": {},
+        "securitySource": "definition"
+      }
+    },
+    "GET /TouristicAttraction/{id}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getTouristicAttractionById",
+        "parameters": [
+          {
+            "description": "Touristic attraction ID",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "city": {
+                      "description": "City where the attraction is located",
+                      "type": "string"
+                    },
+                    "description": {
+                      "description": "Attraction description",
+                      "type": "string"
+                    },
+                    "id": {
+                      "description": "Touristic attraction ID",
+                      "type": "integer"
+                    },
+                    "images": {
+                      "description": "List of image URLs",
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "latitude": {
+                      "description": "Latitude coordinate",
+                      "type": "number"
+                    },
+                    "longitude": {
+                      "description": "Longitude coordinate",
+                      "type": "number"
+                    },
+                    "name": {
+                      "description": "Attraction name",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response with touristic attraction information"
+          },
+          "404": {
+            "description": "Touristic attraction not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "security": [],
+        "securitySchemes": {},
+        "securitySource": "definition"
+      }
+    }
   }
 }

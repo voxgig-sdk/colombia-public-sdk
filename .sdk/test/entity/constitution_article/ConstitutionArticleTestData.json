@@ -2,21 +2,21 @@
   "existing": {
     "constitution_article": {
       "CONSTITUTION_ARTICLE00": {
-        "articleNumber": "s32",
+        "articleNumber": 50,
         "chapter": "s33",
         "description": "s34",
         "id": "CONSTITUTION_ARTICLE00",
         "title": "s36"
       },
       "CONSTITUTION_ARTICLE01": {
-        "articleNumber": "s64",
+        "articleNumber": 100,
         "chapter": "s65",
         "description": "s66",
         "id": "CONSTITUTION_ARTICLE01",
         "title": "s68"
       },
       "CONSTITUTION_ARTICLE02": {
-        "articleNumber": "s96",
+        "articleNumber": 150,
         "chapter": "s97",
         "description": "s98",
         "id": "CONSTITUTION_ARTICLE02",
@@ -27,10 +27,124 @@
   "new": {
     "constitution_article": {
       "constitution_article_ref01": {
-        "articleNumber": "sc8",
+        "articleNumber": 200,
         "chapter": "sc9",
         "description": "sca",
         "title": "scc"
+      }
+    }
+  },
+  "requests": {
+    "GET /ConstitutionArticle": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getConstitutionArticles",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "articleNumber": {
+                        "description": "Article number",
+                        "type": "integer"
+                      },
+                      "chapter": {
+                        "description": "Constitution chapter",
+                        "type": "string"
+                      },
+                      "description": {
+                        "description": "Article content",
+                        "type": "string"
+                      },
+                      "id": {
+                        "description": "Article ID",
+                        "type": "integer"
+                      },
+                      "title": {
+                        "description": "Article title",
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful response with list of constitution articles"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "security": [],
+        "securitySchemes": {},
+        "securitySource": "definition"
+      }
+    },
+    "GET /ConstitutionArticle/{id}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getConstitutionArticleById",
+        "parameters": [
+          {
+            "description": "Constitution article ID",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "articleNumber": {
+                      "description": "Article number",
+                      "type": "integer"
+                    },
+                    "chapter": {
+                      "description": "Constitution chapter",
+                      "type": "string"
+                    },
+                    "description": {
+                      "description": "Article content",
+                      "type": "string"
+                    },
+                    "id": {
+                      "description": "Article ID",
+                      "type": "integer"
+                    },
+                    "title": {
+                      "description": "Article title",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response with constitution article information"
+          },
+          "404": {
+            "description": "Constitution article not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "security": [],
+        "securitySchemes": {},
+        "securitySource": "definition"
       }
     }
   }

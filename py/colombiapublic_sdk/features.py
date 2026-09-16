@@ -1,12 +1,18 @@
 # ColombiaPublic SDK feature factory
 
 from colombiapublic_sdk.feature.base_feature import ColombiaPublicBaseFeature
+from colombiapublic_sdk.feature.ratelimit_feature import ColombiaPublicRatelimitFeature
+from colombiapublic_sdk.feature.retry_feature import ColombiaPublicRetryFeature
 from colombiapublic_sdk.feature.test_feature import ColombiaPublicTestFeature
+from colombiapublic_sdk.feature.timeout_feature import ColombiaPublicTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: ColombiaPublicBaseFeature(),
+    "ratelimit": lambda: ColombiaPublicRatelimitFeature(),
+    "retry": lambda: ColombiaPublicRetryFeature(),
     "test": lambda: ColombiaPublicTestFeature(),
+    "timeout": lambda: ColombiaPublicTimeoutFeature(),
 }
 
 

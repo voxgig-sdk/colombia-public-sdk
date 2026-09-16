@@ -8,7 +8,7 @@
         "id": "COUNTRY00",
         "languages": [],
         "name": "s55",
-        "population": "s56",
+        "population": 86,
         "surface": 87
       },
       "COUNTRY01": {
@@ -18,7 +18,7 @@
         "id": "COUNTRY01",
         "languages": [],
         "name": "sa5",
-        "population": "sa6",
+        "population": 166,
         "surface": 167
       },
       "COUNTRY02": {
@@ -28,7 +28,7 @@
         "id": "COUNTRY02",
         "languages": [],
         "name": "sf5",
-        "population": "sf6",
+        "population": 246,
         "surface": 247
       }
     }
@@ -41,8 +41,76 @@
         "flag": "s142",
         "languages": [],
         "name": "s145",
-        "population": "s146",
+        "population": 326,
         "surface": 327
+      }
+    }
+  },
+  "requests": {
+    "GET /Country/Colombia": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getColombiaInfo",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "capital": {
+                      "description": "Capital city",
+                      "type": "string"
+                    },
+                    "currency": {
+                      "description": "Currency",
+                      "type": "string"
+                    },
+                    "flag": {
+                      "description": "URL to flag image",
+                      "type": "string"
+                    },
+                    "id": {
+                      "description": "Country ID",
+                      "type": "integer"
+                    },
+                    "languages": {
+                      "description": "Official languages",
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "name": {
+                      "description": "Country name",
+                      "type": "string"
+                    },
+                    "population": {
+                      "description": "Total population",
+                      "type": "integer"
+                    },
+                    "surface": {
+                      "description": "Surface area in square kilometers",
+                      "type": "number"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response with Colombia information"
+          },
+          "404": {
+            "description": "Country information not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "security": [],
+        "securitySchemes": {},
+        "securitySource": "definition"
       }
     }
   }
