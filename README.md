@@ -105,12 +105,12 @@ local results, err = client:TypicalDish():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/colombia-public-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/colombia-public-sdk/releases) |
-| Python | `voxgig-sdk-colombia-public` | publish pending — [install from git tag](https://github.com/voxgig-sdk/colombia-public-sdk/releases) |
-| PHP | `voxgig-sdk/colombia-public` | publish pending — [install from git tag](https://github.com/voxgig-sdk/colombia-public-sdk/releases) |
+| TypeScript | `@voxgig-sdk/colombia-public-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/colombia-public-sdk/tags) |
+| Python | `voxgig-sdk-colombia-public` | publish pending — [install from git tag](https://github.com/voxgig-sdk/colombia-public-sdk/tags) |
+| PHP | `voxgig-sdk/colombia-public` | publish pending — [install from git tag](https://github.com/voxgig-sdk/colombia-public-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/colombia-public-sdk/go` | `go get github.com/voxgig-sdk/colombia-public-sdk/go@latest` |
-| Ruby | `voxgig-sdk-colombia-public` | publish pending — [install from git tag](https://github.com/voxgig-sdk/colombia-public-sdk/releases) |
-| Lua | `voxgig-sdk-colombia-public` | publish pending — [install from git tag](https://github.com/voxgig-sdk/colombia-public-sdk/releases) |
+| Ruby | `voxgig-sdk-colombia-public` | publish pending — [install from git tag](https://github.com/voxgig-sdk/colombia-public-sdk/tags) |
+| Lua | `voxgig-sdk-colombia-public` | publish pending — [install from git tag](https://github.com/voxgig-sdk/colombia-public-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/colombia-public-sdk/go-cli` | `go install github.com/voxgig-sdk/colombia-public-sdk/go-cli/cmd/colombia-public@latest` |
 | Go MCP server | `github.com/voxgig-sdk/colombia-public-sdk/go-mcp` | `go get github.com/voxgig-sdk/colombia-public-sdk/go-mcp@latest` |
 

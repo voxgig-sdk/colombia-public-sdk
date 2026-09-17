@@ -127,51 +127,51 @@ class Config {
 
     entity: {
       
-      airport: {
-      },
-
-      category_natural_area: {
-      },
-
-      constitution_article: {
-      },
-
-      country: {
-      },
-
-      department: {
-      },
-
-      holiday: {
-      },
-
-      invasive_specie: {
-      },
-
-      map: {
-      },
-
-      native_community: {
-      },
-
-      natural_area: {
-      },
-
-      president: {
-      },
-
-      radio: {
-      },
-
-      region: {
-      },
-
-      touristic_attraction: {
-      },
-
-      typical_dish: {
-      },
-
+        airport: {
+        },
+  
+        category_natural_area: {
+        },
+  
+        constitution_article: {
+        },
+  
+        country: {
+        },
+  
+        department: {
+        },
+  
+        holiday: {
+        },
+  
+        invasive_specie: {
+        },
+  
+        map: {
+        },
+  
+        native_community: {
+        },
+  
+        natural_area: {
+        },
+  
+        president: {
+        },
+  
+        radio: {
+        },
+  
+        region: {
+        },
+  
+        touristic_attraction: {
+        },
+  
+        typical_dish: {
+        },
+  
     }
   }
 
