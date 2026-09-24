@@ -19,7 +19,6 @@ import type {
   CategoryNaturalAreaListMatch,
 } from '../ColombiaPublicTypes'
 
-// TODO: needs Entity superclass
 class CategoryNaturalAreaEntity extends ColombiaPublicEntityBase<CategoryNaturalArea> {
 
   constructor(client: ColombiaPublicSDK, entopts: any) {

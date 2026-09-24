@@ -1,0 +1,142 @@
+# Entity: airport
+
+main: kit: entity: airport: {
+
+  alias: field: {}
+
+  fields: {
+    cityId: {
+      h: "City Id"
+      n: "cityId"
+      r: false
+      sh: "City ID"
+      t: "`$INTEGER`"
+    }
+    code: {
+      h: "Code"
+      n: "code"
+      r: false
+      sh: "IATA code"
+      t: "`$STRING`"
+    }
+    departmentId: {
+      h: "Department Id"
+      n: "departmentId"
+      r: false
+      sh: "Department ID"
+      t: "`$INTEGER`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "Airport ID"
+      t: "`$INTEGER`"
+    }
+    latitude: {
+      h: "Latitude"
+      n: "latitude"
+      r: false
+      sh: "Latitude coordinate"
+      t: "`$NUMBER`"
+    }
+    longitude: {
+      h: "Longitude"
+      n: "longitude"
+      r: false
+      sh: "Longitude coordinate"
+      t: "`$NUMBER`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "Airport name"
+      t: "`$STRING`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: false
+      sh: "Airport type"
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "airport"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /Airport"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/Airport"
+          s: [
+            {
+              lit: "Airport"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /Airport/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/Airport/{id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "Airport"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

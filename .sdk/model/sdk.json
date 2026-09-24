@@ -24,70 +24,144 @@
         "repr": "auto"
       },
       "contributor": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "published": false,
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
         "airport": {
           "active": true,
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "cityId",
-              "req": false,
-              "short": "City ID",
-              "type": "`$INTEGER`"
+          "fields": {
+            "cityId": {
+              "a": true,
+              "h": "City Id",
+              "n": "cityId",
+              "r": false,
+              "sh": "City ID",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "code",
-              "req": false,
-              "short": "IATA code",
-              "type": "`$STRING`"
+            "code": {
+              "a": true,
+              "h": "Code",
+              "n": "code",
+              "r": false,
+              "sh": "IATA code",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "departmentId",
-              "req": false,
-              "short": "Department ID",
-              "type": "`$INTEGER`"
+            "departmentId": {
+              "a": true,
+              "h": "Department Id",
+              "n": "departmentId",
+              "r": false,
+              "sh": "Department ID",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "short": "Airport ID",
-              "type": "`$INTEGER`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "sh": "Airport ID",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "latitude",
-              "req": false,
-              "short": "Latitude coordinate",
-              "type": "`$NUMBER`"
+            "latitude": {
+              "a": true,
+              "h": "Latitude",
+              "n": "latitude",
+              "r": false,
+              "sh": "Latitude coordinate",
+              "t": "`$NUMBER`"
             },
-            {
-              "active": true,
-              "name": "longitude",
-              "req": false,
-              "short": "Longitude coordinate",
-              "type": "`$NUMBER`"
+            "longitude": {
+              "a": true,
+              "h": "Longitude",
+              "n": "longitude",
+              "r": false,
+              "sh": "Longitude coordinate",
+              "t": "`$NUMBER`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "short": "Airport name",
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "sh": "Airport name",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "type",
-              "req": false,
-              "short": "Airport type",
-              "type": "`$STRING`"
+            "type": {
+              "a": true,
+              "h": "Type",
+              "n": "type",
+              "r": false,
+              "sh": "Airport type",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -99,24 +173,24 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /Airport",
-                    "json": "{\"operationId\":\"getAirports\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"cityId\":{\"description\":\"City ID\",\"type\":\"integer\"},\"code\":{\"description\":\"IATA code\",\"type\":\"string\"},\"departmentId\":{\"description\":\"Department ID\",\"type\":\"integer\"},\"id\":{\"description\":\"Airport ID\",\"type\":\"integer\"},\"latitude\":{\"description\":\"Latitude coordinate\",\"type\":\"number\"},\"longitude\":{\"description\":\"Longitude coordinate\",\"type\":\"number\"},\"name\":{\"description\":\"Airport name\",\"type\":\"string\"},\"type\":{\"description\":\"Airport type\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response with list of airports\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[],\"securitySchemes\":{},\"securitySource\":\"definition\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/Airport",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/Airport",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "Airport"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -128,29 +202,34 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /Airport/{id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "id",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /Airport/{id}",
-                    "json": "{\"operationId\":\"getAirportById\",\"parameters\":[{\"description\":\"Airport ID\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"cityId\":{\"description\":\"City ID\",\"type\":\"integer\"},\"code\":{\"description\":\"IATA code\",\"type\":\"string\"},\"departmentId\":{\"description\":\"Department ID\",\"type\":\"integer\"},\"id\":{\"description\":\"Airport ID\",\"type\":\"integer\"},\"latitude\":{\"description\":\"Latitude coordinate\",\"type\":\"number\"},\"longitude\":{\"description\":\"Longitude coordinate\",\"type\":\"number\"},\"name\":{\"description\":\"Airport name\",\"type\":\"string\"},\"type\":{\"description\":\"Airport type\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response with airport information\"},\"404\":{\"description\":\"Airport not found\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[],\"securitySchemes\":{},\"securitySource\":\"definition\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/Airport/{id}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/Airport/{id}",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "Airport"
                     },
@@ -158,12 +237,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -180,29 +254,32 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "description",
-              "req": false,
-              "short": "Category description",
-              "type": "`$STRING`"
+          "fields": {
+            "description": {
+              "a": true,
+              "h": "Description",
+              "n": "description",
+              "r": false,
+              "sh": "Category description",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "short": "Category ID",
-              "type": "`$INTEGER`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "sh": "Category ID",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "short": "Category name",
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "sh": "Category name",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -214,24 +291,24 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /CategoryNaturalArea",
-                    "json": "{\"operationId\":\"getCategoryNaturalAreas\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"description\":{\"description\":\"Category description\",\"type\":\"string\"},\"id\":{\"description\":\"Category ID\",\"type\":\"integer\"},\"name\":{\"description\":\"Category name\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response with list of natural area categories\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[],\"securitySchemes\":{},\"securitySource\":\"definition\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/CategoryNaturalArea",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/CategoryNaturalArea",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "CategoryNaturalArea"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -248,43 +325,48 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "articleNumber",
-              "req": false,
-              "short": "Article number",
-              "type": "`$INTEGER`"
+          "fields": {
+            "articleNumber": {
+              "a": true,
+              "h": "Article Number",
+              "n": "articleNumber",
+              "r": false,
+              "sh": "Article number",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "chapter",
-              "req": false,
-              "short": "Constitution chapter",
-              "type": "`$STRING`"
+            "chapter": {
+              "a": true,
+              "h": "Chapter",
+              "n": "chapter",
+              "r": false,
+              "sh": "Constitution chapter",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "description",
-              "req": false,
-              "short": "Article content",
-              "type": "`$STRING`"
+            "description": {
+              "a": true,
+              "h": "Description",
+              "n": "description",
+              "r": false,
+              "sh": "Article content",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "short": "Article ID",
-              "type": "`$INTEGER`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "sh": "Article ID",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "title",
-              "req": false,
-              "short": "Article title",
-              "type": "`$STRING`"
+            "title": {
+              "a": true,
+              "h": "Title",
+              "n": "title",
+              "r": false,
+              "sh": "Article title",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -296,24 +378,24 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /ConstitutionArticle",
-                    "json": "{\"operationId\":\"getConstitutionArticles\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"articleNumber\":{\"description\":\"Article number\",\"type\":\"integer\"},\"chapter\":{\"description\":\"Constitution chapter\",\"type\":\"string\"},\"description\":{\"description\":\"Article content\",\"type\":\"string\"},\"id\":{\"description\":\"Article ID\",\"type\":\"integer\"},\"title\":{\"description\":\"Article title\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response with list of constitution articles\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[],\"securitySchemes\":{},\"securitySource\":\"definition\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/ConstitutionArticle",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/ConstitutionArticle",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "ConstitutionArticle"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -325,29 +407,34 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /ConstitutionArticle/{id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "id",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /ConstitutionArticle/{id}",
-                    "json": "{\"operationId\":\"getConstitutionArticleById\",\"parameters\":[{\"description\":\"Constitution article ID\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"articleNumber\":{\"description\":\"Article number\",\"type\":\"integer\"},\"chapter\":{\"description\":\"Constitution chapter\",\"type\":\"string\"},\"description\":{\"description\":\"Article content\",\"type\":\"string\"},\"id\":{\"description\":\"Article ID\",\"type\":\"integer\"},\"title\":{\"description\":\"Article title\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response with constitution article information\"},\"404\":{\"description\":\"Constitution article not found\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[],\"securitySchemes\":{},\"securitySource\":\"definition\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/ConstitutionArticle/{id}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/ConstitutionArticle/{id}",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "ConstitutionArticle"
                     },
@@ -355,12 +442,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -377,64 +459,72 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "capital",
-              "req": false,
-              "short": "Capital city",
-              "type": "`$STRING`"
+          "fields": {
+            "capital": {
+              "a": true,
+              "h": "Capital",
+              "n": "capital",
+              "r": false,
+              "sh": "Capital city",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "currency",
-              "req": false,
-              "short": "Currency",
-              "type": "`$STRING`"
+            "currency": {
+              "a": true,
+              "h": "Currency",
+              "n": "currency",
+              "r": false,
+              "sh": "Currency",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "flag",
-              "req": false,
-              "short": "URL to flag image",
-              "type": "`$STRING`"
+            "flag": {
+              "a": true,
+              "h": "Flag",
+              "n": "flag",
+              "r": false,
+              "sh": "URL to flag image",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "short": "Country ID",
-              "type": "`$INTEGER`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "sh": "Country ID",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "languages",
-              "req": false,
-              "short": "Official languages",
-              "type": "`$ARRAY`"
+            "languages": {
+              "a": true,
+              "h": "Languages",
+              "n": "languages",
+              "r": false,
+              "sh": "Official languages",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "short": "Country name",
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "sh": "Country name",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "population",
-              "req": false,
-              "short": "Total population",
-              "type": "`$INTEGER`"
+            "population": {
+              "a": true,
+              "h": "Population",
+              "n": "population",
+              "r": false,
+              "sh": "Total population",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "surface",
-              "req": false,
-              "short": "Surface area in square kilometers",
-              "type": "`$NUMBER`"
+            "surface": {
+              "a": true,
+              "h": "Surface",
+              "n": "surface",
+              "r": false,
+              "sh": "Surface area in square kilometers",
+              "t": "`$NUMBER`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -446,18 +536,21 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /Country/Colombia",
-                    "json": "{\"operationId\":\"getColombiaInfo\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"capital\":{\"description\":\"Capital city\",\"type\":\"string\"},\"currency\":{\"description\":\"Currency\",\"type\":\"string\"},\"flag\":{\"description\":\"URL to flag image\",\"type\":\"string\"},\"id\":{\"description\":\"Country ID\",\"type\":\"integer\"},\"languages\":{\"description\":\"Official languages\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"name\":{\"description\":\"Country name\",\"type\":\"string\"},\"population\":{\"description\":\"Total population\",\"type\":\"integer\"},\"surface\":{\"description\":\"Surface area in square kilometers\",\"type\":\"number\"}},\"type\":\"object\"}}},\"description\":\"Successful response with Colombia information\"},\"404\":{\"description\":\"Country information not found\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[],\"securitySchemes\":{},\"securitySource\":\"definition\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/Country/Colombia",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/Country/Colombia",
+                  "q": {
+                    "$action": "colombia"
+                  },
+                  "r": {},
+                  "s": [
                     {
                       "lit": "Country"
                     },
@@ -465,10 +558,7 @@
                       "lit": "Colombia"
                     }
                   ],
-                  "select": {
-                    "$action": "colombia"
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.languages`"
                   }
@@ -485,64 +575,72 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "cityCapital",
-              "req": false,
-              "short": "Capital city of the department",
-              "type": "`$STRING`"
+          "fields": {
+            "cityCapital": {
+              "a": true,
+              "h": "City Capital",
+              "n": "cityCapital",
+              "r": false,
+              "sh": "Capital city of the department",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "description",
-              "req": false,
-              "short": "Department description",
-              "type": "`$STRING`"
+            "description": {
+              "a": true,
+              "h": "Description",
+              "n": "description",
+              "r": false,
+              "sh": "Department description",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "short": "Department ID",
-              "type": "`$INTEGER`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "sh": "Department ID",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "municipalities",
-              "req": false,
-              "short": "Number of municipalities",
-              "type": "`$INTEGER`"
+            "municipalities": {
+              "a": true,
+              "h": "Municipalities",
+              "n": "municipalities",
+              "r": false,
+              "sh": "Number of municipalities",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "short": "Department name",
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "sh": "Department name",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "population",
-              "req": false,
-              "short": "Population",
-              "type": "`$INTEGER`"
+            "population": {
+              "a": true,
+              "h": "Population",
+              "n": "population",
+              "r": false,
+              "sh": "Population",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "regionId",
-              "req": false,
-              "short": "Region ID",
-              "type": "`$INTEGER`"
+            "regionId": {
+              "a": true,
+              "h": "Region Id",
+              "n": "regionId",
+              "r": false,
+              "sh": "Region ID",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "surface",
-              "req": false,
-              "short": "Surface area",
-              "type": "`$NUMBER`"
+            "surface": {
+              "a": true,
+              "h": "Surface",
+              "n": "surface",
+              "r": false,
+              "sh": "Surface area",
+              "t": "`$NUMBER`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -554,24 +652,24 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /Department",
-                    "json": "{\"operationId\":\"getDepartments\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"cityCapital\":{\"description\":\"Capital city of the department\",\"type\":\"string\"},\"description\":{\"description\":\"Department description\",\"type\":\"string\"},\"id\":{\"description\":\"Department ID\",\"type\":\"integer\"},\"municipalities\":{\"description\":\"Number of municipalities\",\"type\":\"integer\"},\"name\":{\"description\":\"Department name\",\"type\":\"string\"},\"population\":{\"description\":\"Population\",\"type\":\"integer\"},\"regionId\":{\"description\":\"Region ID\",\"type\":\"integer\"},\"surface\":{\"description\":\"Surface area\",\"type\":\"number\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response with list of departments\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[],\"securitySchemes\":{},\"securitySource\":\"definition\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/Department",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/Department",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "Department"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -583,29 +681,34 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /Department/{id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "id",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /Department/{id}",
-                    "json": "{\"operationId\":\"getDepartmentById\",\"parameters\":[{\"description\":\"Department ID\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"cityCapital\":{\"description\":\"Capital city of the department\",\"type\":\"string\"},\"description\":{\"description\":\"Department description\",\"type\":\"string\"},\"id\":{\"description\":\"Department ID\",\"type\":\"integer\"},\"municipalities\":{\"description\":\"Number of municipalities\",\"type\":\"integer\"},\"name\":{\"description\":\"Department name\",\"type\":\"string\"},\"population\":{\"description\":\"Population\",\"type\":\"integer\"},\"regionId\":{\"description\":\"Region ID\",\"type\":\"integer\"},\"surface\":{\"description\":\"Surface area\",\"type\":\"number\"}},\"type\":\"object\"}}},\"description\":\"Successful response with department information\"},\"404\":{\"description\":\"Department not found\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[],\"securitySchemes\":{},\"securitySource\":\"definition\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/Department/{id}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/Department/{id}",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "Department"
                     },
@@ -613,12 +716,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -635,44 +733,49 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "format": "date",
-              "name": "date",
-              "req": false,
-              "short": "Holiday date",
-              "type": "`$STRING`"
+          "fields": {
+            "date": {
+              "a": true,
+              "fo": "date",
+              "h": "Date",
+              "n": "date",
+              "r": false,
+              "sh": "Holiday date",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "description",
-              "req": false,
-              "short": "Holiday description",
-              "type": "`$STRING`"
+            "description": {
+              "a": true,
+              "h": "Description",
+              "n": "description",
+              "r": false,
+              "sh": "Holiday description",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "short": "Holiday ID",
-              "type": "`$INTEGER`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "sh": "Holiday ID",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "short": "Holiday name",
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "sh": "Holiday name",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "type",
-              "req": false,
-              "short": "Holiday type (religious, civic, etc.)",
-              "type": "`$STRING`"
+            "type": {
+              "a": true,
+              "h": "Type",
+              "n": "type",
+              "r": false,
+              "sh": "Holiday type (religious, civic, etc.)",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -684,24 +787,24 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /Holiday",
-                    "json": "{\"operationId\":\"getHolidays\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"date\":{\"description\":\"Holiday date\",\"format\":\"date\",\"type\":\"string\"},\"description\":{\"description\":\"Holiday description\",\"type\":\"string\"},\"id\":{\"description\":\"Holiday ID\",\"type\":\"integer\"},\"name\":{\"description\":\"Holiday name\",\"type\":\"string\"},\"type\":{\"description\":\"Holiday type (religious, civic, etc.)\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response with list of holidays\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[],\"securitySchemes\":{},\"securitySource\":\"definition\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/Holiday",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/Holiday",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "Holiday"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -713,29 +816,34 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /Holiday/{id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "id",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /Holiday/{id}",
-                    "json": "{\"operationId\":\"getHolidayById\",\"parameters\":[{\"description\":\"Holiday ID\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"date\":{\"description\":\"Holiday date\",\"format\":\"date\",\"type\":\"string\"},\"description\":{\"description\":\"Holiday description\",\"type\":\"string\"},\"id\":{\"description\":\"Holiday ID\",\"type\":\"integer\"},\"name\":{\"description\":\"Holiday name\",\"type\":\"string\"},\"type\":{\"description\":\"Holiday type (religious, civic, etc.)\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response with holiday information\"},\"404\":{\"description\":\"Holiday not found\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[],\"securitySchemes\":{},\"securitySource\":\"definition\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/Holiday/{id}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/Holiday/{id}",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "Holiday"
                     },
@@ -743,12 +851,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -765,50 +868,56 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "short": "Invasive species ID",
-              "type": "`$INTEGER`"
+          "fields": {
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "sh": "Invasive species ID",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "impact",
-              "req": false,
-              "short": "Environmental impact",
-              "type": "`$STRING`"
+            "impact": {
+              "a": true,
+              "h": "Impact",
+              "n": "impact",
+              "r": false,
+              "sh": "Environmental impact",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "manage",
-              "req": false,
-              "short": "Management strategies",
-              "type": "`$STRING`"
+            "manage": {
+              "a": true,
+              "h": "Manage",
+              "n": "manage",
+              "r": false,
+              "sh": "Management strategies",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "short": "Species name",
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "sh": "Species name",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "scientificName",
-              "req": false,
-              "short": "Scientific name",
-              "type": "`$STRING`"
+            "scientificName": {
+              "a": true,
+              "h": "Scientific Name",
+              "n": "scientificName",
+              "r": false,
+              "sh": "Scientific name",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "urlImage",
-              "req": false,
-              "short": "URL to species image",
-              "type": "`$STRING`"
+            "urlImage": {
+              "a": true,
+              "h": "Url Image",
+              "n": "urlImage",
+              "r": false,
+              "sh": "URL to species image",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -820,24 +929,24 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /InvasiveSpecie",
-                    "json": "{\"operationId\":\"getInvasiveSpecies\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"id\":{\"description\":\"Invasive species ID\",\"type\":\"integer\"},\"impact\":{\"description\":\"Environmental impact\",\"type\":\"string\"},\"manage\":{\"description\":\"Management strategies\",\"type\":\"string\"},\"name\":{\"description\":\"Species name\",\"type\":\"string\"},\"scientificName\":{\"description\":\"Scientific name\",\"type\":\"string\"},\"urlImage\":{\"description\":\"URL to species image\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response with list of invasive species\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[],\"securitySchemes\":{},\"securitySource\":\"definition\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/InvasiveSpecie",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/InvasiveSpecie",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "InvasiveSpecie"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -849,29 +958,34 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /InvasiveSpecie/{id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "id",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /InvasiveSpecie/{id}",
-                    "json": "{\"operationId\":\"getInvasiveSpecieById\",\"parameters\":[{\"description\":\"Invasive species ID\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"id\":{\"description\":\"Invasive species ID\",\"type\":\"integer\"},\"impact\":{\"description\":\"Environmental impact\",\"type\":\"string\"},\"manage\":{\"description\":\"Management strategies\",\"type\":\"string\"},\"name\":{\"description\":\"Species name\",\"type\":\"string\"},\"scientificName\":{\"description\":\"Scientific name\",\"type\":\"string\"},\"urlImage\":{\"description\":\"URL to species image\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response with invasive species information\"},\"404\":{\"description\":\"Invasive species not found\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[],\"securitySchemes\":{},\"securitySource\":\"definition\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/InvasiveSpecie/{id}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/InvasiveSpecie/{id}",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "InvasiveSpecie"
                     },
@@ -879,12 +993,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -901,43 +1010,48 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "departmentId",
-              "req": false,
-              "short": "Department ID",
-              "type": "`$INTEGER`"
+          "fields": {
+            "departmentId": {
+              "a": true,
+              "h": "Department Id",
+              "n": "departmentId",
+              "r": false,
+              "sh": "Department ID",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "description",
-              "req": false,
-              "short": "Map description",
-              "type": "`$STRING`"
+            "description": {
+              "a": true,
+              "h": "Description",
+              "n": "description",
+              "r": false,
+              "sh": "Map description",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "short": "Map ID",
-              "type": "`$INTEGER`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "sh": "Map ID",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "short": "Map name",
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "sh": "Map name",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "urlImages",
-              "req": false,
-              "short": "URLs to map images",
-              "type": "`$ARRAY`"
+            "urlImages": {
+              "a": true,
+              "h": "Url Images",
+              "n": "urlImages",
+              "r": false,
+              "sh": "URLs to map images",
+              "t": "`$ARRAY`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -949,24 +1063,24 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /Map",
-                    "json": "{\"operationId\":\"getMaps\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"departmentId\":{\"description\":\"Department ID\",\"type\":\"integer\"},\"description\":{\"description\":\"Map description\",\"type\":\"string\"},\"id\":{\"description\":\"Map ID\",\"type\":\"integer\"},\"name\":{\"description\":\"Map name\",\"type\":\"string\"},\"urlImages\":{\"description\":\"URLs to map images\",\"items\":{\"type\":\"string\"},\"type\":\"array\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response with map information\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[],\"securitySchemes\":{},\"securitySource\":\"definition\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/Map",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/Map",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "Map"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -983,43 +1097,48 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "departmentId",
-              "req": false,
-              "short": "Department ID",
-              "type": "`$INTEGER`"
+          "fields": {
+            "departmentId": {
+              "a": true,
+              "h": "Department Id",
+              "n": "departmentId",
+              "r": false,
+              "sh": "Department ID",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "description",
-              "req": false,
-              "short": "Community description",
-              "type": "`$STRING`"
+            "description": {
+              "a": true,
+              "h": "Description",
+              "n": "description",
+              "r": false,
+              "sh": "Community description",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "short": "Native community ID",
-              "type": "`$INTEGER`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "sh": "Native community ID",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "short": "Community name",
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "sh": "Community name",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "population",
-              "req": false,
-              "short": "Population",
-              "type": "`$INTEGER`"
+            "population": {
+              "a": true,
+              "h": "Population",
+              "n": "population",
+              "r": false,
+              "sh": "Population",
+              "t": "`$INTEGER`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -1031,24 +1150,24 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /NativeCommunity",
-                    "json": "{\"operationId\":\"getNativeCommunities\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"departmentId\":{\"description\":\"Department ID\",\"type\":\"integer\"},\"description\":{\"description\":\"Community description\",\"type\":\"string\"},\"id\":{\"description\":\"Native community ID\",\"type\":\"integer\"},\"name\":{\"description\":\"Community name\",\"type\":\"string\"},\"population\":{\"description\":\"Population\",\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response with list of native communities\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[],\"securitySchemes\":{},\"securitySource\":\"definition\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/NativeCommunity",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/NativeCommunity",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "NativeCommunity"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -1060,29 +1179,34 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /NativeCommunity/{id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "id",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /NativeCommunity/{id}",
-                    "json": "{\"operationId\":\"getNativeCommunityById\",\"parameters\":[{\"description\":\"Native community ID\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"departmentId\":{\"description\":\"Department ID\",\"type\":\"integer\"},\"description\":{\"description\":\"Community description\",\"type\":\"string\"},\"id\":{\"description\":\"Native community ID\",\"type\":\"integer\"},\"name\":{\"description\":\"Community name\",\"type\":\"string\"},\"population\":{\"description\":\"Population\",\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Successful response with native community information\"},\"404\":{\"description\":\"Native community not found\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[],\"securitySchemes\":{},\"securitySource\":\"definition\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/NativeCommunity/{id}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/NativeCommunity/{id}",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "NativeCommunity"
                     },
@@ -1090,12 +1214,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -1112,64 +1231,72 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "areaGroupId",
-              "req": false,
-              "short": "Area group ID",
-              "type": "`$INTEGER`"
+          "fields": {
+            "areaGroupId": {
+              "a": true,
+              "h": "Area Group Id",
+              "n": "areaGroupId",
+              "r": false,
+              "sh": "Area group ID",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "categoryNaturalAreaId",
-              "req": false,
-              "short": "Category ID",
-              "type": "`$INTEGER`"
+            "categoryNaturalAreaId": {
+              "a": true,
+              "h": "Category Natural Area Id",
+              "n": "categoryNaturalAreaId",
+              "r": false,
+              "sh": "Category ID",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "departmentId",
-              "req": false,
-              "short": "Department ID",
-              "type": "`$INTEGER`"
+            "departmentId": {
+              "a": true,
+              "h": "Department Id",
+              "n": "departmentId",
+              "r": false,
+              "sh": "Department ID",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "description",
-              "req": false,
-              "short": "Natural area description",
-              "type": "`$STRING`"
+            "description": {
+              "a": true,
+              "h": "Description",
+              "n": "description",
+              "r": false,
+              "sh": "Natural area description",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "short": "Natural area ID",
-              "type": "`$INTEGER`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "sh": "Natural area ID",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "landArea",
-              "req": false,
-              "short": "Land area in hectares",
-              "type": "`$NUMBER`"
+            "landArea": {
+              "a": true,
+              "h": "Land Area",
+              "n": "landArea",
+              "r": false,
+              "sh": "Land area in hectares",
+              "t": "`$NUMBER`"
             },
-            {
-              "active": true,
-              "name": "maritimeArea",
-              "req": false,
-              "short": "Maritime area in hectares",
-              "type": "`$NUMBER`"
+            "maritimeArea": {
+              "a": true,
+              "h": "Maritime Area",
+              "n": "maritimeArea",
+              "r": false,
+              "sh": "Maritime area in hectares",
+              "t": "`$NUMBER`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "short": "Natural area name",
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "sh": "Natural area name",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -1181,24 +1308,24 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /NaturalArea",
-                    "json": "{\"operationId\":\"getNaturalAreas\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"areaGroupId\":{\"description\":\"Area group ID\",\"type\":\"integer\"},\"categoryNaturalAreaId\":{\"description\":\"Category ID\",\"type\":\"integer\"},\"departmentId\":{\"description\":\"Department ID\",\"type\":\"integer\"},\"description\":{\"description\":\"Natural area description\",\"type\":\"string\"},\"id\":{\"description\":\"Natural area ID\",\"type\":\"integer\"},\"landArea\":{\"description\":\"Land area in hectares\",\"type\":\"number\"},\"maritimeArea\":{\"description\":\"Maritime area in hectares\",\"type\":\"number\"},\"name\":{\"description\":\"Natural area name\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response with list of natural areas\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[],\"securitySchemes\":{},\"securitySource\":\"definition\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/NaturalArea",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/NaturalArea",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "NaturalArea"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -1210,29 +1337,34 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /NaturalArea/{id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "id",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /NaturalArea/{id}",
-                    "json": "{\"operationId\":\"getNaturalAreaById\",\"parameters\":[{\"description\":\"Natural area ID\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"areaGroupId\":{\"description\":\"Area group ID\",\"type\":\"integer\"},\"categoryNaturalAreaId\":{\"description\":\"Category ID\",\"type\":\"integer\"},\"departmentId\":{\"description\":\"Department ID\",\"type\":\"integer\"},\"description\":{\"description\":\"Natural area description\",\"type\":\"string\"},\"id\":{\"description\":\"Natural area ID\",\"type\":\"integer\"},\"landArea\":{\"description\":\"Land area in hectares\",\"type\":\"number\"},\"maritimeArea\":{\"description\":\"Maritime area in hectares\",\"type\":\"number\"},\"name\":{\"description\":\"Natural area name\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response with natural area information\"},\"404\":{\"description\":\"Natural area not found\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[],\"securitySchemes\":{},\"securitySource\":\"definition\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/NaturalArea/{id}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/NaturalArea/{id}",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "NaturalArea"
                     },
@@ -1240,12 +1372,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -1262,59 +1389,66 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "description",
-              "req": false,
-              "short": "Biography and description",
-              "type": "`$STRING`"
+          "fields": {
+            "description": {
+              "a": true,
+              "h": "Description",
+              "n": "description",
+              "r": false,
+              "sh": "Biography and description",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "date",
-              "name": "endPeriodDate",
-              "req": false,
-              "short": "End date of presidency",
-              "type": "`$STRING`"
+            "endPeriodDate": {
+              "a": true,
+              "fo": "date",
+              "h": "End Period Date",
+              "n": "endPeriodDate",
+              "r": false,
+              "sh": "End date of presidency",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "short": "President ID",
-              "type": "`$INTEGER`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "sh": "President ID",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "image",
-              "req": false,
-              "short": "URL to president image",
-              "type": "`$STRING`"
+            "image": {
+              "a": true,
+              "h": "Image",
+              "n": "image",
+              "r": false,
+              "sh": "URL to president image",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "short": "President name",
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "sh": "President name",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "politicalParty",
-              "req": false,
-              "short": "Political party",
-              "type": "`$STRING`"
+            "politicalParty": {
+              "a": true,
+              "h": "Political Party",
+              "n": "politicalParty",
+              "r": false,
+              "sh": "Political party",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "date",
-              "name": "startPeriodDate",
-              "req": false,
-              "short": "Start date of presidency",
-              "type": "`$STRING`"
+            "startPeriodDate": {
+              "a": true,
+              "fo": "date",
+              "h": "Start Period Date",
+              "n": "startPeriodDate",
+              "r": false,
+              "sh": "Start date of presidency",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -1326,24 +1460,24 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /President",
-                    "json": "{\"operationId\":\"getPresidents\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"description\":{\"description\":\"Biography and description\",\"type\":\"string\"},\"endPeriodDate\":{\"description\":\"End date of presidency\",\"format\":\"date\",\"type\":\"string\"},\"id\":{\"description\":\"President ID\",\"type\":\"integer\"},\"image\":{\"description\":\"URL to president image\",\"type\":\"string\"},\"name\":{\"description\":\"President name\",\"type\":\"string\"},\"politicalParty\":{\"description\":\"Political party\",\"type\":\"string\"},\"startPeriodDate\":{\"description\":\"Start date of presidency\",\"format\":\"date\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response with list of presidents\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[],\"securitySchemes\":{},\"securitySource\":\"definition\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/President",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/President",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "President"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -1355,29 +1489,34 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /President/{id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "id",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /President/{id}",
-                    "json": "{\"operationId\":\"getPresidentById\",\"parameters\":[{\"description\":\"President ID\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"description\":{\"description\":\"Biography and description\",\"type\":\"string\"},\"endPeriodDate\":{\"description\":\"End date of presidency\",\"format\":\"date\",\"type\":\"string\"},\"id\":{\"description\":\"President ID\",\"type\":\"integer\"},\"image\":{\"description\":\"URL to president image\",\"type\":\"string\"},\"name\":{\"description\":\"President name\",\"type\":\"string\"},\"politicalParty\":{\"description\":\"Political party\",\"type\":\"string\"},\"startPeriodDate\":{\"description\":\"Start date of presidency\",\"format\":\"date\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response with president information\"},\"404\":{\"description\":\"President not found\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[],\"securitySchemes\":{},\"securitySource\":\"definition\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/President/{id}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/President/{id}",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "President"
                     },
@@ -1385,12 +1524,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -1407,43 +1541,48 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "band",
-              "req": false,
-              "short": "Broadcasting band (AM/FM)",
-              "type": "`$STRING`"
+          "fields": {
+            "band": {
+              "a": true,
+              "h": "Band",
+              "n": "band",
+              "r": false,
+              "sh": "Broadcasting band (AM/FM)",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "frequency",
-              "req": false,
-              "short": "Broadcasting frequency",
-              "type": "`$STRING`"
+            "frequency": {
+              "a": true,
+              "h": "Frequency",
+              "n": "frequency",
+              "r": false,
+              "sh": "Broadcasting frequency",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "short": "Radio station ID",
-              "type": "`$INTEGER`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "sh": "Radio station ID",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "short": "Radio station name",
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "sh": "Radio station name",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "url",
-              "req": false,
-              "short": "Station URL",
-              "type": "`$STRING`"
+            "url": {
+              "a": true,
+              "h": "Url",
+              "n": "url",
+              "r": false,
+              "sh": "Station URL",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -1455,24 +1594,24 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /Radio",
-                    "json": "{\"operationId\":\"getRadioStations\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"band\":{\"description\":\"Broadcasting band (AM/FM)\",\"type\":\"string\"},\"frequency\":{\"description\":\"Broadcasting frequency\",\"type\":\"string\"},\"id\":{\"description\":\"Radio station ID\",\"type\":\"integer\"},\"name\":{\"description\":\"Radio station name\",\"type\":\"string\"},\"url\":{\"description\":\"Station URL\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response with list of radio stations\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[],\"securitySchemes\":{},\"securitySource\":\"definition\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/Radio",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/Radio",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "Radio"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -1484,29 +1623,34 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /Radio/{id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "id",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /Radio/{id}",
-                    "json": "{\"operationId\":\"getRadioById\",\"parameters\":[{\"description\":\"Radio station ID\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"band\":{\"description\":\"Broadcasting band (AM/FM)\",\"type\":\"string\"},\"frequency\":{\"description\":\"Broadcasting frequency\",\"type\":\"string\"},\"id\":{\"description\":\"Radio station ID\",\"type\":\"integer\"},\"name\":{\"description\":\"Radio station name\",\"type\":\"string\"},\"url\":{\"description\":\"Station URL\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response with radio station information\"},\"404\":{\"description\":\"Radio station not found\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[],\"securitySchemes\":{},\"securitySource\":\"definition\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/Radio/{id}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/Radio/{id}",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "Radio"
                     },
@@ -1514,12 +1658,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -1536,36 +1675,40 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "departments",
-              "req": false,
-              "short": "List of departments in the region",
-              "type": "`$ARRAY`"
+          "fields": {
+            "departments": {
+              "a": true,
+              "h": "Departments",
+              "n": "departments",
+              "r": false,
+              "sh": "List of departments in the region",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "description",
-              "req": false,
-              "short": "Region description",
-              "type": "`$STRING`"
+            "description": {
+              "a": true,
+              "h": "Description",
+              "n": "description",
+              "r": false,
+              "sh": "Region description",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "short": "Region ID",
-              "type": "`$INTEGER`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "sh": "Region ID",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "short": "Region name",
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "sh": "Region name",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -1577,24 +1720,24 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /Region",
-                    "json": "{\"operationId\":\"getRegions\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"departments\":{\"description\":\"List of departments in the region\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"description\":{\"description\":\"Region description\",\"type\":\"string\"},\"id\":{\"description\":\"Region ID\",\"type\":\"integer\"},\"name\":{\"description\":\"Region name\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response with list of regions\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[],\"securitySchemes\":{},\"securitySource\":\"definition\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/Region",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/Region",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "Region"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -1606,29 +1749,34 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /Region/{id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "id",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /Region/{id}",
-                    "json": "{\"operationId\":\"getRegionById\",\"parameters\":[{\"description\":\"Region ID\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"departments\":{\"description\":\"List of departments in the region\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"description\":{\"description\":\"Region description\",\"type\":\"string\"},\"id\":{\"description\":\"Region ID\",\"type\":\"integer\"},\"name\":{\"description\":\"Region name\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response with region information\"},\"404\":{\"description\":\"Region not found\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[],\"securitySchemes\":{},\"securitySource\":\"definition\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/Region/{id}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/Region/{id}",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "Region"
                     },
@@ -1636,12 +1784,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -1658,57 +1801,64 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "city",
-              "req": false,
-              "short": "City where the attraction is located",
-              "type": "`$STRING`"
+          "fields": {
+            "city": {
+              "a": true,
+              "h": "City",
+              "n": "city",
+              "r": false,
+              "sh": "City where the attraction is located",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "description",
-              "req": false,
-              "short": "Attraction description",
-              "type": "`$STRING`"
+            "description": {
+              "a": true,
+              "h": "Description",
+              "n": "description",
+              "r": false,
+              "sh": "Attraction description",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "short": "Touristic attraction ID",
-              "type": "`$INTEGER`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "sh": "Touristic attraction ID",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "images",
-              "req": false,
-              "short": "List of image URLs",
-              "type": "`$ARRAY`"
+            "images": {
+              "a": true,
+              "h": "Images",
+              "n": "images",
+              "r": false,
+              "sh": "List of image URLs",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "latitude",
-              "req": false,
-              "short": "Latitude coordinate",
-              "type": "`$NUMBER`"
+            "latitude": {
+              "a": true,
+              "h": "Latitude",
+              "n": "latitude",
+              "r": false,
+              "sh": "Latitude coordinate",
+              "t": "`$NUMBER`"
             },
-            {
-              "active": true,
-              "name": "longitude",
-              "req": false,
-              "short": "Longitude coordinate",
-              "type": "`$NUMBER`"
+            "longitude": {
+              "a": true,
+              "h": "Longitude",
+              "n": "longitude",
+              "r": false,
+              "sh": "Longitude coordinate",
+              "t": "`$NUMBER`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "short": "Attraction name",
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "sh": "Attraction name",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -1720,24 +1870,24 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /TouristicAttraction",
-                    "json": "{\"operationId\":\"getTouristicAttractions\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"city\":{\"description\":\"City where the attraction is located\",\"type\":\"string\"},\"description\":{\"description\":\"Attraction description\",\"type\":\"string\"},\"id\":{\"description\":\"Touristic attraction ID\",\"type\":\"integer\"},\"images\":{\"description\":\"List of image URLs\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"latitude\":{\"description\":\"Latitude coordinate\",\"type\":\"number\"},\"longitude\":{\"description\":\"Longitude coordinate\",\"type\":\"number\"},\"name\":{\"description\":\"Attraction name\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response with list of touristic attractions\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[],\"securitySchemes\":{},\"securitySource\":\"definition\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/TouristicAttraction",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/TouristicAttraction",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "TouristicAttraction"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -1749,29 +1899,34 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /TouristicAttraction/{id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "id",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /TouristicAttraction/{id}",
-                    "json": "{\"operationId\":\"getTouristicAttractionById\",\"parameters\":[{\"description\":\"Touristic attraction ID\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"city\":{\"description\":\"City where the attraction is located\",\"type\":\"string\"},\"description\":{\"description\":\"Attraction description\",\"type\":\"string\"},\"id\":{\"description\":\"Touristic attraction ID\",\"type\":\"integer\"},\"images\":{\"description\":\"List of image URLs\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"latitude\":{\"description\":\"Latitude coordinate\",\"type\":\"number\"},\"longitude\":{\"description\":\"Longitude coordinate\",\"type\":\"number\"},\"name\":{\"description\":\"Attraction name\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response with touristic attraction information\"},\"404\":{\"description\":\"Touristic attraction not found\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[],\"securitySchemes\":{},\"securitySource\":\"definition\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/TouristicAttraction/{id}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/TouristicAttraction/{id}",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "TouristicAttraction"
                     },
@@ -1779,12 +1934,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -1801,50 +1951,56 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "departmentId",
-              "req": false,
-              "short": "Department ID",
-              "type": "`$INTEGER`"
+          "fields": {
+            "departmentId": {
+              "a": true,
+              "h": "Department Id",
+              "n": "departmentId",
+              "r": false,
+              "sh": "Department ID",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "description",
-              "req": false,
-              "short": "Dish description",
-              "type": "`$STRING`"
+            "description": {
+              "a": true,
+              "h": "Description",
+              "n": "description",
+              "r": false,
+              "sh": "Dish description",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "short": "Typical dish ID",
-              "type": "`$INTEGER`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "sh": "Typical dish ID",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "ingredients",
-              "req": false,
-              "short": "List of ingredients",
-              "type": "`$ARRAY`"
+            "ingredients": {
+              "a": true,
+              "h": "Ingredients",
+              "n": "ingredients",
+              "r": false,
+              "sh": "List of ingredients",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "short": "Dish name",
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "sh": "Dish name",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "urlImage",
-              "req": false,
-              "short": "URL to dish image",
-              "type": "`$STRING`"
+            "urlImage": {
+              "a": true,
+              "h": "Url Image",
+              "n": "urlImage",
+              "r": false,
+              "sh": "URL to dish image",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -1856,24 +2012,24 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /TypicalDish",
-                    "json": "{\"operationId\":\"getTypicalDishes\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"departmentId\":{\"description\":\"Department ID\",\"type\":\"integer\"},\"description\":{\"description\":\"Dish description\",\"type\":\"string\"},\"id\":{\"description\":\"Typical dish ID\",\"type\":\"integer\"},\"ingredients\":{\"description\":\"List of ingredients\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"name\":{\"description\":\"Dish name\",\"type\":\"string\"},\"urlImage\":{\"description\":\"URL to dish image\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response with list of typical dishes\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[],\"securitySchemes\":{},\"securitySource\":\"definition\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/TypicalDish",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/TypicalDish",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "TypicalDish"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -1885,29 +2041,34 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /TypicalDish/{id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "id",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /TypicalDish/{id}",
-                    "json": "{\"operationId\":\"getTypicalDishById\",\"parameters\":[{\"description\":\"Typical dish ID\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"departmentId\":{\"description\":\"Department ID\",\"type\":\"integer\"},\"description\":{\"description\":\"Dish description\",\"type\":\"string\"},\"id\":{\"description\":\"Typical dish ID\",\"type\":\"integer\"},\"ingredients\":{\"description\":\"List of ingredients\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"name\":{\"description\":\"Dish name\",\"type\":\"string\"},\"urlImage\":{\"description\":\"URL to dish image\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response with typical dish information\"},\"404\":{\"description\":\"Typical dish not found\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[],\"securitySchemes\":{},\"securitySource\":\"definition\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/TypicalDish/{id}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/TypicalDish/{id}",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "TypicalDish"
                     },
@@ -1915,12 +2076,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -2349,13 +2505,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -2365,19 +2521,19 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "airport_ref01",
                 "srcdatavar": "airport_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "airport01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -2397,13 +2553,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -2423,13 +2579,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -2439,19 +2595,19 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "constitution_article_ref01",
                 "srcdatavar": "constitution_article_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "constitution_article01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -2471,13 +2627,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -2497,13 +2653,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -2513,19 +2669,19 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "department_ref01",
                 "srcdatavar": "department_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "department01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -2545,13 +2701,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -2561,19 +2717,19 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "holiday_ref01",
                 "srcdatavar": "holiday_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "holiday01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -2593,13 +2749,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -2609,19 +2765,19 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "invasive_specie_ref01",
                 "srcdatavar": "invasive_specie_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "invasive_specie01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -2641,13 +2797,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -2667,13 +2823,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -2683,19 +2839,19 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "native_community_ref01",
                 "srcdatavar": "native_community_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "native_community01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -2715,13 +2871,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -2731,19 +2887,19 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "natural_area_ref01",
                 "srcdatavar": "natural_area_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "natural_area01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -2763,13 +2919,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -2779,19 +2935,19 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "president_ref01",
                 "srcdatavar": "president_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "president01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -2811,13 +2967,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -2827,19 +2983,19 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "radio_ref01",
                 "srcdatavar": "radio_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "radio01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -2859,13 +3015,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -2875,19 +3031,19 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "region_ref01",
                 "srcdatavar": "region_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "region01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -2907,13 +3063,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -2923,19 +3079,19 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "touristic_attraction_ref01",
                 "srcdatavar": "touristic_attraction_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "touristic_attraction01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -2955,13 +3111,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -2971,19 +3127,19 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "typical_dish_ref01",
                 "srcdatavar": "typical_dish_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "typical_dish01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {

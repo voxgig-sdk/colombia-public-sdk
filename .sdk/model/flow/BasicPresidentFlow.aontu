@@ -1,0 +1,44 @@
+# BasicPresidentFlow
+
+main: kit: flow: BasicPresidentFlow:
+{
+  entity: "president",
+  kind: "basic",
+  name: "BasicPresidentFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "president_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "president_ref01",
+        srcdatavar: "president_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "president01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-president_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPresidentFlow"
+}

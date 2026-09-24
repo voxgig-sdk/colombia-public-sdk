@@ -37,115 +37,13 @@
   "requests": {
     "GET /ConstitutionArticle": {
       "provenance": "operation-contract",
-      "contract": {
-        "operationId": "getConstitutionArticles",
-        "parameters": [],
-        "protocol": "http",
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "items": {
-                    "properties": {
-                      "articleNumber": {
-                        "description": "Article number",
-                        "type": "integer"
-                      },
-                      "chapter": {
-                        "description": "Constitution chapter",
-                        "type": "string"
-                      },
-                      "description": {
-                        "description": "Article content",
-                        "type": "string"
-                      },
-                      "id": {
-                        "description": "Article ID",
-                        "type": "integer"
-                      },
-                      "title": {
-                        "description": "Article title",
-                        "type": "string"
-                      }
-                    },
-                    "type": "object"
-                  },
-                  "type": "array"
-                }
-              }
-            },
-            "description": "Successful response with list of constitution articles"
-          },
-          "500": {
-            "description": "Internal server error"
-          }
-        },
-        "security": [],
-        "securitySchemes": {},
-        "securitySource": "definition"
-      }
+      "version": 2,
+      "source": "openapi3"
     },
     "GET /ConstitutionArticle/{id}": {
       "provenance": "operation-contract",
-      "contract": {
-        "operationId": "getConstitutionArticleById",
-        "parameters": [
-          {
-            "description": "Constitution article ID",
-            "in": "path",
-            "name": "id",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
-        "protocol": "http",
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "articleNumber": {
-                      "description": "Article number",
-                      "type": "integer"
-                    },
-                    "chapter": {
-                      "description": "Constitution chapter",
-                      "type": "string"
-                    },
-                    "description": {
-                      "description": "Article content",
-                      "type": "string"
-                    },
-                    "id": {
-                      "description": "Article ID",
-                      "type": "integer"
-                    },
-                    "title": {
-                      "description": "Article title",
-                      "type": "string"
-                    }
-                  },
-                  "type": "object"
-                }
-              }
-            },
-            "description": "Successful response with constitution article information"
-          },
-          "404": {
-            "description": "Constitution article not found"
-          },
-          "500": {
-            "description": "Internal server error"
-          }
-        },
-        "security": [],
-        "securitySchemes": {},
-        "securitySource": "definition"
-      }
+      "version": 2,
+      "source": "openapi3"
     }
   }
 }

@@ -1,0 +1,142 @@
+# Entity: natural_area
+
+main: kit: entity: natural_area: {
+
+  alias: field: {}
+
+  fields: {
+    areaGroupId: {
+      h: "Area Group Id"
+      n: "areaGroupId"
+      r: false
+      sh: "Area group ID"
+      t: "`$INTEGER`"
+    }
+    categoryNaturalAreaId: {
+      h: "Category Natural Area Id"
+      n: "categoryNaturalAreaId"
+      r: false
+      sh: "Category ID"
+      t: "`$INTEGER`"
+    }
+    departmentId: {
+      h: "Department Id"
+      n: "departmentId"
+      r: false
+      sh: "Department ID"
+      t: "`$INTEGER`"
+    }
+    description: {
+      h: "Description"
+      n: "description"
+      r: false
+      sh: "Natural area description"
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "Natural area ID"
+      t: "`$INTEGER`"
+    }
+    landArea: {
+      h: "Land Area"
+      n: "landArea"
+      r: false
+      sh: "Land area in hectares"
+      t: "`$NUMBER`"
+    }
+    maritimeArea: {
+      h: "Maritime Area"
+      n: "maritimeArea"
+      r: false
+      sh: "Maritime area in hectares"
+      t: "`$NUMBER`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "Natural area name"
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "natural_area"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /NaturalArea"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/NaturalArea"
+          s: [
+            {
+              lit: "NaturalArea"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /NaturalArea/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/NaturalArea/{id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "NaturalArea"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

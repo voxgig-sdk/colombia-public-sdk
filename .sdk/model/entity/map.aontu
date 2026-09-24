@@ -1,0 +1,79 @@
+# Entity: map
+
+main: kit: entity: map: {
+
+  alias: field: {}
+
+  fields: {
+    departmentId: {
+      h: "Department Id"
+      n: "departmentId"
+      r: false
+      sh: "Department ID"
+      t: "`$INTEGER`"
+    }
+    description: {
+      h: "Description"
+      n: "description"
+      r: false
+      sh: "Map description"
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "Map ID"
+      t: "`$INTEGER`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "Map name"
+      t: "`$STRING`"
+    }
+    urlImages: {
+      h: "Url Images"
+      n: "urlImages"
+      r: false
+      sh: "URLs to map images"
+      t: "`$ARRAY`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "map"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /Map"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/Map"
+          s: [
+            {
+              lit: "Map"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,44 @@
+# BasicAirportFlow
+
+main: kit: flow: BasicAirportFlow:
+{
+  entity: "airport",
+  kind: "basic",
+  name: "BasicAirportFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "airport_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "airport_ref01",
+        srcdatavar: "airport_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "airport01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-airport_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAirportFlow"
+}

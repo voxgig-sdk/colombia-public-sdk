@@ -1,0 +1,121 @@
+# Entity: native_community
+
+main: kit: entity: native_community: {
+
+  alias: field: {}
+
+  fields: {
+    departmentId: {
+      h: "Department Id"
+      n: "departmentId"
+      r: false
+      sh: "Department ID"
+      t: "`$INTEGER`"
+    }
+    description: {
+      h: "Description"
+      n: "description"
+      r: false
+      sh: "Community description"
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "Native community ID"
+      t: "`$INTEGER`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "Community name"
+      t: "`$STRING`"
+    }
+    population: {
+      h: "Population"
+      n: "population"
+      r: false
+      sh: "Population"
+      t: "`$INTEGER`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "native_community"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /NativeCommunity"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/NativeCommunity"
+          s: [
+            {
+              lit: "NativeCommunity"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /NativeCommunity/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/NativeCommunity/{id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "NativeCommunity"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

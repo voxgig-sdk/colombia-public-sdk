@@ -1,0 +1,142 @@
+# Entity: department
+
+main: kit: entity: department: {
+
+  alias: field: {}
+
+  fields: {
+    cityCapital: {
+      h: "City Capital"
+      n: "cityCapital"
+      r: false
+      sh: "Capital city of the department"
+      t: "`$STRING`"
+    }
+    description: {
+      h: "Description"
+      n: "description"
+      r: false
+      sh: "Department description"
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "Department ID"
+      t: "`$INTEGER`"
+    }
+    municipalities: {
+      h: "Municipalities"
+      n: "municipalities"
+      r: false
+      sh: "Number of municipalities"
+      t: "`$INTEGER`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "Department name"
+      t: "`$STRING`"
+    }
+    population: {
+      h: "Population"
+      n: "population"
+      r: false
+      sh: "Population"
+      t: "`$INTEGER`"
+    }
+    regionId: {
+      h: "Region Id"
+      n: "regionId"
+      r: false
+      sh: "Region ID"
+      t: "`$INTEGER`"
+    }
+    surface: {
+      h: "Surface"
+      n: "surface"
+      r: false
+      sh: "Surface area"
+      t: "`$NUMBER`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "department"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /Department"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/Department"
+          s: [
+            {
+              lit: "Department"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /Department/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/Department/{id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "Department"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

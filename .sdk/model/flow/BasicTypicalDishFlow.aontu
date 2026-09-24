@@ -1,0 +1,44 @@
+# BasicTypicalDishFlow
+
+main: kit: flow: BasicTypicalDishFlow:
+{
+  entity: "typical_dish",
+  kind: "basic",
+  name: "BasicTypicalDishFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "typical_dish_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "typical_dish_ref01",
+        srcdatavar: "typical_dish_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "typical_dish01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-typical_dish_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicTypicalDishFlow"
+}

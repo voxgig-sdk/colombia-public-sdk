@@ -1,0 +1,128 @@
+# Entity: invasive_specie
+
+main: kit: entity: invasive_specie: {
+
+  alias: field: {}
+
+  fields: {
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "Invasive species ID"
+      t: "`$INTEGER`"
+    }
+    impact: {
+      h: "Impact"
+      n: "impact"
+      r: false
+      sh: "Environmental impact"
+      t: "`$STRING`"
+    }
+    manage: {
+      h: "Manage"
+      n: "manage"
+      r: false
+      sh: "Management strategies"
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "Species name"
+      t: "`$STRING`"
+    }
+    scientificName: {
+      h: "Scientific Name"
+      n: "scientificName"
+      r: false
+      sh: "Scientific name"
+      t: "`$STRING`"
+    }
+    urlImage: {
+      h: "Url Image"
+      n: "urlImage"
+      r: false
+      sh: "URL to species image"
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "invasive_specie"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /InvasiveSpecie"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/InvasiveSpecie"
+          s: [
+            {
+              lit: "InvasiveSpecie"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /InvasiveSpecie/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/InvasiveSpecie/{id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "InvasiveSpecie"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -113,43 +113,51 @@ module ColombiaPublicConfig
           "fields" => [
             {
               "name" => "cityId",
-              "short" => "City ID",
+              "title" => "City Id",
               "type" => "`$INTEGER`",
+              "short" => "City ID",
             },
             {
               "name" => "code",
-              "short" => "IATA code",
+              "title" => "Code",
               "type" => "`$STRING`",
+              "short" => "IATA code",
             },
             {
               "name" => "departmentId",
-              "short" => "Department ID",
+              "title" => "Department Id",
               "type" => "`$INTEGER`",
+              "short" => "Department ID",
             },
             {
               "name" => "id",
-              "short" => "Airport ID",
+              "title" => "Id",
               "type" => "`$INTEGER`",
+              "short" => "Airport ID",
             },
             {
               "name" => "latitude",
-              "short" => "Latitude coordinate",
+              "title" => "Latitude",
               "type" => "`$NUMBER`",
+              "short" => "Latitude coordinate",
             },
             {
               "name" => "longitude",
-              "short" => "Longitude coordinate",
+              "title" => "Longitude",
               "type" => "`$NUMBER`",
+              "short" => "Longitude coordinate",
             },
             {
               "name" => "name",
-              "short" => "Airport name",
+              "title" => "Name",
               "type" => "`$STRING`",
+              "short" => "Airport name",
             },
             {
               "name" => "type",
-              "short" => "Airport type",
+              "title" => "Type",
               "type" => "`$STRING`",
+              "short" => "Airport type",
             },
           ],
           "id" => {
@@ -163,7 +171,6 @@ module ColombiaPublicConfig
               "name" => "list",
               "points" => [
                 {
-                  "args" => {},
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/Airport",
@@ -172,14 +179,16 @@ module ColombiaPublicConfig
                       "lit" => "Airport",
                     },
                   ],
-                  "select" => {},
+                  "parts" => [
+                    "Airport",
+                  ],
+                  "rename" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "parts" => [
-                    "Airport",
-                  ],
+                  "args" => {},
+                  "select" => {},
                 },
               ],
             },
@@ -188,17 +197,6 @@ module ColombiaPublicConfig
               "name" => "load",
               "points" => [
                 {
-                  "args" => {
-                    "params" => [
-                      {
-                        "kind" => "param",
-                        "name" => "id",
-                        "orig" => "id",
-                        "reqd" => true,
-                        "type" => "`$INTEGER`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/Airport/{id}",
@@ -210,19 +208,31 @@ module ColombiaPublicConfig
                       "var" => "id",
                     },
                   ],
+                  "parts" => [
+                    "Airport",
+                    "{id}",
+                  ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "params" => [
+                      {
+                        "name" => "id",
+                        "orig" => "id",
+                        "type" => "`$INTEGER`",
+                        "kind" => "param",
+                        "reqd" => true,
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "id",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
-                  "parts" => [
-                    "Airport",
-                    "{id}",
-                  ],
                 },
               ],
             },
@@ -235,18 +245,21 @@ module ColombiaPublicConfig
           "fields" => [
             {
               "name" => "description",
-              "short" => "Category description",
+              "title" => "Description",
               "type" => "`$STRING`",
+              "short" => "Category description",
             },
             {
               "name" => "id",
-              "short" => "Category ID",
+              "title" => "Id",
               "type" => "`$INTEGER`",
+              "short" => "Category ID",
             },
             {
               "name" => "name",
-              "short" => "Category name",
+              "title" => "Name",
               "type" => "`$STRING`",
+              "short" => "Category name",
             },
           ],
           "id" => {
@@ -260,7 +273,6 @@ module ColombiaPublicConfig
               "name" => "list",
               "points" => [
                 {
-                  "args" => {},
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/CategoryNaturalArea",
@@ -269,14 +281,16 @@ module ColombiaPublicConfig
                       "lit" => "CategoryNaturalArea",
                     },
                   ],
-                  "select" => {},
+                  "parts" => [
+                    "CategoryNaturalArea",
+                  ],
+                  "rename" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "parts" => [
-                    "CategoryNaturalArea",
-                  ],
+                  "args" => {},
+                  "select" => {},
                 },
               ],
             },
@@ -289,28 +303,33 @@ module ColombiaPublicConfig
           "fields" => [
             {
               "name" => "articleNumber",
-              "short" => "Article number",
+              "title" => "Article Number",
               "type" => "`$INTEGER`",
+              "short" => "Article number",
             },
             {
               "name" => "chapter",
-              "short" => "Constitution chapter",
+              "title" => "Chapter",
               "type" => "`$STRING`",
+              "short" => "Constitution chapter",
             },
             {
               "name" => "description",
-              "short" => "Article content",
+              "title" => "Description",
               "type" => "`$STRING`",
+              "short" => "Article content",
             },
             {
               "name" => "id",
-              "short" => "Article ID",
+              "title" => "Id",
               "type" => "`$INTEGER`",
+              "short" => "Article ID",
             },
             {
               "name" => "title",
-              "short" => "Article title",
+              "title" => "Title",
               "type" => "`$STRING`",
+              "short" => "Article title",
             },
           ],
           "id" => {
@@ -324,7 +343,6 @@ module ColombiaPublicConfig
               "name" => "list",
               "points" => [
                 {
-                  "args" => {},
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/ConstitutionArticle",
@@ -333,14 +351,16 @@ module ColombiaPublicConfig
                       "lit" => "ConstitutionArticle",
                     },
                   ],
-                  "select" => {},
+                  "parts" => [
+                    "ConstitutionArticle",
+                  ],
+                  "rename" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "parts" => [
-                    "ConstitutionArticle",
-                  ],
+                  "args" => {},
+                  "select" => {},
                 },
               ],
             },
@@ -349,17 +369,6 @@ module ColombiaPublicConfig
               "name" => "load",
               "points" => [
                 {
-                  "args" => {
-                    "params" => [
-                      {
-                        "kind" => "param",
-                        "name" => "id",
-                        "orig" => "id",
-                        "reqd" => true,
-                        "type" => "`$INTEGER`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/ConstitutionArticle/{id}",
@@ -371,19 +380,31 @@ module ColombiaPublicConfig
                       "var" => "id",
                     },
                   ],
+                  "parts" => [
+                    "ConstitutionArticle",
+                    "{id}",
+                  ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "params" => [
+                      {
+                        "name" => "id",
+                        "orig" => "id",
+                        "type" => "`$INTEGER`",
+                        "kind" => "param",
+                        "reqd" => true,
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "id",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
-                  "parts" => [
-                    "ConstitutionArticle",
-                    "{id}",
-                  ],
                 },
               ],
             },
@@ -396,43 +417,51 @@ module ColombiaPublicConfig
           "fields" => [
             {
               "name" => "capital",
-              "short" => "Capital city",
+              "title" => "Capital",
               "type" => "`$STRING`",
+              "short" => "Capital city",
             },
             {
               "name" => "currency",
-              "short" => "Currency",
+              "title" => "Currency",
               "type" => "`$STRING`",
+              "short" => "Currency",
             },
             {
               "name" => "flag",
-              "short" => "URL to flag image",
+              "title" => "Flag",
               "type" => "`$STRING`",
+              "short" => "URL to flag image",
             },
             {
               "name" => "id",
-              "short" => "Country ID",
+              "title" => "Id",
               "type" => "`$INTEGER`",
+              "short" => "Country ID",
             },
             {
               "name" => "languages",
-              "short" => "Official languages",
+              "title" => "Languages",
               "type" => "`$ARRAY`",
+              "short" => "Official languages",
             },
             {
               "name" => "name",
-              "short" => "Country name",
+              "title" => "Name",
               "type" => "`$STRING`",
+              "short" => "Country name",
             },
             {
               "name" => "population",
-              "short" => "Total population",
+              "title" => "Population",
               "type" => "`$INTEGER`",
+              "short" => "Total population",
             },
             {
               "name" => "surface",
-              "short" => "Surface area in square kilometers",
+              "title" => "Surface",
               "type" => "`$NUMBER`",
+              "short" => "Surface area in square kilometers",
             },
           ],
           "id" => {
@@ -446,7 +475,6 @@ module ColombiaPublicConfig
               "name" => "list",
               "points" => [
                 {
-                  "args" => {},
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/Country/Colombia",
@@ -458,17 +486,19 @@ module ColombiaPublicConfig
                       "lit" => "Colombia",
                     },
                   ],
-                  "select" => {
-                    "$action" => "colombia",
-                  },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body.languages`",
-                  },
                   "parts" => [
                     "Country",
                     "Colombia",
                   ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body.languages`",
+                  },
+                  "args" => {},
+                  "select" => {
+                    "$action" => "colombia",
+                  },
                 },
               ],
             },
@@ -481,43 +511,51 @@ module ColombiaPublicConfig
           "fields" => [
             {
               "name" => "cityCapital",
-              "short" => "Capital city of the department",
+              "title" => "City Capital",
               "type" => "`$STRING`",
+              "short" => "Capital city of the department",
             },
             {
               "name" => "description",
-              "short" => "Department description",
+              "title" => "Description",
               "type" => "`$STRING`",
+              "short" => "Department description",
             },
             {
               "name" => "id",
-              "short" => "Department ID",
+              "title" => "Id",
               "type" => "`$INTEGER`",
+              "short" => "Department ID",
             },
             {
               "name" => "municipalities",
-              "short" => "Number of municipalities",
+              "title" => "Municipalities",
               "type" => "`$INTEGER`",
+              "short" => "Number of municipalities",
             },
             {
               "name" => "name",
-              "short" => "Department name",
+              "title" => "Name",
               "type" => "`$STRING`",
+              "short" => "Department name",
             },
             {
               "name" => "population",
-              "short" => "Population",
+              "title" => "Population",
               "type" => "`$INTEGER`",
+              "short" => "Population",
             },
             {
               "name" => "regionId",
-              "short" => "Region ID",
+              "title" => "Region Id",
               "type" => "`$INTEGER`",
+              "short" => "Region ID",
             },
             {
               "name" => "surface",
-              "short" => "Surface area",
+              "title" => "Surface",
               "type" => "`$NUMBER`",
+              "short" => "Surface area",
             },
           ],
           "id" => {
@@ -531,7 +569,6 @@ module ColombiaPublicConfig
               "name" => "list",
               "points" => [
                 {
-                  "args" => {},
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/Department",
@@ -540,14 +577,16 @@ module ColombiaPublicConfig
                       "lit" => "Department",
                     },
                   ],
-                  "select" => {},
+                  "parts" => [
+                    "Department",
+                  ],
+                  "rename" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "parts" => [
-                    "Department",
-                  ],
+                  "args" => {},
+                  "select" => {},
                 },
               ],
             },
@@ -556,17 +595,6 @@ module ColombiaPublicConfig
               "name" => "load",
               "points" => [
                 {
-                  "args" => {
-                    "params" => [
-                      {
-                        "kind" => "param",
-                        "name" => "id",
-                        "orig" => "id",
-                        "reqd" => true,
-                        "type" => "`$INTEGER`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/Department/{id}",
@@ -578,19 +606,31 @@ module ColombiaPublicConfig
                       "var" => "id",
                     },
                   ],
+                  "parts" => [
+                    "Department",
+                    "{id}",
+                  ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "params" => [
+                      {
+                        "name" => "id",
+                        "orig" => "id",
+                        "type" => "`$INTEGER`",
+                        "kind" => "param",
+                        "reqd" => true,
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "id",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
-                  "parts" => [
-                    "Department",
-                    "{id}",
-                  ],
                 },
               ],
             },
@@ -602,30 +642,35 @@ module ColombiaPublicConfig
         "holiday" => {
           "fields" => [
             {
-              "format" => "date",
               "name" => "date",
-              "short" => "Holiday date",
+              "title" => "Date",
               "type" => "`$STRING`",
+              "short" => "Holiday date",
+              "format" => "date",
             },
             {
               "name" => "description",
-              "short" => "Holiday description",
+              "title" => "Description",
               "type" => "`$STRING`",
+              "short" => "Holiday description",
             },
             {
               "name" => "id",
-              "short" => "Holiday ID",
+              "title" => "Id",
               "type" => "`$INTEGER`",
+              "short" => "Holiday ID",
             },
             {
               "name" => "name",
-              "short" => "Holiday name",
+              "title" => "Name",
               "type" => "`$STRING`",
+              "short" => "Holiday name",
             },
             {
               "name" => "type",
-              "short" => "Holiday type (religious, civic, etc.)",
+              "title" => "Type",
               "type" => "`$STRING`",
+              "short" => "Holiday type (religious, civic, etc.)",
             },
           ],
           "id" => {
@@ -639,7 +684,6 @@ module ColombiaPublicConfig
               "name" => "list",
               "points" => [
                 {
-                  "args" => {},
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/Holiday",
@@ -648,14 +692,16 @@ module ColombiaPublicConfig
                       "lit" => "Holiday",
                     },
                   ],
-                  "select" => {},
+                  "parts" => [
+                    "Holiday",
+                  ],
+                  "rename" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "parts" => [
-                    "Holiday",
-                  ],
+                  "args" => {},
+                  "select" => {},
                 },
               ],
             },
@@ -664,17 +710,6 @@ module ColombiaPublicConfig
               "name" => "load",
               "points" => [
                 {
-                  "args" => {
-                    "params" => [
-                      {
-                        "kind" => "param",
-                        "name" => "id",
-                        "orig" => "id",
-                        "reqd" => true,
-                        "type" => "`$INTEGER`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/Holiday/{id}",
@@ -686,19 +721,31 @@ module ColombiaPublicConfig
                       "var" => "id",
                     },
                   ],
+                  "parts" => [
+                    "Holiday",
+                    "{id}",
+                  ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "params" => [
+                      {
+                        "name" => "id",
+                        "orig" => "id",
+                        "type" => "`$INTEGER`",
+                        "kind" => "param",
+                        "reqd" => true,
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "id",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
-                  "parts" => [
-                    "Holiday",
-                    "{id}",
-                  ],
                 },
               ],
             },
@@ -711,33 +758,39 @@ module ColombiaPublicConfig
           "fields" => [
             {
               "name" => "id",
-              "short" => "Invasive species ID",
+              "title" => "Id",
               "type" => "`$INTEGER`",
+              "short" => "Invasive species ID",
             },
             {
               "name" => "impact",
-              "short" => "Environmental impact",
+              "title" => "Impact",
               "type" => "`$STRING`",
+              "short" => "Environmental impact",
             },
             {
               "name" => "manage",
-              "short" => "Management strategies",
+              "title" => "Manage",
               "type" => "`$STRING`",
+              "short" => "Management strategies",
             },
             {
               "name" => "name",
-              "short" => "Species name",
+              "title" => "Name",
               "type" => "`$STRING`",
+              "short" => "Species name",
             },
             {
               "name" => "scientificName",
-              "short" => "Scientific name",
+              "title" => "Scientific Name",
               "type" => "`$STRING`",
+              "short" => "Scientific name",
             },
             {
               "name" => "urlImage",
-              "short" => "URL to species image",
+              "title" => "Url Image",
               "type" => "`$STRING`",
+              "short" => "URL to species image",
             },
           ],
           "id" => {
@@ -751,7 +804,6 @@ module ColombiaPublicConfig
               "name" => "list",
               "points" => [
                 {
-                  "args" => {},
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/InvasiveSpecie",
@@ -760,14 +812,16 @@ module ColombiaPublicConfig
                       "lit" => "InvasiveSpecie",
                     },
                   ],
-                  "select" => {},
+                  "parts" => [
+                    "InvasiveSpecie",
+                  ],
+                  "rename" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "parts" => [
-                    "InvasiveSpecie",
-                  ],
+                  "args" => {},
+                  "select" => {},
                 },
               ],
             },
@@ -776,17 +830,6 @@ module ColombiaPublicConfig
               "name" => "load",
               "points" => [
                 {
-                  "args" => {
-                    "params" => [
-                      {
-                        "kind" => "param",
-                        "name" => "id",
-                        "orig" => "id",
-                        "reqd" => true,
-                        "type" => "`$INTEGER`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/InvasiveSpecie/{id}",
@@ -798,19 +841,31 @@ module ColombiaPublicConfig
                       "var" => "id",
                     },
                   ],
+                  "parts" => [
+                    "InvasiveSpecie",
+                    "{id}",
+                  ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "params" => [
+                      {
+                        "name" => "id",
+                        "orig" => "id",
+                        "type" => "`$INTEGER`",
+                        "kind" => "param",
+                        "reqd" => true,
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "id",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
-                  "parts" => [
-                    "InvasiveSpecie",
-                    "{id}",
-                  ],
                 },
               ],
             },
@@ -823,28 +878,33 @@ module ColombiaPublicConfig
           "fields" => [
             {
               "name" => "departmentId",
-              "short" => "Department ID",
+              "title" => "Department Id",
               "type" => "`$INTEGER`",
+              "short" => "Department ID",
             },
             {
               "name" => "description",
-              "short" => "Map description",
+              "title" => "Description",
               "type" => "`$STRING`",
+              "short" => "Map description",
             },
             {
               "name" => "id",
-              "short" => "Map ID",
+              "title" => "Id",
               "type" => "`$INTEGER`",
+              "short" => "Map ID",
             },
             {
               "name" => "name",
-              "short" => "Map name",
+              "title" => "Name",
               "type" => "`$STRING`",
+              "short" => "Map name",
             },
             {
               "name" => "urlImages",
-              "short" => "URLs to map images",
+              "title" => "Url Images",
               "type" => "`$ARRAY`",
+              "short" => "URLs to map images",
             },
           ],
           "id" => {
@@ -858,7 +918,6 @@ module ColombiaPublicConfig
               "name" => "list",
               "points" => [
                 {
-                  "args" => {},
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/Map",
@@ -867,14 +926,16 @@ module ColombiaPublicConfig
                       "lit" => "Map",
                     },
                   ],
-                  "select" => {},
+                  "parts" => [
+                    "Map",
+                  ],
+                  "rename" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "parts" => [
-                    "Map",
-                  ],
+                  "args" => {},
+                  "select" => {},
                 },
               ],
             },
@@ -887,28 +948,33 @@ module ColombiaPublicConfig
           "fields" => [
             {
               "name" => "departmentId",
-              "short" => "Department ID",
+              "title" => "Department Id",
               "type" => "`$INTEGER`",
+              "short" => "Department ID",
             },
             {
               "name" => "description",
-              "short" => "Community description",
+              "title" => "Description",
               "type" => "`$STRING`",
+              "short" => "Community description",
             },
             {
               "name" => "id",
-              "short" => "Native community ID",
+              "title" => "Id",
               "type" => "`$INTEGER`",
+              "short" => "Native community ID",
             },
             {
               "name" => "name",
-              "short" => "Community name",
+              "title" => "Name",
               "type" => "`$STRING`",
+              "short" => "Community name",
             },
             {
               "name" => "population",
-              "short" => "Population",
+              "title" => "Population",
               "type" => "`$INTEGER`",
+              "short" => "Population",
             },
           ],
           "id" => {
@@ -922,7 +988,6 @@ module ColombiaPublicConfig
               "name" => "list",
               "points" => [
                 {
-                  "args" => {},
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/NativeCommunity",
@@ -931,14 +996,16 @@ module ColombiaPublicConfig
                       "lit" => "NativeCommunity",
                     },
                   ],
-                  "select" => {},
+                  "parts" => [
+                    "NativeCommunity",
+                  ],
+                  "rename" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "parts" => [
-                    "NativeCommunity",
-                  ],
+                  "args" => {},
+                  "select" => {},
                 },
               ],
             },
@@ -947,17 +1014,6 @@ module ColombiaPublicConfig
               "name" => "load",
               "points" => [
                 {
-                  "args" => {
-                    "params" => [
-                      {
-                        "kind" => "param",
-                        "name" => "id",
-                        "orig" => "id",
-                        "reqd" => true,
-                        "type" => "`$INTEGER`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/NativeCommunity/{id}",
@@ -969,19 +1025,31 @@ module ColombiaPublicConfig
                       "var" => "id",
                     },
                   ],
+                  "parts" => [
+                    "NativeCommunity",
+                    "{id}",
+                  ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "params" => [
+                      {
+                        "name" => "id",
+                        "orig" => "id",
+                        "type" => "`$INTEGER`",
+                        "kind" => "param",
+                        "reqd" => true,
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "id",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
-                  "parts" => [
-                    "NativeCommunity",
-                    "{id}",
-                  ],
                 },
               ],
             },
@@ -994,43 +1062,51 @@ module ColombiaPublicConfig
           "fields" => [
             {
               "name" => "areaGroupId",
-              "short" => "Area group ID",
+              "title" => "Area Group Id",
               "type" => "`$INTEGER`",
+              "short" => "Area group ID",
             },
             {
               "name" => "categoryNaturalAreaId",
-              "short" => "Category ID",
+              "title" => "Category Natural Area Id",
               "type" => "`$INTEGER`",
+              "short" => "Category ID",
             },
             {
               "name" => "departmentId",
-              "short" => "Department ID",
+              "title" => "Department Id",
               "type" => "`$INTEGER`",
+              "short" => "Department ID",
             },
             {
               "name" => "description",
-              "short" => "Natural area description",
+              "title" => "Description",
               "type" => "`$STRING`",
+              "short" => "Natural area description",
             },
             {
               "name" => "id",
-              "short" => "Natural area ID",
+              "title" => "Id",
               "type" => "`$INTEGER`",
+              "short" => "Natural area ID",
             },
             {
               "name" => "landArea",
-              "short" => "Land area in hectares",
+              "title" => "Land Area",
               "type" => "`$NUMBER`",
+              "short" => "Land area in hectares",
             },
             {
               "name" => "maritimeArea",
-              "short" => "Maritime area in hectares",
+              "title" => "Maritime Area",
               "type" => "`$NUMBER`",
+              "short" => "Maritime area in hectares",
             },
             {
               "name" => "name",
-              "short" => "Natural area name",
+              "title" => "Name",
               "type" => "`$STRING`",
+              "short" => "Natural area name",
             },
           ],
           "id" => {
@@ -1044,7 +1120,6 @@ module ColombiaPublicConfig
               "name" => "list",
               "points" => [
                 {
-                  "args" => {},
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/NaturalArea",
@@ -1053,14 +1128,16 @@ module ColombiaPublicConfig
                       "lit" => "NaturalArea",
                     },
                   ],
-                  "select" => {},
+                  "parts" => [
+                    "NaturalArea",
+                  ],
+                  "rename" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "parts" => [
-                    "NaturalArea",
-                  ],
+                  "args" => {},
+                  "select" => {},
                 },
               ],
             },
@@ -1069,17 +1146,6 @@ module ColombiaPublicConfig
               "name" => "load",
               "points" => [
                 {
-                  "args" => {
-                    "params" => [
-                      {
-                        "kind" => "param",
-                        "name" => "id",
-                        "orig" => "id",
-                        "reqd" => true,
-                        "type" => "`$INTEGER`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/NaturalArea/{id}",
@@ -1091,19 +1157,31 @@ module ColombiaPublicConfig
                       "var" => "id",
                     },
                   ],
+                  "parts" => [
+                    "NaturalArea",
+                    "{id}",
+                  ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "params" => [
+                      {
+                        "name" => "id",
+                        "orig" => "id",
+                        "type" => "`$INTEGER`",
+                        "kind" => "param",
+                        "reqd" => true,
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "id",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
-                  "parts" => [
-                    "NaturalArea",
-                    "{id}",
-                  ],
                 },
               ],
             },
@@ -1116,40 +1194,47 @@ module ColombiaPublicConfig
           "fields" => [
             {
               "name" => "description",
-              "short" => "Biography and description",
+              "title" => "Description",
               "type" => "`$STRING`",
+              "short" => "Biography and description",
             },
             {
-              "format" => "date",
               "name" => "endPeriodDate",
-              "short" => "End date of presidency",
+              "title" => "End Period Date",
               "type" => "`$STRING`",
+              "short" => "End date of presidency",
+              "format" => "date",
             },
             {
               "name" => "id",
-              "short" => "President ID",
+              "title" => "Id",
               "type" => "`$INTEGER`",
+              "short" => "President ID",
             },
             {
               "name" => "image",
-              "short" => "URL to president image",
+              "title" => "Image",
               "type" => "`$STRING`",
+              "short" => "URL to president image",
             },
             {
               "name" => "name",
-              "short" => "President name",
+              "title" => "Name",
               "type" => "`$STRING`",
+              "short" => "President name",
             },
             {
               "name" => "politicalParty",
-              "short" => "Political party",
+              "title" => "Political Party",
               "type" => "`$STRING`",
+              "short" => "Political party",
             },
             {
-              "format" => "date",
               "name" => "startPeriodDate",
-              "short" => "Start date of presidency",
+              "title" => "Start Period Date",
               "type" => "`$STRING`",
+              "short" => "Start date of presidency",
+              "format" => "date",
             },
           ],
           "id" => {
@@ -1163,7 +1248,6 @@ module ColombiaPublicConfig
               "name" => "list",
               "points" => [
                 {
-                  "args" => {},
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/President",
@@ -1172,14 +1256,16 @@ module ColombiaPublicConfig
                       "lit" => "President",
                     },
                   ],
-                  "select" => {},
+                  "parts" => [
+                    "President",
+                  ],
+                  "rename" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "parts" => [
-                    "President",
-                  ],
+                  "args" => {},
+                  "select" => {},
                 },
               ],
             },
@@ -1188,17 +1274,6 @@ module ColombiaPublicConfig
               "name" => "load",
               "points" => [
                 {
-                  "args" => {
-                    "params" => [
-                      {
-                        "kind" => "param",
-                        "name" => "id",
-                        "orig" => "id",
-                        "reqd" => true,
-                        "type" => "`$INTEGER`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/President/{id}",
@@ -1210,19 +1285,31 @@ module ColombiaPublicConfig
                       "var" => "id",
                     },
                   ],
+                  "parts" => [
+                    "President",
+                    "{id}",
+                  ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "params" => [
+                      {
+                        "name" => "id",
+                        "orig" => "id",
+                        "type" => "`$INTEGER`",
+                        "kind" => "param",
+                        "reqd" => true,
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "id",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
-                  "parts" => [
-                    "President",
-                    "{id}",
-                  ],
                 },
               ],
             },
@@ -1235,28 +1322,33 @@ module ColombiaPublicConfig
           "fields" => [
             {
               "name" => "band",
-              "short" => "Broadcasting band (AM/FM)",
+              "title" => "Band",
               "type" => "`$STRING`",
+              "short" => "Broadcasting band (AM/FM)",
             },
             {
               "name" => "frequency",
-              "short" => "Broadcasting frequency",
+              "title" => "Frequency",
               "type" => "`$STRING`",
+              "short" => "Broadcasting frequency",
             },
             {
               "name" => "id",
-              "short" => "Radio station ID",
+              "title" => "Id",
               "type" => "`$INTEGER`",
+              "short" => "Radio station ID",
             },
             {
               "name" => "name",
-              "short" => "Radio station name",
+              "title" => "Name",
               "type" => "`$STRING`",
+              "short" => "Radio station name",
             },
             {
               "name" => "url",
-              "short" => "Station URL",
+              "title" => "Url",
               "type" => "`$STRING`",
+              "short" => "Station URL",
             },
           ],
           "id" => {
@@ -1270,7 +1362,6 @@ module ColombiaPublicConfig
               "name" => "list",
               "points" => [
                 {
-                  "args" => {},
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/Radio",
@@ -1279,14 +1370,16 @@ module ColombiaPublicConfig
                       "lit" => "Radio",
                     },
                   ],
-                  "select" => {},
+                  "parts" => [
+                    "Radio",
+                  ],
+                  "rename" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "parts" => [
-                    "Radio",
-                  ],
+                  "args" => {},
+                  "select" => {},
                 },
               ],
             },
@@ -1295,17 +1388,6 @@ module ColombiaPublicConfig
               "name" => "load",
               "points" => [
                 {
-                  "args" => {
-                    "params" => [
-                      {
-                        "kind" => "param",
-                        "name" => "id",
-                        "orig" => "id",
-                        "reqd" => true,
-                        "type" => "`$INTEGER`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/Radio/{id}",
@@ -1317,19 +1399,31 @@ module ColombiaPublicConfig
                       "var" => "id",
                     },
                   ],
+                  "parts" => [
+                    "Radio",
+                    "{id}",
+                  ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "params" => [
+                      {
+                        "name" => "id",
+                        "orig" => "id",
+                        "type" => "`$INTEGER`",
+                        "kind" => "param",
+                        "reqd" => true,
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "id",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
-                  "parts" => [
-                    "Radio",
-                    "{id}",
-                  ],
                 },
               ],
             },
@@ -1342,23 +1436,27 @@ module ColombiaPublicConfig
           "fields" => [
             {
               "name" => "departments",
-              "short" => "List of departments in the region",
+              "title" => "Departments",
               "type" => "`$ARRAY`",
+              "short" => "List of departments in the region",
             },
             {
               "name" => "description",
-              "short" => "Region description",
+              "title" => "Description",
               "type" => "`$STRING`",
+              "short" => "Region description",
             },
             {
               "name" => "id",
-              "short" => "Region ID",
+              "title" => "Id",
               "type" => "`$INTEGER`",
+              "short" => "Region ID",
             },
             {
               "name" => "name",
-              "short" => "Region name",
+              "title" => "Name",
               "type" => "`$STRING`",
+              "short" => "Region name",
             },
           ],
           "id" => {
@@ -1372,7 +1470,6 @@ module ColombiaPublicConfig
               "name" => "list",
               "points" => [
                 {
-                  "args" => {},
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/Region",
@@ -1381,14 +1478,16 @@ module ColombiaPublicConfig
                       "lit" => "Region",
                     },
                   ],
-                  "select" => {},
+                  "parts" => [
+                    "Region",
+                  ],
+                  "rename" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "parts" => [
-                    "Region",
-                  ],
+                  "args" => {},
+                  "select" => {},
                 },
               ],
             },
@@ -1397,17 +1496,6 @@ module ColombiaPublicConfig
               "name" => "load",
               "points" => [
                 {
-                  "args" => {
-                    "params" => [
-                      {
-                        "kind" => "param",
-                        "name" => "id",
-                        "orig" => "id",
-                        "reqd" => true,
-                        "type" => "`$INTEGER`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/Region/{id}",
@@ -1419,19 +1507,31 @@ module ColombiaPublicConfig
                       "var" => "id",
                     },
                   ],
+                  "parts" => [
+                    "Region",
+                    "{id}",
+                  ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "params" => [
+                      {
+                        "name" => "id",
+                        "orig" => "id",
+                        "type" => "`$INTEGER`",
+                        "kind" => "param",
+                        "reqd" => true,
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "id",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
-                  "parts" => [
-                    "Region",
-                    "{id}",
-                  ],
                 },
               ],
             },
@@ -1444,38 +1544,45 @@ module ColombiaPublicConfig
           "fields" => [
             {
               "name" => "city",
-              "short" => "City where the attraction is located",
+              "title" => "City",
               "type" => "`$STRING`",
+              "short" => "City where the attraction is located",
             },
             {
               "name" => "description",
-              "short" => "Attraction description",
+              "title" => "Description",
               "type" => "`$STRING`",
+              "short" => "Attraction description",
             },
             {
               "name" => "id",
-              "short" => "Touristic attraction ID",
+              "title" => "Id",
               "type" => "`$INTEGER`",
+              "short" => "Touristic attraction ID",
             },
             {
               "name" => "images",
-              "short" => "List of image URLs",
+              "title" => "Images",
               "type" => "`$ARRAY`",
+              "short" => "List of image URLs",
             },
             {
               "name" => "latitude",
-              "short" => "Latitude coordinate",
+              "title" => "Latitude",
               "type" => "`$NUMBER`",
+              "short" => "Latitude coordinate",
             },
             {
               "name" => "longitude",
-              "short" => "Longitude coordinate",
+              "title" => "Longitude",
               "type" => "`$NUMBER`",
+              "short" => "Longitude coordinate",
             },
             {
               "name" => "name",
-              "short" => "Attraction name",
+              "title" => "Name",
               "type" => "`$STRING`",
+              "short" => "Attraction name",
             },
           ],
           "id" => {
@@ -1489,7 +1596,6 @@ module ColombiaPublicConfig
               "name" => "list",
               "points" => [
                 {
-                  "args" => {},
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/TouristicAttraction",
@@ -1498,14 +1604,16 @@ module ColombiaPublicConfig
                       "lit" => "TouristicAttraction",
                     },
                   ],
-                  "select" => {},
+                  "parts" => [
+                    "TouristicAttraction",
+                  ],
+                  "rename" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "parts" => [
-                    "TouristicAttraction",
-                  ],
+                  "args" => {},
+                  "select" => {},
                 },
               ],
             },
@@ -1514,17 +1622,6 @@ module ColombiaPublicConfig
               "name" => "load",
               "points" => [
                 {
-                  "args" => {
-                    "params" => [
-                      {
-                        "kind" => "param",
-                        "name" => "id",
-                        "orig" => "id",
-                        "reqd" => true,
-                        "type" => "`$INTEGER`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/TouristicAttraction/{id}",
@@ -1536,19 +1633,31 @@ module ColombiaPublicConfig
                       "var" => "id",
                     },
                   ],
+                  "parts" => [
+                    "TouristicAttraction",
+                    "{id}",
+                  ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "params" => [
+                      {
+                        "name" => "id",
+                        "orig" => "id",
+                        "type" => "`$INTEGER`",
+                        "kind" => "param",
+                        "reqd" => true,
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "id",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
-                  "parts" => [
-                    "TouristicAttraction",
-                    "{id}",
-                  ],
                 },
               ],
             },
@@ -1561,33 +1670,39 @@ module ColombiaPublicConfig
           "fields" => [
             {
               "name" => "departmentId",
-              "short" => "Department ID",
+              "title" => "Department Id",
               "type" => "`$INTEGER`",
+              "short" => "Department ID",
             },
             {
               "name" => "description",
-              "short" => "Dish description",
+              "title" => "Description",
               "type" => "`$STRING`",
+              "short" => "Dish description",
             },
             {
               "name" => "id",
-              "short" => "Typical dish ID",
+              "title" => "Id",
               "type" => "`$INTEGER`",
+              "short" => "Typical dish ID",
             },
             {
               "name" => "ingredients",
-              "short" => "List of ingredients",
+              "title" => "Ingredients",
               "type" => "`$ARRAY`",
+              "short" => "List of ingredients",
             },
             {
               "name" => "name",
-              "short" => "Dish name",
+              "title" => "Name",
               "type" => "`$STRING`",
+              "short" => "Dish name",
             },
             {
               "name" => "urlImage",
-              "short" => "URL to dish image",
+              "title" => "Url Image",
               "type" => "`$STRING`",
+              "short" => "URL to dish image",
             },
           ],
           "id" => {
@@ -1601,7 +1716,6 @@ module ColombiaPublicConfig
               "name" => "list",
               "points" => [
                 {
-                  "args" => {},
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/TypicalDish",
@@ -1610,14 +1724,16 @@ module ColombiaPublicConfig
                       "lit" => "TypicalDish",
                     },
                   ],
-                  "select" => {},
+                  "parts" => [
+                    "TypicalDish",
+                  ],
+                  "rename" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "parts" => [
-                    "TypicalDish",
-                  ],
+                  "args" => {},
+                  "select" => {},
                 },
               ],
             },
@@ -1626,17 +1742,6 @@ module ColombiaPublicConfig
               "name" => "load",
               "points" => [
                 {
-                  "args" => {
-                    "params" => [
-                      {
-                        "kind" => "param",
-                        "name" => "id",
-                        "orig" => "id",
-                        "reqd" => true,
-                        "type" => "`$INTEGER`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/TypicalDish/{id}",
@@ -1648,19 +1753,31 @@ module ColombiaPublicConfig
                       "var" => "id",
                     },
                   ],
+                  "parts" => [
+                    "TypicalDish",
+                    "{id}",
+                  ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "params" => [
+                      {
+                        "name" => "id",
+                        "orig" => "id",
+                        "type" => "`$INTEGER`",
+                        "kind" => "param",
+                        "reqd" => true,
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "id",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
-                  "parts" => [
-                    "TypicalDish",
-                    "{id}",
-                  ],
                 },
               ],
             },

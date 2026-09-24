@@ -19,7 +19,6 @@ import type {
   CountryListMatch,
 } from '../ColombiaPublicTypes'
 
-// TODO: needs Entity superclass
 class CountryEntity extends ColombiaPublicEntityBase<Country> {
 
   constructor(client: ColombiaPublicSDK, entopts: any) {

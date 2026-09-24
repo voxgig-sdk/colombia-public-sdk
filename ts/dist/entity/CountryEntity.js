@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CountryEntity = void 0;
 const ColombiaPublicEntityBase_1 = require("../ColombiaPublicEntityBase");
-// TODO: needs Entity superclass
 class CountryEntity extends ColombiaPublicEntityBase_1.ColombiaPublicEntityBase {
     constructor(client, entopts) {
         super(client, entopts);

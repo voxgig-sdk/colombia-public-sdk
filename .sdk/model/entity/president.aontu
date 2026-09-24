@@ -1,0 +1,137 @@
+# Entity: president
+
+main: kit: entity: president: {
+
+  alias: field: {}
+
+  fields: {
+    description: {
+      h: "Description"
+      n: "description"
+      r: false
+      sh: "Biography and description"
+      t: "`$STRING`"
+    }
+    endPeriodDate: {
+      fo: "date"
+      h: "End Period Date"
+      n: "endPeriodDate"
+      r: false
+      sh: "End date of presidency"
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "President ID"
+      t: "`$INTEGER`"
+    }
+    image: {
+      h: "Image"
+      n: "image"
+      r: false
+      sh: "URL to president image"
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "President name"
+      t: "`$STRING`"
+    }
+    politicalParty: {
+      h: "Political Party"
+      n: "politicalParty"
+      r: false
+      sh: "Political party"
+      t: "`$STRING`"
+    }
+    startPeriodDate: {
+      fo: "date"
+      h: "Start Period Date"
+      n: "startPeriodDate"
+      r: false
+      sh: "Start date of presidency"
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "president"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /President"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/President"
+          s: [
+            {
+              lit: "President"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /President/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/President/{id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "President"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

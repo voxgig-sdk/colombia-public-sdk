@@ -19,7 +19,6 @@ import type {
   MapListMatch,
 } from '../ColombiaPublicTypes'
 
-// TODO: needs Entity superclass
 class MapEntity extends ColombiaPublicEntityBase<MapType> {
 
   constructor(client: ColombiaPublicSDK, entopts: any) {

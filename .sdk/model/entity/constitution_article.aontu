@@ -1,0 +1,121 @@
+# Entity: constitution_article
+
+main: kit: entity: constitution_article: {
+
+  alias: field: {}
+
+  fields: {
+    articleNumber: {
+      h: "Article Number"
+      n: "articleNumber"
+      r: false
+      sh: "Article number"
+      t: "`$INTEGER`"
+    }
+    chapter: {
+      h: "Chapter"
+      n: "chapter"
+      r: false
+      sh: "Constitution chapter"
+      t: "`$STRING`"
+    }
+    description: {
+      h: "Description"
+      n: "description"
+      r: false
+      sh: "Article content"
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "Article ID"
+      t: "`$INTEGER`"
+    }
+    title: {
+      h: "Title"
+      n: "title"
+      r: false
+      sh: "Article title"
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "constitution_article"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /ConstitutionArticle"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/ConstitutionArticle"
+          s: [
+            {
+              lit: "ConstitutionArticle"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /ConstitutionArticle/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/ConstitutionArticle/{id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "ConstitutionArticle"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

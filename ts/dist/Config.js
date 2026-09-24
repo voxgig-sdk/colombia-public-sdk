@@ -11,19 +11,12 @@ const FEATURE_CLASS = {
     test: TestFeature_1.TestFeature,
     timeout: TimeoutFeature_1.TimeoutFeature,
 };
-// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
-// the model's active plugin groups. A feature that takes a `plugins` option
-// (secrets over sekreto) reads its own entry; a feature with no plugins has
-// none. Named imports above make each definition statically reachable, so
-// an SDK carries exactly the plugin modules its model selects — the same
-// leanness the old side-effect registry imports bought, without a registry.
 const FEATURE_PLUGINS = {};
 exports.FEATURE_PLUGINS = FEATURE_PLUGINS;
 class Config {
     makeFeature(fn) {
         const fc = FEATURE_CLASS[fn];
         const fi = new fc();
-        // TODO: errors etc
         return fi;
     }
     // False for a feature added at runtime via options.extend (station's
@@ -128,43 +121,51 @@ class Config {
             "fields": [
                 {
                     "name": "cityId",
-                    "short": "City ID",
-                    "type": "`$INTEGER`"
+                    "title": "City Id",
+                    "type": "`$INTEGER`",
+                    "short": "City ID"
                 },
                 {
                     "name": "code",
-                    "short": "IATA code",
-                    "type": "`$STRING`"
+                    "title": "Code",
+                    "type": "`$STRING`",
+                    "short": "IATA code"
                 },
                 {
                     "name": "departmentId",
-                    "short": "Department ID",
-                    "type": "`$INTEGER`"
+                    "title": "Department Id",
+                    "type": "`$INTEGER`",
+                    "short": "Department ID"
                 },
                 {
                     "name": "id",
-                    "short": "Airport ID",
-                    "type": "`$INTEGER`"
+                    "title": "Id",
+                    "type": "`$INTEGER`",
+                    "short": "Airport ID"
                 },
                 {
                     "name": "latitude",
-                    "short": "Latitude coordinate",
-                    "type": "`$NUMBER`"
+                    "title": "Latitude",
+                    "type": "`$NUMBER`",
+                    "short": "Latitude coordinate"
                 },
                 {
                     "name": "longitude",
-                    "short": "Longitude coordinate",
-                    "type": "`$NUMBER`"
+                    "title": "Longitude",
+                    "type": "`$NUMBER`",
+                    "short": "Longitude coordinate"
                 },
                 {
                     "name": "name",
-                    "short": "Airport name",
-                    "type": "`$STRING`"
+                    "title": "Name",
+                    "type": "`$STRING`",
+                    "short": "Airport name"
                 },
                 {
                     "name": "type",
-                    "short": "Airport type",
-                    "type": "`$STRING`"
+                    "title": "Type",
+                    "type": "`$STRING`",
+                    "short": "Airport type"
                 }
             ],
             "id": {
@@ -178,7 +179,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {},
                             "kind": "http",
                             "method": "GET",
                             "orig": "/Airport",
@@ -187,14 +187,16 @@ class Config {
                                     "lit": "Airport"
                                 }
                             ],
-                            "select": {},
+                            "parts": [
+                                "Airport"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "Airport"
-                            ]
+                            "args": {},
+                            "select": {}
                         }
                     ]
                 },
@@ -203,17 +205,6 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "id",
-                                        "orig": "id",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/Airport/{id}",
@@ -225,19 +216,31 @@ class Config {
                                     "var": "id"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "id"
-                                ]
-                            },
+                            "parts": [
+                                "Airport",
+                                "{id}"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "Airport",
-                                "{id}"
-                            ]
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "id",
+                                        "orig": "id",
+                                        "type": "`$INTEGER`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "id"
+                                ]
+                            }
                         }
                     ]
                 }
@@ -250,18 +253,21 @@ class Config {
             "fields": [
                 {
                     "name": "description",
-                    "short": "Category description",
-                    "type": "`$STRING`"
+                    "title": "Description",
+                    "type": "`$STRING`",
+                    "short": "Category description"
                 },
                 {
                     "name": "id",
-                    "short": "Category ID",
-                    "type": "`$INTEGER`"
+                    "title": "Id",
+                    "type": "`$INTEGER`",
+                    "short": "Category ID"
                 },
                 {
                     "name": "name",
-                    "short": "Category name",
-                    "type": "`$STRING`"
+                    "title": "Name",
+                    "type": "`$STRING`",
+                    "short": "Category name"
                 }
             ],
             "id": {
@@ -275,7 +281,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {},
                             "kind": "http",
                             "method": "GET",
                             "orig": "/CategoryNaturalArea",
@@ -284,14 +289,16 @@ class Config {
                                     "lit": "CategoryNaturalArea"
                                 }
                             ],
-                            "select": {},
+                            "parts": [
+                                "CategoryNaturalArea"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "CategoryNaturalArea"
-                            ]
+                            "args": {},
+                            "select": {}
                         }
                     ]
                 }
@@ -304,28 +311,33 @@ class Config {
             "fields": [
                 {
                     "name": "articleNumber",
-                    "short": "Article number",
-                    "type": "`$INTEGER`"
+                    "title": "Article Number",
+                    "type": "`$INTEGER`",
+                    "short": "Article number"
                 },
                 {
                     "name": "chapter",
-                    "short": "Constitution chapter",
-                    "type": "`$STRING`"
+                    "title": "Chapter",
+                    "type": "`$STRING`",
+                    "short": "Constitution chapter"
                 },
                 {
                     "name": "description",
-                    "short": "Article content",
-                    "type": "`$STRING`"
+                    "title": "Description",
+                    "type": "`$STRING`",
+                    "short": "Article content"
                 },
                 {
                     "name": "id",
-                    "short": "Article ID",
-                    "type": "`$INTEGER`"
+                    "title": "Id",
+                    "type": "`$INTEGER`",
+                    "short": "Article ID"
                 },
                 {
                     "name": "title",
-                    "short": "Article title",
-                    "type": "`$STRING`"
+                    "title": "Title",
+                    "type": "`$STRING`",
+                    "short": "Article title"
                 }
             ],
             "id": {
@@ -339,7 +351,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {},
                             "kind": "http",
                             "method": "GET",
                             "orig": "/ConstitutionArticle",
@@ -348,14 +359,16 @@ class Config {
                                     "lit": "ConstitutionArticle"
                                 }
                             ],
-                            "select": {},
+                            "parts": [
+                                "ConstitutionArticle"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "ConstitutionArticle"
-                            ]
+                            "args": {},
+                            "select": {}
                         }
                     ]
                 },
@@ -364,17 +377,6 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "id",
-                                        "orig": "id",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/ConstitutionArticle/{id}",
@@ -386,19 +388,31 @@ class Config {
                                     "var": "id"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "id"
-                                ]
-                            },
+                            "parts": [
+                                "ConstitutionArticle",
+                                "{id}"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "ConstitutionArticle",
-                                "{id}"
-                            ]
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "id",
+                                        "orig": "id",
+                                        "type": "`$INTEGER`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "id"
+                                ]
+                            }
                         }
                     ]
                 }
@@ -411,43 +425,51 @@ class Config {
             "fields": [
                 {
                     "name": "capital",
-                    "short": "Capital city",
-                    "type": "`$STRING`"
+                    "title": "Capital",
+                    "type": "`$STRING`",
+                    "short": "Capital city"
                 },
                 {
                     "name": "currency",
-                    "short": "Currency",
-                    "type": "`$STRING`"
+                    "title": "Currency",
+                    "type": "`$STRING`",
+                    "short": "Currency"
                 },
                 {
                     "name": "flag",
-                    "short": "URL to flag image",
-                    "type": "`$STRING`"
+                    "title": "Flag",
+                    "type": "`$STRING`",
+                    "short": "URL to flag image"
                 },
                 {
                     "name": "id",
-                    "short": "Country ID",
-                    "type": "`$INTEGER`"
+                    "title": "Id",
+                    "type": "`$INTEGER`",
+                    "short": "Country ID"
                 },
                 {
                     "name": "languages",
-                    "short": "Official languages",
-                    "type": "`$ARRAY`"
+                    "title": "Languages",
+                    "type": "`$ARRAY`",
+                    "short": "Official languages"
                 },
                 {
                     "name": "name",
-                    "short": "Country name",
-                    "type": "`$STRING`"
+                    "title": "Name",
+                    "type": "`$STRING`",
+                    "short": "Country name"
                 },
                 {
                     "name": "population",
-                    "short": "Total population",
-                    "type": "`$INTEGER`"
+                    "title": "Population",
+                    "type": "`$INTEGER`",
+                    "short": "Total population"
                 },
                 {
                     "name": "surface",
-                    "short": "Surface area in square kilometers",
-                    "type": "`$NUMBER`"
+                    "title": "Surface",
+                    "type": "`$NUMBER`",
+                    "short": "Surface area in square kilometers"
                 }
             ],
             "id": {
@@ -461,7 +483,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {},
                             "kind": "http",
                             "method": "GET",
                             "orig": "/Country/Colombia",
@@ -473,17 +494,19 @@ class Config {
                                     "lit": "Colombia"
                                 }
                             ],
-                            "select": {
-                                "$action": "colombia"
-                            },
+                            "parts": [
+                                "Country",
+                                "Colombia"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body.languages`"
                             },
-                            "parts": [
-                                "Country",
-                                "Colombia"
-                            ]
+                            "args": {},
+                            "select": {
+                                "$action": "colombia"
+                            }
                         }
                     ]
                 }
@@ -496,43 +519,51 @@ class Config {
             "fields": [
                 {
                     "name": "cityCapital",
-                    "short": "Capital city of the department",
-                    "type": "`$STRING`"
+                    "title": "City Capital",
+                    "type": "`$STRING`",
+                    "short": "Capital city of the department"
                 },
                 {
                     "name": "description",
-                    "short": "Department description",
-                    "type": "`$STRING`"
+                    "title": "Description",
+                    "type": "`$STRING`",
+                    "short": "Department description"
                 },
                 {
                     "name": "id",
-                    "short": "Department ID",
-                    "type": "`$INTEGER`"
+                    "title": "Id",
+                    "type": "`$INTEGER`",
+                    "short": "Department ID"
                 },
                 {
                     "name": "municipalities",
-                    "short": "Number of municipalities",
-                    "type": "`$INTEGER`"
+                    "title": "Municipalities",
+                    "type": "`$INTEGER`",
+                    "short": "Number of municipalities"
                 },
                 {
                     "name": "name",
-                    "short": "Department name",
-                    "type": "`$STRING`"
+                    "title": "Name",
+                    "type": "`$STRING`",
+                    "short": "Department name"
                 },
                 {
                     "name": "population",
-                    "short": "Population",
-                    "type": "`$INTEGER`"
+                    "title": "Population",
+                    "type": "`$INTEGER`",
+                    "short": "Population"
                 },
                 {
                     "name": "regionId",
-                    "short": "Region ID",
-                    "type": "`$INTEGER`"
+                    "title": "Region Id",
+                    "type": "`$INTEGER`",
+                    "short": "Region ID"
                 },
                 {
                     "name": "surface",
-                    "short": "Surface area",
-                    "type": "`$NUMBER`"
+                    "title": "Surface",
+                    "type": "`$NUMBER`",
+                    "short": "Surface area"
                 }
             ],
             "id": {
@@ -546,7 +577,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {},
                             "kind": "http",
                             "method": "GET",
                             "orig": "/Department",
@@ -555,14 +585,16 @@ class Config {
                                     "lit": "Department"
                                 }
                             ],
-                            "select": {},
+                            "parts": [
+                                "Department"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "Department"
-                            ]
+                            "args": {},
+                            "select": {}
                         }
                     ]
                 },
@@ -571,17 +603,6 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "id",
-                                        "orig": "id",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/Department/{id}",
@@ -593,19 +614,31 @@ class Config {
                                     "var": "id"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "id"
-                                ]
-                            },
+                            "parts": [
+                                "Department",
+                                "{id}"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "Department",
-                                "{id}"
-                            ]
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "id",
+                                        "orig": "id",
+                                        "type": "`$INTEGER`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "id"
+                                ]
+                            }
                         }
                     ]
                 }
@@ -617,30 +650,35 @@ class Config {
         "holiday": {
             "fields": [
                 {
-                    "format": "date",
                     "name": "date",
+                    "title": "Date",
+                    "type": "`$STRING`",
                     "short": "Holiday date",
-                    "type": "`$STRING`"
+                    "format": "date"
                 },
                 {
                     "name": "description",
-                    "short": "Holiday description",
-                    "type": "`$STRING`"
+                    "title": "Description",
+                    "type": "`$STRING`",
+                    "short": "Holiday description"
                 },
                 {
                     "name": "id",
-                    "short": "Holiday ID",
-                    "type": "`$INTEGER`"
+                    "title": "Id",
+                    "type": "`$INTEGER`",
+                    "short": "Holiday ID"
                 },
                 {
                     "name": "name",
-                    "short": "Holiday name",
-                    "type": "`$STRING`"
+                    "title": "Name",
+                    "type": "`$STRING`",
+                    "short": "Holiday name"
                 },
                 {
                     "name": "type",
-                    "short": "Holiday type (religious, civic, etc.)",
-                    "type": "`$STRING`"
+                    "title": "Type",
+                    "type": "`$STRING`",
+                    "short": "Holiday type (religious, civic, etc.)"
                 }
             ],
             "id": {
@@ -654,7 +692,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {},
                             "kind": "http",
                             "method": "GET",
                             "orig": "/Holiday",
@@ -663,14 +700,16 @@ class Config {
                                     "lit": "Holiday"
                                 }
                             ],
-                            "select": {},
+                            "parts": [
+                                "Holiday"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "Holiday"
-                            ]
+                            "args": {},
+                            "select": {}
                         }
                     ]
                 },
@@ -679,17 +718,6 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "id",
-                                        "orig": "id",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/Holiday/{id}",
@@ -701,19 +729,31 @@ class Config {
                                     "var": "id"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "id"
-                                ]
-                            },
+                            "parts": [
+                                "Holiday",
+                                "{id}"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "Holiday",
-                                "{id}"
-                            ]
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "id",
+                                        "orig": "id",
+                                        "type": "`$INTEGER`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "id"
+                                ]
+                            }
                         }
                     ]
                 }
@@ -726,33 +766,39 @@ class Config {
             "fields": [
                 {
                     "name": "id",
-                    "short": "Invasive species ID",
-                    "type": "`$INTEGER`"
+                    "title": "Id",
+                    "type": "`$INTEGER`",
+                    "short": "Invasive species ID"
                 },
                 {
                     "name": "impact",
-                    "short": "Environmental impact",
-                    "type": "`$STRING`"
+                    "title": "Impact",
+                    "type": "`$STRING`",
+                    "short": "Environmental impact"
                 },
                 {
                     "name": "manage",
-                    "short": "Management strategies",
-                    "type": "`$STRING`"
+                    "title": "Manage",
+                    "type": "`$STRING`",
+                    "short": "Management strategies"
                 },
                 {
                     "name": "name",
-                    "short": "Species name",
-                    "type": "`$STRING`"
+                    "title": "Name",
+                    "type": "`$STRING`",
+                    "short": "Species name"
                 },
                 {
                     "name": "scientificName",
-                    "short": "Scientific name",
-                    "type": "`$STRING`"
+                    "title": "Scientific Name",
+                    "type": "`$STRING`",
+                    "short": "Scientific name"
                 },
                 {
                     "name": "urlImage",
-                    "short": "URL to species image",
-                    "type": "`$STRING`"
+                    "title": "Url Image",
+                    "type": "`$STRING`",
+                    "short": "URL to species image"
                 }
             ],
             "id": {
@@ -766,7 +812,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {},
                             "kind": "http",
                             "method": "GET",
                             "orig": "/InvasiveSpecie",
@@ -775,14 +820,16 @@ class Config {
                                     "lit": "InvasiveSpecie"
                                 }
                             ],
-                            "select": {},
+                            "parts": [
+                                "InvasiveSpecie"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "InvasiveSpecie"
-                            ]
+                            "args": {},
+                            "select": {}
                         }
                     ]
                 },
@@ -791,17 +838,6 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "id",
-                                        "orig": "id",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/InvasiveSpecie/{id}",
@@ -813,19 +849,31 @@ class Config {
                                     "var": "id"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "id"
-                                ]
-                            },
+                            "parts": [
+                                "InvasiveSpecie",
+                                "{id}"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "InvasiveSpecie",
-                                "{id}"
-                            ]
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "id",
+                                        "orig": "id",
+                                        "type": "`$INTEGER`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "id"
+                                ]
+                            }
                         }
                     ]
                 }
@@ -838,28 +886,33 @@ class Config {
             "fields": [
                 {
                     "name": "departmentId",
-                    "short": "Department ID",
-                    "type": "`$INTEGER`"
+                    "title": "Department Id",
+                    "type": "`$INTEGER`",
+                    "short": "Department ID"
                 },
                 {
                     "name": "description",
-                    "short": "Map description",
-                    "type": "`$STRING`"
+                    "title": "Description",
+                    "type": "`$STRING`",
+                    "short": "Map description"
                 },
                 {
                     "name": "id",
-                    "short": "Map ID",
-                    "type": "`$INTEGER`"
+                    "title": "Id",
+                    "type": "`$INTEGER`",
+                    "short": "Map ID"
                 },
                 {
                     "name": "name",
-                    "short": "Map name",
-                    "type": "`$STRING`"
+                    "title": "Name",
+                    "type": "`$STRING`",
+                    "short": "Map name"
                 },
                 {
                     "name": "urlImages",
-                    "short": "URLs to map images",
-                    "type": "`$ARRAY`"
+                    "title": "Url Images",
+                    "type": "`$ARRAY`",
+                    "short": "URLs to map images"
                 }
             ],
             "id": {
@@ -873,7 +926,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {},
                             "kind": "http",
                             "method": "GET",
                             "orig": "/Map",
@@ -882,14 +934,16 @@ class Config {
                                     "lit": "Map"
                                 }
                             ],
-                            "select": {},
+                            "parts": [
+                                "Map"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "Map"
-                            ]
+                            "args": {},
+                            "select": {}
                         }
                     ]
                 }
@@ -902,28 +956,33 @@ class Config {
             "fields": [
                 {
                     "name": "departmentId",
-                    "short": "Department ID",
-                    "type": "`$INTEGER`"
+                    "title": "Department Id",
+                    "type": "`$INTEGER`",
+                    "short": "Department ID"
                 },
                 {
                     "name": "description",
-                    "short": "Community description",
-                    "type": "`$STRING`"
+                    "title": "Description",
+                    "type": "`$STRING`",
+                    "short": "Community description"
                 },
                 {
                     "name": "id",
-                    "short": "Native community ID",
-                    "type": "`$INTEGER`"
+                    "title": "Id",
+                    "type": "`$INTEGER`",
+                    "short": "Native community ID"
                 },
                 {
                     "name": "name",
-                    "short": "Community name",
-                    "type": "`$STRING`"
+                    "title": "Name",
+                    "type": "`$STRING`",
+                    "short": "Community name"
                 },
                 {
                     "name": "population",
-                    "short": "Population",
-                    "type": "`$INTEGER`"
+                    "title": "Population",
+                    "type": "`$INTEGER`",
+                    "short": "Population"
                 }
             ],
             "id": {
@@ -937,7 +996,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {},
                             "kind": "http",
                             "method": "GET",
                             "orig": "/NativeCommunity",
@@ -946,14 +1004,16 @@ class Config {
                                     "lit": "NativeCommunity"
                                 }
                             ],
-                            "select": {},
+                            "parts": [
+                                "NativeCommunity"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "NativeCommunity"
-                            ]
+                            "args": {},
+                            "select": {}
                         }
                     ]
                 },
@@ -962,17 +1022,6 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "id",
-                                        "orig": "id",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/NativeCommunity/{id}",
@@ -984,19 +1033,31 @@ class Config {
                                     "var": "id"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "id"
-                                ]
-                            },
+                            "parts": [
+                                "NativeCommunity",
+                                "{id}"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "NativeCommunity",
-                                "{id}"
-                            ]
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "id",
+                                        "orig": "id",
+                                        "type": "`$INTEGER`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "id"
+                                ]
+                            }
                         }
                     ]
                 }
@@ -1009,43 +1070,51 @@ class Config {
             "fields": [
                 {
                     "name": "areaGroupId",
-                    "short": "Area group ID",
-                    "type": "`$INTEGER`"
+                    "title": "Area Group Id",
+                    "type": "`$INTEGER`",
+                    "short": "Area group ID"
                 },
                 {
                     "name": "categoryNaturalAreaId",
-                    "short": "Category ID",
-                    "type": "`$INTEGER`"
+                    "title": "Category Natural Area Id",
+                    "type": "`$INTEGER`",
+                    "short": "Category ID"
                 },
                 {
                     "name": "departmentId",
-                    "short": "Department ID",
-                    "type": "`$INTEGER`"
+                    "title": "Department Id",
+                    "type": "`$INTEGER`",
+                    "short": "Department ID"
                 },
                 {
                     "name": "description",
-                    "short": "Natural area description",
-                    "type": "`$STRING`"
+                    "title": "Description",
+                    "type": "`$STRING`",
+                    "short": "Natural area description"
                 },
                 {
                     "name": "id",
-                    "short": "Natural area ID",
-                    "type": "`$INTEGER`"
+                    "title": "Id",
+                    "type": "`$INTEGER`",
+                    "short": "Natural area ID"
                 },
                 {
                     "name": "landArea",
-                    "short": "Land area in hectares",
-                    "type": "`$NUMBER`"
+                    "title": "Land Area",
+                    "type": "`$NUMBER`",
+                    "short": "Land area in hectares"
                 },
                 {
                     "name": "maritimeArea",
-                    "short": "Maritime area in hectares",
-                    "type": "`$NUMBER`"
+                    "title": "Maritime Area",
+                    "type": "`$NUMBER`",
+                    "short": "Maritime area in hectares"
                 },
                 {
                     "name": "name",
-                    "short": "Natural area name",
-                    "type": "`$STRING`"
+                    "title": "Name",
+                    "type": "`$STRING`",
+                    "short": "Natural area name"
                 }
             ],
             "id": {
@@ -1059,7 +1128,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {},
                             "kind": "http",
                             "method": "GET",
                             "orig": "/NaturalArea",
@@ -1068,14 +1136,16 @@ class Config {
                                     "lit": "NaturalArea"
                                 }
                             ],
-                            "select": {},
+                            "parts": [
+                                "NaturalArea"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "NaturalArea"
-                            ]
+                            "args": {},
+                            "select": {}
                         }
                     ]
                 },
@@ -1084,17 +1154,6 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "id",
-                                        "orig": "id",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/NaturalArea/{id}",
@@ -1106,19 +1165,31 @@ class Config {
                                     "var": "id"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "id"
-                                ]
-                            },
+                            "parts": [
+                                "NaturalArea",
+                                "{id}"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "NaturalArea",
-                                "{id}"
-                            ]
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "id",
+                                        "orig": "id",
+                                        "type": "`$INTEGER`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "id"
+                                ]
+                            }
                         }
                     ]
                 }
@@ -1131,40 +1202,47 @@ class Config {
             "fields": [
                 {
                     "name": "description",
-                    "short": "Biography and description",
-                    "type": "`$STRING`"
+                    "title": "Description",
+                    "type": "`$STRING`",
+                    "short": "Biography and description"
                 },
                 {
-                    "format": "date",
                     "name": "endPeriodDate",
+                    "title": "End Period Date",
+                    "type": "`$STRING`",
                     "short": "End date of presidency",
-                    "type": "`$STRING`"
+                    "format": "date"
                 },
                 {
                     "name": "id",
-                    "short": "President ID",
-                    "type": "`$INTEGER`"
+                    "title": "Id",
+                    "type": "`$INTEGER`",
+                    "short": "President ID"
                 },
                 {
                     "name": "image",
-                    "short": "URL to president image",
-                    "type": "`$STRING`"
+                    "title": "Image",
+                    "type": "`$STRING`",
+                    "short": "URL to president image"
                 },
                 {
                     "name": "name",
-                    "short": "President name",
-                    "type": "`$STRING`"
+                    "title": "Name",
+                    "type": "`$STRING`",
+                    "short": "President name"
                 },
                 {
                     "name": "politicalParty",
-                    "short": "Political party",
-                    "type": "`$STRING`"
+                    "title": "Political Party",
+                    "type": "`$STRING`",
+                    "short": "Political party"
                 },
                 {
-                    "format": "date",
                     "name": "startPeriodDate",
+                    "title": "Start Period Date",
+                    "type": "`$STRING`",
                     "short": "Start date of presidency",
-                    "type": "`$STRING`"
+                    "format": "date"
                 }
             ],
             "id": {
@@ -1178,7 +1256,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {},
                             "kind": "http",
                             "method": "GET",
                             "orig": "/President",
@@ -1187,14 +1264,16 @@ class Config {
                                     "lit": "President"
                                 }
                             ],
-                            "select": {},
+                            "parts": [
+                                "President"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "President"
-                            ]
+                            "args": {},
+                            "select": {}
                         }
                     ]
                 },
@@ -1203,17 +1282,6 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "id",
-                                        "orig": "id",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/President/{id}",
@@ -1225,19 +1293,31 @@ class Config {
                                     "var": "id"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "id"
-                                ]
-                            },
+                            "parts": [
+                                "President",
+                                "{id}"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "President",
-                                "{id}"
-                            ]
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "id",
+                                        "orig": "id",
+                                        "type": "`$INTEGER`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "id"
+                                ]
+                            }
                         }
                     ]
                 }
@@ -1250,28 +1330,33 @@ class Config {
             "fields": [
                 {
                     "name": "band",
-                    "short": "Broadcasting band (AM/FM)",
-                    "type": "`$STRING`"
+                    "title": "Band",
+                    "type": "`$STRING`",
+                    "short": "Broadcasting band (AM/FM)"
                 },
                 {
                     "name": "frequency",
-                    "short": "Broadcasting frequency",
-                    "type": "`$STRING`"
+                    "title": "Frequency",
+                    "type": "`$STRING`",
+                    "short": "Broadcasting frequency"
                 },
                 {
                     "name": "id",
-                    "short": "Radio station ID",
-                    "type": "`$INTEGER`"
+                    "title": "Id",
+                    "type": "`$INTEGER`",
+                    "short": "Radio station ID"
                 },
                 {
                     "name": "name",
-                    "short": "Radio station name",
-                    "type": "`$STRING`"
+                    "title": "Name",
+                    "type": "`$STRING`",
+                    "short": "Radio station name"
                 },
                 {
                     "name": "url",
-                    "short": "Station URL",
-                    "type": "`$STRING`"
+                    "title": "Url",
+                    "type": "`$STRING`",
+                    "short": "Station URL"
                 }
             ],
             "id": {
@@ -1285,7 +1370,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {},
                             "kind": "http",
                             "method": "GET",
                             "orig": "/Radio",
@@ -1294,14 +1378,16 @@ class Config {
                                     "lit": "Radio"
                                 }
                             ],
-                            "select": {},
+                            "parts": [
+                                "Radio"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "Radio"
-                            ]
+                            "args": {},
+                            "select": {}
                         }
                     ]
                 },
@@ -1310,17 +1396,6 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "id",
-                                        "orig": "id",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/Radio/{id}",
@@ -1332,19 +1407,31 @@ class Config {
                                     "var": "id"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "id"
-                                ]
-                            },
+                            "parts": [
+                                "Radio",
+                                "{id}"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "Radio",
-                                "{id}"
-                            ]
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "id",
+                                        "orig": "id",
+                                        "type": "`$INTEGER`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "id"
+                                ]
+                            }
                         }
                     ]
                 }
@@ -1357,23 +1444,27 @@ class Config {
             "fields": [
                 {
                     "name": "departments",
-                    "short": "List of departments in the region",
-                    "type": "`$ARRAY`"
+                    "title": "Departments",
+                    "type": "`$ARRAY`",
+                    "short": "List of departments in the region"
                 },
                 {
                     "name": "description",
-                    "short": "Region description",
-                    "type": "`$STRING`"
+                    "title": "Description",
+                    "type": "`$STRING`",
+                    "short": "Region description"
                 },
                 {
                     "name": "id",
-                    "short": "Region ID",
-                    "type": "`$INTEGER`"
+                    "title": "Id",
+                    "type": "`$INTEGER`",
+                    "short": "Region ID"
                 },
                 {
                     "name": "name",
-                    "short": "Region name",
-                    "type": "`$STRING`"
+                    "title": "Name",
+                    "type": "`$STRING`",
+                    "short": "Region name"
                 }
             ],
             "id": {
@@ -1387,7 +1478,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {},
                             "kind": "http",
                             "method": "GET",
                             "orig": "/Region",
@@ -1396,14 +1486,16 @@ class Config {
                                     "lit": "Region"
                                 }
                             ],
-                            "select": {},
+                            "parts": [
+                                "Region"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "Region"
-                            ]
+                            "args": {},
+                            "select": {}
                         }
                     ]
                 },
@@ -1412,17 +1504,6 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "id",
-                                        "orig": "id",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/Region/{id}",
@@ -1434,19 +1515,31 @@ class Config {
                                     "var": "id"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "id"
-                                ]
-                            },
+                            "parts": [
+                                "Region",
+                                "{id}"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "Region",
-                                "{id}"
-                            ]
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "id",
+                                        "orig": "id",
+                                        "type": "`$INTEGER`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "id"
+                                ]
+                            }
                         }
                     ]
                 }
@@ -1459,38 +1552,45 @@ class Config {
             "fields": [
                 {
                     "name": "city",
-                    "short": "City where the attraction is located",
-                    "type": "`$STRING`"
+                    "title": "City",
+                    "type": "`$STRING`",
+                    "short": "City where the attraction is located"
                 },
                 {
                     "name": "description",
-                    "short": "Attraction description",
-                    "type": "`$STRING`"
+                    "title": "Description",
+                    "type": "`$STRING`",
+                    "short": "Attraction description"
                 },
                 {
                     "name": "id",
-                    "short": "Touristic attraction ID",
-                    "type": "`$INTEGER`"
+                    "title": "Id",
+                    "type": "`$INTEGER`",
+                    "short": "Touristic attraction ID"
                 },
                 {
                     "name": "images",
-                    "short": "List of image URLs",
-                    "type": "`$ARRAY`"
+                    "title": "Images",
+                    "type": "`$ARRAY`",
+                    "short": "List of image URLs"
                 },
                 {
                     "name": "latitude",
-                    "short": "Latitude coordinate",
-                    "type": "`$NUMBER`"
+                    "title": "Latitude",
+                    "type": "`$NUMBER`",
+                    "short": "Latitude coordinate"
                 },
                 {
                     "name": "longitude",
-                    "short": "Longitude coordinate",
-                    "type": "`$NUMBER`"
+                    "title": "Longitude",
+                    "type": "`$NUMBER`",
+                    "short": "Longitude coordinate"
                 },
                 {
                     "name": "name",
-                    "short": "Attraction name",
-                    "type": "`$STRING`"
+                    "title": "Name",
+                    "type": "`$STRING`",
+                    "short": "Attraction name"
                 }
             ],
             "id": {
@@ -1504,7 +1604,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {},
                             "kind": "http",
                             "method": "GET",
                             "orig": "/TouristicAttraction",
@@ -1513,14 +1612,16 @@ class Config {
                                     "lit": "TouristicAttraction"
                                 }
                             ],
-                            "select": {},
+                            "parts": [
+                                "TouristicAttraction"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "TouristicAttraction"
-                            ]
+                            "args": {},
+                            "select": {}
                         }
                     ]
                 },
@@ -1529,17 +1630,6 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "id",
-                                        "orig": "id",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/TouristicAttraction/{id}",
@@ -1551,19 +1641,31 @@ class Config {
                                     "var": "id"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "id"
-                                ]
-                            },
+                            "parts": [
+                                "TouristicAttraction",
+                                "{id}"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "TouristicAttraction",
-                                "{id}"
-                            ]
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "id",
+                                        "orig": "id",
+                                        "type": "`$INTEGER`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "id"
+                                ]
+                            }
                         }
                     ]
                 }
@@ -1576,33 +1678,39 @@ class Config {
             "fields": [
                 {
                     "name": "departmentId",
-                    "short": "Department ID",
-                    "type": "`$INTEGER`"
+                    "title": "Department Id",
+                    "type": "`$INTEGER`",
+                    "short": "Department ID"
                 },
                 {
                     "name": "description",
-                    "short": "Dish description",
-                    "type": "`$STRING`"
+                    "title": "Description",
+                    "type": "`$STRING`",
+                    "short": "Dish description"
                 },
                 {
                     "name": "id",
-                    "short": "Typical dish ID",
-                    "type": "`$INTEGER`"
+                    "title": "Id",
+                    "type": "`$INTEGER`",
+                    "short": "Typical dish ID"
                 },
                 {
                     "name": "ingredients",
-                    "short": "List of ingredients",
-                    "type": "`$ARRAY`"
+                    "title": "Ingredients",
+                    "type": "`$ARRAY`",
+                    "short": "List of ingredients"
                 },
                 {
                     "name": "name",
-                    "short": "Dish name",
-                    "type": "`$STRING`"
+                    "title": "Name",
+                    "type": "`$STRING`",
+                    "short": "Dish name"
                 },
                 {
                     "name": "urlImage",
-                    "short": "URL to dish image",
-                    "type": "`$STRING`"
+                    "title": "Url Image",
+                    "type": "`$STRING`",
+                    "short": "URL to dish image"
                 }
             ],
             "id": {
@@ -1616,7 +1724,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {},
                             "kind": "http",
                             "method": "GET",
                             "orig": "/TypicalDish",
@@ -1625,14 +1732,16 @@ class Config {
                                     "lit": "TypicalDish"
                                 }
                             ],
-                            "select": {},
+                            "parts": [
+                                "TypicalDish"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "TypicalDish"
-                            ]
+                            "args": {},
+                            "select": {}
                         }
                     ]
                 },
@@ -1641,17 +1750,6 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "id",
-                                        "orig": "id",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/TypicalDish/{id}",
@@ -1663,19 +1761,31 @@ class Config {
                                     "var": "id"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "id"
-                                ]
-                            },
+                            "parts": [
+                                "TypicalDish",
+                                "{id}"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "TypicalDish",
-                                "{id}"
-                            ]
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "id",
+                                        "orig": "id",
+                                        "type": "`$INTEGER`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "id"
+                                ]
+                            }
                         }
                     ]
                 }

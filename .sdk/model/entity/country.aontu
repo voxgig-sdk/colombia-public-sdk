@@ -1,0 +1,106 @@
+# Entity: country
+
+main: kit: entity: country: {
+
+  alias: field: {}
+
+  fields: {
+    capital: {
+      h: "Capital"
+      n: "capital"
+      r: false
+      sh: "Capital city"
+      t: "`$STRING`"
+    }
+    currency: {
+      h: "Currency"
+      n: "currency"
+      r: false
+      sh: "Currency"
+      t: "`$STRING`"
+    }
+    flag: {
+      h: "Flag"
+      n: "flag"
+      r: false
+      sh: "URL to flag image"
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "Country ID"
+      t: "`$INTEGER`"
+    }
+    languages: {
+      h: "Languages"
+      n: "languages"
+      r: false
+      sh: "Official languages"
+      t: "`$ARRAY`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "Country name"
+      t: "`$STRING`"
+    }
+    population: {
+      h: "Population"
+      n: "population"
+      r: false
+      sh: "Total population"
+      t: "`$INTEGER`"
+    }
+    surface: {
+      h: "Surface"
+      n: "surface"
+      r: false
+      sh: "Surface area in square kilometers"
+      t: "`$NUMBER`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "country"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /Country/Colombia"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/Country/Colombia"
+          q: {
+            "$action": "colombia"
+          }
+          s: [
+            {
+              lit: "Country"
+            }
+            {
+              lit: "Colombia"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.languages`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -37,57 +37,8 @@
   "requests": {
     "GET /Map": {
       "provenance": "operation-contract",
-      "contract": {
-        "operationId": "getMaps",
-        "parameters": [],
-        "protocol": "http",
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "items": {
-                    "properties": {
-                      "departmentId": {
-                        "description": "Department ID",
-                        "type": "integer"
-                      },
-                      "description": {
-                        "description": "Map description",
-                        "type": "string"
-                      },
-                      "id": {
-                        "description": "Map ID",
-                        "type": "integer"
-                      },
-                      "name": {
-                        "description": "Map name",
-                        "type": "string"
-                      },
-                      "urlImages": {
-                        "description": "URLs to map images",
-                        "items": {
-                          "type": "string"
-                        },
-                        "type": "array"
-                      }
-                    },
-                    "type": "object"
-                  },
-                  "type": "array"
-                }
-              }
-            },
-            "description": "Successful response with map information"
-          },
-          "500": {
-            "description": "Internal server error"
-          }
-        },
-        "security": [],
-        "securitySchemes": {},
-        "securitySource": "definition"
-      }
+      "version": 2,
+      "source": "openapi3"
     }
   }
 }

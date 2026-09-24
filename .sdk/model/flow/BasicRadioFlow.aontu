@@ -1,0 +1,44 @@
+# BasicRadioFlow
+
+main: kit: flow: BasicRadioFlow:
+{
+  entity: "radio",
+  kind: "basic",
+  name: "BasicRadioFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "radio_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "radio_ref01",
+        srcdatavar: "radio_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "radio01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-radio_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicRadioFlow"
+}
