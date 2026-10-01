@@ -33,6 +33,8 @@ require_relative 'transform_response'
 
 ColombiaPublicUtility.registrar = ->(u) {
   u.clean = ColombiaPublicUtilities::Clean
+  u.clean_add = ColombiaPublicUtilities::CleanAdd
+  u.clean_explain = ColombiaPublicUtilities::CleanExplain
   u.done = ColombiaPublicUtilities::Done
   u.make_error = ColombiaPublicUtilities::MakeError
   u.feature_add = ColombiaPublicUtilities::FeatureAdd

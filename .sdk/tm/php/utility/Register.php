@@ -37,6 +37,8 @@ require_once __DIR__ . '/TransformResponse.php';
 
 ColombiaPublicUtility::setRegistrar(function (ColombiaPublicUtility $u): void {
     $u->clean = [ColombiaPublicClean::class, 'call'];
+    $u->clean_add = [ColombiaPublicClean::class, 'add'];
+    $u->clean_explain = [ColombiaPublicDone::class, 'clean_explain'];
     $u->done = [ColombiaPublicDone::class, 'call'];
     $u->make_error = [ColombiaPublicMakeError::class, 'call'];
     $u->feature_add = [ColombiaPublicFeatureAdd::class, 'call'];
