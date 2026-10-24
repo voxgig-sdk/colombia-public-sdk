@@ -67,6 +67,10 @@ main: kit: entity: invasive_specie: {
           }
           m: "GET"
           o: "/InvasiveSpecie"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "InvasiveSpecie"
@@ -105,6 +109,10 @@ main: kit: entity: invasive_specie: {
             exist: [
               "id"
             ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

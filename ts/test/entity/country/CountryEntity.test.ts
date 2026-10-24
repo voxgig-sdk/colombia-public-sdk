@@ -9,7 +9,7 @@ import { createLiveTransport } from '../../live-runner'
 import { runLiveEntity } from '../../live-entity'
 
 
-import { ColombiaPublicSDK, BaseFeature, stdutil } from '../../..'
+import { ColombiaPublicSDK, BaseFeature, config, stdutil } from '../../..'
 
 import {
   envOverride,
@@ -41,6 +41,64 @@ describe('CountryEntity', async () => {
   })
 
 
+  class FailHook extends BaseFeature {
+    name = 'failhook'
+    version = '0.0.1'
+    active = true
+    unexpected = 0
+    init() { }
+    PreSpec() { throw new Error('country hook failed') }
+    PreUnexpected() { this.unexpected++ }
+  }
+
+  test('stream-error', async () => {
+    const offline = { net: { offline: true } }
+    await assert.rejects(async () => {
+      for await (const _item of ColombiaPublicSDK.test(offline).Country().stream('list')) { }
+    }, /offline/)
+
+    for await (const _item of ColombiaPublicSDK.test(offline).Country()
+      .stream('list', undefined, { ctrl: { throw: false } })) { }
+
+    if (null != (config as any).feature?.rbac) {
+      const denied = ColombiaPublicSDK.test(undefined, { feature: { rbac: { active: true, deny: true } } })
+      await assert.rejects(async () => {
+        for await (const _item of denied.Country().stream('list')) { }
+      }, (err: any) => 'rbac_denied' === err.code)
+    }
+  })
+
+  test('stream-ctrl', async () => {
+    const explain: any = {}
+    const ctrl: any = { explain }
+    for await (const _item of ColombiaPublicSDK.test().Country().stream('list', undefined, { ctrl })) { }
+    assert.deepStrictEqual(Object.keys(ctrl), ['explain'])
+    assert(explain === ctrl.explain && 0 < Object.keys(explain).length)
+  })
+
+  test('unexpected', async () => {
+    const hook = new FailHook()
+    const client = new ColombiaPublicSDK({ feature: { test: { active: true } }, extend: [hook] })
+    await assert.rejects(client.Country().list(), /hook failed/)
+    assert(0 < hook.unexpected)
+
+    const fired = hook.unexpected
+    assert.strictEqual(await client.Country().list(undefined, { throw: false }), undefined)
+    assert(fired < hook.unexpected)
+  })
+
+  test('validate', async (t) => {
+    if (null == (config as any).feature?.validate) {
+      t.skip('feature not present in this SDK: validate')
+      return
+    }
+    const client = ColombiaPublicSDK.test(undefined, { feature: { validate: { active: true } } })
+    await assert.rejects(client.Country().list({"capital":1} as any),
+      (err: any) => 'validate_failed' === err.code)
+  })
+
+
+
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.COLOMBIA_PUBLIC_TEST_LIVE
@@ -51,7 +109,7 @@ describe('CountryEntity', async () => {
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"capital":{"a":true,"h":"Capital","n":"capital","r":false,"sh":"Capital city","t":"`$STRING`","key$":"capital","index$":0},"currency":{"a":true,"h":"Currency","n":"currency","r":false,"sh":"Currency","t":"`$STRING`","key$":"currency","index$":1},"flag":{"a":true,"h":"Flag","n":"flag","r":false,"sh":"URL to flag image","t":"`$STRING`","key$":"flag","index$":2},"id":{"a":true,"h":"Id","n":"id","r":false,"sh":"Country ID","t":"`$INTEGER`","key$":"id","index$":3},"languages":{"a":true,"h":"Languages","n":"languages","r":false,"sh":"Official languages","t":"`$ARRAY`","key$":"languages","index$":4},"name":{"a":true,"h":"Name","n":"name","r":false,"sh":"Country name","t":"`$STRING`","key$":"name","index$":5},"population":{"a":true,"h":"Population","n":"population","r":false,"sh":"Total population","t":"`$INTEGER`","key$":"population","index$":6},"surface":{"a":true,"h":"Surface","n":"surface","r":false,"sh":"Surface area in square kilometers","t":"`$NUMBER`","key$":"surface","index$":7}},"id":{"field":"id","name":"id"},"name":"country","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /Country/Colombia","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/Country/Colombia","q":{"$action":"colombia"},"r":{},"s":[{"lit":"Country"},{"lit":"Colombia"}],"t":{"req":"`reqdata`","res":"`body.languages`"},"index$":0}],"key$":"list"}},"relations":{"ancestors":[]},"key$":"country","name__orig":"country","Name":"Country","name_":"country","name-":"country","NAME":"COUNTRY","index$":3}, {"active":true,"entity":"country","key$":"BasicCountryFlow","kind":"basic","name":"BasicCountryFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"country_ref01"}}],"index$":0}]}, 'Country', {"GET /Country/Colombia":{"protocol":"http","parameters":[]}})
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"capital":{"a":true,"h":"Capital","n":"capital","r":false,"sh":"Capital city","t":"`$STRING`","key$":"capital","index$":0},"currency":{"a":true,"h":"Currency","n":"currency","r":false,"sh":"Currency","t":"`$STRING`","key$":"currency","index$":1},"flag":{"a":true,"h":"Flag","n":"flag","r":false,"sh":"URL to flag image","t":"`$STRING`","key$":"flag","index$":2},"id":{"a":true,"h":"Id","n":"id","r":false,"sh":"Country ID","t":"`$INTEGER`","key$":"id","index$":3},"languages":{"a":true,"h":"Languages","n":"languages","r":false,"sh":"Official languages","t":"`$ARRAY`","key$":"languages","index$":4},"name":{"a":true,"h":"Name","n":"name","r":false,"sh":"Country name","t":"`$STRING`","key$":"name","index$":5},"population":{"a":true,"h":"Population","n":"population","r":false,"sh":"Total population","t":"`$INTEGER`","key$":"population","index$":6},"surface":{"a":true,"h":"Surface","n":"surface","r":false,"sh":"Surface area in square kilometers","t":"`$NUMBER`","key$":"surface","index$":7}},"id":{"field":"id","name":"id"},"name":"country","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /Country/Colombia","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/Country/Colombia","q":{"$action":"colombia"},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"Country"},{"lit":"Colombia"}],"t":{"req":"`reqdata`","res":"`body.languages`"},"index$":0}],"key$":"list"}},"relations":{"ancestors":[]},"key$":"country","name__orig":"country","Name":"Country","name_":"country","name-":"country","NAME":"COUNTRY","index$":3}, {"active":true,"entity":"country","key$":"BasicCountryFlow","kind":"basic","name":"BasicCountryFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"country_ref01"}}],"index$":0}]}, 'Country', {"GET /Country/Colombia":{"protocol":"http","parameters":[]}}, { strict: LIVE_STRICT, t })
     }
     const client = setup.client
     const struct = setup.struct
@@ -72,6 +130,12 @@ describe('CountryEntity', async () => {
 })
 
 
+
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true
 
 function basicSetup(extra?: any) {
   // TODO: fix test def options

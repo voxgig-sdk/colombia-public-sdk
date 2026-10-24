@@ -81,6 +81,10 @@ main: kit: entity: department: {
           }
           m: "GET"
           o: "/Department"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "Department"
@@ -119,6 +123,10 @@ main: kit: entity: department: {
             exist: [
               "id"
             ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

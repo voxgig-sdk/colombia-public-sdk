@@ -46,6 +46,10 @@ main: kit: entity: category_natural_area: {
           }
           m: "GET"
           o: "/CategoryNaturalArea"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "CategoryNaturalArea"

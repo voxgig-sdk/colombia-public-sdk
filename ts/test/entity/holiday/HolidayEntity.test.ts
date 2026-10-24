@@ -9,7 +9,7 @@ import { createLiveTransport } from '../../live-runner'
 import { runLiveEntity } from '../../live-entity'
 
 
-import { ColombiaPublicSDK, BaseFeature, stdutil } from '../../..'
+import { ColombiaPublicSDK, BaseFeature, config, stdutil } from '../../..'
 
 import {
   envOverride,
@@ -41,6 +41,64 @@ describe('HolidayEntity', async () => {
   })
 
 
+  class FailHook extends BaseFeature {
+    name = 'failhook'
+    version = '0.0.1'
+    active = true
+    unexpected = 0
+    init() { }
+    PreSpec() { throw new Error('holiday hook failed') }
+    PreUnexpected() { this.unexpected++ }
+  }
+
+  test('stream-error', async () => {
+    const offline = { net: { offline: true } }
+    await assert.rejects(async () => {
+      for await (const _item of ColombiaPublicSDK.test(offline).Holiday().stream('list')) { }
+    }, /offline/)
+
+    for await (const _item of ColombiaPublicSDK.test(offline).Holiday()
+      .stream('list', undefined, { ctrl: { throw: false } })) { }
+
+    if (null != (config as any).feature?.rbac) {
+      const denied = ColombiaPublicSDK.test(undefined, { feature: { rbac: { active: true, deny: true } } })
+      await assert.rejects(async () => {
+        for await (const _item of denied.Holiday().stream('list')) { }
+      }, (err: any) => 'rbac_denied' === err.code)
+    }
+  })
+
+  test('stream-ctrl', async () => {
+    const explain: any = {}
+    const ctrl: any = { explain }
+    for await (const _item of ColombiaPublicSDK.test().Holiday().stream('list', undefined, { ctrl })) { }
+    assert.deepStrictEqual(Object.keys(ctrl), ['explain'])
+    assert(explain === ctrl.explain && 0 < Object.keys(explain).length)
+  })
+
+  test('unexpected', async () => {
+    const hook = new FailHook()
+    const client = new ColombiaPublicSDK({ feature: { test: { active: true } }, extend: [hook] })
+    await assert.rejects(client.Holiday().list(), /hook failed/)
+    assert(0 < hook.unexpected)
+
+    const fired = hook.unexpected
+    assert.strictEqual(await client.Holiday().list(undefined, { throw: false }), undefined)
+    assert(fired < hook.unexpected)
+  })
+
+  test('validate', async (t) => {
+    if (null == (config as any).feature?.validate) {
+      t.skip('feature not present in this SDK: validate')
+      return
+    }
+    const client = ColombiaPublicSDK.test(undefined, { feature: { validate: { active: true } } })
+    await assert.rejects(client.Holiday().list({"date":1} as any),
+      (err: any) => 'validate_failed' === err.code)
+  })
+
+
+
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.COLOMBIA_PUBLIC_TEST_LIVE
@@ -51,7 +109,7 @@ describe('HolidayEntity', async () => {
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"date":{"a":true,"fo":"date","h":"Date","n":"date","r":false,"sh":"Holiday date","t":"`$STRING`","key$":"date","index$":0},"description":{"a":true,"h":"Description","n":"description","r":false,"sh":"Holiday description","t":"`$STRING`","key$":"description","index$":1},"id":{"a":true,"h":"Id","n":"id","r":false,"sh":"Holiday ID","t":"`$INTEGER`","key$":"id","index$":2},"name":{"a":true,"h":"Name","n":"name","r":false,"sh":"Holiday name","t":"`$STRING`","key$":"name","index$":3},"type":{"a":true,"h":"Type","n":"type","r":false,"sh":"Holiday type (religious, civic, etc.)","t":"`$STRING`","key$":"type","index$":4}},"id":{"field":"id","name":"id"},"name":"holiday","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /Holiday","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/Holiday","q":{},"r":{},"s":[{"lit":"Holiday"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"list"},"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /Holiday/{id}","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"id","r":true,"t":"`$INTEGER`","index$":0}]},"k":"http","m":"GET","o":"/Holiday/{id}","q":{"exist":["id"]},"r":{},"s":[{"lit":"Holiday"},{"var":"id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"holiday","name__orig":"holiday","Name":"Holiday","name_":"holiday","name-":"holiday","NAME":"HOLIDAY","index$":5}, {"active":true,"entity":"holiday","key$":"BasicHolidayFlow","kind":"basic","name":"BasicHolidayFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"holiday_ref01"}}],"index$":0},{"a":true,"d":{},"i":{"ref":"holiday_ref01","srcdatavar":"holiday_ref01_data","suffix":"_dt0"},"m":{"id":"holiday01"},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-holiday_ref01"}}],"index$":1}]}, 'Holiday', {"GET /Holiday":{"protocol":"http","parameters":[]},"GET /Holiday/{id}":{"protocol":"http","parameters":[{"name":"id","in":"path","required":true,"description":"Holiday ID","schema":{"type":"integer"},"index$":0}]}})
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"date":{"a":true,"fo":"date","h":"Date","n":"date","r":false,"sh":"Holiday date","t":"`$STRING`","key$":"date","index$":0},"description":{"a":true,"h":"Description","n":"description","r":false,"sh":"Holiday description","t":"`$STRING`","key$":"description","index$":1},"id":{"a":true,"h":"Id","n":"id","r":false,"sh":"Holiday ID","t":"`$INTEGER`","key$":"id","index$":2},"name":{"a":true,"h":"Name","n":"name","r":false,"sh":"Holiday name","t":"`$STRING`","key$":"name","index$":3},"type":{"a":true,"h":"Type","n":"type","r":false,"sh":"Holiday type (religious, civic, etc.)","t":"`$STRING`","key$":"type","index$":4}},"id":{"field":"id","name":"id"},"name":"holiday","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /Holiday","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/Holiday","q":{},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"Holiday"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"list"},"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /Holiday/{id}","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"id","r":true,"t":"`$INTEGER`","index$":0}]},"k":"http","m":"GET","o":"/Holiday/{id}","q":{"exist":["id"]},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"Holiday"},{"var":"id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"holiday","name__orig":"holiday","Name":"Holiday","name_":"holiday","name-":"holiday","NAME":"HOLIDAY","index$":5}, {"active":true,"entity":"holiday","key$":"BasicHolidayFlow","kind":"basic","name":"BasicHolidayFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"holiday_ref01"}}],"index$":0},{"a":true,"d":{},"i":{"ref":"holiday_ref01","srcdatavar":"holiday_ref01_data","suffix":"_dt0"},"m":{"id":"holiday01"},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-holiday_ref01"}}],"index$":1}]}, 'Holiday', {"GET /Holiday":{"protocol":"http","parameters":[]},"GET /Holiday/{id}":{"protocol":"http","parameters":[{"name":"id","in":"path","required":true,"description":"Holiday ID","schema":{"type":"integer"},"index$":0}]}}, { strict: LIVE_STRICT, t })
     }
     const client = setup.client
     const struct = setup.struct
@@ -79,6 +137,12 @@ describe('HolidayEntity', async () => {
 })
 
 
+
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true
 
 function basicSetup(extra?: any) {
   // TODO: fix test def options

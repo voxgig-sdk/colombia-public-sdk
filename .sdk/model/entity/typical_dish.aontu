@@ -67,6 +67,10 @@ main: kit: entity: typical_dish: {
           }
           m: "GET"
           o: "/TypicalDish"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "TypicalDish"
@@ -105,6 +109,10 @@ main: kit: entity: typical_dish: {
             exist: [
               "id"
             ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

@@ -60,6 +60,10 @@ main: kit: entity: map: {
           }
           m: "GET"
           o: "/Map"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "Map"

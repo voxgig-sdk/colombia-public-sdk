@@ -74,6 +74,10 @@ main: kit: entity: touristic_attraction: {
           }
           m: "GET"
           o: "/TouristicAttraction"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "TouristicAttraction"
@@ -112,6 +116,10 @@ main: kit: entity: touristic_attraction: {
             exist: [
               "id"
             ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

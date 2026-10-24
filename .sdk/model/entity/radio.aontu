@@ -60,6 +60,10 @@ main: kit: entity: radio: {
           }
           m: "GET"
           o: "/Radio"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "Radio"
@@ -98,6 +102,10 @@ main: kit: entity: radio: {
             exist: [
               "id"
             ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

@@ -16,7 +16,7 @@ go get github.com/voxgig-sdk/colombia-public-sdk/go@latest
 ```
 
 The Go module proxy resolves the version from the `go/vX.Y.Z` GitHub
-release tag — see [Releases](https://github.com/voxgig-sdk/colombia-public-sdk/releases) for the available versions.
+release tag — see [Tags](https://github.com/voxgig-sdk/colombia-public-sdk/tags) for the available versions.
 
 To vendor from a local checkout instead, clone this repo alongside your
 project and add a `replace` directive pointing at the checked-out
@@ -35,9 +35,10 @@ loading a specific record.
 ### Quickstart
 
 A complete program: create a client, then call the entity operations.
-Each operation returns `(value, error)` — the value is the data itself
-(there is no `{ok, data}` wrapper), so check `err` and use the value
-directly.
+Each operation returns `(value, error)` — the value is the entity, and for
+`List` a `[]any` of entities, one per record (there is no `{ok, data}`
+wrapper), so check `err` and read a record through the entity's
+`Data()`.
 
 ```go
 package main
@@ -50,21 +51,21 @@ import (
 func main() {
     client := sdk.New()
 
-    // List airport records — the value is the array of records itself.
+    // List airport records — the value is a []any of entities, one per record.
     airports, err := client.Airport(nil).List(nil, nil)
     if err != nil {
         panic(err)
     }
     for _, item := range airports.([]any) {
-        fmt.Println(item)
+        fmt.Println(item.(sdk.Entity).Data())
     }
 
-    // Load a single airport — the value is the loaded record.
+    // Load a single airport — the value is the entity; Data() reads its record.
     airport, err := client.Airport(nil).Load(map[string]any{"id": 1}, nil)
     if err != nil {
         panic(err)
     }
-    fmt.Println(airport)
+    fmt.Println(airport.(sdk.Entity).Data())
 }
 ```
 
@@ -144,13 +145,16 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-typicalDish, err := client.TypicalDish(nil).List(
+typicalDishs, err := client.TypicalDish(nil).List(
     nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(typicalDish) // the returned mock data
+// A []any of entities, one per mock record.
+for _, item := range typicalDishs.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 ### Use a custom fetch function
@@ -249,8 +253,8 @@ All entities implement the `ColombiaPublicEntity` interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `Load` | `(reqmatch, ctrl map[string]any) (any, error)` | Load a single entity by match criteria. |
-| `List` | `(reqmatch, ctrl map[string]any) (any, error)` | List entities matching the criteria. |
+| `Load` | `(reqmatch, ctrl map[string]any) (any, error)` | Load a single entity by match criteria, and return it. |
+| `List` | `(reqmatch, ctrl map[string]any) (any, error)` | List entities matching the criteria, one per record. |
 | `Data` | `(args ...any) any` | Get or set entity data. |
 | `Match` | `(args ...any) any` | Get or set entity match criteria. |
 | `Make` | `() Entity` | Create a new instance with the same options. |
@@ -258,21 +262,21 @@ All entities implement the `ColombiaPublicEntity` interface.
 
 ### Result shape
 
-Entity operations return `(value, error)`. The `value` is the
-operation's data **directly** — there is no wrapper:
+Entity operations return `(value, error)`. The `value` is the entity
+itself — there is no wrapper:
 
 | Operation | `value` |
 | --- | --- |
-| `Load` | the entity record (`map[string]any`) |
-| `List` | a `[]any` of entity records |
+| `Load` | the entity, whose `Data()` reads its record (`map[string]any`) |
+| `List` | a `[]any` of entities, one per record |
 
 Check `err` first, then use the value directly (or the typed
 `...Typed` variants, which return the entity's model struct and a typed
 slice):
 
-    airport, err := client.Airport(nil).List(map[string]any{/* fields */}, nil)
+    airport, err := client.Airport(nil).List(nil, nil)
     if err != nil { /* handle */ }
-    // airport is the returned record
+    // airport is a []any of entities, one per record
 
 Only `Direct()` returns a response envelope — a `map[string]any` with
 `"ok"`, `"status"`, `"headers"`, and `"data"` keys.
@@ -540,7 +544,7 @@ airport, err := client.Airport(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(airport) // the loaded record
+fmt.Println(airport.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 #### Example: List
@@ -550,7 +554,10 @@ airports, err := client.Airport(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(airports) // the array of records
+// A []any of entities, one per record.
+for _, item := range airports.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 
@@ -579,7 +586,10 @@ categoryNaturalAreas, err := client.CategoryNaturalArea(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(categoryNaturalAreas) // the array of records
+// A []any of entities, one per record.
+for _, item := range categoryNaturalAreas.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 
@@ -611,7 +621,7 @@ constitutionArticle, err := client.ConstitutionArticle(nil).Load(map[string]any{
 if err != nil {
     panic(err)
 }
-fmt.Println(constitutionArticle) // the loaded record
+fmt.Println(constitutionArticle.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 #### Example: List
@@ -621,7 +631,10 @@ constitutionArticles, err := client.ConstitutionArticle(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(constitutionArticles) // the array of records
+// A []any of entities, one per record.
+for _, item := range constitutionArticles.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 
@@ -655,7 +668,10 @@ countrys, err := client.Country(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(countrys) // the array of records
+// A []any of entities, one per record.
+for _, item := range countrys.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 
@@ -690,7 +706,7 @@ department, err := client.Department(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(department) // the loaded record
+fmt.Println(department.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 #### Example: List
@@ -700,7 +716,10 @@ departments, err := client.Department(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(departments) // the array of records
+// A []any of entities, one per record.
+for _, item := range departments.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 
@@ -732,7 +751,7 @@ holiday, err := client.Holiday(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(holiday) // the loaded record
+fmt.Println(holiday.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 #### Example: List
@@ -742,7 +761,10 @@ holidays, err := client.Holiday(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(holidays) // the array of records
+// A []any of entities, one per record.
+for _, item := range holidays.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 
@@ -775,7 +797,7 @@ invasiveSpecie, err := client.InvasiveSpecie(nil).Load(map[string]any{"id": 1}, 
 if err != nil {
     panic(err)
 }
-fmt.Println(invasiveSpecie) // the loaded record
+fmt.Println(invasiveSpecie.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 #### Example: List
@@ -785,7 +807,10 @@ invasiveSpecies, err := client.InvasiveSpecie(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(invasiveSpecies) // the array of records
+// A []any of entities, one per record.
+for _, item := range invasiveSpecies.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 
@@ -816,7 +841,10 @@ map_s, err := client.Map(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(map_s) // the array of records
+// A []any of entities, one per record.
+for _, item := range map_s.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 
@@ -848,7 +876,7 @@ nativeCommunity, err := client.NativeCommunity(nil).Load(map[string]any{"id": 1}
 if err != nil {
     panic(err)
 }
-fmt.Println(nativeCommunity) // the loaded record
+fmt.Println(nativeCommunity.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 #### Example: List
@@ -858,7 +886,10 @@ nativeCommunitys, err := client.NativeCommunity(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(nativeCommunitys) // the array of records
+// A []any of entities, one per record.
+for _, item := range nativeCommunitys.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 
@@ -893,7 +924,7 @@ naturalArea, err := client.NaturalArea(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(naturalArea) // the loaded record
+fmt.Println(naturalArea.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 #### Example: List
@@ -903,7 +934,10 @@ naturalAreas, err := client.NaturalArea(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(naturalAreas) // the array of records
+// A []any of entities, one per record.
+for _, item := range naturalAreas.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 
@@ -937,7 +971,7 @@ president, err := client.President(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(president) // the loaded record
+fmt.Println(president.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 #### Example: List
@@ -947,7 +981,10 @@ presidents, err := client.President(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(presidents) // the array of records
+// A []any of entities, one per record.
+for _, item := range presidents.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 
@@ -979,7 +1016,7 @@ radio, err := client.Radio(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(radio) // the loaded record
+fmt.Println(radio.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 #### Example: List
@@ -989,7 +1026,10 @@ radios, err := client.Radio(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(radios) // the array of records
+// A []any of entities, one per record.
+for _, item := range radios.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 
@@ -1020,7 +1060,7 @@ region, err := client.Region(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(region) // the loaded record
+fmt.Println(region.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 #### Example: List
@@ -1030,7 +1070,10 @@ regions, err := client.Region(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(regions) // the array of records
+// A []any of entities, one per record.
+for _, item := range regions.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 
@@ -1064,7 +1107,7 @@ touristicAttraction, err := client.TouristicAttraction(nil).Load(map[string]any{
 if err != nil {
     panic(err)
 }
-fmt.Println(touristicAttraction) // the loaded record
+fmt.Println(touristicAttraction.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 #### Example: List
@@ -1074,7 +1117,10 @@ touristicAttractions, err := client.TouristicAttraction(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(touristicAttractions) // the array of records
+// A []any of entities, one per record.
+for _, item := range touristicAttractions.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 
@@ -1107,7 +1153,7 @@ typicalDish, err := client.TypicalDish(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(typicalDish) // the loaded record
+fmt.Println(typicalDish.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 #### Example: List
@@ -1117,7 +1163,10 @@ typicalDishs, err := client.TypicalDish(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(typicalDishs) // the array of records
+// A []any of entities, one per record.
+for _, item := range typicalDishs.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 ## Features
@@ -1254,7 +1303,9 @@ The Go SDK uses `map[string]any` throughout rather than typed structs.
 This mirrors the dynamic nature of the API and keeps the SDK
 flexible — no code generation is needed when the API schema changes.
 
-Use `core.ToMapAny()` to safely cast results and nested data.
+An operation returns the entity, and its `Data()` returns the record. Use
+`core.ToMapAny()` to safely cast that record, or data nested in it, to
+`map[string]any`: it returns `nil` for anything else, an entity included.
 
 ### Package structure
 

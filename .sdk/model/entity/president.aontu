@@ -76,6 +76,10 @@ main: kit: entity: president: {
           }
           m: "GET"
           o: "/President"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "President"
@@ -114,6 +118,10 @@ main: kit: entity: president: {
             exist: [
               "id"
             ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

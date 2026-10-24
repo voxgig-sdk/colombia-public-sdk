@@ -60,6 +60,10 @@ main: kit: entity: constitution_article: {
           }
           m: "GET"
           o: "/ConstitutionArticle"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "ConstitutionArticle"
@@ -98,6 +102,10 @@ main: kit: entity: constitution_article: {
             exist: [
               "id"
             ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

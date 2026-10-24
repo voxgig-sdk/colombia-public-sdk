@@ -12,7 +12,7 @@ The SDK exposes the API as capitalised, semantic **Entities** — for example `c
 
 ## Install
 This package is not yet published to RubyGems. Install it from the
-GitHub release tag (`rb/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/colombia-public-sdk/releases)), or
+GitHub release tag (`rb/vX.Y.Z`, see [Tags](https://github.com/voxgig-sdk/colombia-public-sdk/tags)), or
 from a clone:
 
 ```bash
@@ -43,10 +43,11 @@ client = ColombiaPublicSDK.new
 
 ```ruby
 begin
-  # list returns an Array of Airport records — iterate directly.
+  # list returns an Array of Airport entities, one per record; data_get reads the record.
   airports = client.Airport.list
   airports.each do |item|
-    puts "#{item["id"]} #{item["cityId"]}"
+    record = item.data_get
+    puts "#{record["id"]} #{record["cityId"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -59,7 +60,7 @@ end
 begin
   # load returns the ENTITY — call data_get for the Airport record (raises on error).
   airport = client.Airport.load({ "id" => 1 })
-  puts airport
+  puts airport.data_get
 rescue => err
   warn "load failed: #{err}"
 end
@@ -140,13 +141,13 @@ data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
 client = ColombiaPublicSDK.test({
-  "entity" => { "typicaldish" => { "test01" => { "id" => "test01" } } },
+  "entity" => { "typical_dish" => { "test01" => { "id" => "test01" } } },
 })
 
-# Entity ops return the ENTITY (raises on error);
-# call data_get for the mock record.
-typicaldish = client.TypicalDish.list()
-puts typicaldish
+# list returns an Array of TypicalDish entities, one per mock record (raises on
+# error); data_get reads each record.
+typicaldishs = client.TypicalDish.list()
+typicaldishs.each { |item| puts item.data_get }
 ```
 
 ### Use a custom fetch function
@@ -244,8 +245,8 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `load` | `(reqmatch, ctrl) -> any` | Load a single entity by match criteria. Raises on error. |
-| `list` | `(reqmatch = nil, ctrl) -> Array` | List entities matching the criteria (call with no argument to list all). Raises on error. |
+| `load` | `(reqmatch, ctrl) -> any` | Load a single entity by match criteria, and return it. Raises on error. |
+| `list` | `(reqmatch = nil, ctrl) -> Array` | List entities matching the criteria (call with no argument to list all), one per record. Raises on error. |
 | `data_get` | `() -> Hash` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> Hash` | Get entity match criteria. |
@@ -255,9 +256,10 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the result data directly. On failure they
-raise a `ColombiaPublicError` (a `StandardError` subclass), so wrap
-calls in `begin`/`rescue` where you need to handle errors.
+Entity operations return the entity, and `list` an `Array` of entities, one
+per record; an entity's `data_get` reads its record. On failure they raise a
+`ColombiaPublicError` (a `StandardError` subclass), so wrap calls in
+`begin`/`rescue` where you need to handle errors.
 
 The `direct` escape hatch is the exception: it never raises and instead
 returns a result `Hash` with these keys:
@@ -536,8 +538,9 @@ airport = client.Airport.load({ "id" => 1 })
 #### Example: List
 
 ```ruby
-# list returns an Array of Airport records (raises on error).
+# list returns an Array of Airport entities, one per record (raises on error).
 airports = client.Airport.list
+airports.each { |item| puts item.data_get }
 ```
 
 
@@ -562,8 +565,9 @@ Create an instance: `category_natural_area = client.CategoryNaturalArea`
 #### Example: List
 
 ```ruby
-# list returns an Array of CategoryNaturalArea records (raises on error).
+# list returns an Array of CategoryNaturalArea entities, one per record (raises on error).
 category_natural_areas = client.CategoryNaturalArea.list
+category_natural_areas.each { |item| puts item.data_get }
 ```
 
 
@@ -598,8 +602,9 @@ constitution_article = client.ConstitutionArticle.load({ "id" => 1 })
 #### Example: List
 
 ```ruby
-# list returns an Array of ConstitutionArticle records (raises on error).
+# list returns an Array of ConstitutionArticle entities, one per record (raises on error).
 constitution_articles = client.ConstitutionArticle.list
+constitution_articles.each { |item| puts item.data_get }
 ```
 
 
@@ -629,8 +634,9 @@ Create an instance: `country = client.Country`
 #### Example: List
 
 ```ruby
-# list returns an Array of Country records (raises on error).
+# list returns an Array of Country entities, one per record (raises on error).
 countrys = client.Country.list
+countrys.each { |item| puts item.data_get }
 ```
 
 
@@ -668,8 +674,9 @@ department = client.Department.load({ "id" => 1 })
 #### Example: List
 
 ```ruby
-# list returns an Array of Department records (raises on error).
+# list returns an Array of Department entities, one per record (raises on error).
 departments = client.Department.list
+departments.each { |item| puts item.data_get }
 ```
 
 
@@ -704,8 +711,9 @@ holiday = client.Holiday.load({ "id" => 1 })
 #### Example: List
 
 ```ruby
-# list returns an Array of Holiday records (raises on error).
+# list returns an Array of Holiday entities, one per record (raises on error).
 holidays = client.Holiday.list
+holidays.each { |item| puts item.data_get }
 ```
 
 
@@ -741,8 +749,9 @@ invasive_specie = client.InvasiveSpecie.load({ "id" => 1 })
 #### Example: List
 
 ```ruby
-# list returns an Array of InvasiveSpecie records (raises on error).
+# list returns an Array of InvasiveSpecie entities, one per record (raises on error).
 invasive_species = client.InvasiveSpecie.list
+invasive_species.each { |item| puts item.data_get }
 ```
 
 
@@ -769,8 +778,9 @@ Create an instance: `map = client.Map`
 #### Example: List
 
 ```ruby
-# list returns an Array of Map records (raises on error).
+# list returns an Array of Map entities, one per record (raises on error).
 maps = client.Map.list
+maps.each { |item| puts item.data_get }
 ```
 
 
@@ -805,8 +815,9 @@ native_community = client.NativeCommunity.load({ "id" => 1 })
 #### Example: List
 
 ```ruby
-# list returns an Array of NativeCommunity records (raises on error).
+# list returns an Array of NativeCommunity entities, one per record (raises on error).
 native_communitys = client.NativeCommunity.list
+native_communitys.each { |item| puts item.data_get }
 ```
 
 
@@ -844,8 +855,9 @@ natural_area = client.NaturalArea.load({ "id" => 1 })
 #### Example: List
 
 ```ruby
-# list returns an Array of NaturalArea records (raises on error).
+# list returns an Array of NaturalArea entities, one per record (raises on error).
 natural_areas = client.NaturalArea.list
+natural_areas.each { |item| puts item.data_get }
 ```
 
 
@@ -882,8 +894,9 @@ president = client.President.load({ "id" => 1 })
 #### Example: List
 
 ```ruby
-# list returns an Array of President records (raises on error).
+# list returns an Array of President entities, one per record (raises on error).
 presidents = client.President.list
+presidents.each { |item| puts item.data_get }
 ```
 
 
@@ -918,8 +931,9 @@ radio = client.Radio.load({ "id" => 1 })
 #### Example: List
 
 ```ruby
-# list returns an Array of Radio records (raises on error).
+# list returns an Array of Radio entities, one per record (raises on error).
 radios = client.Radio.list
+radios.each { |item| puts item.data_get }
 ```
 
 
@@ -953,8 +967,9 @@ region = client.Region.load({ "id" => 1 })
 #### Example: List
 
 ```ruby
-# list returns an Array of Region records (raises on error).
+# list returns an Array of Region entities, one per record (raises on error).
 regions = client.Region.list
+regions.each { |item| puts item.data_get }
 ```
 
 
@@ -991,8 +1006,9 @@ touristic_attraction = client.TouristicAttraction.load({ "id" => 1 })
 #### Example: List
 
 ```ruby
-# list returns an Array of TouristicAttraction records (raises on error).
+# list returns an Array of TouristicAttraction entities, one per record (raises on error).
 touristic_attractions = client.TouristicAttraction.list
+touristic_attractions.each { |item| puts item.data_get }
 ```
 
 
@@ -1028,8 +1044,9 @@ typical_dish = client.TypicalDish.load({ "id" => 1 })
 #### Example: List
 
 ```ruby
-# list returns an Array of TypicalDish records (raises on error).
+# list returns an Array of TypicalDish entities, one per record (raises on error).
 typical_dishs = client.TypicalDish.list
+typical_dishs.each { |item| puts item.data_get }
 ```
 
 ## Features

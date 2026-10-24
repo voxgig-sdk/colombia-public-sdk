@@ -9,7 +9,7 @@ import { createLiveTransport } from '../../live-runner'
 import { runLiveEntity } from '../../live-entity'
 
 
-import { ColombiaPublicSDK, BaseFeature, stdutil } from '../../..'
+import { ColombiaPublicSDK, BaseFeature, config, stdutil } from '../../..'
 
 import {
   envOverride,
@@ -41,6 +41,64 @@ describe('CategoryNaturalAreaEntity', async () => {
   })
 
 
+  class FailHook extends BaseFeature {
+    name = 'failhook'
+    version = '0.0.1'
+    active = true
+    unexpected = 0
+    init() { }
+    PreSpec() { throw new Error('category_natural_area hook failed') }
+    PreUnexpected() { this.unexpected++ }
+  }
+
+  test('stream-error', async () => {
+    const offline = { net: { offline: true } }
+    await assert.rejects(async () => {
+      for await (const _item of ColombiaPublicSDK.test(offline).CategoryNaturalArea().stream('list')) { }
+    }, /offline/)
+
+    for await (const _item of ColombiaPublicSDK.test(offline).CategoryNaturalArea()
+      .stream('list', undefined, { ctrl: { throw: false } })) { }
+
+    if (null != (config as any).feature?.rbac) {
+      const denied = ColombiaPublicSDK.test(undefined, { feature: { rbac: { active: true, deny: true } } })
+      await assert.rejects(async () => {
+        for await (const _item of denied.CategoryNaturalArea().stream('list')) { }
+      }, (err: any) => 'rbac_denied' === err.code)
+    }
+  })
+
+  test('stream-ctrl', async () => {
+    const explain: any = {}
+    const ctrl: any = { explain }
+    for await (const _item of ColombiaPublicSDK.test().CategoryNaturalArea().stream('list', undefined, { ctrl })) { }
+    assert.deepStrictEqual(Object.keys(ctrl), ['explain'])
+    assert(explain === ctrl.explain && 0 < Object.keys(explain).length)
+  })
+
+  test('unexpected', async () => {
+    const hook = new FailHook()
+    const client = new ColombiaPublicSDK({ feature: { test: { active: true } }, extend: [hook] })
+    await assert.rejects(client.CategoryNaturalArea().list(), /hook failed/)
+    assert(0 < hook.unexpected)
+
+    const fired = hook.unexpected
+    assert.strictEqual(await client.CategoryNaturalArea().list(undefined, { throw: false }), undefined)
+    assert(fired < hook.unexpected)
+  })
+
+  test('validate', async (t) => {
+    if (null == (config as any).feature?.validate) {
+      t.skip('feature not present in this SDK: validate')
+      return
+    }
+    const client = ColombiaPublicSDK.test(undefined, { feature: { validate: { active: true } } })
+    await assert.rejects(client.CategoryNaturalArea().list({"description":1} as any),
+      (err: any) => 'validate_failed' === err.code)
+  })
+
+
+
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.COLOMBIA_PUBLIC_TEST_LIVE
@@ -51,7 +109,7 @@ describe('CategoryNaturalAreaEntity', async () => {
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"description":{"a":true,"h":"Description","n":"description","r":false,"sh":"Category description","t":"`$STRING`","key$":"description","index$":0},"id":{"a":true,"h":"Id","n":"id","r":false,"sh":"Category ID","t":"`$INTEGER`","key$":"id","index$":1},"name":{"a":true,"h":"Name","n":"name","r":false,"sh":"Category name","t":"`$STRING`","key$":"name","index$":2}},"id":{"field":"id","name":"id"},"name":"category_natural_area","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /CategoryNaturalArea","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/CategoryNaturalArea","q":{},"r":{},"s":[{"lit":"CategoryNaturalArea"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"list"}},"relations":{"ancestors":[]},"key$":"category_natural_area","name__orig":"category_natural_area","Name":"CategoryNaturalArea","name_":"category_natural_area","name-":"category-natural-area","NAME":"CATEGORY_NATURAL_AREA","index$":1}, {"active":true,"entity":"category_natural_area","key$":"BasicCategoryNaturalAreaFlow","kind":"basic","name":"BasicCategoryNaturalAreaFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"category_natural_area_ref01"}}],"index$":0}]}, 'CategoryNaturalArea', {"GET /CategoryNaturalArea":{"protocol":"http","parameters":[]}})
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"description":{"a":true,"h":"Description","n":"description","r":false,"sh":"Category description","t":"`$STRING`","key$":"description","index$":0},"id":{"a":true,"h":"Id","n":"id","r":false,"sh":"Category ID","t":"`$INTEGER`","key$":"id","index$":1},"name":{"a":true,"h":"Name","n":"name","r":false,"sh":"Category name","t":"`$STRING`","key$":"name","index$":2}},"id":{"field":"id","name":"id"},"name":"category_natural_area","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /CategoryNaturalArea","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/CategoryNaturalArea","q":{},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"CategoryNaturalArea"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"list"}},"relations":{"ancestors":[]},"key$":"category_natural_area","name__orig":"category_natural_area","Name":"CategoryNaturalArea","name_":"category_natural_area","name-":"category-natural-area","NAME":"CATEGORY_NATURAL_AREA","index$":1}, {"active":true,"entity":"category_natural_area","key$":"BasicCategoryNaturalAreaFlow","kind":"basic","name":"BasicCategoryNaturalAreaFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"category_natural_area_ref01"}}],"index$":0}]}, 'CategoryNaturalArea', {"GET /CategoryNaturalArea":{"protocol":"http","parameters":[]}}, { strict: LIVE_STRICT, t })
     }
     const client = setup.client
     const struct = setup.struct
@@ -72,6 +130,12 @@ describe('CategoryNaturalAreaEntity', async () => {
 })
 
 
+
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true
 
 function basicSetup(extra?: any) {
   // TODO: fix test def options

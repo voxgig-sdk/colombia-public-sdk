@@ -54,6 +54,53 @@ const utility_1 = require("../../utility");
         const ent = testsdk.NaturalArea();
         (0, node_assert_1.default)(null != ent);
     });
+    class FailHook extends __1.BaseFeature {
+        name = 'failhook';
+        version = '0.0.1';
+        active = true;
+        unexpected = 0;
+        init() { }
+        PreSpec() { throw new Error('natural_area hook failed'); }
+        PreUnexpected() { this.unexpected++; }
+    }
+    (0, node_test_1.test)('stream-error', async () => {
+        const offline = { net: { offline: true } };
+        await node_assert_1.default.rejects(async () => {
+            for await (const _item of __1.ColombiaPublicSDK.test(offline).NaturalArea().stream('list')) { }
+        }, /offline/);
+        for await (const _item of __1.ColombiaPublicSDK.test(offline).NaturalArea()
+            .stream('list', undefined, { ctrl: { throw: false } })) { }
+        if (null != __1.config.feature?.rbac) {
+            const denied = __1.ColombiaPublicSDK.test(undefined, { feature: { rbac: { active: true, deny: true } } });
+            await node_assert_1.default.rejects(async () => {
+                for await (const _item of denied.NaturalArea().stream('list')) { }
+            }, (err) => 'rbac_denied' === err.code);
+        }
+    });
+    (0, node_test_1.test)('stream-ctrl', async () => {
+        const explain = {};
+        const ctrl = { explain };
+        for await (const _item of __1.ColombiaPublicSDK.test().NaturalArea().stream('list', undefined, { ctrl })) { }
+        node_assert_1.default.deepStrictEqual(Object.keys(ctrl), ['explain']);
+        (0, node_assert_1.default)(explain === ctrl.explain && 0 < Object.keys(explain).length);
+    });
+    (0, node_test_1.test)('unexpected', async () => {
+        const hook = new FailHook();
+        const client = new __1.ColombiaPublicSDK({ feature: { test: { active: true } }, extend: [hook] });
+        await node_assert_1.default.rejects(client.NaturalArea().list(), /hook failed/);
+        (0, node_assert_1.default)(0 < hook.unexpected);
+        const fired = hook.unexpected;
+        node_assert_1.default.strictEqual(await client.NaturalArea().list(undefined, { throw: false }), undefined);
+        (0, node_assert_1.default)(fired < hook.unexpected);
+    });
+    (0, node_test_1.test)('validate', async (t) => {
+        if (null == __1.config.feature?.validate) {
+            t.skip('feature not present in this SDK: validate');
+            return;
+        }
+        const client = __1.ColombiaPublicSDK.test(undefined, { feature: { validate: { active: true } } });
+        await node_assert_1.default.rejects(client.NaturalArea().list({ "areaGroupId": "x" }), (err) => 'validate_failed' === err.code);
+    });
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.COLOMBIA_PUBLIC_TEST_LIVE;
         for (const op of ['list', 'load']) {
@@ -62,7 +109,7 @@ const utility_1 = require("../../utility");
         }
         const setup = basicSetup();
         if (setup.live) {
-            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": { "areaGroupId": { "a": true, "h": "Area Group Id", "n": "areaGroupId", "r": false, "sh": "Area group ID", "t": "`$INTEGER`", "key$": "areaGroupId", "index$": 0 }, "categoryNaturalAreaId": { "a": true, "h": "Category Natural Area Id", "n": "categoryNaturalAreaId", "r": false, "sh": "Category ID", "t": "`$INTEGER`", "key$": "categoryNaturalAreaId", "index$": 1 }, "departmentId": { "a": true, "h": "Department Id", "n": "departmentId", "r": false, "sh": "Department ID", "t": "`$INTEGER`", "key$": "departmentId", "index$": 2 }, "description": { "a": true, "h": "Description", "n": "description", "r": false, "sh": "Natural area description", "t": "`$STRING`", "key$": "description", "index$": 3 }, "id": { "a": true, "h": "Id", "n": "id", "r": false, "sh": "Natural area ID", "t": "`$INTEGER`", "key$": "id", "index$": 4 }, "landArea": { "a": true, "h": "Land Area", "n": "landArea", "r": false, "sh": "Land area in hectares", "t": "`$NUMBER`", "key$": "landArea", "index$": 5 }, "maritimeArea": { "a": true, "h": "Maritime Area", "n": "maritimeArea", "r": false, "sh": "Maritime area in hectares", "t": "`$NUMBER`", "key$": "maritimeArea", "index$": 6 }, "name": { "a": true, "h": "Name", "n": "name", "r": false, "sh": "Natural area name", "t": "`$STRING`", "key$": "name", "index$": 7 } }, "id": { "field": "id", "name": "id" }, "name": "natural_area", "op": { "list": { "input": "data", "name": "list", "points": [{ "a": true, "co": { "id": "GET /NaturalArea", "source": "openapi3", "version": 2 }, "g": {}, "k": "http", "m": "GET", "o": "/NaturalArea", "q": {}, "r": {}, "s": [{ "lit": "NaturalArea" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "list" }, "load": { "input": "data", "name": "load", "points": [{ "a": true, "co": { "id": "GET /NaturalArea/{id}", "source": "openapi3", "version": 2 }, "g": { "params": [{ "a": true, "k": "param", "n": "id", "or": "id", "r": true, "t": "`$INTEGER`", "index$": 0 }] }, "k": "http", "m": "GET", "o": "/NaturalArea/{id}", "q": { "exist": ["id"] }, "r": {}, "s": [{ "lit": "NaturalArea" }, { "var": "id" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "natural_area", "name__orig": "natural_area", "Name": "NaturalArea", "name_": "natural_area", "name-": "natural-area", "NAME": "NATURAL_AREA", "index$": 9 }, { "active": true, "entity": "natural_area", "key$": "BasicNaturalAreaFlow", "kind": "basic", "name": "BasicNaturalAreaFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": {}, "m": {}, "o": "list", "s": [], "v": [{ "apply": "ItemExists", "def": { "ref": "natural_area_ref01" } }], "index$": 0 }, { "a": true, "d": {}, "i": { "ref": "natural_area_ref01", "srcdatavar": "natural_area_ref01_data", "suffix": "_dt0" }, "m": { "id": "natural_area01" }, "o": "load", "s": [], "v": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-natural_area_ref01" } }], "index$": 1 }] }, 'NaturalArea', { "GET /NaturalArea": { "protocol": "http", "parameters": [] }, "GET /NaturalArea/{id}": { "protocol": "http", "parameters": [{ "name": "id", "in": "path", "required": true, "description": "Natural area ID", "schema": { "type": "integer" }, "index$": 0 }] } });
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": { "areaGroupId": { "a": true, "h": "Area Group Id", "n": "areaGroupId", "r": false, "sh": "Area group ID", "t": "`$INTEGER`", "key$": "areaGroupId", "index$": 0 }, "categoryNaturalAreaId": { "a": true, "h": "Category Natural Area Id", "n": "categoryNaturalAreaId", "r": false, "sh": "Category ID", "t": "`$INTEGER`", "key$": "categoryNaturalAreaId", "index$": 1 }, "departmentId": { "a": true, "h": "Department Id", "n": "departmentId", "r": false, "sh": "Department ID", "t": "`$INTEGER`", "key$": "departmentId", "index$": 2 }, "description": { "a": true, "h": "Description", "n": "description", "r": false, "sh": "Natural area description", "t": "`$STRING`", "key$": "description", "index$": 3 }, "id": { "a": true, "h": "Id", "n": "id", "r": false, "sh": "Natural area ID", "t": "`$INTEGER`", "key$": "id", "index$": 4 }, "landArea": { "a": true, "h": "Land Area", "n": "landArea", "r": false, "sh": "Land area in hectares", "t": "`$NUMBER`", "key$": "landArea", "index$": 5 }, "maritimeArea": { "a": true, "h": "Maritime Area", "n": "maritimeArea", "r": false, "sh": "Maritime area in hectares", "t": "`$NUMBER`", "key$": "maritimeArea", "index$": 6 }, "name": { "a": true, "h": "Name", "n": "name", "r": false, "sh": "Natural area name", "t": "`$STRING`", "key$": "name", "index$": 7 } }, "id": { "field": "id", "name": "id" }, "name": "natural_area", "op": { "list": { "input": "data", "name": "list", "points": [{ "a": true, "co": { "id": "GET /NaturalArea", "source": "openapi3", "version": 2 }, "g": {}, "k": "http", "m": "GET", "o": "/NaturalArea", "q": {}, "r": {}, "rs": { "kind": "json", "media": "application/json" }, "s": [{ "lit": "NaturalArea" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "list" }, "load": { "input": "data", "name": "load", "points": [{ "a": true, "co": { "id": "GET /NaturalArea/{id}", "source": "openapi3", "version": 2 }, "g": { "params": [{ "a": true, "k": "param", "n": "id", "or": "id", "r": true, "t": "`$INTEGER`", "index$": 0 }] }, "k": "http", "m": "GET", "o": "/NaturalArea/{id}", "q": { "exist": ["id"] }, "r": {}, "rs": { "kind": "json", "media": "application/json" }, "s": [{ "lit": "NaturalArea" }, { "var": "id" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "natural_area", "name__orig": "natural_area", "Name": "NaturalArea", "name_": "natural_area", "name-": "natural-area", "NAME": "NATURAL_AREA", "index$": 9 }, { "active": true, "entity": "natural_area", "key$": "BasicNaturalAreaFlow", "kind": "basic", "name": "BasicNaturalAreaFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": {}, "m": {}, "o": "list", "s": [], "v": [{ "apply": "ItemExists", "def": { "ref": "natural_area_ref01" } }], "index$": 0 }, { "a": true, "d": {}, "i": { "ref": "natural_area_ref01", "srcdatavar": "natural_area_ref01_data", "suffix": "_dt0" }, "m": { "id": "natural_area01" }, "o": "load", "s": [], "v": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-natural_area_ref01" } }], "index$": 1 }] }, 'NaturalArea', { "GET /NaturalArea": { "protocol": "http", "parameters": [] }, "GET /NaturalArea/{id}": { "protocol": "http", "parameters": [{ "name": "id", "in": "path", "required": true, "description": "Natural area ID", "schema": { "type": "integer" }, "index$": 0 }] } }, { strict: LIVE_STRICT, t });
         }
         const client = setup.client;
         const struct = setup.struct;
@@ -80,6 +127,11 @@ const utility_1 = require("../../utility");
         (0, node_assert_1.default)(natural_area_ref01_data_dt0.id === natural_area_ref01_data.id);
     });
 });
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true;
 function basicSetup(extra) {
     // TODO: fix test def options
     const options = {}; // null

@@ -81,6 +81,10 @@ main: kit: entity: natural_area: {
           }
           m: "GET"
           o: "/NaturalArea"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "NaturalArea"
@@ -119,6 +123,10 @@ main: kit: entity: natural_area: {
             exist: [
               "id"
             ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

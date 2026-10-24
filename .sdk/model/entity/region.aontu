@@ -53,6 +53,10 @@ main: kit: entity: region: {
           }
           m: "GET"
           o: "/Region"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "Region"
@@ -91,6 +95,10 @@ main: kit: entity: region: {
             exist: [
               "id"
             ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

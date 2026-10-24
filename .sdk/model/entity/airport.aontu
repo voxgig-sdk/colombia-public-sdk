@@ -81,6 +81,10 @@ main: kit: entity: airport: {
           }
           m: "GET"
           o: "/Airport"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "Airport"
@@ -119,6 +123,10 @@ main: kit: entity: airport: {
             exist: [
               "id"
             ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

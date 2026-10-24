@@ -84,6 +84,10 @@ main: kit: entity: country: {
           q: {
             "$action": "colombia"
           }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "Country"

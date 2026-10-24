@@ -9,7 +9,7 @@ import { createLiveTransport } from '../../live-runner'
 import { runLiveEntity } from '../../live-entity'
 
 
-import { ColombiaPublicSDK, BaseFeature, stdutil } from '../../..'
+import { ColombiaPublicSDK, BaseFeature, config, stdutil } from '../../..'
 
 import {
   envOverride,
@@ -41,6 +41,64 @@ describe('TouristicAttractionEntity', async () => {
   })
 
 
+  class FailHook extends BaseFeature {
+    name = 'failhook'
+    version = '0.0.1'
+    active = true
+    unexpected = 0
+    init() { }
+    PreSpec() { throw new Error('touristic_attraction hook failed') }
+    PreUnexpected() { this.unexpected++ }
+  }
+
+  test('stream-error', async () => {
+    const offline = { net: { offline: true } }
+    await assert.rejects(async () => {
+      for await (const _item of ColombiaPublicSDK.test(offline).TouristicAttraction().stream('list')) { }
+    }, /offline/)
+
+    for await (const _item of ColombiaPublicSDK.test(offline).TouristicAttraction()
+      .stream('list', undefined, { ctrl: { throw: false } })) { }
+
+    if (null != (config as any).feature?.rbac) {
+      const denied = ColombiaPublicSDK.test(undefined, { feature: { rbac: { active: true, deny: true } } })
+      await assert.rejects(async () => {
+        for await (const _item of denied.TouristicAttraction().stream('list')) { }
+      }, (err: any) => 'rbac_denied' === err.code)
+    }
+  })
+
+  test('stream-ctrl', async () => {
+    const explain: any = {}
+    const ctrl: any = { explain }
+    for await (const _item of ColombiaPublicSDK.test().TouristicAttraction().stream('list', undefined, { ctrl })) { }
+    assert.deepStrictEqual(Object.keys(ctrl), ['explain'])
+    assert(explain === ctrl.explain && 0 < Object.keys(explain).length)
+  })
+
+  test('unexpected', async () => {
+    const hook = new FailHook()
+    const client = new ColombiaPublicSDK({ feature: { test: { active: true } }, extend: [hook] })
+    await assert.rejects(client.TouristicAttraction().list(), /hook failed/)
+    assert(0 < hook.unexpected)
+
+    const fired = hook.unexpected
+    assert.strictEqual(await client.TouristicAttraction().list(undefined, { throw: false }), undefined)
+    assert(fired < hook.unexpected)
+  })
+
+  test('validate', async (t) => {
+    if (null == (config as any).feature?.validate) {
+      t.skip('feature not present in this SDK: validate')
+      return
+    }
+    const client = ColombiaPublicSDK.test(undefined, { feature: { validate: { active: true } } })
+    await assert.rejects(client.TouristicAttraction().list({"city":1} as any),
+      (err: any) => 'validate_failed' === err.code)
+  })
+
+
+
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.COLOMBIA_PUBLIC_TEST_LIVE
@@ -51,7 +109,7 @@ describe('TouristicAttractionEntity', async () => {
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"city":{"a":true,"h":"City","n":"city","r":false,"sh":"City where the attraction is located","t":"`$STRING`","key$":"city","index$":0},"description":{"a":true,"h":"Description","n":"description","r":false,"sh":"Attraction description","t":"`$STRING`","key$":"description","index$":1},"id":{"a":true,"h":"Id","n":"id","r":false,"sh":"Touristic attraction ID","t":"`$INTEGER`","key$":"id","index$":2},"images":{"a":true,"h":"Images","n":"images","r":false,"sh":"List of image URLs","t":"`$ARRAY`","key$":"images","index$":3},"latitude":{"a":true,"h":"Latitude","n":"latitude","r":false,"sh":"Latitude coordinate","t":"`$NUMBER`","key$":"latitude","index$":4},"longitude":{"a":true,"h":"Longitude","n":"longitude","r":false,"sh":"Longitude coordinate","t":"`$NUMBER`","key$":"longitude","index$":5},"name":{"a":true,"h":"Name","n":"name","r":false,"sh":"Attraction name","t":"`$STRING`","key$":"name","index$":6}},"id":{"field":"id","name":"id"},"name":"touristic_attraction","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /TouristicAttraction","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/TouristicAttraction","q":{},"r":{},"s":[{"lit":"TouristicAttraction"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"list"},"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /TouristicAttraction/{id}","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"id","r":true,"t":"`$INTEGER`","index$":0}]},"k":"http","m":"GET","o":"/TouristicAttraction/{id}","q":{"exist":["id"]},"r":{},"s":[{"lit":"TouristicAttraction"},{"var":"id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"touristic_attraction","name__orig":"touristic_attraction","Name":"TouristicAttraction","name_":"touristic_attraction","name-":"touristic-attraction","NAME":"TOURISTIC_ATTRACTION","index$":13}, {"active":true,"entity":"touristic_attraction","key$":"BasicTouristicAttractionFlow","kind":"basic","name":"BasicTouristicAttractionFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"touristic_attraction_ref01"}}],"index$":0},{"a":true,"d":{},"i":{"ref":"touristic_attraction_ref01","srcdatavar":"touristic_attraction_ref01_data","suffix":"_dt0"},"m":{"id":"touristic_attraction01"},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-touristic_attraction_ref01"}}],"index$":1}]}, 'TouristicAttraction', {"GET /TouristicAttraction":{"protocol":"http","parameters":[]},"GET /TouristicAttraction/{id}":{"protocol":"http","parameters":[{"name":"id","in":"path","required":true,"description":"Touristic attraction ID","schema":{"type":"integer"},"index$":0}]}})
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"city":{"a":true,"h":"City","n":"city","r":false,"sh":"City where the attraction is located","t":"`$STRING`","key$":"city","index$":0},"description":{"a":true,"h":"Description","n":"description","r":false,"sh":"Attraction description","t":"`$STRING`","key$":"description","index$":1},"id":{"a":true,"h":"Id","n":"id","r":false,"sh":"Touristic attraction ID","t":"`$INTEGER`","key$":"id","index$":2},"images":{"a":true,"h":"Images","n":"images","r":false,"sh":"List of image URLs","t":"`$ARRAY`","key$":"images","index$":3},"latitude":{"a":true,"h":"Latitude","n":"latitude","r":false,"sh":"Latitude coordinate","t":"`$NUMBER`","key$":"latitude","index$":4},"longitude":{"a":true,"h":"Longitude","n":"longitude","r":false,"sh":"Longitude coordinate","t":"`$NUMBER`","key$":"longitude","index$":5},"name":{"a":true,"h":"Name","n":"name","r":false,"sh":"Attraction name","t":"`$STRING`","key$":"name","index$":6}},"id":{"field":"id","name":"id"},"name":"touristic_attraction","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /TouristicAttraction","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/TouristicAttraction","q":{},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"TouristicAttraction"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"list"},"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /TouristicAttraction/{id}","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"id","r":true,"t":"`$INTEGER`","index$":0}]},"k":"http","m":"GET","o":"/TouristicAttraction/{id}","q":{"exist":["id"]},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"TouristicAttraction"},{"var":"id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"touristic_attraction","name__orig":"touristic_attraction","Name":"TouristicAttraction","name_":"touristic_attraction","name-":"touristic-attraction","NAME":"TOURISTIC_ATTRACTION","index$":13}, {"active":true,"entity":"touristic_attraction","key$":"BasicTouristicAttractionFlow","kind":"basic","name":"BasicTouristicAttractionFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"touristic_attraction_ref01"}}],"index$":0},{"a":true,"d":{},"i":{"ref":"touristic_attraction_ref01","srcdatavar":"touristic_attraction_ref01_data","suffix":"_dt0"},"m":{"id":"touristic_attraction01"},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-touristic_attraction_ref01"}}],"index$":1}]}, 'TouristicAttraction', {"GET /TouristicAttraction":{"protocol":"http","parameters":[]},"GET /TouristicAttraction/{id}":{"protocol":"http","parameters":[{"name":"id","in":"path","required":true,"description":"Touristic attraction ID","schema":{"type":"integer"},"index$":0}]}}, { strict: LIVE_STRICT, t })
     }
     const client = setup.client
     const struct = setup.struct
@@ -79,6 +137,12 @@ describe('TouristicAttractionEntity', async () => {
 })
 
 
+
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true
 
 function basicSetup(extra?: any) {
   // TODO: fix test def options

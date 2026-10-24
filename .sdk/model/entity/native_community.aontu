@@ -60,6 +60,10 @@ main: kit: entity: native_community: {
           }
           m: "GET"
           o: "/NativeCommunity"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "NativeCommunity"
@@ -98,6 +102,10 @@ main: kit: entity: native_community: {
             exist: [
               "id"
             ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

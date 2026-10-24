@@ -54,6 +54,53 @@ const utility_1 = require("../../utility");
         const ent = testsdk.TouristicAttraction();
         (0, node_assert_1.default)(null != ent);
     });
+    class FailHook extends __1.BaseFeature {
+        name = 'failhook';
+        version = '0.0.1';
+        active = true;
+        unexpected = 0;
+        init() { }
+        PreSpec() { throw new Error('touristic_attraction hook failed'); }
+        PreUnexpected() { this.unexpected++; }
+    }
+    (0, node_test_1.test)('stream-error', async () => {
+        const offline = { net: { offline: true } };
+        await node_assert_1.default.rejects(async () => {
+            for await (const _item of __1.ColombiaPublicSDK.test(offline).TouristicAttraction().stream('list')) { }
+        }, /offline/);
+        for await (const _item of __1.ColombiaPublicSDK.test(offline).TouristicAttraction()
+            .stream('list', undefined, { ctrl: { throw: false } })) { }
+        if (null != __1.config.feature?.rbac) {
+            const denied = __1.ColombiaPublicSDK.test(undefined, { feature: { rbac: { active: true, deny: true } } });
+            await node_assert_1.default.rejects(async () => {
+                for await (const _item of denied.TouristicAttraction().stream('list')) { }
+            }, (err) => 'rbac_denied' === err.code);
+        }
+    });
+    (0, node_test_1.test)('stream-ctrl', async () => {
+        const explain = {};
+        const ctrl = { explain };
+        for await (const _item of __1.ColombiaPublicSDK.test().TouristicAttraction().stream('list', undefined, { ctrl })) { }
+        node_assert_1.default.deepStrictEqual(Object.keys(ctrl), ['explain']);
+        (0, node_assert_1.default)(explain === ctrl.explain && 0 < Object.keys(explain).length);
+    });
+    (0, node_test_1.test)('unexpected', async () => {
+        const hook = new FailHook();
+        const client = new __1.ColombiaPublicSDK({ feature: { test: { active: true } }, extend: [hook] });
+        await node_assert_1.default.rejects(client.TouristicAttraction().list(), /hook failed/);
+        (0, node_assert_1.default)(0 < hook.unexpected);
+        const fired = hook.unexpected;
+        node_assert_1.default.strictEqual(await client.TouristicAttraction().list(undefined, { throw: false }), undefined);
+        (0, node_assert_1.default)(fired < hook.unexpected);
+    });
+    (0, node_test_1.test)('validate', async (t) => {
+        if (null == __1.config.feature?.validate) {
+            t.skip('feature not present in this SDK: validate');
+            return;
+        }
+        const client = __1.ColombiaPublicSDK.test(undefined, { feature: { validate: { active: true } } });
+        await node_assert_1.default.rejects(client.TouristicAttraction().list({ "city": 1 }), (err) => 'validate_failed' === err.code);
+    });
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.COLOMBIA_PUBLIC_TEST_LIVE;
         for (const op of ['list', 'load']) {
@@ -62,7 +109,7 @@ const utility_1 = require("../../utility");
         }
         const setup = basicSetup();
         if (setup.live) {
-            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": { "city": { "a": true, "h": "City", "n": "city", "r": false, "sh": "City where the attraction is located", "t": "`$STRING`", "key$": "city", "index$": 0 }, "description": { "a": true, "h": "Description", "n": "description", "r": false, "sh": "Attraction description", "t": "`$STRING`", "key$": "description", "index$": 1 }, "id": { "a": true, "h": "Id", "n": "id", "r": false, "sh": "Touristic attraction ID", "t": "`$INTEGER`", "key$": "id", "index$": 2 }, "images": { "a": true, "h": "Images", "n": "images", "r": false, "sh": "List of image URLs", "t": "`$ARRAY`", "key$": "images", "index$": 3 }, "latitude": { "a": true, "h": "Latitude", "n": "latitude", "r": false, "sh": "Latitude coordinate", "t": "`$NUMBER`", "key$": "latitude", "index$": 4 }, "longitude": { "a": true, "h": "Longitude", "n": "longitude", "r": false, "sh": "Longitude coordinate", "t": "`$NUMBER`", "key$": "longitude", "index$": 5 }, "name": { "a": true, "h": "Name", "n": "name", "r": false, "sh": "Attraction name", "t": "`$STRING`", "key$": "name", "index$": 6 } }, "id": { "field": "id", "name": "id" }, "name": "touristic_attraction", "op": { "list": { "input": "data", "name": "list", "points": [{ "a": true, "co": { "id": "GET /TouristicAttraction", "source": "openapi3", "version": 2 }, "g": {}, "k": "http", "m": "GET", "o": "/TouristicAttraction", "q": {}, "r": {}, "s": [{ "lit": "TouristicAttraction" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "list" }, "load": { "input": "data", "name": "load", "points": [{ "a": true, "co": { "id": "GET /TouristicAttraction/{id}", "source": "openapi3", "version": 2 }, "g": { "params": [{ "a": true, "k": "param", "n": "id", "or": "id", "r": true, "t": "`$INTEGER`", "index$": 0 }] }, "k": "http", "m": "GET", "o": "/TouristicAttraction/{id}", "q": { "exist": ["id"] }, "r": {}, "s": [{ "lit": "TouristicAttraction" }, { "var": "id" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "touristic_attraction", "name__orig": "touristic_attraction", "Name": "TouristicAttraction", "name_": "touristic_attraction", "name-": "touristic-attraction", "NAME": "TOURISTIC_ATTRACTION", "index$": 13 }, { "active": true, "entity": "touristic_attraction", "key$": "BasicTouristicAttractionFlow", "kind": "basic", "name": "BasicTouristicAttractionFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": {}, "m": {}, "o": "list", "s": [], "v": [{ "apply": "ItemExists", "def": { "ref": "touristic_attraction_ref01" } }], "index$": 0 }, { "a": true, "d": {}, "i": { "ref": "touristic_attraction_ref01", "srcdatavar": "touristic_attraction_ref01_data", "suffix": "_dt0" }, "m": { "id": "touristic_attraction01" }, "o": "load", "s": [], "v": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-touristic_attraction_ref01" } }], "index$": 1 }] }, 'TouristicAttraction', { "GET /TouristicAttraction": { "protocol": "http", "parameters": [] }, "GET /TouristicAttraction/{id}": { "protocol": "http", "parameters": [{ "name": "id", "in": "path", "required": true, "description": "Touristic attraction ID", "schema": { "type": "integer" }, "index$": 0 }] } });
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": { "city": { "a": true, "h": "City", "n": "city", "r": false, "sh": "City where the attraction is located", "t": "`$STRING`", "key$": "city", "index$": 0 }, "description": { "a": true, "h": "Description", "n": "description", "r": false, "sh": "Attraction description", "t": "`$STRING`", "key$": "description", "index$": 1 }, "id": { "a": true, "h": "Id", "n": "id", "r": false, "sh": "Touristic attraction ID", "t": "`$INTEGER`", "key$": "id", "index$": 2 }, "images": { "a": true, "h": "Images", "n": "images", "r": false, "sh": "List of image URLs", "t": "`$ARRAY`", "key$": "images", "index$": 3 }, "latitude": { "a": true, "h": "Latitude", "n": "latitude", "r": false, "sh": "Latitude coordinate", "t": "`$NUMBER`", "key$": "latitude", "index$": 4 }, "longitude": { "a": true, "h": "Longitude", "n": "longitude", "r": false, "sh": "Longitude coordinate", "t": "`$NUMBER`", "key$": "longitude", "index$": 5 }, "name": { "a": true, "h": "Name", "n": "name", "r": false, "sh": "Attraction name", "t": "`$STRING`", "key$": "name", "index$": 6 } }, "id": { "field": "id", "name": "id" }, "name": "touristic_attraction", "op": { "list": { "input": "data", "name": "list", "points": [{ "a": true, "co": { "id": "GET /TouristicAttraction", "source": "openapi3", "version": 2 }, "g": {}, "k": "http", "m": "GET", "o": "/TouristicAttraction", "q": {}, "r": {}, "rs": { "kind": "json", "media": "application/json" }, "s": [{ "lit": "TouristicAttraction" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "list" }, "load": { "input": "data", "name": "load", "points": [{ "a": true, "co": { "id": "GET /TouristicAttraction/{id}", "source": "openapi3", "version": 2 }, "g": { "params": [{ "a": true, "k": "param", "n": "id", "or": "id", "r": true, "t": "`$INTEGER`", "index$": 0 }] }, "k": "http", "m": "GET", "o": "/TouristicAttraction/{id}", "q": { "exist": ["id"] }, "r": {}, "rs": { "kind": "json", "media": "application/json" }, "s": [{ "lit": "TouristicAttraction" }, { "var": "id" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "touristic_attraction", "name__orig": "touristic_attraction", "Name": "TouristicAttraction", "name_": "touristic_attraction", "name-": "touristic-attraction", "NAME": "TOURISTIC_ATTRACTION", "index$": 13 }, { "active": true, "entity": "touristic_attraction", "key$": "BasicTouristicAttractionFlow", "kind": "basic", "name": "BasicTouristicAttractionFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": {}, "m": {}, "o": "list", "s": [], "v": [{ "apply": "ItemExists", "def": { "ref": "touristic_attraction_ref01" } }], "index$": 0 }, { "a": true, "d": {}, "i": { "ref": "touristic_attraction_ref01", "srcdatavar": "touristic_attraction_ref01_data", "suffix": "_dt0" }, "m": { "id": "touristic_attraction01" }, "o": "load", "s": [], "v": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-touristic_attraction_ref01" } }], "index$": 1 }] }, 'TouristicAttraction', { "GET /TouristicAttraction": { "protocol": "http", "parameters": [] }, "GET /TouristicAttraction/{id}": { "protocol": "http", "parameters": [{ "name": "id", "in": "path", "required": true, "description": "Touristic attraction ID", "schema": { "type": "integer" }, "index$": 0 }] } }, { strict: LIVE_STRICT, t });
         }
         const client = setup.client;
         const struct = setup.struct;
@@ -80,6 +127,11 @@ const utility_1 = require("../../utility");
         (0, node_assert_1.default)(touristic_attraction_ref01_data_dt0.id === touristic_attraction_ref01_data.id);
     });
 });
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true;
 function basicSetup(extra) {
     // TODO: fix test def options
     const options = {}; // null

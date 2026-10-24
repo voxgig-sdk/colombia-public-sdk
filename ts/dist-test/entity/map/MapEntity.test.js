@@ -54,6 +54,53 @@ const utility_1 = require("../../utility");
         const ent = testsdk.Map();
         (0, node_assert_1.default)(null != ent);
     });
+    class FailHook extends __1.BaseFeature {
+        name = 'failhook';
+        version = '0.0.1';
+        active = true;
+        unexpected = 0;
+        init() { }
+        PreSpec() { throw new Error('map hook failed'); }
+        PreUnexpected() { this.unexpected++; }
+    }
+    (0, node_test_1.test)('stream-error', async () => {
+        const offline = { net: { offline: true } };
+        await node_assert_1.default.rejects(async () => {
+            for await (const _item of __1.ColombiaPublicSDK.test(offline).Map().stream('list')) { }
+        }, /offline/);
+        for await (const _item of __1.ColombiaPublicSDK.test(offline).Map()
+            .stream('list', undefined, { ctrl: { throw: false } })) { }
+        if (null != __1.config.feature?.rbac) {
+            const denied = __1.ColombiaPublicSDK.test(undefined, { feature: { rbac: { active: true, deny: true } } });
+            await node_assert_1.default.rejects(async () => {
+                for await (const _item of denied.Map().stream('list')) { }
+            }, (err) => 'rbac_denied' === err.code);
+        }
+    });
+    (0, node_test_1.test)('stream-ctrl', async () => {
+        const explain = {};
+        const ctrl = { explain };
+        for await (const _item of __1.ColombiaPublicSDK.test().Map().stream('list', undefined, { ctrl })) { }
+        node_assert_1.default.deepStrictEqual(Object.keys(ctrl), ['explain']);
+        (0, node_assert_1.default)(explain === ctrl.explain && 0 < Object.keys(explain).length);
+    });
+    (0, node_test_1.test)('unexpected', async () => {
+        const hook = new FailHook();
+        const client = new __1.ColombiaPublicSDK({ feature: { test: { active: true } }, extend: [hook] });
+        await node_assert_1.default.rejects(client.Map().list(), /hook failed/);
+        (0, node_assert_1.default)(0 < hook.unexpected);
+        const fired = hook.unexpected;
+        node_assert_1.default.strictEqual(await client.Map().list(undefined, { throw: false }), undefined);
+        (0, node_assert_1.default)(fired < hook.unexpected);
+    });
+    (0, node_test_1.test)('validate', async (t) => {
+        if (null == __1.config.feature?.validate) {
+            t.skip('feature not present in this SDK: validate');
+            return;
+        }
+        const client = __1.ColombiaPublicSDK.test(undefined, { feature: { validate: { active: true } } });
+        await node_assert_1.default.rejects(client.Map().list({ "departmentId": "x" }), (err) => 'validate_failed' === err.code);
+    });
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.COLOMBIA_PUBLIC_TEST_LIVE;
         for (const op of ['list']) {
@@ -62,7 +109,7 @@ const utility_1 = require("../../utility");
         }
         const setup = basicSetup();
         if (setup.live) {
-            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": { "departmentId": { "a": true, "h": "Department Id", "n": "departmentId", "r": false, "sh": "Department ID", "t": "`$INTEGER`", "key$": "departmentId", "index$": 0 }, "description": { "a": true, "h": "Description", "n": "description", "r": false, "sh": "Map description", "t": "`$STRING`", "key$": "description", "index$": 1 }, "id": { "a": true, "h": "Id", "n": "id", "r": false, "sh": "Map ID", "t": "`$INTEGER`", "key$": "id", "index$": 2 }, "name": { "a": true, "h": "Name", "n": "name", "r": false, "sh": "Map name", "t": "`$STRING`", "key$": "name", "index$": 3 }, "urlImages": { "a": true, "h": "Url Images", "n": "urlImages", "r": false, "sh": "URLs to map images", "t": "`$ARRAY`", "key$": "urlImages", "index$": 4 } }, "id": { "field": "id", "name": "id" }, "name": "map", "op": { "list": { "input": "data", "name": "list", "points": [{ "a": true, "co": { "id": "GET /Map", "source": "openapi3", "version": 2 }, "g": {}, "k": "http", "m": "GET", "o": "/Map", "q": {}, "r": {}, "s": [{ "lit": "Map" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "list" } }, "relations": { "ancestors": [] }, "key$": "map", "name__orig": "map", "Name": "Map", "name_": "map", "name-": "map", "NAME": "MAP", "index$": 7 }, { "active": true, "entity": "map", "key$": "BasicMapFlow", "kind": "basic", "name": "BasicMapFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": {}, "m": {}, "o": "list", "s": [], "v": [{ "apply": "ItemExists", "def": { "ref": "map_ref01" } }], "index$": 0 }] }, 'Map', { "GET /Map": { "protocol": "http", "parameters": [] } });
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": { "departmentId": { "a": true, "h": "Department Id", "n": "departmentId", "r": false, "sh": "Department ID", "t": "`$INTEGER`", "key$": "departmentId", "index$": 0 }, "description": { "a": true, "h": "Description", "n": "description", "r": false, "sh": "Map description", "t": "`$STRING`", "key$": "description", "index$": 1 }, "id": { "a": true, "h": "Id", "n": "id", "r": false, "sh": "Map ID", "t": "`$INTEGER`", "key$": "id", "index$": 2 }, "name": { "a": true, "h": "Name", "n": "name", "r": false, "sh": "Map name", "t": "`$STRING`", "key$": "name", "index$": 3 }, "urlImages": { "a": true, "h": "Url Images", "n": "urlImages", "r": false, "sh": "URLs to map images", "t": "`$ARRAY`", "key$": "urlImages", "index$": 4 } }, "id": { "field": "id", "name": "id" }, "name": "map", "op": { "list": { "input": "data", "name": "list", "points": [{ "a": true, "co": { "id": "GET /Map", "source": "openapi3", "version": 2 }, "g": {}, "k": "http", "m": "GET", "o": "/Map", "q": {}, "r": {}, "rs": { "kind": "json", "media": "application/json" }, "s": [{ "lit": "Map" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "list" } }, "relations": { "ancestors": [] }, "key$": "map", "name__orig": "map", "Name": "Map", "name_": "map", "name-": "map", "NAME": "MAP", "index$": 7 }, { "active": true, "entity": "map", "key$": "BasicMapFlow", "kind": "basic", "name": "BasicMapFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": {}, "m": {}, "o": "list", "s": [], "v": [{ "apply": "ItemExists", "def": { "ref": "map_ref01" } }], "index$": 0 }] }, 'Map', { "GET /Map": { "protocol": "http", "parameters": [] } }, { strict: LIVE_STRICT, t });
         }
         const client = setup.client;
         const struct = setup.struct;
@@ -75,6 +122,11 @@ const utility_1 = require("../../utility");
         const map_ref01_list = (await map_ref01_ent.list(map_ref01_match)).map((e) => e.data());
     });
 });
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true;
 function basicSetup(extra) {
     // TODO: fix test def options
     const options = {}; // null
